@@ -1,0 +1,301 @@
+/* 
+/* Material Color Pallet
+/* 
+*/
+
+/* RED */
+$color-m-red : #F44336;
+$color-m-red-lighten-5 : #FFEBEE;
+$color-m-red-lighten-4 : #FFCDD2;
+$color-m-red-lighten-3 : #EF9A9A;
+$color-m-red-lighten-2 : #E57373;
+$color-m-red-lighten-1 : #EF5350;
+$color-m-red-darken-1  : #E53935;
+$color-m-red-darken-2  : #D32F2F;
+$color-m-red-darken-3  : #C62828;
+$color-m-red-darken-4  : #B71C1C;
+$color-m-red-accent-1  : #FF8A80;
+$color-m-red-accent-2  : #FF5252;
+$color-m-red-accent-3  : #FF1744;
+$color-m-red-accent-4  : #D50000;
+
+/* PINK */
+$color-m-pink : #E91E63;
+$color-m-pink-lighten-5 : #FCE4EC;
+$color-m-pink-lighten-4 : #F8BBD0;
+$color-m-pink-lighten-3 : #F48FB1;
+$color-m-pink-lighten-2 : #F06292;
+$color-m-pink-lighten-1 : #EC407A;
+$color-m-pink-darken-1  : #D81B60;
+$color-m-pink-darken-2  : #C2185B;
+$color-m-pink-darken-3  : #AD1457;
+$color-m-pink-darken-4  : #880E4F;
+$color-m-pink-accent-1  : #FF80AB;
+$color-m-pink-accent-2  : #FF4081;
+$color-m-pink-accent-3  : #F50057;
+$color-m-pink-accent-4  : #C51162;
+
+/* PURPLE */
+$color-m-purple : #9C27B0;
+$color-m-purple-lighten-5 : #F3E5F5;
+$color-m-purple-lighten-4 : #E1BEE7;
+$color-m-purple-lighten-3 : #CE93D8;
+$color-m-purple-lighten-2 : #BA68C8;
+$color-m-purple-lighten-1 : #AB47BC;
+$color-m-purple-darken-1  : #8E24AA;
+$color-m-purple-darken-2  : #7B1FA2;
+$color-m-purple-darken-3  : #6A1B9A;
+$color-m-purple-darken-4  : #4A148C;
+$color-m-purple-accent-1  : #EA80FC;
+$color-m-purple-accent-2  : #E040FB;
+$color-m-purple-accent-3  : #D500F9;
+$color-m-purple-accent-4  : #AA00FF;
+
+/* DEEP PURPLE */
+$color-m-deep-purple : #673AB7;
+$color-m-deep-purple-lighten-5 : #EDE7F6;
+$color-m-deep-purple-lighten-4 : #D1C4E9;
+$color-m-deep-purple-lighten-3 : #B39DDB;
+$color-m-deep-purple-lighten-2 : #9575CD;
+$color-m-deep-purple-lighten-1 : #7E57C2;
+$color-m-deep-purple-darken-1  : #5E35B1;
+$color-m-deep-purple-darken-2  : #512DA8;
+$color-m-deep-purple-darken-3  : #4527A0;
+$color-m-deep-purple-darken-4  : #311B92;
+$color-m-deep-purple-accent-1  : #B388FF;
+$color-m-deep-purple-accent-2  : #7C4DFF;
+$color-m-deep-purple-accent-3  : #651FFF;
+$color-m-deep-purple-accent-4  : #6200EA;
+
+/* INDIGO */
+$color-m-indigo : #3F51B5;
+$color-m-indigo-lighten-5 : #E8EAF6;
+$color-m-indigo-lighten-4 : #C5CAE9;
+$color-m-indigo-lighten-3 : #9FA8DA;
+$color-m-indigo-lighten-2 : #7986CB;
+$color-m-indigo-lighten-1 : #5C6BC0;
+$color-m-indigo-darken-1  : #3949AB;
+$color-m-indigo-darken-2  : #303F9F;
+$color-m-indigo-darken-3  : #283593;
+$color-m-indigo-darken-4  : #1A237E;
+$color-m-indigo-accent-1  : #8C9EFF;
+$color-m-indigo-accent-2  : #536DFE;
+$color-m-indigo-accent-3  : #3D5AFE;
+$color-m-indigo-accent-4  : #304FFE;
+
+/* BLUE */
+$color-m-blue : #2196F3;
+$color-m-blue-lighten-5 : #E3F2FD;
+$color-m-blue-lighten-4 : #BBDEFB;
+$color-m-blue-lighten-3 : #90CAF9;
+$color-m-blue-lighten-2 : #64B5F6;
+$color-m-blue-lighten-1 : #42A5F5;
+$color-m-blue-darken-1  : #1E88E5;
+$color-m-blue-darken-2  : #1976D2;
+$color-m-blue-darken-3  : #1565C0;
+$color-m-blue-darken-4  : #0D47A1;
+$color-m-blue-accent-1  : #82B1FF;
+$color-m-blue-accent-2  : #448AFF;
+$color-m-blue-accent-3  : #2979FF;
+$color-m-blue-accent-4  : #2962FF;
+
+/* LIGHT BLUE */
+$color-m-light-blue : #03A9F4;
+$color-m-light-blue-lighten-5 : #E1F5FE;
+$color-m-light-blue-lighten-4 : #B3E5FC;
+$color-m-light-blue-lighten-3 : #81D4FA;
+$color-m-light-blue-lighten-2 : #4FC3F7;
+$color-m-light-blue-lighten-1 : #29B6F6;
+$color-m-light-blue-darken-1  : #039BE5;
+$color-m-light-blue-darken-2  : #0288D1;
+$color-m-light-blue-darken-3  : #0277BD;
+$color-m-light-blue-darken-4  : #01579B;
+$color-m-light-blue-accent-1  : #80D8FF;
+$color-m-light-blue-accent-2  : #40C4FF;
+$color-m-light-blue-accent-3  : #00B0FF;
+$color-m-light-blue-accent-4  : #0091EA;
+
+/* CYAN */
+$color-m-cyan : #00BCD4;
+$color-m-cyan-lighten-5 : #E0F7FA;
+$color-m-cyan-lighten-4 : #B2EBF2;
+$color-m-cyan-lighten-3 : #80DEEA;
+$color-m-cyan-lighten-2 : #4DD0E1;
+$color-m-cyan-lighten-1 : #26C6DA;
+$color-m-cyan-darken-1  : #00ACC1;
+$color-m-cyan-darken-2  : #0097A7;
+$color-m-cyan-darken-3  : #00838F;
+$color-m-cyan-darken-4  : #006064;
+$color-m-cyan-accent-1  : #84FFFF;
+$color-m-cyan-accent-2  : #18FFFF;
+$color-m-cyan-accent-3  : #00E5FF;
+$color-m-cyan-accent-4  : #00B8D4;
+
+/* TEAL */
+$color-m-teal : #009688;
+$color-m-teal-lighten-5 : #E0F2F1;
+$color-m-teal-lighten-4 : #B2DFDB;
+$color-m-teal-lighten-3 : #80CBC4;
+$color-m-teal-lighten-2 : #4DB6AC;
+$color-m-teal-lighten-1 : #26A69A;
+$color-m-teal-darken-1  : #00897B;
+$color-m-teal-darken-2  : #00796B;
+$color-m-teal-darken-3  : #00695C;
+$color-m-teal-darken-4  : #004D40;
+$color-m-teal-accent-1  : #A7FFEB;
+$color-m-teal-accent-2  : #64FFDA;
+$color-m-teal-accent-3  : #1DE9B6;
+$color-m-teal-accent-4  : #00BFA5;
+
+/* GREEN */
+$color-m-green : #4CAF50;
+$color-m-green-lighten-5 : #E8F5E9;
+$color-m-green-lighten-4 : #C8E6C9;
+$color-m-green-lighten-3 : #A5D6A7;
+$color-m-green-lighten-2 : #81C784;
+$color-m-green-lighten-1 : #66BB6A;
+$color-m-green-darken-1  : #43A047;
+$color-m-green-darken-2  : #388E3C;
+$color-m-green-darken-3  : #2E7D32;
+$color-m-green-darken-4  : #1B5E20;
+$color-m-green-accent-1  : #B9F6CA;
+$color-m-green-accent-2  : #69F0AE;
+$color-m-green-accent-3  : #00E676;
+$color-m-green-accent-4  : #00C853;
+
+/* LIGHT GREEN */
+$color-m-light-green : #8BC34A;
+$color-m-light-green-lighten-5 : #F1F8E9;
+$color-m-light-green-lighten-4 : #DCEDC8;
+$color-m-light-green-lighten-3 : #C5E1A5;
+$color-m-light-green-lighten-2 : #AED581;
+$color-m-light-green-lighten-1 : #9CCC65;
+$color-m-light-green-darken-1  : #7CB342;
+$color-m-light-green-darken-2  : #689F38;
+$color-m-light-green-darken-3  : #558B2F;
+$color-m-light-green-darken-4  : #33691E;
+$color-m-light-green-accent-1  : #CCFF90;
+$color-m-light-green-accent-2  : #B2FF59;
+$color-m-light-green-accent-3  : #76FF03;
+$color-m-light-green-accent-4  : #64DD17;
+
+/* LIME */
+$color-m-light-green : #CDDC39;
+$color-m-light-green-lighten-5 : #F9FBE7;
+$color-m-light-green-lighten-4 : #F0F4C3;
+$color-m-light-green-lighten-3 : #E6EE9C;
+$color-m-light-green-lighten-2 : #DCE775;
+$color-m-light-green-lighten-1 : #D4E157;
+$color-m-light-green-darken-1  : #C0CA33;
+$color-m-light-green-darken-2  : #AFB42B;
+$color-m-light-green-darken-3  : #9E9D24;
+$color-m-light-green-darken-4  : #827717;
+$color-m-light-green-accent-1  : #F4FF81;
+$color-m-light-green-accent-2  : #EEFF41;
+$color-m-light-green-accent-3  : #C6FF00;
+$color-m-light-green-accent-4  : #AEEA00;
+
+/* YELLOW */
+$color-m-yellow : #FFEB3B;
+$color-m-yellow-lighten-5 : #FFFDE7;
+$color-m-yellow-lighten-4 : #FFF9C4;
+$color-m-yellow-lighten-3 : #FFF59D;
+$color-m-yellow-lighten-2 : #FFF176;
+$color-m-yellow-lighten-1 : #FFEE58;
+$color-m-yellow-darken-1  : #FDD835;
+$color-m-yellow-darken-2  : #FBC02D;
+$color-m-yellow-darken-3  : #F9A825;
+$color-m-yellow-darken-4  : #F57F17;
+$color-m-yellow-accent-1  : #FFFF8D;
+$color-m-yellow-accent-2  : #FFFF00;
+$color-m-yellow-accent-3  : #FFEA00;
+$color-m-yellow-accent-4  : #FFD600;
+
+/* YELLOW */
+$color-m-amber : #FFC107;
+$color-m-amber-lighten-5 : #FFF8E1;
+$color-m-amber-lighten-4 : #FFECB3;
+$color-m-amber-lighten-3 : #FFE082;
+$color-m-amber-lighten-2 : #FFD54F;
+$color-m-amber-lighten-1 : #FFCA28;
+$color-m-amber-darken-1  : #FFB300;
+$color-m-amber-darken-2  : #FFA000;
+$color-m-amber-darken-3  : #FF8F00;
+$color-m-amber-darken-4  : #FF6F00;
+$color-m-amber-accent-1  : #FFE57F;
+$color-m-amber-accent-2  : #FFD740;
+$color-m-amber-accent-3  : #FFC400;
+$color-m-amber-accent-4  : #FFAB00;
+
+/* ORANGE */
+$color-m-orange : #FF9800;
+$color-m-orange-lighten-5 : #FFF3E0;
+$color-m-orange-lighten-4 : #FFE0B2;
+$color-m-orange-lighten-3 : #FFCC80;
+$color-m-orange-lighten-2 : #FFB74D;
+$color-m-orange-lighten-1 : #FFA726;
+$color-m-orange-darken-1  : #FB8C00;
+$color-m-orange-darken-2  : #F57C00;
+$color-m-orange-darken-3  : #EF6C00;
+$color-m-orange-darken-4  : #E65100;
+$color-m-orange-accent-1  : #FFD180;
+$color-m-orange-accent-2  : #FFAB40;
+$color-m-orange-accent-3  : #FF9100;
+$color-m-orange-accent-4  : #FF6D00;
+
+/* DEEP ORANGE */
+$color-m-deep-orange : #FF5722;
+$color-m-deep-orange-lighten-5 : #FBE9E7;
+$color-m-deep-orange-lighten-4 : #FFCCBC;
+$color-m-deep-orange-lighten-3 : #FFAB91;
+$color-m-deep-orange-lighten-2 : #FF8A65;
+$color-m-deep-orange-lighten-1 : #FF7043;
+$color-m-deep-orange-darken-1  : #F4511E;
+$color-m-deep-orange-darken-2  : #E64A19;
+$color-m-deep-orange-darken-3  : #D84315;
+$color-m-deep-orange-darken-4  : #BF360C;
+$color-m-deep-orange-accent-1  : #FF9E80;
+$color-m-deep-orange-accent-2  : #FF6E40;
+$color-m-deep-orange-accent-3  : #FF3D00;
+$color-m-deep-orange-accent-4  : #DD2C00;
+
+/* BROWN */
+$color-m-brown : #795548;
+$color-m-brown-lighten-5 : #EFEBE9;
+$color-m-brown-lighten-4 : #D7CCC8;
+$color-m-brown-lighten-3 : #BCAAA4;
+$color-m-brown-lighten-2 : #A1887F;
+$color-m-brown-lighten-1 : #8D6E63;
+$color-m-brown-darken-1  : #6D4C41;
+$color-m-brown-darken-2  : #5D4037;
+$color-m-brown-darken-3  : #4E342E;
+$color-m-brown-darken-4  : #3E2723;
+
+/* BLUE GREY */
+$color-m-blue-grey : #607D8B;
+$color-m-blue-grey-lighten-5 : #ECEFF1;
+$color-m-blue-grey-lighten-4 : #CFD8DC;
+$color-m-blue-grey-lighten-3 : #B0BEC5;
+$color-m-blue-grey-lighten-2 : #90A4AE;
+$color-m-blue-grey-lighten-1 : #78909C;
+$color-m-blue-grey-darken-1  : #546E7A;
+$color-m-blue-grey-darken-2  : #455A64;
+$color-m-blue-grey-darken-3  : #37474F;
+$color-m-blue-grey-darken-4  : #263238;
+
+/* GREY */
+$color-m-grey : #9E9E9E;
+$color-m-grey-lighten-5 : #FAFAFA;
+$color-m-grey-lighten-4 : #F5F5F5;
+$color-m-grey-lighten-3 : #EEEEEE;
+$color-m-grey-lighten-2 : #E0E0E0;
+$color-m-grey-lighten-1 : #BDBDBD;
+$color-m-grey-darken-1  : #757575;
+$color-m-grey-darken-2  : #616161;
+$color-m-grey-darken-3  : #424242;
+$color-m-grey-darken-4  : #212121;
+
+/* SHADES */
+$color-m-black : #000000;
+$color-m-white : #FFFFFF;
+$color-m-transparent : rgba(0, 0, 0, 0);

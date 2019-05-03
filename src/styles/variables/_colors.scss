@@ -1,0 +1,18 @@
+/* 
+/* App Colors
+/* 
+*/
+
+// Base Colors
+$color-app-white      : #EFEFEF;
+$color-app-black      : #040408;
+
+$color-app-primary    : #3100bd;
+$color-app-accent     : #ff4f00;
+
+// Background Colors
+$color-app-background : linear-gradient(to right, #040011 0%, #150044 50%, #040011 100%);
+
+// Typography Colors
+$color-app-text-dark  : $color-m-grey-darken-4;
+$color-app-text-light : $color-app-white;

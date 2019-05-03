@@ -1,0 +1,22 @@
+/*
+	Used to center content. 
+	Optional params ['horizontal', 'vertical', null]
+
+	NOTE: parent position must be set to relative;
+*/
+@mixin center-content( $direction:null, $top-offset:0px, $left-offset:0px )
+{
+	position: absolute;
+
+	@if $direction == 'vertical' {
+		top: calc( 50% + #{$top-offset} );
+		transform: translateY( -50% );
+	} @else if $direction == 'horizontal' {
+		left: calc( 50% + #{$left-offset} );
+		transform: translateX( -50% );
+	} @else {
+		top: calc( 50% + #{$top-offset} );
+		left: calc( 50% + #{$left-offset} );
+		transform: translate(-50%, -50%);
+	}
+}
