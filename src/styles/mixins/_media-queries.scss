@@ -1,8 +1,8 @@
 /*
-	RESPOND-TO
-		Media query will respond only to viewport within the specific size
+	RESPOND-AT
+		Media query will respond only at viewport within the specific size
 */
-@mixin respond-to( $media )
+@mixin respond-at( $media )
 {
 	@if $media == xsmall {
 		@media only screen and (max-width: $breakpoint-x-small) { @content; }
@@ -23,10 +23,10 @@
 
 
 /*
-	RESPOND-THROUGH
+	RESPOND-TO
 		Media query will respond from viewport 0 to the specified size
 */
-@mixin respond-through( $media )
+@mixin respond-to( $media )
 {
 	@if $media == xsmall {
 		@media only screen and (max-width: $breakpoint-x-small) { @content; }

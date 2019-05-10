@@ -1,0 +1,120 @@
+.animated-logo-container {
+    	
+	.logo {
+		background-color: $color-app-white; 
+		width: 500px;
+		overflow: hidden;
+	    height: 170px;
+	    padding: 6px 10px 0px 13px;
+        transform: scaleX(0);
+
+        #logo-svg {
+            .cls-1,.cls-2,.cls-3,.cls-5{ fill: none; }
+            .cls-2,.cls-3,.cls-5{ stroke: $color-app-black ; stroke-miterlimit: 10; }
+            .cls-2,.cls-5{ stroke-width: 36px; }
+            .cls-3{ stroke-width: 37px; }
+            .cls-4{ clip-path: url( #clip-path ); }
+            .cls-5{ stroke-linecap:square;}
+            .cls-6{ clip-path: url( #clip-path-2 ); }
+        }
+        
+        &.animate {
+            animation: scale 0.7s forwards;
+            animation-delay: 0.0s;
+            animation-timing-function: cubic-bezier(.87,.02,.52,.98);
+            
+            * {
+                animation: draw 0.7s forwards;
+            }
+        
+            #logo-path-1 {
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation-delay: 0.5s;
+            }
+        
+            #logo-path-2 {
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation-delay: 0.7s;
+            }
+        
+            #logo-path-3 {
+                stroke-dasharray: 120;
+                stroke-dashoffset: 120;
+                animation-delay: 0.7s;
+            }
+        
+            #logo-path-4 {
+                stroke-dasharray: 450;
+                stroke-dashoffset: 450;
+                animation-delay: 0.7s;
+            }
+        
+            #logo-path-5 {
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation-delay: 1s;
+            }
+        
+            #logo-path-6 {
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation-delay: 1s;
+            }
+        
+            #logo-path-7 {
+                stroke-dasharray: 250;
+                stroke-dashoffset: 250;
+                animation-delay: 1.1s;
+            }
+        
+            #logo-path-8 {
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation-delay: 1.2s;
+            }
+        
+            #logo-path-9 {
+                stroke-dasharray: 250;
+                stroke-dashoffset: 250;
+                animation-delay: 1.3s;
+            }
+        
+            #logo-path-10 {
+                stroke-dasharray: 220;
+                stroke-dashoffset: 220;
+                animation-delay: 1.4s;
+            }
+        
+            #logo-path-11 {
+                stroke-dasharray: 250;
+                stroke-dashoffset: 250;
+                animation-delay: 1.3s;
+            }
+        
+            #logo-path-12 {
+                stroke-dasharray: 250;
+                stroke-dashoffset: 250;
+                animation-delay: 1.5s;
+            }
+            
+        }	
+        
+        
+        @keyframes scale {
+            to {
+                transform: scaleX(1);
+            }
+        }
+        
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+    }
+    
+
+}

@@ -4,7 +4,6 @@ import Router from 'vue-router'
 import { loadView, loadComponent } from '@/mixins/asyncLoaders'
 
 
-
 Vue.use(Router)
 
 
@@ -14,12 +13,18 @@ const router = new Router({
     routes: [
         {
             path: '',
-            name: 'no-route',
+            name: 'home',
             component: loadView({ file:'Home' })
         },
         {
-            path: '/',
-            name: 'root-route',
+            path: '/projects',
+            name: 'projects',
+            component: loadView({ file:'Projects' }),
+        },
+        {
+            path: '/project/:projectId',
+            name: 'project',
+            component: loadView({ file:'Project_Details' }),
         },
         {
             path: '/about',
@@ -30,6 +35,11 @@ const router = new Router({
             path: '/contact',
             name: 'contact',
             component: loadView({ file:'Contact' })
+        },
+        {
+            path: '/labs',
+            name: 'labs',
+            component: loadView({ file:'Labs' })
         }
     ]
 })

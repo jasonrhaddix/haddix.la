@@ -1,27 +1,50 @@
 <template>
-    <div>
-        <!-- <img src="https://www.fillmurray.com/600/600" alt=""> -->
-        <div style="color: red" @click="routeToAbout">ABOUT</div>
-        <div style="color: red" @click="routeToContact">CONTACT</div>
+    <div class="home-view--container">
+        <sphere-bg class="sphere-bg" />
+        
+        <div class="home-view--content">
+            <logo class="animated-logo" />
+            <p>Portfolio for Jason R Haddix</p>
+            <div class="divider" />
+            <div class="view-work-btn">
+                <app-btn 
+                    label="View Works"
+                    @click.native="navigateToRoute('projects')"/>
+            </div>
+        </div>
+        
     </div>
 </template>
 
 
 <script>
+    import { mapActions } from 'vuex'
+
+    import { 
+        VUEX_ROUTING_NAVIGATE_TO_ROUTE
+    } from '@/store/constants/routing'
+    
+    import SphereBG from '@/components/SphereBG/Sphere_BG'
+    import Logo from '@/components/AnimatedLogo/Animated_Logo'
+    import AppButton from '@/components/_global/App_Button'
+
     export default {
         name : 'home-view',
 
-        data : () => ({
+        components : {
+            'sphere-bg' : SphereBG,
+            'logo'      : Logo,
+            'app-btn'   : AppButton
+        },
 
+        data : () => ({
+            /*  */
         }),
 
         methods : {
-            routeToAbout() {
-                this.$router.push({ name:'about' })
-            },
-            routeToContact() {
-                this.$router.push({ name:'contact' })
-            }
+            ...mapActions({
+                navigateToRoute: VUEX_ROUTING_NAVIGATE_TO_ROUTE
+            })
         }
     }
 </script>

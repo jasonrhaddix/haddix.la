@@ -4,15 +4,43 @@
 */
 
 // Base Colors
-$color-app-white      : #EFEFEF;
-$color-app-black      : #040408;
+$color-app-white          : #EFEFEF;
+$color-app-black          : #040408;
+$color-app-primary        : #3100bd;
+$color-app-accent         : #ff4f00;
 
-$color-app-primary    : #3100bd;
-$color-app-accent     : #ff4f00;
+// Transparencies
+$color-white-alpha: rgba(255, 255, 255, 0.75);
+$color-app-black-alpha: rgba( 0, 0, 0, 0.75 );
+$color-accent-purple-alpha: rgba( 55, 15, 174, 0.5 );
 
 // Background Colors
-$color-app-background : linear-gradient(to right, #040011 0%, #150044 50%, #040011 100%);
+$color-app-background     : linear-gradient(to right, #040011 0%, #150044 50%, #040011 100%);
+$color-app-nav-background : $color-app-black;
 
 // Typography Colors
-$color-app-text-dark  : $color-m-grey-darken-4;
-$color-app-text-light : $color-app-white;
+$color-app-text-dark      : $color-m-grey-darken-4;
+$color-app-text-light     : $color-app-white;
+
+
+
+
+////// GLOBAL COMPONENTS //////
+
+// App Button
+$color-app-button-background: $color-app-black-alpha;
+$color-app-button-text: $color-app-text-light;
+$color-app-button-border: $color-app-text-light;
+
+$color-app-button-background-animate: $color-app-primary;
+$color-app-button-background-hover: $color-app-text-light;
+$color-app-button-text-hover: $color-app-text-dark;
+
+// App Button (Inverse)
+$color-app-button-background-light: $color-app-white;
+$color-app-button-text-light: $color-app-text-dark;
+$color-app-button-border-light: $color-app-text-dark;
+
+// $color-app-button-background-animate: $color-accent-purple-alpha;
+$color-app-button-background-hover-light: $color-app-text-dark;
+$color-app-button-text-hover-light: $color-app-text-light;

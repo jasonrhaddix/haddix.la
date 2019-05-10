@@ -1,4 +1,7 @@
 #app {
+    background-image: $color-app-background;
+    min-height: 100vh;
+    
     .fade-enter-active, .fade-leave-active {
         transition: opacity .5s;
       }

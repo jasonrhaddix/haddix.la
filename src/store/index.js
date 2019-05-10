@@ -11,6 +11,8 @@ import logger from 'vuex/dist/logger'
 
 // ALERT: does this collide with name 'app' var on @/main.js
 import app from '@/store/modules/app'
+import ui from '@/store/modules/ui'
+import routing from '@/store/modules/routing'
 
 
 Vue.use(Vuex)
@@ -21,7 +23,9 @@ const debug = process.env.NODE_ENV !== 'production'
 
 const store = new Vuex.Store({
     modules: {
-        app
+        app,
+        ui,
+        routing
     },
 
     strict: debug,

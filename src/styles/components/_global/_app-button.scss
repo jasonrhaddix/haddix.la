@@ -1,0 +1,134 @@
+.app-button--container {
+    cursor: pointer;
+    @include not-selectable();
+
+	.app-button {
+		min-width: 150px;
+		position: relative;
+		display: inline-block;
+		border: 1px solid $color-app-button-border;
+		margin: 0 auto;
+		overflow: hidden;
+        background: {
+            color: $color-app-button-background;
+        }
+		
+		&:hover {
+
+			.app-button--text {
+				transition-delay: 0s;
+				transform: translateX( 7% );
+			}
+
+			.app-button--bg-under {
+				transition-delay: 0s;
+				transform: translateX( 0% );
+			}
+
+			.app-button--bg {
+				transition-delay: 0.1s;
+				transform: translateX( 0% );
+			}
+
+			.app-button--text-animated {
+				transition-delay: 0.2s;
+				transform: translateX( 0% );
+				opacity: 1;
+			}
+        }
+
+		.app-button--text {
+			color: $color-app-button-text;
+			transition: all 0.2s ease-in-out;
+			transition-delay: 0.25s;	
+			text-align: center;
+		}
+
+        .app-button--text-animated,
+        .app-button--bg-under,
+        .app-button--bg {
+            position: absolute;
+			display: block;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			transform: translateX( -10% );
+			transition: all 0.2s ease-in-out;
+            background: {
+                color: transparent;
+            }
+		}
+
+		.app-button--text-animated {
+			text-transform: uppercase;
+			text-align: center;
+			transition-delay: 0s;
+			opacity: 0;
+			font-size: 0.8rem;
+			font-weight: $font-weight-medium;
+			color: $color-app-button-text-hover;
+            padding: {
+                top: 11px;
+                bottom: 10px;
+            }
+		}
+
+        .app-button--bg,
+        .app-button--bg-under {
+			transition-delay: 0.2s;
+			background-color: $color-app-button-background-hover;
+			transform: translateX( -150% );
+		
+			&:after {
+				content: "";
+				margin-left: 145px;
+				display: block;
+				width: 20px;
+				height: 20px;
+				border-top: 70px solid $color-app-button-background-hover;
+				border-right: 70px solid transparent;
+			}
+		}
+
+		.app-button--bg-under {
+			transition-delay: 0.3s;
+			background-color: $color-app-button-background-animate;
+			opacity: 0.7;
+
+			&:after {
+				border-top: 50px solid $color-app-button-background-animate;
+			}
+
+		}
+
+		.app-button--text {
+			text-transform: uppercase;
+		    display: block;
+	    	position: relative;
+	    	padding: 10px 40px;
+	    	font-size: 0.8rem;
+		}
+	}
+
+	/* .app-button-light {
+		color: $color-app-button-text-light;
+		background-color: $color-app-button-background-light;
+		border: 1px solid $color-app-button-border-light;
+
+		.button-text {
+			color: $color-app-button-text-light;
+		}
+
+		.app-button--text-animated {
+			color: $color-app-button-text-hover-light;
+		}
+
+		.app-button--bg {
+			background-color: $color-app-button-background-hover-light;
+
+			&:after {
+				border-top: 70px solid $color-app-button-background-hover-light;
+			}
+		}
+	} */
+}

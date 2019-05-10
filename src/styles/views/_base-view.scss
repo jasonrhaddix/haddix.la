@@ -1,0 +1,19 @@
+.app-view {
+    
+}
+
+.app-view--inner {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: {
+        top: 5rem;
+    }
+    
+}
+
+.app-view--content {
+    background: {
+        color: $color-m-white;
+    }
+    padding: 5rem 5%;
+}

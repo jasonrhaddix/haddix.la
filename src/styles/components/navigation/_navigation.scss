@@ -1,0 +1,150 @@
+.navigation-container {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+	z-index: 999;
+    overflow: hidden;
+    pointer-events: none;
+    
+    & > div,header {
+        pointer-events: all;
+    }
+
+    .navigation-poly {
+        position: fixed;
+		height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
+        transition: clip-path 650ms ease-in-out;
+        background:{
+            color: $color-app-nav-background;
+        }
+        
+        nav {
+            @include center-content(0, -3rem);
+    
+            ul {
+                text-transform: uppercase;
+                text-align: center;
+    
+                li {
+                    cursor: pointer;
+                    margin: {
+                        top: 3rem;
+                        bottom: 3rem;
+                    }
+                    
+                        .nav-button {
+                            position: relative;
+                            display: inline-block;
+    
+                            h1 {	
+                                color: #646468;
+                                transition: color 100ms ease-in-out;
+                                font-weight: $font-weight-bold;
+                                font-size: 4rem;
+                            }
+                        }
+    
+                        &:hover {
+
+                            .nav-button {
+                                h1 {	
+                                    color: $color-app-text-light;
+                                }
+                            }
+                        }
+    
+                        &.active {
+    
+                            .nav-button {
+                                
+                                h1 {
+                                    color: $color-app-text-light !important;
+                                }
+                            }
+                        }
+                    
+                }
+            }
+        }
+    }
+
+    header {
+        position: absolute;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        background: {
+            color: $color-app-nav-background;
+        };
+
+        .header--logo-container {
+            display: flex;
+            flex-direction: row;
+            pointer-events: all;
+            
+            .app-logo {
+                cursor: pointer;
+                position: relative;
+                border: 1px solid #CCC;
+                background: $color-m-white;
+                
+                img, svg {
+                    width: 100px;
+                }
+            }
+    
+            .divider {
+                background-color: $color-app-text-light;
+                margin: 10px 10px;
+                width: 1px;
+                height: 24px;
+                transition: transform 0.25s ease-in-out;
+                transform: translateY(0);
+                box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+            }
+    
+            .breadcrumb {
+                margin: 11px 0 0;
+                text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+    
+                p {
+                    color: $color-app-text-light;
+                    line-height: 1.4rem;
+                    text-transform: uppercase;
+                }
+            }	
+        }
+
+        .nav-menu-button {
+            position: absolute;
+            cursor: pointer;
+            height: 100%;
+            width: 4rem;
+            top: 0;
+            right: 0;
+
+            & > div {
+                @include center-content();
+            }
+        }
+    }
+    
+    &:not(.open) {
+        
+        .navigation-poly {
+            clip-path: polygon(0% 0%, 110% 0%, 0% 0%, 0% 0%, 0% 50%, 0% 100%);
+        }
+    }
+
+    &.open {
+        
+		.navigation-poly {
+            clip-path: polygon(0% 0%, 110% 0%, 90% 80%, 30% 93%, 10% 90%, 0% 100%)
+		}
+    }
+}

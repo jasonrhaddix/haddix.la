@@ -3,14 +3,13 @@ import {
     VUEX_APP_INITIALIZED
 } from '@/store/constants/app'
 
+
 const state = {
     initializing: false,
     initialized: false,
 }
 
-
 const getters = {}
-
 
 const actions = {
     [VUEX_APP_INIT]:({ commit }) => {
@@ -18,13 +17,12 @@ const actions = {
     }
 }
 
-
 const mutations = {
-    [VUEX_APP_INIT]:(state) => {
+    [VUEX_APP_INIT]:( state ) => {
         state.initializing = true
     },
 
-    [VUEX_APP_INITIALIZED]:(state) => {
+    [VUEX_APP_INITIALIZED]:( state ) => {
         state.initializing = false
         state.initialized = true
     }

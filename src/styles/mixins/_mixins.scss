@@ -1,4 +1,4 @@
-@mixin not-selectable($value:none) {
+@mixin not-selectable( $value:none ) {
     -webkit-touch-callout: $value;
     -webkit-user-select: $value;
     -khtml-user-select: $value;

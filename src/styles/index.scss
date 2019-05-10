@@ -3,40 +3,59 @@
 *
 */
 
-
-// Variables
+// VARIABLES
+//
 @import 'variables/_material-colors';
 @import 'variables/_colors';
 @import 'variables/_breakpoints';
 @import 'variables/_layout';
 
 
-// Typography
+// TYPOGRAPHY
+//
 @import 'typography/_typography';
 @import 'typography/_icons';
 
 
-// Mixins
+// MIXINS
+//
 @import 'mixins/_mixins';
 @import 'mixins/_media-queries';
 @import 'mixins/_center-content';
 
 
-// Base
+// BASE
+//
 @import 'base/_base';
 
 
-// Vendor
+// VENDOR
+//
 /* @import 'vendor/'; */
 
 
-// App
+// APP
+//
 @import '_app';
 
 
-// Views
-/*  */
+// VIEWS
+//
+@import 'views/_base-view';
+@import 'views/_home';
+@import 'views/_projects';
+@import 'views/_about';
 
 
-// Components
-/*  */
+// COMPONENTS
+//
+// Global
+@import 'components/_global/_hamburger-menu';
+@import 'components/_global/_app-button';
+
+// Navigation
+@import 'components/navigation/_navigation';
+
+// Animated Logo
+@import 'components/animatedLogo/_animated-logo';
+

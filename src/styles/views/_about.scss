@@ -1,0 +1,52 @@
+.about-view--container {
+    // @extend .app-view;
+    color: $color-app-text-dark;
+
+    .about-view--inner {
+        @extend .app-view--inner;
+
+        .about-view--content {
+            @extend .app-view--content;
+
+            .section-divider {
+                background-color: #DDD;
+                width: 60%;
+                height: 1px;
+                margin: 5vw auto 0;
+
+                &.last-item {
+                    margin: 0 auto;
+                }
+            }
+
+            .about--header {
+                
+                .header--photo-container {
+                   display: flex;
+                    
+                    .header--photo {
+                        margin: 0 auto;
+
+                        img {
+                            height: 240px;
+                        }
+                    }
+                }
+
+                .social-media--container {
+                    display: flex;
+	                width: 100%;
+                    
+                    .social-media--list {
+                        position: relative;
+                        margin: 0 auto;
+                        
+                        * {
+                            margin: 0 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

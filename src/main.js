@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import UUID from 'vue-uuid'
 
-import { sync } from 'vuex-router-sync'
+// import { sync } from 'vuex-router-sync'
 
 import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
+
+import { matchRoute } from '@/directives/matchRoute'
+import { fontawesome } from '@/directives/fontawesome'
 
 import { 
 	VUEX_APP_INIT
@@ -14,21 +17,7 @@ import {
 
 // Vue - Use statements
 Vue.use(UUID)
-//
 
-
-// Vue - Filter statements
-//
-
-
-// Vue - Mixins
-//
-
-
-// Vuex Router Sync
-// - keeps router as store state
-const unsync = sync(store, router)
-//
 
 // TODO: configure this
 Vue.config.productionTip = false
