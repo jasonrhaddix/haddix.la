@@ -78,6 +78,7 @@
         width: 100vw;
         top: 0;
         left: 0;
+        transition: top 500ms ease-in-out 150ms;
         background: {
             color: $color-app-nav-background;
         };
@@ -132,6 +133,9 @@
                 @include center-content();
             }
         }
+
+        &:not(.open) { top: -50px; }
+        &.open { top: 0; }
     }
     
     &:not(.open) {

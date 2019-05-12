@@ -28,6 +28,7 @@
     import Logo from '@/components/AnimatedLogo/Animated_Logo'
     import AppButton from '@/components/_global/App_Button'
 
+
     export default {
         name : 'home-view',
 

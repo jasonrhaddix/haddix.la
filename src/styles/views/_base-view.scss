@@ -17,3 +17,21 @@
     }
     padding: 5rem 5%;
 }
+
+
+@include respond-to(medium) {
+    .app-view {
+    
+    }
+    
+    .app-view--inner {
+        max-width: 90%;        
+    }
+    
+    .app-view--content {
+        background: {
+            color: $color-m-white;
+        }
+        padding: 5rem 5%;
+    }
+}

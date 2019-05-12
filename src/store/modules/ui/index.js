@@ -1,4 +1,7 @@
 import {
+    VUEX_UI_HEADER_SHOW,
+    VUEX_UI_HEADER_HIDE,
+
     VUEX_UI_NAVIGATION_SHOW_OPENSTATE,
     VUEX_UI_NAVIGATION_HIDE_OPENSTATE,
     VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE
@@ -6,6 +9,7 @@ import {
 
 
 const state = {
+    headerState: false, 
     navigation: {
         openState: false
     }
@@ -16,6 +20,14 @@ const getters = {
 }
 
 const actions = {
+    [VUEX_UI_HEADER_SHOW]:({ commit }) => {
+        commit(VUEX_UI_HEADER_SHOW)
+    },
+
+    [VUEX_UI_HEADER_HIDE]:({ commit }) => {
+        commit(VUEX_UI_HEADER_HIDE)
+    },
+
     [VUEX_UI_NAVIGATION_SHOW_OPENSTATE]:({ commit }) => {
         commit(VUEX_UI_NAVIGATION_SHOW_OPENSTATE)
     },
@@ -30,6 +42,14 @@ const actions = {
 }
 
 const mutations = {
+    [VUEX_UI_HEADER_SHOW]:( state ) => {
+        state.headerState = true;
+    },
+
+    [VUEX_UI_HEADER_HIDE]:( state ) => {
+        state.headerState = false;
+    },
+
     [VUEX_UI_NAVIGATION_SHOW_OPENSTATE]:( state ) => {
         state.navigation.openState = true
     },

@@ -108,27 +108,27 @@
 	    	padding: 10px 40px;
 	    	font-size: 0.8rem;
 		}
-	}
-
-	/* .app-button-light {
-		color: $color-app-button-text-light;
-		background-color: $color-app-button-background-light;
-		border: 1px solid $color-app-button-border-light;
-
-		.button-text {
+		
+		&.light {
 			color: $color-app-button-text-light;
-		}
-
-		.app-button--text-animated {
-			color: $color-app-button-text-hover-light;
-		}
-
-		.app-button--bg {
-			background-color: $color-app-button-background-hover-light;
-
-			&:after {
-				border-top: 70px solid $color-app-button-background-hover-light;
+			background-color: $color-app-button-background-light;
+			border: 1px solid $color-app-button-border-light;
+	
+			.app-button--text {
+				color: $color-app-button-text-light;
+			}
+	
+			.app-button--text-animated {
+				color: $color-app-button-text-hover-light;
+			}
+	
+			.app-button--bg {
+				background-color: $color-app-button-background-hover-light;
+	
+				&:after {
+					border-top: 70px solid $color-app-button-background-hover-light;
+				}
 			}
 		}
-	} */
+	}
 }

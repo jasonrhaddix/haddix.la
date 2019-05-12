@@ -68,7 +68,7 @@ var sp_sphere_2_geom
 
 	setTimeout( function() { 
 		sp_InitTwitch() 
-	}, 6000 );
+	}, 5000 );
 })()
 
 
@@ -261,15 +261,17 @@ function sp_initGeom_Sphere_2()
 function sp_initAnimate( time )
 {	
 	try {
-		appState = (document.getElementById('threeContainer').dataset.focus === 'true' ) ? true : false
+		appState = (document.getElementById('threeContainer').dataset.focus === 'true') ? true : false
 	} catch(err){
 		appState = false
 	}
 	
 	// windowFocused = ( appState && document.hasFocus() ) ? true : false;
-	windowFocused = ( !introComplete || appState && document.hasFocus() ) ? true : false
+	// windowFocused = (!introComplete || appState && document.hasFocus()) ? true : false
+	
 	requestAnimationFrame( sp_initAnimate )
-	if( windowFocused ) sp_initRender( time )
+	if (appState) sp_initRender( time )
+	// if (windowFocused) sp_initRender( time )
 }
 
 
@@ -340,7 +342,7 @@ function sp_InitTwitch()
         }
     }
     
-    setTimeout( sp_InitTwitch, 10000 ) 
+    setTimeout( sp_InitTwitch, 5000 ) 
 }
 
 
@@ -372,12 +374,12 @@ function sp_initMouseMove( event )
             TweenMax.fromTo(sp_sphere_1_solid_faces[intersects[i].faceIndex].color, 0.75, {r: 5, g: 0, b: 20},{r: 1, g: 1, b: 1})  
                
             try {    
-                TweenMax.fromTo(sp_sphere_1_solid_faces[intersects[i].faceIndex+1].color, 0.75, {r: 5, g: 5, b: 0},{r: 1, g: 1, b: 1})   
+                TweenMax.fromTo(sp_sphere_1_solid_faces[intersects[i].faceIndex+1].color, 0.75, {r: 5, g: 5, b: 10},{r: 1, g: 1, b: 1})   
             } catch(error) { /* */}
 
-            /*try {    
+            try {    
                 TweenMax.fromTo(sp_sphere_1_solid_faces[intersects[i].faceIndex+2].color, 0.75, {r : 2,g :2, b : 2},{r : 1,g :1, b : 1})          
-            } catch(error){}*/
+            } catch(error){}
 
             /*try {    
                 TweenMax.fromTo(sp_sphere_1_solid_faces[intersects[i].faceIndex-1].color, 0.75, {r : 4,g :4, b : 4},{r : 1,g :1, b : 1})   
@@ -473,6 +475,18 @@ function sp_initMediaQueries() {
 	}
 
 }
+
+
+
+/*********************************/
+/*********************************/
+// Easing Functions
+/*********************************/
+/*********************************/
+function easeOutQuad(t) {
+	return t * (2-t)
+}
+
 
 
 

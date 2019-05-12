@@ -16,7 +16,7 @@
                 </ul>
             </nav>
         </div>
-        <header>
+        <header :class="[{ open:headerState }]">
             <div class="header--logo-container">
                 <div 
                     class="app-logo"
@@ -69,6 +69,7 @@
 
         computed: {
             ...mapState({
+                headerState : state => state.ui.headerState,
                 navigationOpenState : state => state.ui.navigation.openState 
             }),
 

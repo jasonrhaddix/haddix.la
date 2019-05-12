@@ -12,13 +12,61 @@
                 background-color: #DDD;
                 width: 60%;
                 height: 1px;
-                margin: 5vw auto 0;
+                margin: 5vw auto 5vw;
 
                 &.last-item {
                     margin: 0 auto;
                 }
             }
 
+            .section {
+                
+                .section--title {
+                    display: flex;
+                    margin: {
+                        bottom: 1rem;
+                    }
+                    
+                    h2 {
+                        text-transform: uppercase;
+                        background-color: $color-app-text-dark;
+                        color: $color-app-text-light;
+                        padding: 5px 10px;
+                    }
+                }
+                    
+                .subsection {
+                    padding: 20px;
+                    margin: {
+                        bottom: 20px;
+                    }
+                    background: {
+                        color: #EFEFEF;
+                    }
+
+                    &:last-of-type {
+                        margin: 0;
+                    }
+
+                    h3 {
+                        text-transform: uppercase;
+                        margin: {
+                            bottom: 1rem;
+                        }
+                    }
+
+                    .about-items--list {
+                        display: flex;
+
+                        ul {
+                            width: 50%;
+                        }
+                    }
+                }
+
+            }
+
+            /* HEADER */
             .about--header {
                 
                 .header--photo-container {
@@ -43,6 +91,109 @@
                         
                         * {
                             margin: 0 1rem;
+                        }
+                    }
+                }
+            }
+
+            /* CLIENT LIST */
+            .about--client-list {
+                
+                .client-list {
+                    display: inline-block;
+                    
+                    .client-item {
+                        float: left;
+                        text-align: center;  
+                        width: 33.33%;
+                        padding-top: 40px;
+                        padding-bottom: 120px;
+    
+                        .item {
+
+                            img {
+                                width: 120px;
+                                height: 60px;
+                                margin: 0 auto;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* FOOTER */
+            .about--footer {
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+@include respond-to(small) {
+    .about-view--container {
+    
+        .about-view--inner {
+            
+            .about-view--content {
+
+                .section {
+
+                    .subsection {
+    
+                        .about-items--list {
+                            flex-direction: column;
+                            
+                            ul {
+                                width: 100%;
+                            }
+                        }
+                        
+                        .about--client-list {
+                            
+                            .client-list {
+                                
+                                .client-item {
+                                    padding-top: 40px;
+                                    padding-bottom: 40px;
+                                    
+                                    .item {
+                                        
+                                        img {
+                                            width: 80px;
+                                            height: 40px
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include respond-from(xlarge) {
+    .about-view--container {
+    
+        .about-view--inner {
+            
+            .about-view--content {
+            
+                .about--client-list {
+                    
+                    .client-list {
+                        
+                        .client-item {
+                            width: 25%;
+
+                            .item {
+    
+                                img {
+
+                                }
+                            }
                         }
                     }
                 }

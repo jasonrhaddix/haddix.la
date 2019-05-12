@@ -29,4 +29,24 @@
             }
         }
     }
-}   
+}
+
+
+@include respond-to(small) {
+    .home-view--container {
+    
+        .home-view--content {
+            @include center-content(0, -50px);
+    
+            .animated-logo {
+                transform: scale(0.75);
+            }
+    
+            p {
+               margin: {
+                   top: 0;
+               }
+            }
+        }
+    }
+}
