@@ -1,12 +1,12 @@
 <template>
-	<div id="app">
+	<v-app id="app">
 		<transition 
 			name="fade"
 			mode="out-in">
 			<router-view></router-view>
 		</transition>
 		<navigation />
-	</div>
+	</v-app>
 </template>
 
 
@@ -24,5 +24,6 @@
 
 
 <style lang="scss">
+	@import '~vuetify/dist/vuetify.min.css';
 	@import '@/styles/index.scss';
 </style>

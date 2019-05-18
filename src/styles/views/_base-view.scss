@@ -4,11 +4,15 @@
 
 .app-view--inner {
     max-width: 80%;
-    margin: 0 auto;
+    margin: {
+        top: 0;
+        right: auto;
+        bottom: 4rem;
+        left: auto;
+    };
     padding: {
         top: 5rem;
     }
-    
 }
 
 .app-view--content {

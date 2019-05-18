@@ -45,6 +45,7 @@
 @import 'views/_home';
 @import 'views/_projects';
 @import 'views/_about';
+@import 'views/_contact';
 
 
 // COMPONENTS
@@ -52,6 +53,7 @@
 // Global
 @import 'components/_global/_hamburger-menu';
 @import 'components/_global/_app-button';
+@import 'components/_global/_google-maps';
 
 // Navigation
 @import 'components/navigation/_navigation';

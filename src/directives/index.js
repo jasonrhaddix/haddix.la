@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import router from '@/router'
 
+
 export const matchRoute = Vue.directive('match-route', {
 	bind(el, binding) {
 		setTimeout(() => {

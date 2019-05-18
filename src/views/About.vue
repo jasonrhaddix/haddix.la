@@ -11,10 +11,21 @@
                     </div>
                     <div class="social-media--container">
                         <div class="social-media--list">
-                            <font-awesome-icon :icon="['fab', 'github']" size="2x" />
-                            <font-awesome-icon :icon="['fab', 'codepen']" size="2x" />
-                            <font-awesome-icon :icon="['fab', 'twitter']" size="2x" />
-                            <font-awesome-icon :icon="['fab', 'linkedin']" size="2x" />
+                            <a class="social-list" href="http://github.com/jasonrhaddix" target="_blank">
+                                <font-awesome-icon :icon="['fab', 'github']" size="2x" />
+                            </a>
+
+                            <a class="social-list" href="https://codepen.io/Jasonrhaddix/" target="_blank">
+                                 <font-awesome-icon :icon="['fab', 'codepen']" size="2x" />
+                            </a>
+
+                            <a class="social-list" href="https://twitter.com/jasonrhaddix" target="_blank">
+                                <font-awesome-icon :icon="['fab', 'twitter']" size="2x" />
+                            </a>
+
+                            <a class="social-list" href="https://www.linkedin.com/in/jasonrhaddix/" target="_blank">
+                                <font-awesome-icon :icon="['fab', 'linkedin']" size="2x" />
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -23,7 +34,7 @@
 
                 <div class="about--bio">
                     <div class="about-bio--inner">
-                        <h1>Hi, I'm jason</h1>
+                        <h2>Hi, I'm jason</h2>
                         <p>I’m a front-end web developer currently living in Los Angeles. My main area of focus is building small and medium Javascript sites with some experience developing in enterprise level web applications. My  passion for development started with Flash/Actionscript in 2005 and eventually spread into HTML/CSS and Javascript, where working outside of a self-contained application framework has its challenges and its advantages. I love experiementing with trending web technologies including WebGL and WebRTC, and frameworks such as React and VueJS.</p>
                     </div>
                 </div>
@@ -125,21 +136,6 @@
                                 <li><p>Lead development of advertising products and integration</p></li>
                                 <li><p>Working directly with management and creative to understand and execute clients needs</p></li>
                                 <li><p>Setting up live broadcast events to be streamed over hundreds of products</p></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="subsection">
-                        <h3>The Branding Farm</h3>
-                        <div class="about-experience-role"><h4>Contract Developer<span> | 2007 - PRESENT</span></h4></div>
-                        <p>The Branding Farm focuses mainly on the Entertainment industry  - providing rich web applications and engaging experiences for their clients.</p>
-                        <div class="about-section-experience-roles">
-                            <p>Roles Included :</p>
-                            <ul>
-                                <li><p>Front-end development of rich web applications, including framework development, templating, and styling</p></li>
-                                <li><p>Motion graphics creation</p></li>
-                                <li><p>Updates to legacy Flash applications</p></li>
-                                <li><p>Interactive Kiosk development</p></li>
                             </ul>
                         </div>
                     </div>
@@ -276,7 +272,8 @@
 
                 <div class="section about--footer">
                     <app-btn 
-                        label="View Works"
+                        light
+                        label="Contact"
                         @click.native="navigateToRoute('contact')"/>
                 </div>
 
@@ -293,9 +290,9 @@
         VUEX_UI_ABOUT_BIO_PHOTO,
         VUEX_UI_LOGO_UNIVERSAL
     } from '@/store/constants/ui'
-    import {
+    import { 
         VUEX_ROUTING_NAVIGATE_TO_ROUTE
-    } from '@/store/constants/ui'
+    } from '@/store/constants/routing'
 
     import AppButton from '@/components/_global/App_Button'
 
@@ -304,7 +301,7 @@
         name: 'about-view',
 
         components: {
-            'app-btn'   : AppButton
+            'app-btn' : AppButton
         },
 
         data:() => ({
@@ -312,15 +309,17 @@
         }),
 
         computed: {
-            ...mapActions({
-                navigateToRoute: VUEX_ROUTING_NAVIGATE_TO_ROUTE
-            }),
-
             bioPhoto() { return VUEX_UI_ABOUT_BIO_PHOTO }
         },
 
         methods: {
+            ...mapActions({
+                navigateToRoute: VUEX_ROUTING_NAVIGATE_TO_ROUTE
+            }),
 
+            navigateToExternalRoute(route) {
+                window.location
+            }
         }
     }
 </script>

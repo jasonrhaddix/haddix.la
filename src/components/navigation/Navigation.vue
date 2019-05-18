@@ -25,7 +25,7 @@
                 </div>
                 <div class="divider"/>
                 <div class="breadcrumb">
-                    <p>Current Path</p>
+                    <p>{{routeName}}</p>
                 </div>
             </div>
             <div 
@@ -75,6 +75,11 @@
 
             headerLogo() {
                 return VUEX_UI_HEADER_LOGO
+            },
+
+            routeName(){
+                let name = this.$route.name
+                return name !== 'home' ? name : ''
             }
         },
 

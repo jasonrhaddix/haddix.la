@@ -1,0 +1,62 @@
+.contact-view--container {
+
+    .contact-view--inner {
+        @extend .app-view--inner;
+
+        .contact-view--content {
+            @extend .app-view--content;
+
+            .contact--title {
+                display: flex;
+                margin: {
+                    bottom: 2rem;
+                }
+
+                h2 {
+                    text-transform: uppercase;
+                    background-color: $color-app-text-dark;
+                    color: $color-app-text-light;
+                    padding: 5px 20px;
+                }
+            }
+
+            .contact--form {
+                margin: {
+                    bottom: 4rem;
+                }
+
+                // Global form row class
+                .form-row {}
+
+                // First Name | Last Name form flied area
+                .form-flield--name {
+                    display: flex;
+
+                    & > div {
+                       flex: 1;
+
+                        &:first-of-type {
+                            margin: { right: 0.5rem; }
+                        }
+                        &:last-of-type {
+                            margin: { left: 0.5rem; }
+                        }
+                    }
+                }
+
+                // Form submit 
+                .form-submit--container {
+                    text-align: right;
+
+                    .form-submit--btn {
+                        display: inline-block;
+                    }
+                }
+            }
+
+            .contact--map {
+                
+            }
+        }
+    }
+}
