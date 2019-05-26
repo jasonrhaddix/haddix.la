@@ -1,0 +1,158 @@
+$animationSpeed: 200ms;
+
+.projects-item {
+    position: relative;
+
+    .project--inner {
+        @include center-content();
+        
+        .hidden-img {
+            width: 70rem;
+            opacity: 0;
+        }
+
+        .image-container {
+            position: absolute;        
+            width: 70rem;
+            opacity: 1;
+            top: 50%;
+            left: 50%;
+            transform: scale(1) translate(-50%, -50%);
+            transform-origin: top left;
+            transition: filter $animationSpeed ease-in-out,
+                        opacity $animationSpeed ease-in-out,
+                        transform $animationSpeed ease-in-out,
+                        left $animationSpeed ease-in-out,
+                        top $animationSpeed ease-in-out;
+            
+            .v-image {
+                transition: left $animationSpeed ease-in-out,
+                            top $animationSpeed ease-in-out;
+            }
+            
+            .poly,
+            .background-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                transition: left $animationSpeed ease-in-out,
+                            top $animationSpeed ease-in-out;
+                
+            }
+            
+            .background-container {
+                transition: background 100ms ease-in-out 300ms;
+                
+                &.light {
+                    background: {
+                        color: rgba(255,255,255,1);
+                    }   
+                }
+
+                &.dark {
+                    background: {
+                        color: rgba(0,0,0,1);
+                    }
+                }
+            }  
+        }
+        
+        .title-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+
+            .title-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                
+                .title {
+                    @include center-content('vertical', -40px);
+                    width: 100%;
+                    opacity: 0;
+                    filter: blur(0.5rem);
+                    transform-origin: center bottom;
+                    transform: scale(0.8) translateY(-50%);
+                    transition: opacity $animationSpeed ease-in-out,
+                                filter $animationSpeed ease-in-out,
+                                transform $animationSpeed ease-in-out;
+                    
+                    p, h4 { 
+                        text-align: center;
+                        width: 100%;
+                        color: white;
+                        text-transform: uppercase;
+                    }
+
+                    p {
+                        font-family: 'DIN-CondLight';
+                        font-size: 2rem;
+                    }
+                    
+                    h4 {
+                        font-family: 'DIN-CondBlack';
+                        font-size: 6rem;
+                    }
+
+                    .app-button--container {
+                        @include center-content('horizontal');
+                        margin: {
+                            top: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:hover {
+
+            .image-container {
+                filter: blur(0.5rem);
+                opacity: 0.5;
+                transform: scale(0.8) translate(-50%, -50%);
+
+                .background-container {
+                    transition: background 100ms ease-in-out 0ms;
+                    
+
+                    &.light {
+                        background: {
+                            color: rgba(255,255,255,0);
+                        }   
+                    }
+
+                    &.dark {
+                        background: {
+                            color: rgba(0,0,0,0);
+                        }
+                    }
+                }
+
+                .poly-0 { left: -70px;}
+                .poly-1 { left: -70px; top: -70px}
+                .poly-2 { top: -70px}
+                .poly-3 { left: 70px; top: -70px}
+                .poly-4 { left: 20px; top: 40px}
+                .poly-5 { left: 60px; top: -40px}
+                .poly-6 { left: 60px; top: 70px}
+                .poly-7 { left: -70px; top: 70px}
+            }
+
+            .title-container {
+
+                .title-inner {
+
+                    .title {
+                        opacity: 1;
+                        transform: scale(1) translateY(-50%);
+                        filter: blur(0rem);
+                    }
+                }
+            }
+        }
+    }
+}

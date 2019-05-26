@@ -1,5 +1,5 @@
 <template>
-    <div class="home-view--container">
+    <div class="home-view">
         <sphere-bg class="sphere-bg" />
         
         <div class="home-view--content">

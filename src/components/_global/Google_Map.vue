@@ -32,7 +32,7 @@
                 lng: -118.1503778
             },
             markerOptions: {
-                url: require('@/assets/app/icons/map-marker.svg'),
+                url: require('@/assets/app/images/map-marker.svg'),
                 // size: {width: 60, height: 90, f: 'px', b: 'px',},
                 scaledSize: {width: 60, height: 75, f: 'px', b: 'px',},
             },

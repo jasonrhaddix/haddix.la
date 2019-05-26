@@ -1,7 +1,9 @@
-.projects-view--container {
+.projects-view {
     min-height: 100vh;
     width: 100vw;
-    background: {
-        // color: $color-m-white;
+
+    .projects-item {
+        width: 100vw;
+        height: 100vh;
     }
 }

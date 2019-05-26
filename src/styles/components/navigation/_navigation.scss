@@ -8,7 +8,8 @@
     overflow: hidden;
     pointer-events: none;
     
-    & > div,header {
+    & > div,
+    header {
         pointer-events: all;
     }
 
@@ -25,49 +26,12 @@
         
         nav {
             @include center-content(0, -3rem);
-    
-            ul {
-                text-transform: uppercase;
-                text-align: center;
-    
-                li {
-                    cursor: pointer;
-                    margin: {
-                        top: 3rem;
-                        bottom: 3rem;
-                    }
-                    
-                        .nav-button {
-                            position: relative;
-                            display: inline-block;
-    
-                            h1 {	
-                                color: #646468;
-                                transition: color 100ms ease-in-out;
-                                font-weight: $font-weight-bold;
-                                font-size: 4rem;
-                            }
-                        }
-    
-                        &:hover {
+            width: 400px;
 
-                            .nav-button {
-                                h1 {	
-                                    color: $color-app-text-light;
-                                }
-                            }
-                        }
-    
-                        &.active {
-    
-                            .nav-button {
-                                
-                                h1 {
-                                    color: $color-app-text-light !important;
-                                }
-                            }
-                        }
-                    
+            & > div {
+                margin: {
+                    top: 2rem;
+                    bottom: 2rem;
                 }
             }
         }
@@ -139,16 +103,26 @@
     }
     
     &:not(.open) {
-        
         .navigation-poly {
             clip-path: polygon(0% 0%, 110% 0%, 0% 0%, 0% 0%, 0% 50%, 0% 100%);
         }
     }
 
     &.open {
-        
 		.navigation-poly {
             clip-path: polygon(0% 0%, 110% 0%, 90% 80%, 30% 93%, 10% 90%, 0% 100%)
 		}
+    }
+
+    &:not(.enabled) {
+        nav {
+            pointer-events: none;
+        }
+    }
+
+    &.enabled {
+        nav {
+            pointer-events: all;
+        }
     }
 }

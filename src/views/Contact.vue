@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-view--container">
+    <div class="contact-view">
        <div class="contact-view--inner">
             <div class="contact-view--content">
                 <div class="contact--title">

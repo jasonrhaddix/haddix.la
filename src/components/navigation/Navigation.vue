@@ -1,19 +1,14 @@
 <template>
-    <div :class="['navigation-container', {open:navigationOpenState}]">
+    <div :class="['navigation-container', {'open':navigationOpenState}, {'endabled':navigationIsEnabled}]">
         <div class="navigation-poly">
             <nav>
-                <ul>
-                    <li 
-                        v-for="item in navItems"
-                        :key="`${item.label}-${$uuid.v4()}`"
-                        v-match-route:class.active="item.routeName"
-                        class="nav-btn"
-                        @click="navigateToRoute(item.routeName)">
-                        <div class="nav-button">
-                            <h1>{{ item.label }}</h1>
-                        </div>
-                    </li>
-                </ul>
+                <navigation-item 
+                    v-for="item in navItems"
+                    :key="`${item.label}-${$uuid.v4()}`"
+                    v-match-route:class.active="item.routeName"
+                    :text="item.label"
+                    :styles="{ color:'#646468', fontSize:'4rem' }"
+                    @click.native="navigateToRoute(item.routeName)"/>
             </nav>
         </div>
         <header :class="[{ open:headerState }]">
@@ -55,12 +50,15 @@
     import sitenav from '@/config/sitenav'
 
     import HamburgerMenu from '@/components/_global/Hamburger_Menu'
+    import NavigationItem from '@/components/Navigation/Navigation_Item'
+
 
     export default {
         name: 'navigation',
 
         components: {
-            'hamburger-menu' : HamburgerMenu    
+            'hamburger-menu' : HamburgerMenu,
+            'navigation-item' : NavigationItem
         },
 
         data:() => ({
@@ -70,7 +68,8 @@
         computed: {
             ...mapState({
                 headerState : state => state.ui.headerState,
-                navigationOpenState : state => state.ui.navigation.openState 
+                navigationOpenState : state => state.ui.navigation.openState,
+                navigationIsEnabled : state => state.ui.navigation.isEnabled
             }),
 
             headerLogo() {
@@ -78,8 +77,7 @@
             },
 
             routeName(){
-                let name = this.$route.name
-                return name !== 'home' ? name : ''
+                return this.$route.name !== 'home' ? this.$route.name : ''
             }
         },
 

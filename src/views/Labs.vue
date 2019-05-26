@@ -1,5 +1,5 @@
 <template>
-    <div class="labs-view--container">
+    <div class="labs-view">
 
     </div>
 </template>

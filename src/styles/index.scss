@@ -46,6 +46,7 @@
 @import 'views/_projects';
 @import 'views/_about';
 @import 'views/_contact';
+@import 'views/_labs';
 
 
 // COMPONENTS
@@ -55,9 +56,12 @@
 @import 'components/_global/_app-button';
 @import 'components/_global/_google-maps';
 
-// Navigation
-@import 'components/navigation/_navigation';
-
 // Animated Logo
 @import 'components/animatedLogo/_animated-logo';
 
+// Navigation
+@import 'components/navigation/_navigation';
+@import 'components/navigation/_navigation-item';
+
+// Projects
+@import 'components/projects/_projects-item'

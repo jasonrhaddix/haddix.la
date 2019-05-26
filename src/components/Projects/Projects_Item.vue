@@ -1,85 +1,107 @@
 <template>
-    <div class="projects-item--container">
-        <div class="projects-item--inner">
-            <div class="poly poly-1" />
-            <div class="poly poly-2" />
-            <div class="poly poly-3" />
-            <div class="poly poly-4" />
+    <div :class="['projects-item', hue]">
+        <div class="project--inner">
+            <v-img 
+                contain
+                class="hidden-img"
+                :src="image"></v-img>
+
+            <div class="image-container">
+                <div :class="['background-container', hue]"/>
+                <div
+                    v-for="(item, index) in patterns[0].p"
+                    :key="$uuid.v4()"
+                    :class="`poly poly-${index}`"
+                    :style="{clipPath:`polygon(${item})`}">
+                    <v-img 
+                        contain
+                        :src="image"></v-img>
+                </div>
+                <v-img 
+                    contain
+                    class="hidden-img"
+                    :src="image"></v-img>
+            </div>
+
+            <div class="title-container">
+                <div class="title-inner">
+                    <div class="title">
+                        <p>{{ client }}</p>
+                        <h4>{{ title }}</h4>
+                        <app-btn label="View Project"/>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </template>
 
 
 <script>
+    import detectImageDark from '@/js/detectImageDark'
+
+    import AppButton from '@/components/_global/App_Button'
+
     export default {
+        name: 'projects-item',
+
+        components: {
+            'app-btn' : AppButton
+        },
+
+        props: {
+            client: {
+                type: String,
+                required: true,
+                default: null
+            },
+            title: {
+                type: String,
+                required: true,
+                default: null
+            },
+            image: {
+                type: String,
+                required: true,
+                default: null
+            }
+        },
+
+        data:() =>({
+            hue: null,
+            patterns: [
+                {
+                    p: [
+                       '0% 0%, 20% 50%, 0% 100%',
+                       '0% 0%, 20% 0%, 50% 20%, 20% 50%',
+                       '20% 0%, 75% 0%, 50% 20%',
+                       '75% 0%, 100% 0%, 100% 20%, 90% 50%, 50% 20%',
+                       '50% 20%, 90% 50%, 75% 100%, 60% 100%, 20% 50%',
+                       '100% 20%, 100% 57%, 90% 50%',
+                       '90% 50%, 100% 57%, 100% 100%, 75% 100%',
+                       '20% 50%, 60% 100% , 75% 100%, 0% 100%'
+                    ],
+
+                }
+            ]
+        }),
         
+        computed: {
+            getImageHue() {
+                
+
+            }
+        },
+
+        mounted() {
+            detectImageDark(this.image, this.setHue)
+        },
+
+        methods: {
+            randomPos() { return Math.floor( Math.random() * (-50 - +50)) + 'px' },
+            setHue(v) { this.hue = v }
+        }
+
     }
 </script>
-
-
-<style lang="scss">
-    .projects-item--container {
-        margin-top: 10rem;
-
-        .projects-item--inner {
-            position: relative;
-            height: 300px;
-            width: 500px;
-            margin: 0 auto;
-            
-
-            .poly {
-                pointer-events: none;
-                position: absolute;
-                height: 100%;
-                width: 100%;
-                background: url('https://www.fillmurray.com/g/500/300') scroll no-repeat center center ;
-                background-size: cover;
-                transition: left 300ms ease-in-out, 
-                            right 300ms ease-in-out,
-                            top 300ms ease-in-out,
-                            clip-path 300ms ease-in-out,
-                            transform 300ms ease-in-out;
-            
-                &.poly-1 { 
-                    left: -30px;
-                    // transform: rotate(45deg);
-                    // transform-origin: left center;
-                    clip-path: polygon(0% 0%, 36% 50%, 0% 100%) }
-
-                &.poly-2 {
-                    left: 30px;
-                    clip-path: polygon(0% 0%, 25% 0%, 59% 20%, 36% 50%); }
-
-                &.poly-3 {
-                    top: -30px;
-                    clip-path: polygon(25% 0%, 75% 0%, 59% 20%); }
-                
-                &.poly-4 {
-                    top: -30px;
-                    right: 50px;
-                    clip-path: polygon(75% 0%, 100% 0%, 100% 30%, 90% 50%, 59% 20%); }
-
-            }
-
-            &:hover {
-                .poly-1 {
-                    // transform: rotate(0deg);
-                    clip-path: polygon(0% 0%, 16% 50%, 0% 100%);
-                    left: 0px;
-                }
-                .poly-2 {
-                    left: 0px;
-                }
-                .poly-3 {
-                    top: 0px;
-                }
-                .poly-4 {
-                    top: 0px;
-                    right: 0px;
-                }
-            }
-        }
-    }
-</style>
-

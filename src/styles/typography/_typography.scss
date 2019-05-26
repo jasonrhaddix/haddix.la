@@ -1,12 +1,4 @@
-/**
-* Roboto Font
-* Weights 300,400,500,700,900
-* Material Icons
-*
-*/
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Material+Icons');
-
-
+$fontFolder: './assets/fonts/';
 
 /**
 * Font Weights
@@ -17,3 +9,53 @@ $font-weight-light  : 400;
 $font-weight-medium : 500;
 $font-weight-bold   : 700;
 $font-weight-black  : 900;
+
+
+/**
+* Roboto Font
+* Weights 300,400,500,700,900
+* Material Icons
+*
+*/
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Material+Icons');
+
+
+
+@font-face {
+    font-family: 'DIN-CondLight';
+    src: url( $fontFolder + 'Din/DINOT-CondLight.eot');
+    src: url( $fontFolder + 'Din/DINOT-CondLight.eot?#iefix') format('embedded-opentype'),
+        url( $fontFolder + 'Din/DINOT-CondLight.otf') format('opentype'),
+        url( $fontFolder + 'Din/DINOT-CondLight.svg') format('svg'),
+        url( $fontFolder + 'Din/DINOT-CondLight.ttf') format('truetype'),
+        url( $fontFolder + 'Din/DINOT-CondLight.woff') format('woff'),
+        url( $fontFolder + 'Din/DINOT-CondLight.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN-Cond';
+    src: url( $fontFolder + 'Din/DINOT-Cond.eot');
+    src: url( $fontFolder + 'Din/DINOT-Cond.eot?#iefix') format('embedded-opentype'),
+        url( $fontFolder + 'Din/DINOT-Cond.otf') format('opentype'),
+        url( $fontFolder + 'Din/DINOT-Cond.svg') format('svg'),
+        url( $fontFolder + 'Din/DINOT-Cond.ttf') format('truetype'),
+        url( $fontFolder + 'Din/DINOT-Cond.woff') format('woff'),
+        url( $fontFolder + 'Din/DINOT-Cond.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN-CondBlack';
+    src: url( $fontFolder + 'Din/DINOT-CondBlack.eot');
+    src: url( $fontFolder + 'Din/DINOT-CondBlack.eot?#iefix') format('embedded-opentype'),
+        url( $fontFolder + 'Din/DINOT-CondBlack.otf') format('opentype'),
+        url( $fontFolder + 'Din/DINOT-CondBlack.svg') format('svg'),
+        url( $fontFolder + 'Din/DINOT-CondBlack.ttf') format('truetype'),
+        url( $fontFolder + 'Din/DINOT-CondBlack.woff') format('woff'),
+        url( $fontFolder + 'Din/DINOT-CondBlack.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}

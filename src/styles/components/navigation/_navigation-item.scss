@@ -1,0 +1,77 @@
+.navigation-item {
+    position: relative;
+    cursor: pointer;
+    pointer-events: all;
+
+    * {
+        @include not-selectable();
+        pointer-events: none;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        
+        h1 {
+            text-transform: uppercase
+        }
+        
+        &:not(.nav-item__hidden) {
+            transition: top 150ms ease-in-out,
+                        left 150ms ease-in-out,
+                        right 150ms ease-in-out;
+        }
+    }
+
+    .nav-item__hidden {
+        h1 {
+            color: rgba(0,0,0,0) !important;
+        }
+    }
+    
+    .nav-item__left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0% 0%, 60% 0%, 40% 100%, 0% 100%);
+    }
+
+    .nav-item__right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 40% 100%);
+    }
+
+    &:hover,
+    &:focus,
+    &.active {
+        .nav-item:not(.nav-item__hidden) {
+
+            h1 {
+                color: $color-m-grey !important;
+            }
+        }
+
+        .nav-item__left {
+            left: -8px;
+            top: 10px;
+        }
+
+        .nav-item__right {
+            right: -8px;
+            top: -10px;
+        }
+    }
+
+    &.active {
+        
+        .nav-item:not(.nav-item__hidden) {
+            transition: none;
+
+            h1 {
+                color: $color-app-text-light !important;
+            }
+        }
+    }
+}
