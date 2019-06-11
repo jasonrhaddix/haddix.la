@@ -16,7 +16,7 @@ import {
     VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS
 } from '@/store/constants/attachments/attachment_queue_manager'
 import {
-    VUEX_UPLOAD_REQUEST
+    VUEX_UPLOAD_S3_REQUEST
 } from '@/store/constants/attachments/attachment_upload'
 
 
@@ -24,7 +24,6 @@ import {
 const AQM_HOLDING_BUCKET    = 'filesHolding'
 const AQM_QUEUED_BUCKET     = 'filesQueued'
 const AQM_UPLOADING_BUCKET  = 'filesUploading'
-const AQM_PROCESSING_BUCKET = 'filesProcessing' // Signal from BE not implemented yet, v2.1
 const AQM_COMPLETED_BUCKET  = 'filesCompleted'
 const AQM_FAILED_BUCKET     = 'filesFailed'
 
@@ -150,10 +149,10 @@ const actions = {
             
             commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
                 hashId: hashId,
-                status: HADDIX_UPLOAD_S3_STATUS__STARTED
+                status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__STARTED
             })
 
-            dispatch(VUEX_UPLOAD_REQUEST, fileObj)
+            dispatch(VUEX_UPLOAD_S3_REQUEST, fileObj)
 			
 			/* if (!rootState.ui.globalUploader.displayState) {
 				dispatch(VUEX_UI_SHOW_GLOBAL_UPLOADER)
@@ -171,7 +170,7 @@ const actions = {
 		// Save the deets to our object before continuing (status, URI, etc)
 		await commit(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, payload)
 
-		if (payload.status === HADDIX_UPLOAD_S3_STATUS__SUCCESS) {
+		if (payload.status === HADDIX_UPLOAD_S3_UPLOAD_STATUS__SUCCESS) {
 			// Move on to next bucket
 			await commit(VUEX_ATTACHMENT_QUEUE_MANAGER_FILE_MOVE_TO_BUCKET, {
 				hashId: payload.hashId,
@@ -237,9 +236,7 @@ const mutations = {
     },
     
     // Once the S3 upload is complete, we store the result
-	// TODO: Communicate that to the server!!!!!
 	[VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT]: (state, payload) => {
-		state.fileHash[payload.hashId].status = payload.status
 		state.fileHash[payload.hashId].upload_status = payload.status
 		state.fileHash[payload.hashId].uri = payload.uri ? payload.uri : null		
     },
@@ -247,12 +244,6 @@ const mutations = {
     [VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS]: (state, payload) => {
         state.fileHash[payload.hashId].status = payload.status
     }
-
-	// Triggered when upload starts
-	/* [VUEX_UPLOAD_REQUEST]: (state, payload) => {
-		state.fileHash[payload.hashId].status = payload.status
-		state.fileHash[payload.hashId].upload_status = payload.status 
-	} */
 }
 
 

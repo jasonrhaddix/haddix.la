@@ -64,6 +64,12 @@
                 }
             }
 
+            .status {
+                position: absolute;
+                bottom: 5px;
+                right: 2px;
+            }
+
             &.upload_started {
                 .progress {
                     .progress__ind {
@@ -73,22 +79,22 @@
                     }
                 }
             }
-            /* &.upload_success-transition {
+            &.upload_success {
                 .progress {
                     .progress__ind-background {
-                        height: 0.2rem
+                        // height: 0rem
                     }
                     .progress__ind {
-                        height: 0.2rem;
+                        // height: 0rem;
                         background: {
                             color: green;
                         }
                     }
                     .progress__percentage {
-                        opacity: 0;
+                        // opacity: 0;
                     }
                 }
-            } */
+            }
             &.upload_failure {
                 .progress {
                     .progress__ind {

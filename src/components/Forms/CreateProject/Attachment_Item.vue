@@ -4,14 +4,32 @@
             <div class="item__image">
                 <img :src="data.preview" />
             </div>
-            <div :class="['item__progress', data.status]">
-                    <div class="progress">
+            <div :class="['item__progress', `upload_${data.upload_status}`]">
+                    <div
+                        v-if="data.status == $store.state.constants.HADDIX_UPLOAD_ATTACHMENT_STATUS__STARTED" 
+                        class="progress">
                         <div class="progress__ind-background" />
                         <div class="progress__ind" :style="fileProgress"/>
                         <div class="progress__percentage">
                             <p>{{fileProgressPercent}}</p>
                         </div>
-                    </div>                    
+                    </div> 
+
+                    <div 
+                        v-else-if="$store.state.constants.HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS"
+                        class="status">
+                        <div>
+                            <v-icon color="success">check_circle_outline</v-icon>
+                        </div>
+                    </div>
+
+                    <div 
+                        v-else-if="$store.state.constants.HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE"
+                        class="status">
+                        <div>
+                            <v-icon color="error">highlight_off</v-icon>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="item__actions">

@@ -105,8 +105,8 @@
 						usage_type          : this.fileUsageType,
 						usage_sub_type      : null,
 						progress            : {},
-						status              : HADDIX_UPLOAD_S3_STATUS__PENDING, // TODO: 'processing_status' or 'status'? How deep does this go?
-						upload_status       : HADDIX_UPLOAD_S3_STATUS__PENDING,
+						status              : HADDIX_UPLOAD_ATTACHMENT_STATUS__PENDING,
+						upload_status       : HADDIX_UPLOAD_S3_UPLOAD_STATUS__PENDING,
 						attach_to           : this.attachTo
                     }
                     
