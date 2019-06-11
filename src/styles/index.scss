@@ -37,6 +37,7 @@
 // APP
 //
 @import '_app';
+@import 'app/_transitions';
 
 
 // VIEWS
@@ -58,6 +59,13 @@
 
 // Animated Logo
 @import 'components/animatedLogo/_animated-logo';
+
+// Containers
+@import 'components/containers/_overlay-container';
+
+// Forms
+@import 'components/forms/createProject/_create-project';
+@import 'components/forms/createProject/_attachment-item';
 
 // Navigation
 @import 'components/navigation/_navigation';

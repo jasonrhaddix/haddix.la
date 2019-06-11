@@ -1,0 +1,35 @@
+.overlay-container {
+    background: {
+        color: $color-app-text-dark;
+    }
+
+    .section {
+        margin: 0 auto;
+        width: 80%;
+        max-width: $breakpoint-large;
+    }
+
+    .section__header {
+        position: relative;
+
+        .header__title {
+            font-size: 4rem;
+            color: white;
+            text-transform: uppercase;
+            padding: 2rem 0;
+        }
+
+        .header__close-btn {
+            @include center-content('vertical');
+            position: absolute;
+            right: 1rem;
+            margin: 0;
+        }
+    }
+
+    .section__content {
+        margin: {
+            top: 1rem;
+        }
+    }
+}

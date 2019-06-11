@@ -1,4 +1,4 @@
-.app-button--container {
+.app-button__container {
     cursor: pointer;
     @include not-selectable();
 
@@ -11,42 +11,47 @@
 		overflow: hidden;
         background: {
             color: $color-app-button-background;
-        }
+		}
+		
+		.text {
+			font-size: 0.9rem;
+			font-weight: $font-weight-medium;
+		}
 		
 		&:hover {
 
-			.app-button--text {
+			.app-button__text {
 				transition-delay: 0s;
 				transform: translateX( 7% );
 			}
 
-			.app-button--bg-under {
+			.app-button__bg-under {
 				transition-delay: 0s;
 				transform: translateX( 0% );
 			}
 
-			.app-button--bg {
+			.app-button__bg {
 				transition-delay: 0.1s;
 				transform: translateX( 0% );
 			}
 
-			.app-button--text-animated {
+			.app-button__text-animated {
 				transition-delay: 0.2s;
 				transform: translateX( 0% );
 				opacity: 1;
 			}
         }
 
-		.app-button--text {
+		.app-button__text {
 			color: $color-app-button-text;
 			transition: all 0.2s ease-in-out;
 			transition-delay: 0.25s;	
 			text-align: center;
 		}
 
-        .app-button--text-animated,
-        .app-button--bg-under,
-        .app-button--bg {
+        .app-button__text-animated,
+        .app-button__bg-under,
+        .app-button__bg {
             position: absolute;
 			display: block;
 			width: 100%;
@@ -59,7 +64,7 @@
             }
 		}
 
-		.app-button--text-animated {
+		.app-button__text-animated {
 			text-transform: uppercase;
 			text-align: center;
 			transition-delay: 0s;
@@ -73,8 +78,8 @@
             }
 		}
 
-        .app-button--bg,
-        .app-button--bg-under {
+        .app-button__bg,
+        .app-button__bg-under {
 			transition-delay: 0.2s;
 			background-color: $color-app-button-background-hover;
 			transform: translateX( -150% );
@@ -90,7 +95,7 @@
 			}
 		}
 
-		.app-button--bg-under {
+		.app-button__bg-under {
 			transition-delay: 0.3s;
 			background-color: $color-app-button-background-animate;
 			opacity: 0.7;
@@ -101,7 +106,7 @@
 
 		}
 
-		.app-button--text {
+		.app-button__text {
 			text-transform: uppercase;
 		    display: block;
 	    	position: relative;
@@ -114,15 +119,15 @@
 			background-color: $color-app-button-background-light;
 			border: 1px solid $color-app-button-border-light;
 	
-			.app-button--text {
+			.app-button__text {
 				color: $color-app-button-text-light;
 			}
 	
-			.app-button--text-animated {
+			.app-button__text-animated {
 				color: $color-app-button-text-hover-light;
 			}
 	
-			.app-button--bg {
+			.app-button__bg {
 				background-color: $color-app-button-background-hover-light;
 	
 				&:after {

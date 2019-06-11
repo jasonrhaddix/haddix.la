@@ -1,8 +1,7 @@
-import Vue from 'vue'
 import router from '@/router'
 
 
-export const matchRoute = Vue.directive('match-route', {
+export const MatchRoute = {
 	bind(el, binding) {
 		switch(binding.arg) {
 			case 'class' :
@@ -18,4 +17,4 @@ export const matchRoute = Vue.directive('match-route', {
 			return
 		}
 	}
-})
+}

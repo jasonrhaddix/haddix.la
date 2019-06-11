@@ -1,12 +1,13 @@
 <template>
     <div :class="['projects-item', hue]">
-        <div class="project--inner">
+        <div class="project__inner">
             <v-img 
                 contain
                 class="hidden-img"
                 :src="image"></v-img>
 
-            <div class="image-container">
+            <div 
+                class="image-container">
                 <div :class="['background-container', hue]"/>
                 <div
                     v-for="(item, index) in patterns[0].p"
@@ -23,7 +24,7 @@
                     :src="image"></v-img>
             </div>
 
-            <div class="title-container">
+            <div class="title-container" >
                 <div class="title-inner">
                     <div class="title">
                         <p>{{ client }}</p>
@@ -70,6 +71,7 @@
 
         data:() =>({
             hue: null,
+            visible: null,
             patterns: [
                 {
                     p: [
@@ -86,13 +88,6 @@
                 }
             ]
         }),
-        
-        computed: {
-            getImageHue() {
-                
-
-            }
-        },
 
         mounted() {
             detectImageDark(this.image, this.setHue)
@@ -102,6 +97,5 @@
             randomPos() { return Math.floor( Math.random() * (-50 - +50)) + 'px' },
             setHue(v) { this.hue = v }
         }
-
     }
 </script>

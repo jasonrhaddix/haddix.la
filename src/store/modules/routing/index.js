@@ -12,9 +12,12 @@ import {
 import {
     VUEX_UI_HEADER_SHOW,
     VUEX_UI_HEADER_HIDE,
-    VUEX_UI_NAVIGATION_HIDE_OPENSTATE,
+    VUEX_UI_NAVIGATION_HIDE,
     VUEX_UI_NAVIGATION_DISABLED
 } from '@/store/constants/ui'
+import {
+    VUEX_PROJECTS_FETCH_REQUEST
+} from '@/store/constants/projects'
 
 
 const state = {
@@ -33,6 +36,7 @@ const actions = {
             let route = router.history.current.name
             commit(VUEX_ROUTING_SET_CURRENT_ROUTE, route)
             dispatch(VUEX_ROUTING_ENTER_ROUTE, route)
+            dispatch(VUEX_PROJECTS_FETCH_REQUEST)
         },1000)
     },
 
@@ -45,7 +49,7 @@ const actions = {
     [VUEX_ROUTING_NAVIGATE_TO_ROUTE]: async ({ state, dispatch, rootState }, payload) => {
         if (rootState.ui.navigation.openState) 
             dispatch(VUEX_UI_NAVIGATION_DISABLED, 1000)
-            dispatch(VUEX_UI_NAVIGATION_HIDE_OPENSTATE)
+            dispatch(VUEX_UI_NAVIGATION_HIDE)
 
         // Abort if incoming route is same as current current route
         if (payload === state.route.current) return

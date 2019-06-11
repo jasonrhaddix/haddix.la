@@ -1,0 +1,117 @@
+.attachment-item {
+    overflow: hidden;
+
+    .item__inner {
+        position: relative;
+        display: flex;
+        
+        .item__image {
+            
+            * {
+                height: 10rem;
+                width: auto;
+            }
+        }
+
+        .item__progress {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            bottom: 0;
+            right: 0;
+
+            .progress {
+                height: 2rem;
+
+                .progress__ind-background {
+                    transition: height 500ms ease-in-out 2000ms;
+                    position: absolute;
+                    width: 100%;
+                    height: 1.5rem;
+                    bottom: 5px;
+                    transform-origin: left center;
+                    background: {
+                        color: $color-m-grey-darken-3;
+                    }
+                }
+
+                .progress__ind {
+                    // transition: height 500ms ease-in-out 2000ms;
+                    position: absolute;
+                    width: 100%;
+                    height: 1.5rem;
+                    bottom: 5px;
+                    transform: scaleX(0);
+                    transform-origin: left center;
+                }
+
+                .progress__percentage {
+                    transition: opacity 300ms ease-in-out 2000ms;
+                    position: absolute;
+                    height: 1.5rem;
+                    right: 2px;
+                    bottom: 11px;
+                    opacity: 1;
+                    padding: {
+                        left: 0.25rem
+                    }
+    
+                    p {
+                        font-family: 'DIN-CondBlack';
+                        font-size: 1.5rem;
+                        color: rgba(0, 0, 0, 0.4);
+                    }
+                }
+            }
+
+            &.upload_started {
+                .progress {
+                    .progress__ind {
+                        background: {
+                            color: $color-app-primary;
+                        }
+                    }
+                }
+            }
+            /* &.upload_success-transition {
+                .progress {
+                    .progress__ind-background {
+                        height: 0.2rem
+                    }
+                    .progress__ind {
+                        height: 0.2rem;
+                        background: {
+                            color: green;
+                        }
+                    }
+                    .progress__percentage {
+                        opacity: 0;
+                    }
+                }
+            } */
+            &.upload_failure {
+                .progress {
+                    .progress__ind {
+                        background: {
+                            color: red;
+                        }
+                    }
+                }
+            }
+        }
+
+        .item__actions  {
+
+        }
+    }
+}
+
+
+.upload_success-transition {
+    transition: height 500ms ease-in-out 2000ms;
+}
+
+.upload_success-enter,
+.upload_success-leave {
+    height: 0.2rem
+}

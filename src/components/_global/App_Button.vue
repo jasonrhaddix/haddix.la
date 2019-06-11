@@ -1,11 +1,11 @@
 <template>
-    <div class="app-button--container">
+    <div class="app-button__container">
         <div :class="['app-button', {'light':light}]">
             <div class="inner">
-                <div class="app-button--text">{{ label }}</div>
-                <div class="app-button--bg-under"/>
-                <div class="app-button--bg"/>
-                <div class="app-button--text-animated">{{ label }}</div>
+                <div class="text app-button__text">{{ label }}</div>
+                <div class="app-button__bg-under"/>
+                <div class="app-button__bg"/>
+                <div class="text app-button__text-animated">{{ label }}</div>
             </div>
         </div>
     </div>

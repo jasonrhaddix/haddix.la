@@ -1,11 +1,14 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
+    runtimeCompiler: process.env.USE_RUNTIME_COMPILER,
+
     configureWebpack: {
         plugins: [
             new VuetifyLoaderPlugin()
         ]
     },
+
     chainWebpack : config => {
 
         config.module

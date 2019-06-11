@@ -60,7 +60,7 @@ var sp_sphere_2_geom
 
 	setTimeout( function() {
 		sp_initAnimate()		
-	}, 10)
+	}, 20)
 
 	setTimeout(() => {
 		introComplete = true
