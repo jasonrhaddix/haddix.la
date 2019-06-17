@@ -1,5 +1,8 @@
 export default {
-    HADDIX_ATTACHMENT_MODEL__PROJECT          : 'App_Project',
+    HADDIX_PROJECT_TYPE__WORK                 : 'work',
+    HADDIX_PROJECT_TYPE__COLLAB               : 'collab',
+    HADDIX_PROJECT_TYPE__PERSONAL             : 'personal',
+    HADDIX_PROJECT_TYPE__EXPERIMENT           : 'experiment',
 
     HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL   : 'thumbnail',
     HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL    : 'carousel',

@@ -178,7 +178,7 @@ const actions = {
 				to:     AQM_COMPLETED_BUCKET
 			})
 
-		} else if (payload.status === HADDIX_UPLOAD_S3_STATUS__FAILURE) {
+		} else if (payload.status === HADDIX_UPLOAD_S3_UPLOAD_STATUS__FAILURE) {
 			await commit(VUEX_ATTACHMENT_QUEUE_MANAGER_FILE_MOVE_TO_BUCKET, {
 				hashId: payload.hashId,
 				from:   AQM_UPLOADING_BUCKET,

@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import UUID from 'vue-uuid'
 import Vuetify from 'vuetify'
+import UUID from 'vue-uuid'
+// let VueCodemirror = require( 'vue-codemirror')
+
 
 import App from '@/App.vue'
 import router from '@/router'
@@ -25,24 +27,30 @@ import {
 // Vue - Directive statements
 Vue.directive('match-route', MatchRoute)
 
+
+
 // Vue - Use statements
 Vue.use(UUID)
-Vue.use(
-	Vuetify,
-	{
-		directives: {
-			Ripple
-		},
-		theme: {
-			primary: '#3100bd'
-		}
+/* Vue.use(VueCodemirror, {
+	options: { 
+		theme: 'base16-dark'
 	}
-)
+}) */
+Vue.use(Vuetify, {
+	directives: {
+		Ripple
+	},
+	theme: {
+		primary: '#3100BD',
+		accent: '#3100BD'
+	}
+})
 
 
 
 // TODO: configure this
 Vue.config.productionTip = false
+
 
 
 let app = null

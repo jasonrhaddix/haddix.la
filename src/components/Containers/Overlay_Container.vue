@@ -7,18 +7,23 @@
         content-class="overlay-container"
         v-model="overlayOpenState">
 
-        <div class="section section__header">
-            <h1 class="header__title">{{ overlayTitle }}</h1>
-            <v-btn 
-                light fab small
-                class="header__close-btn"
-                @click="closeOverlay">
-                <v-icon>close</v-icon>
-            </v-btn>
-        </div>
-        <div class="section section__content">
-            <component :is="loadComponent" />
-        </div>
+        <v-container grid-list-md>
+            <v-layout column>
+
+            <div class="section section__header">
+                <h1 class="header__title">{{ overlayTitle }}</h1>
+                <v-btn 
+                    light fab small
+                    class="header__close-btn"
+                    @click="closeOverlay">
+                    <v-icon>close</v-icon>
+                </v-btn>
+            </div>
+            <div class="section section__content">
+                <component :is="loadComponent" />
+            </div>
+            </v-layout>
+        </v-container>
     </v-dialog>
 </template>
 

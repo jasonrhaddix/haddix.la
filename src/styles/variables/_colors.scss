@@ -6,12 +6,14 @@
 // Base Colors
 $color-app-white          : #EFEFEF;
 $color-app-black          : #040408;
-$color-app-primary        : #3100bd;
-$color-app-accent         : #ff4f00;
+$color-app-primary        : #3100BD;
+$color-app-accent         : #FF6400;
 
 // Transparencies
 $color-white-alpha: rgba(255, 255, 255, 0.75);
-$color-app-black-alpha: rgba( 0, 0, 0, 0.75 );
+$color-app-black-alpha-25: rgba( 0, 0, 0, 0.25 );
+$color-app-black-alpha-50: rgba( 0, 0, 0, 0.5 );
+$color-app-black-alpha-75: rgba( 0, 0, 0, 0.75 );
 $color-accent-purple-alpha: rgba( 55, 15, 174, 0.5 );
 
 // Background Colors
@@ -28,7 +30,7 @@ $color-app-text-light     : $color-app-white;
 ////// GLOBAL COMPONENTS //////
 
 // App Button
-$color-app-button-background: $color-app-black-alpha;
+$color-app-button-background: $color-app-black-alpha-75;
 $color-app-button-text: $color-app-text-light;
 $color-app-button-border: $color-app-text-light;
 

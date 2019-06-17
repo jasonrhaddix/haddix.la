@@ -9,12 +9,13 @@ import Vuex from 'vuex'
 
 import logger from 'vuex/dist/logger'
 
-import constants from '@/store/modules/_config'
+import config from '@/store/modules/_config'
 
 import app from '@/store/modules/app'
 import attachment_upload from '@/store/modules/attachments/attachment_upload.js'
 import attachment_queue_manager from '@/store/modules/attachments/attachment_queue_manager.js'
 import projects from '@/store/modules/projects'
+import project_tree from '@/store/modules/projects/project_tree'
 import routing from '@/store/modules/routing'
 import ui from '@/store/modules/ui'
 
@@ -27,13 +28,14 @@ const debug = process.env.NODE_ENV !== 'production'
 
 const store = new Vuex.Store({
     modules: {
-        constants,
+        config,
         app,
         attachment_upload,
         attachment_queue_manager,
         ui,
         routing,
-        projects
+        projects,
+        project_tree
     },
 
     strict: debug,

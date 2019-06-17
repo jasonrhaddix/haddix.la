@@ -1,0 +1,33 @@
+.create-resource-item {
+    display: flex;
+    
+    .content__graph {
+        width: 140px;
+    }
+    
+    .resource__content {
+        flex: 1;
+        display: flex;
+        position: relative;
+
+        .content__inner {
+            @include center-content('vertical');
+            display: flex;
+            width: 100%;
+
+            .v-text-field__details {
+                display: none;
+            }
+    
+            .content__type,
+            .content__percentage {
+                flex: 1;
+                padding: 0 1rem;
+            }
+        
+            .content__actions { 
+                width: 50px;
+            }
+        }
+    }
+}

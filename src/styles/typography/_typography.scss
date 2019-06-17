@@ -20,6 +20,18 @@ $font-weight-black  : 900;
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Material+Icons');
 
 
+@font-face {
+    font-family: 'DIN-Light';
+    src: url( $fontFolder + 'Din/DINOT-Light.eot');
+    src: url( $fontFolder + 'Din/DINOT-Light.eot?#iefix') format('embedded-opentype'),
+        url( $fontFolder + 'Din/DINOT-Light.otf') format('opentype'),
+        url( $fontFolder + 'Din/DINOT-Light.svg') format('svg'),
+        url( $fontFolder + 'Din/DINOT-Light.ttf') format('truetype'),
+        url( $fontFolder + 'Din/DINOT-Light.woff') format('woff'),
+        url( $fontFolder + 'Din/DINOT-Light.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 @font-face {
     font-family: 'DIN-CondLight';

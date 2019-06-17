@@ -3,7 +3,8 @@ import {
     VUEX_APP_INITIALIZED
 } from '@/store/constants/app'
 import {
-    VUEX_CONSTANTS_INIT
+    VUEX_CONSTANTS_INIT,
+    VUEX_PROPERTIES_INIT
 } from '@/store/constants/_config'
 import {
     VUEX_ROUTING_INIT
@@ -20,6 +21,7 @@ const getters = {}
 const actions = {
     [VUEX_APP_INIT]: async ({ commit, dispatch }) => {
         await dispatch(VUEX_CONSTANTS_INIT)
+        await dispatch(VUEX_PROPERTIES_INIT)
         await dispatch(VUEX_ROUTING_INIT)
         commit(VUEX_APP_INIT)
     }

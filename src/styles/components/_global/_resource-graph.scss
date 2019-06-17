@@ -1,0 +1,27 @@
+.resource-graph {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+
+	.resource-graph__canvas {
+		width: 100%;
+		height: 100%;
+		transform: rotate(-90deg);
+	}
+
+	.resource-graph__text {
+		@include center-content(0, -4px);
+		font-family: 'DIN-Light', Helvetica, sans-serif;
+		text-align: center;
+		text-transform: uppercase;	
+		font-weight: 600;
+
+		.value {
+			font-size: 1.4rem;
+		}
+
+		.resource {
+			font-size: 0.6rem;
+		}
+	}
+}

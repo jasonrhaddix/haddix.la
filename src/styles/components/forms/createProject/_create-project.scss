@@ -12,18 +12,30 @@
         }
     }
 
+    .inner__divider {
+        width: 100%;
+        height: 1px;
+        background: {
+            color: $color-m-grey-darken-3;
+        }
+        margin: {
+            top: 1.5rem;
+        }
+    }
+
     .create__form {
 
         .project__pending-id {
-            display: inline-block;
+            // display: inline-block;
             background: {
-                color: $color-m-grey-darken-3;
+                color: #282828;
             }
             margin: {
-                bottom: 2rem;
+                // bottom: 2rem;
             }
     
             p {
+                text-align: center;
                 color: white;
                 padding: 0.75rem 1rem;
                 font-size: 1rem;
@@ -40,21 +52,22 @@
             font-size: 2.2rem;
             text-transform: uppercase;
         }
-
-        .images__divider {
-            width: 100%;
-            height: 1px;
-            background: {
-                color: $color-m-grey-darken-3;
-            }
-            margin: {
-                top: 1.5rem;
-            }
-        }
         
         .images-section {
             margin: {
                 top: 1.5rem;
+            }
+
+            &:first-of-type {
+                padding: {
+                    right: 0.25rem;
+                }
+            }
+
+            &:last-of-type {
+                padding: {
+                    left: 0.25rem;
+                }
             }
             
             .section__title {
@@ -75,12 +88,15 @@
         }
 
         .images__container {
-            display: flex;
+            // display: flex;
             
             .images__dropzone {
                 position: relative;
-                width: 18rem;
-                height: 10rem;
+                width: 100%;
+                height: 8rem;
+                margin: {
+                    bottom: 1rem;
+                }
     
                 .dropzone__button {
                     cursor: pointer;
@@ -124,22 +140,111 @@
                     }
                 }
             }
-    
-            .images__list {
-                display: flex;
-                flex-flow: wrap;
+        }
+    }
+
+    .create__meta {
+        
+        h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+        }
+        
+        .meta-section {
+            margin: {
+                top: 1.5rem;
+            }
+            
+            .section__title {
+                margin: {
+                    bottom: 0.75rem;
+                }
+
+                h3 {
+                    font-size: 1.4rem;
+                    color: $color-m-grey;
+                    text-transform: uppercase; 
+                }
+
+                p {
+                    color: $color-m-grey-darken-1;
+                }
+            }
+        }
+
+        .resources__container {
+            // display: flex;
+            
+            .resource__add-button {
+                cursor: pointer;
+                position: relative;
+                height: 8rem;
+                background: {
+                    color: $color-m-grey-darken-3;
+                }
+
+                .button__content {
+                    @include center-content();
+
+                    p {
+                        text-transform: uppercase;
+                        color: $color-m-grey-darken-1;
+                        font-weight: $font-weight-bold;
+                    }
+
+                    .v-icon {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .resource__list {
+                margin: {
+                    top: 2rem;
+                    bottom: 4rem;
+                }
 
                 & > div {
                     margin: {
-                        right: 0.5rem;
+                         top: 0.5rem;
+                         bottom: 0.5rem;
                     }
                 }
             }
         }
-    }
 
+        .tree__container {
+            padding: 1rem;
+            min-height: 30rem;
+            background: {
+                color: $color-app-black-alpha-25;
+            }
+
+            .tree__input {
+                padding: 1rem;
+                background: {
+                    color: $color-app-black-alpha-25;
+                }
+            }
+
+            .v-treeview-node__label {
+                color: $color-m-grey-lighten-1;
+            }
+        }
+    }
 
     .project__save-btn {
         float: right;
+    }
+
+
+
+
+
+    .theme--dark.v-text-field--box>.v-input__control>.v-input__slot {
+        background: {
+            color: rgba(0,0,0,0.2);
+        }
     }
 }
