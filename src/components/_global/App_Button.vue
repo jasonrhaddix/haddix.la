@@ -1,5 +1,5 @@
 <template>
-    <div class="app-button__container">
+    <div :class="['app-button__container', {'disabled':disabled}]">
         <div :class="['app-button', {'light':light}]">
             <div class="inner">
                 <div class="text app-button__text">{{ label }}</div>
@@ -19,12 +19,19 @@
         props: {
             label: {
                 type : String,
-                required : true
+                required : true,
+                default: null
             },
 
             light: {
                 type : Boolean,
                 required : false,
+                default: false
+            },
+
+            disabled: {
+                type: Boolean,
+                required: false,
                 default: false
             }
         }

@@ -17,8 +17,12 @@ import {
 
 
 const state = {
-    projects: [],
-    project: {},
+    projects        : [],
+    project         : {},
+
+    projectsLoading : false,
+    projectLoading  : false,
+    projectSaving   : false
 }
 
 
@@ -72,12 +76,14 @@ const mutations = {
      */
     [VUEX_PROJECTS_FETCH_REQUEST]:(state) => {
         state.projects = []
+        state.projectsLoading = true
     },
     [VUEX_PROJECTS_FETCH_SUCCESS]:(state, payload) => {
         state.projects = payload
+        state.projectsLoading = false
     },
-    [VUEX_PROJECTS_FETCH_FAILURE]:(payload) => {
-        console.log(payload)
+    [VUEX_PROJECTS_FETCH_FAILURE]:(state) => {
+        state.projectsLoading = false
     },
 
     /**
@@ -86,12 +92,14 @@ const mutations = {
      */
     [VUEX_PROJECT_FETCH_REQUEST]:(state) => {
         state.project = {}
+        state.projectLoading = true
     },
     [VUEX_PROJECT_FETCH_SUCCESS]:(state, payload) => {
         state.project = payload
+        state.projectLoading = false
     },
-    [VUEX_PROJECT_FETCH_FAILURE]:(payload) => {
-        console.log(payload)
+    [VUEX_PROJECT_FETCH_FAILURE]:(state) => {
+        state.projectLoading = false
     },
 
     /**
@@ -99,13 +107,13 @@ const mutations = {
      * 
      */
     [VUEX_PROJECT_CREATE]:(state) => {
-        // 
+        state.projectSaving = true
     },
-    [VUEX_PROJECT_CREATE_SUCCESS]:(state, payload) => {
-        // 
+    [VUEX_PROJECT_CREATE_SUCCESS]:(state) => {
+        state.projectSaving = false
     },
-    [VUEX_PROJECT_CREATE_FAILURE]:(state, payload) => {
-        // 
+    [VUEX_PROJECT_CREATE_FAILURE]:(state) => {
+        state.projectSaving = false
     },
 
 }

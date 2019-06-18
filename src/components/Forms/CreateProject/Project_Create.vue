@@ -52,7 +52,7 @@
                         v-model="projectDateMenu"
                         :close-on-content-click="false"
                         :nudge-right="40"
-                        :return-value="model.project_date"
+                        :return-value="formattedDate"
                         lazy
                         transition="scale-transition"
                         offset-y
@@ -65,13 +65,13 @@
                             v-on="on"
                             append-icon="event"
                             label="Project Date"
-                            v-model="model.project_date">
+                            v-model="formattedDateDisplay">
                         </v-text-field>
                         </template>
-                        <v-date-picker v-model="model.project_date" type="month" scrollable>
+                        <v-date-picker v-model="formattedDate" type="month" scrollable>
                             <v-spacer></v-spacer>
                             <v-btn flat color="primary" @click="projectDateMenu = false">Cancel</v-btn>
-                            <v-btn flat color="primary" @click="$refs.projectDateMenu.save(model.project_date)">OK</v-btn>
+                            <v-btn flat color="primary" @click="$refs.projectDateMenu.save(formattedDate)">OK</v-btn>
                         </v-date-picker>
                     </v-menu>
                 </v-flex>
@@ -323,7 +323,7 @@
                 </div>
                 <div class="tree__container">
                     <v-treeview
-                        :items="testTree"
+                        :items="projectTree.tree"
                         :open.sync="openFolders">
                         <template v-slot:prepend="{ item }">
                         <v-icon
@@ -349,6 +349,7 @@
         <div class="form-section project__save-btn">
             <app-btn 
                 label="Save Project"
+                :disabled="projectSubmitted"
                 @click.native="submitForm"/>
         </div>
 
@@ -390,84 +391,19 @@
                 title        : null,
                 client       : null,
                 role         : null,
-                project_date : "03-27-1981 00:00:00",
+                project_date : null,
                 subtitle     : null,
                 description  : null,
                 link         : null,
                 resources    : []
             },
-            
-            testTree: [
-                {
-                id: 1,
-                name: 'Vuetify Human Resources',
-                children: [
-                    {
-                    id: 2,
-                    name: 'Core team',
-                    children: [
-                        {
-                        id: 201,
-                        name: 'John'
-                        },
-                        {
-                        id: 202,
-                        name: 'Kael'
-                        },
-                        {
-                        id: 203,
-                        name: 'Nekosaur'
-                        },
-                        {
-                        id: 204,
-                        name: 'Jacek'
-                        },
-                        {
-                        id: 205,
-                        name: 'Andrew'
-                        }
-                    ]
-                    },
-                    {
-                    id: 3,
-                    name: 'Administrators',
-                    children: [
-                        {
-                        id: 301,
-                        name: 'Ranee'
-                        },
-                        {
-                        id: 302,
-                        name: 'Rachel'
-                        }
-                    ]
-                    },
-                    {
-                    id: 4,
-                    name: 'Contributors',
-                    children: [
-                        {
-                        id: 401,
-                        name: 'Phlow'
-                        },
-                        {
-                        id: 402,
-                        name: 'Brandon'
-                        },
-                        {
-                        id: 403,
-                        name: 'Sean'
-                        }
-                    ]
-                    }
-                ]
-                }
-            ],
 
             openFolders: [1],
 
             projectDateMenu  : false,
             fileDragOver     : false,
+
+            projectSubmitted : false
 
             /* cmOptions: {
                 tabSize      : 4,
@@ -482,7 +418,9 @@
             ...mapState({
                 projectTypes : state => state.config.projectTypes,
                 projectRoles : state => state.config.projectRoles,
-                clients      : state => state.config.clients
+                clients      : state => state.config.clients,
+
+                projectTree  : state => state.project_tree.projectTree
             }),
 
             ...mapGetters({
@@ -529,7 +467,25 @@
                     model: HADDIX_PROJECT_TYPE__WORK,
                     model_id: this.model.project_id,
                 }
-			}
+            },
+            
+            formattedDate: {
+                get() { 
+                    if (!this.model.project_date) return
+
+                    let [month, day, year] = this.model.project_date.split(' ')[0].split('-')
+                    return `${year}-${month}`
+                },
+                set(val) { 
+                    let [year, month] = val.split('-')
+                    this.model.project_date = `${month}-01-${year} 00:00:00`
+                }
+            },
+
+            formattedDateDisplay() {
+                if (!this.model.project_date) return
+                return `${this.formattedDate.split('-')[1]}/${this.formattedDate.split('-')[0]}`
+            }
         },
 
         mounted() {
@@ -576,8 +532,6 @@
             },
 
             handleSelectedFileStructFiles(event) {
-                console.log(this.$refs.fileStructureControl.files)
-
                 let file = this.$refs.fileStructureControl.files[0]
 
                 let reader = new FileReader()
@@ -586,12 +540,17 @@
             },
 
             onReaderLoad(event){
-                console.log(event.target.result);
-                var treeJson = JSON.parse(event.target.result);
-                this.createProjectTree(treeJson)
+                var json_tree = JSON.parse(event.target.result);
+                this.createProjectTree(
+                    {
+                        project_id : this.model.project_id,
+                        tree_data  : json_tree
+                    }
+                )
             },
 
             submitForm() {
+                this.projectSubmitted = true
                 this.createProject(this.model)
             }
         },

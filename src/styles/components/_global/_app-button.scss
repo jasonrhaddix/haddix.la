@@ -18,7 +18,7 @@
 			font-weight: $font-weight-medium;
 		}
 		
-		&:hover {
+		&:hover:not(.disabled) {
 
 			.app-button__text {
 				transition-delay: 0s;
@@ -133,6 +133,21 @@
 				&:after {
 					border-top: 70px solid $color-app-button-background-hover-light;
 				}
+			}
+		}
+
+	}
+	
+	&.disabled {
+		pointer-events: none !important;
+		
+		.app-button {
+			color: $color-m-grey-darken-3;
+			background-color: $color-m-grey-darken-4;
+			border: 1px solid $color-m-grey-darken-3;
+	
+			.app-button__text {
+				color: $color-m-grey-darken-2;
 			}
 		}
 	}

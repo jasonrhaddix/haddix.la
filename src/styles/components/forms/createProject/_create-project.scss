@@ -215,7 +215,7 @@
         }
 
         .tree__container {
-            padding: 1rem;
+            padding: 1.25rem;
             min-height: 30rem;
             background: {
                 color: $color-app-black-alpha-25;
@@ -229,6 +229,7 @@
             }
 
             .v-treeview-node__label {
+                font-size: 0.95rem;
                 color: $color-m-grey-lighten-1;
             }
         }
