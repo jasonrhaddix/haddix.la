@@ -11,10 +11,12 @@
 @import 'variables/_layout';
 
 
+
 // TYPOGRAPHY
 //
 @import 'typography/_typography';
 @import 'typography/_icons';
+
 
 
 // MIXINS
@@ -24,9 +26,11 @@
 @import 'mixins/_center-content';
 
 
+
 // BASE
 //
 @import 'base/_base';
+
 
 
 // VENDOR
@@ -34,10 +38,12 @@
 /* @import 'vendor/'; */
 
 
+
 // APP
 //
 @import '_app';
 @import 'app/_transitions';
+
 
 
 // VIEWS
@@ -48,6 +54,7 @@
 @import 'views/_about';
 @import 'views/_contact';
 @import 'views/_labs';
+
 
 
 // COMPONENTS
@@ -63,6 +70,7 @@
 
 // Containers
 @import 'components/containers/_overlay-container';
+@import 'components/containers/_notifications-container';
 
 // Forms
 @import 'components/forms/createProject/_create-project';
@@ -72,6 +80,9 @@
 // Navigation
 @import 'components/navigation/_navigation';
 @import 'components/navigation/_navigation-item';
+
+// Notifications
+@import 'components/notifications/_notifications';
 
 // Projects
 @import 'components/projects/_projects-item'

@@ -14,6 +14,7 @@ import config from '@/store/modules/_config'
 import app from '@/store/modules/app'
 import attachment_upload from '@/store/modules/attachments/attachment_upload.js'
 import attachment_queue_manager from '@/store/modules/attachments/attachment_queue_manager.js'
+import notifications from  '@/store/modules/notifications'
 import projects from '@/store/modules/projects'
 import project_tree from '@/store/modules/projects/project_tree'
 import routing from '@/store/modules/routing'
@@ -29,13 +30,15 @@ const debug = process.env.NODE_ENV !== 'production'
 const store = new Vuex.Store({
     modules: {
         config,
+        
         app,
         attachment_upload,
         attachment_queue_manager,
-        ui,
-        routing,
+        notifications,
         projects,
-        project_tree
+        project_tree,
+        ui,
+        routing
     },
 
     strict: debug,

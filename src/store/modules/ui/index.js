@@ -11,7 +11,14 @@ import {
 
     VUEX_UI_OVERLAY_CONTAINER_SHOW,
     VUEX_UI_OVERLAY_CONTAINER_HIDE,
-    VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT
+    VUEX_UI_OVERLAY_CONTAINER_SET_STATE,
+    VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT,
+
+    VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW,
+    VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE,
+    VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE,
+    VUEX_UI_NOTIFICATIONS_CONTAINER_DEFAULT_DELAY
+    // VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT
 } from '@/store/constants/ui'
 
 
@@ -25,14 +32,23 @@ const state = {
         component: null,
         title: '',
         openState: false
+    },
+    notificationsContainer : {
+        component: null,
+        data: null,
+        timeout: null,
+        openState: false
     }
 }
+
 
 const getters = {
     // 
 }
 
+
 const actions = {
+    // HEADER UI
     [VUEX_UI_HEADER_SHOW]:({ commit }) => {
         commit(VUEX_UI_HEADER_SHOW)
     },
@@ -41,6 +57,7 @@ const actions = {
         commit(VUEX_UI_HEADER_HIDE)
     },
 
+    // NAVIGATION UI
     [VUEX_UI_NAVIGATION_SHOW]:({ commit }) => {
         commit(VUEX_UI_NAVIGATION_SHOW)
     },
@@ -67,6 +84,7 @@ const actions = {
         }
     },
 
+    // OVERLAY CONTAINER UI
     [VUEX_UI_OVERLAY_CONTAINER_SHOW]:({ commit }) => {
         commit(VUEX_UI_OVERLAY_CONTAINER_SHOW)
     },
@@ -77,10 +95,25 @@ const actions = {
 
     [VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT]:({ commit }, payload) => {
         commit(VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT, payload)
-    }
+    },
+
+    // NOTIFICATIONS CONTAINER UI
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW]:({ commit }, payload) => {
+        commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW, payload)
+    },
+
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE]:({ commit }) => {
+        commit(VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE)
+    },
+
+   /*  [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT]:({ commit }, payload) => {
+        commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT, payload)
+    }, */
 }
 
+
 const mutations = {
+    // HEADER UI
     [VUEX_UI_HEADER_SHOW]:( state ) => {
         state.headerState = true;
     },
@@ -89,6 +122,7 @@ const mutations = {
         state.headerState = false;
     },
 
+    // NAVIGATION UI
     [VUEX_UI_NAVIGATION_SHOW]:( state ) => {
         state.navigation.openState = true
     },
@@ -109,6 +143,7 @@ const mutations = {
         state.navigation.isEnabled = false
     },
 
+    // OVERLAY CONTAINER UI
     [VUEX_UI_OVERLAY_CONTAINER_SHOW]:( state ) => {
         state.overlayContainer.openState = true
     },
@@ -117,10 +152,36 @@ const mutations = {
         state.overlayContainer.openState = false
     },
 
+    [VUEX_UI_OVERLAY_CONTAINER_SET_STATE]:( state, payload) => {
+        state.overlayContainer.openState = payload
+    },
+
     [VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT]:( state, payload ) => {
         if (payload.component) state.overlayContainer.component = payload.component
         if (payload.title) state.overlayContainer.title = payload.title
-    }
+    },
+
+    // NOTIFICATIONS CONTAINER UI
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW]:( state, payload ) => {
+        if (payload.component) state.notificationsContainer.component = payload.component
+        if (payload.data) state.notificationsContainer.data = payload.data
+        state.notificationsContainer.timeout = (payload.timeout) ? payload.timeout : VUEX_UI_NOTIFICATIONS_CONTAINER_DEFAULT_DELAY
+        
+        state.notificationsContainer.openState = true
+    },
+    
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE]:( state ) => {
+        state.notificationsContainer.openState = false
+    },
+
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE]:( state, payload) => {
+        state.notificationsContainer.openState = payload
+    },
+
+    /* [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT]:( state, payload ) => {
+        if (payload.component) state.notificationsContainer.component = payload.component
+        if (payload.data) state.notificationsContainer.data = payload.data
+    }, */
 }
 
 

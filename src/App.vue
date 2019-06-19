@@ -6,6 +6,7 @@
 		</transition>
 		<navigation />
 		<overlay-container />
+		<notification-container />
 	</v-app>
 </template>
 
@@ -13,13 +14,15 @@
 <script>
 	import Navigation from '@/components/Navigation/Navigation'
 	import OverlayContainer from '@/components/Containers/Overlay_Container'
+	import NotificationContainer from '@/components/Containers/Notification_Container'
 
 	export default {
 		name: 'app',
 
 		components: {
 			'navigation' : Navigation,
-			'overlay-container' : OverlayContainer
+			'overlay-container' : OverlayContainer,
+			'notification-container' : NotificationContainer
 		}
 	}
 </script>

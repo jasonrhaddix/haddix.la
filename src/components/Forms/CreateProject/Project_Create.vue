@@ -323,7 +323,7 @@
                 </div>
                 <div class="tree__container">
                     <v-treeview
-                        :items="projectTree.tree"
+                        :items="projectTree.tree_data"
                         :open.sync="openFolders">
                         <template v-slot:prepend="{ item }">
                         <v-icon
@@ -347,9 +347,16 @@
         </div>
         
         <div class="form-section project__save-btn">
+            <v-progress-circular
+                v-if="projectSaving"
+                indeterminate
+                class="progress__ind" 
+                color="primary"
+                width="8"
+                size="38"/>
             <app-btn 
                 label="Save Project"
-                :disabled="projectSubmitted"
+                :disabled="projectSaving"
                 @click.native="submitForm"/>
         </div>
 
@@ -403,8 +410,6 @@
             projectDateMenu  : false,
             fileDragOver     : false,
 
-            projectSubmitted : false
-
             /* cmOptions: {
                 tabSize      : 4,
                 mode         : 'text/javascript',
@@ -416,11 +421,13 @@
 
         computed: {
             ...mapState({
-                projectTypes : state => state.config.projectTypes,
-                projectRoles : state => state.config.projectRoles,
-                clients      : state => state.config.clients,
+                projectSaving : state => state.projects.projectSaving,
 
-                projectTree  : state => state.project_tree.projectTree
+                projectTypes  : state => state.config.projectTypes,
+                projectRoles  : state => state.config.projectRoles,
+                clients       : state => state.config.clients,
+
+                projectTree   : state => state.project_tree.projectTree
             }),
 
             ...mapGetters({
@@ -433,7 +440,6 @@
             fileAttachments() {
 
                 return((usageType, singleReturn ) => {
-                    
                     let files = new Array()
                     
                     let paramsWithId = { 
@@ -484,7 +490,7 @@
 
             formattedDateDisplay() {
                 if (!this.model.project_date) return
-                return `${this.formattedDate.split('-')[1]}/${this.formattedDate.split('-')[0]}`
+                return `${this.formattedDate.split('-').reverse().join('/')}`
             }
         },
 
@@ -550,7 +556,6 @@
             },
 
             submitForm() {
-                this.projectSubmitted = true
                 this.createProject(this.model)
             }
         },

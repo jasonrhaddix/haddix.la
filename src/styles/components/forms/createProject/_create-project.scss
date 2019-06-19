@@ -236,7 +236,14 @@
     }
 
     .project__save-btn {
+        display: flex;
         float: right;
+
+        .progress__ind {
+            margin: {
+                right: 1rem;
+            }
+        }
     }
 
 

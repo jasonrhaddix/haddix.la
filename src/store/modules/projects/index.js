@@ -14,6 +14,12 @@ import {
     VUEX_PROJECT_CREATE_SUCCESS,
     VUEX_PROJECT_CREATE_FAILURE
 } from '@/store/constants/projects'
+import { 
+    VUEX_UI_OVERLAY_CONTAINER_HIDE
+} from '@/store/constants/ui'
+import {
+    VUEX_NOTIFICATIONS_ADD_TO_QUEUE
+} from '@/store/constants/notifications'
 
 
 const state = {
@@ -59,11 +65,39 @@ const actions = {
      * Create Project
      * 
      */
-    [VUEX_PROJECT_CREATE]:({commit}, payload) => {
-        api.post(`/projects`, payload).then((response) => {
-            commit(VUEX_PROJECT_CREATE_SUCCESS, response.data.data)
-        }).catch((err) => {
-            commit(VUEX_PROJECT_CREATE_FAILURE, err)
+    [VUEX_PROJECT_CREATE]:({commit, dispatch}, payload) => {
+        api.post(`/projects`, payload).then( async (response) => {
+            // Save returned data back in state.project
+            await commit(VUEX_PROJECT_CREATE_SUCCESS, response.data.data)
+            // Close Create Form
+            await dispatch(VUEX_UI_OVERLAY_CONTAINER_HIDE)
+            // Send success notification
+            await dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'success',
+                    message : 'Success: Project created!',
+                },
+                timeout: 'persistent'
+            })
+            // Retrieve latest Projects
+            dispatch(VUEX_PROJECTS_FETCH_REQUEST)
+        }).catch( async (err) => {
+            await commit(VUEX_PROJECT_CREATE_FAILURE, err)
+
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'error',
+                    message : 'Error: Project creatation failed'
+                }
+            })
         })
     }
 }
@@ -109,7 +143,8 @@ const mutations = {
     [VUEX_PROJECT_CREATE]:(state) => {
         state.projectSaving = true
     },
-    [VUEX_PROJECT_CREATE_SUCCESS]:(state) => {
+    [VUEX_PROJECT_CREATE_SUCCESS]:(state, payload) => {
+        state.project = payload
         state.projectSaving = false
     },
     [VUEX_PROJECT_CREATE_FAILURE]:(state) => {

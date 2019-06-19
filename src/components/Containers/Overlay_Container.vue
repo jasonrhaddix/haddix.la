@@ -2,10 +2,11 @@
     <v-dialog
         dark
         fullscreen
+        persistent
         hide-overlay
         transition="transition-slide-up"
         content-class="overlay-container"
-        v-model="overlayOpenState">
+        v-model="openState">
 
         <v-container grid-list-md>
             <v-layout column>
@@ -46,6 +47,11 @@
 
             loadComponent() {
                 return this.overlayComponent ? this.$root.loadComponent(this.overlayComponent) : null
+            },
+
+            openState: {
+                get() { return this.overlayOpenState },
+                set(val) { this.$store.commit('VUEX_UI_OVERLAY_CONTAINER_SET_STATE', val) } 
             }
         },
 

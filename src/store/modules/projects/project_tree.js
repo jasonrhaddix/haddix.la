@@ -17,10 +17,10 @@ import {
 
 
 const state = {
-    projectTrees: [],
-    projectTree: {
-        project_id: null,
-        tree: []
+    projectTrees : [],
+    projectTree  : {
+        project_id : null,
+        tree_data  : []
     }
 }
 
@@ -54,7 +54,7 @@ const actions = {
 
         let obj = { 
             project_id : payload.project_id,
-            tree_data  : payload.tree
+            tree_data  : payload.tree_data
         }
 
         api.post(`/project-trees`, obj).then((response) => {
@@ -76,6 +76,7 @@ const mutations = {
     },
 
     [VUEX_PROJECT_TREES_FETCH_FAILURE]: (state, payload) => {
+        
     },
 
 
@@ -89,6 +90,7 @@ const mutations = {
     },
 
     [VUEX_PROJECT_TREE_FETCH_FAILURE]: (state, payload) => {
+
     },
 
 
@@ -100,7 +102,7 @@ const mutations = {
     
     [VUEX_PROJECT_TREE_CREATE_SUCCESS]: (state, payload) => {
         state.projectTree.project_id = payload.project_id
-        state.projectTree.tree.push(payload.tree)
+        state.projectTree.tree_data.push(payload.tree_data)
     },
 
     [VUEX_PROJECT_TREE_CREATE_FAILURE]: (state) => {
