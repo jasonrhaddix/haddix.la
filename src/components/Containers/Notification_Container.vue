@@ -2,8 +2,8 @@
     <v-snackbar
         bottom right
         auto-height
-        v-model.sync="openState"
-        :timeout="timeout"
+        v-model="openState"
+        :timeout="notificationTimeout"
         class="notifications-container"
         :vertical="false">
         
@@ -12,7 +12,7 @@
         </div>
 
         <v-btn
-            v-if="notificationTimeout === 'persistent'"
+            v-if="notificationTimeout == 0"
             small
             color="primary"
             class="notification__clear-btn"
@@ -49,11 +49,7 @@
 
             openState: {
                 get() { return this.notificationsOpenState },
-                set(val) { this.$store.commit('VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE', val)}
-            },
-
-            timeout() {
-                return this.notificationTimeout !== 'persistent' ? this.notificationTimeout : 0
+                set(val) { this.$store.dispatch('VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE', val)}
             }
         },
 

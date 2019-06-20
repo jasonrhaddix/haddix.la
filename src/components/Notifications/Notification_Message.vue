@@ -24,6 +24,7 @@
 
         computed: {
             notificationIcon() {
+                if (!this.data.type) return null
                 switch( this.data.type ) {
                     case 'success' :
                         return {

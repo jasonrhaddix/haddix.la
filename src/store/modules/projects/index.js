@@ -81,7 +81,7 @@ const actions = {
                     type    : 'success',
                     message : 'Success: Project created!',
                 },
-                timeout: 'persistent'
+                timeout: 0
             })
             // Retrieve latest Projects
             dispatch(VUEX_PROJECTS_FETCH_REQUEST)

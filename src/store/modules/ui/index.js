@@ -18,8 +18,10 @@ import {
     VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE,
     VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE,
     VUEX_UI_NOTIFICATIONS_CONTAINER_DEFAULT_DELAY
-    // VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT
 } from '@/store/constants/ui'
+import {
+    VUEX_NOTIFICATIONS_CYCLE_COMPLETE
+} from '@/store/constants/notifications'
 
 
 const state = {
@@ -98,17 +100,20 @@ const actions = {
     },
 
     // NOTIFICATIONS CONTAINER UI
-    [VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW]:({ commit }, payload) => {
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW]:({ state, commit }, payload) => {
         commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW, payload)
     },
 
     [VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE]:({ commit }) => {
         commit(VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE)
     },
-
-   /*  [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT]:({ commit }, payload) => {
-        commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT, payload)
-    }, */
+    
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE]:( {commit, dispatch}, payload) => {
+        commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE, payload)
+        setTimeout(() => {
+            dispatch(VUEX_NOTIFICATIONS_CYCLE_COMPLETE)
+        }, 1000)
+    }
 }
 
 
@@ -176,12 +181,7 @@ const mutations = {
 
     [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE]:( state, payload) => {
         state.notificationsContainer.openState = payload
-    },
-
-    /* [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_COMPONENT]:( state, payload ) => {
-        if (payload.component) state.notificationsContainer.component = payload.component
-        if (payload.data) state.notificationsContainer.data = payload.data
-    }, */
+    }
 }
 
 

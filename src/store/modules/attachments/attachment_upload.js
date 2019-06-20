@@ -16,6 +16,9 @@ import {
     VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT,
     VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS
 } from '@/store/constants/attachments/attachment_queue_manager'
+import {
+    VUEX_NOTIFICATIONS_ADD_TO_QUEUE
+} from '@/store/constants/notifications'
 
 
 
@@ -92,12 +95,22 @@ const actions = {
 	 * Amend the DB record upon success
 	 */
 	[VUEX_UPLOAD_S3_REQUEST_SUCCESS]: async({ commit, dispatch }, payload) => {
-
 		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
 			hashId: payload.hashId,
 			uri: payload.data.Location,
 			status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__SUCCESS
-		})
+        })
+        
+        dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+            component: {
+                path : 'Notifications',
+                file : 'Notification_Message'
+            },
+            data: {
+                type    : 'success',
+                message : 'Success: Attachment uploaded to Amazon S3'
+            }
+        })
 	},
 
 	/**
@@ -107,33 +120,66 @@ const actions = {
 		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
 			hashId: payload.hashId,
 			status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__FAILURE
-		})
+        })
+        
+        dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+            component: {
+                path : 'Notifications',
+                file : 'Notification_Message'
+            },
+            data: {
+                type    : 'error',
+                message : 'Error: Attachment Failed upload to Amazon S3'
+            }
+        })
     },
 
-    [VUEX_UPLOAD_ATTACHMENT_REQUEST]: ({commit}, payload) => {
+    [VUEX_UPLOAD_ATTACHMENT_REQUEST]: ({dispatch, commit}, payload) => {
         commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
             hashId: payload.hashId,
             status: HADDIX_UPLOAD_ATTACHMENT_STATUS__STARTED
         })
 
         api.post(`/attachments`, payload).then((response) => {
-            console.log(response)
             commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
                 hashId: payload.hashId,
                 status: HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS
             })
+
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'success',
+                    message : 'Attachment Upload Completed'
+                }
+            })
         }).catch((err) => {
-            console.log(err)
             commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
                 hashId: payload.hashId,
                 status: HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE
+            })
+
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'error',
+                    message : 'Attachment Upload Failed'
+                }
             })
         })
     }
 }
 
 
-const mutations = {}
+const mutations = {
+
+}
 
 
 export default {
