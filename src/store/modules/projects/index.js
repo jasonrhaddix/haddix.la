@@ -66,6 +66,7 @@ const actions = {
      * 
      */
     [VUEX_PROJECT_CREATE]:({commit, dispatch}, payload) => {
+        commit(VUEX_PROJECT_CREATE)
         api.post(`/projects`, payload).then( async (response) => {
             // Save returned data back in state.project
             await commit(VUEX_PROJECT_CREATE_SUCCESS, response.data.data)
@@ -113,6 +114,7 @@ const mutations = {
         state.projectsLoading = true
     },
     [VUEX_PROJECTS_FETCH_SUCCESS]:(state, payload) => {
+        // console.log(payload)
         state.projects = payload
         state.projectsLoading = false
     },

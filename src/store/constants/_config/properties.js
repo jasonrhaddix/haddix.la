@@ -54,14 +54,18 @@ export default {
         }
     ],
 
-    projectResourceTypes : [
+    projectLanguages : [
         {
-            name  : 'HTML',
-            value : 'html'
+            name  : 'C/C++',
+            value : 'c_c_plusplus'
         },
         {
             name  : 'CSS',
             value : 'css'
+        },
+        {
+            name  : 'HTML',
+            value : 'html'
         },
         {
             name  : 'Javascript',
@@ -70,15 +74,41 @@ export default {
         {
             name  : 'PHP',
             value : 'php'
-        },
-        {
-            name  : 'C/C++',
-            value : 'c_c_plusplus'
-        },
-        {
-            name  : 'Love <3',
-            value : 'love'
         }
+    ],
+
+    projectResources : [
+        { id: 0, value: 'VueJS' },
+        { id: 1, value: 'Laravel' },
+        { id: 2, value: 'NodeJS' },
+        { id: 3, value: 'AWS - S3' },
+        { id: 4, value: 'AWS - EC2 Instance' },
+        { id: 5, value: 'AWS - Lambda' },
+        { id: 6, value: 'AWS - Cognito' },
+        { id: 7, value: 'Google Cloud Services - Maps API' },
+        { id: 8, value: 'CloudConvert' },
+        { id: 9, value: 'Adobe Animate CC' },
+        { id: 10, value: 'Adobe Audition CC' },
+        { id: 11, value: 'Adobe Premiere CC' },
+        { id: 12, value: 'Adobe InDesign CC' },
+        { id: 13, value: 'Adobe Illustrator CC' },
+        { id: 14, value: 'Adobe Photoshop CC' },
+        { id: 15, value: 'Postman' },
+        { id: 16, value: 'Axios' },
+        { id: 17, value: 'Webpack' },
+        { id: 18, value: 'Vuex' },
+        { id: 19, value: 'PDFjs' },
+        { id: 20, value: 'ThreeJS' },
+        { id: 21, value: 'jQuery' },
+        { id: 22, value: 'REST API' },
+        { id: 23, value: 'Service Workers' },
+        { id: 24, value: 'Vuetify' },
+        { id: 25, value: 'Vuelidate' },
+        { id: 26, value: 'Quill Editor' },
+        { id: 27, value: 'Canvas API' },
+        { id: 28, value: 'Box 2D' },
+        { id: 29, value: 'Particle Illusion' },
+        { id: 30, value: 'Mocha Motion TraCcking' },
     ],
 
     clients : [

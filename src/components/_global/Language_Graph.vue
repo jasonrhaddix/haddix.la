@@ -1,9 +1,9 @@
 <template>
-    <div class="resource-graph">
-        <canvas class="resource-graph__canvas" ref="resourceGraphCanvas" height="100" width="100"></canvas>
-        <div class="resource-graph__text">
-            <p class="value">{{resourceValue}}<span>%</span></p>
-            <p class="resource">{{resource}}</p>
+    <div class="language-graph">
+        <canvas class="language-graph__canvas" ref="languageGraphCanvas" height="100" width="100"></canvas>
+        <div class="language-graph__text">
+            <p class="value">{{languageValue}}<span>%</span></p>
+            <p class="language">{{language}}</p>
         </div>
     </div>
 </template>
@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: 'resource-graph',
+        name: 'language-graph',
 
         props: {
             value: {
@@ -19,7 +19,7 @@
                 required: true,
                 default: 0
             },
-            resource: {
+            language: {
                 type: String,
                 required: true,
                 default: '--'
@@ -31,7 +31,7 @@
         }),
 
         computed: {
-            resourceValue() {
+            languageValue() {
                 if (!this.value) return 0
                 if (this.value >= 100) return this.value.toFixed(0)
                 return (this.value.toFixed(1) % 1 != 0) ? this.value.toFixed(1) : parseInt(this.value.toFixed(1).toString().substring(0, this.value.toFixed(1).length - 1))
@@ -46,7 +46,7 @@
             createGraph() {
                 let percent = this.value
 
-                let canvas = this.$refs.resourceGraphCanvas;
+                let canvas = this.$refs.languageGraphCanvas;
                 this.canvas_context = canvas.getContext("2d")
 
                 this.canvas_context.clearRect(0, 0, canvas.width, canvas.height);

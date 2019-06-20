@@ -8,8 +8,11 @@
     
     .form-section {
         margin: {
-            bottom: 4rem;
+            bottom: 7rem;
         }
+        /* background: {
+            color: $color-app-black-alpha-25;
+        } */
     }
 
     .inner__divider {
@@ -26,12 +29,8 @@
     .create__form {
 
         .project__pending-id {
-            // display: inline-block;
             background: {
                 color: #282828;
-            }
-            margin: {
-                // bottom: 2rem;
             }
     
             p {
@@ -88,7 +87,6 @@
         }
 
         .images__container {
-            // display: flex;
             
             .images__dropzone {
                 position: relative;
@@ -153,6 +151,7 @@
         .meta-section {
             margin: {
                 top: 1.5rem;
+                bottom: 3rem;
             }
             
             .section__title {
@@ -172,10 +171,9 @@
             }
         }
 
-        .resources__container {
-            // display: flex;
-            
-            .resource__add-button {
+        .languages__container {
+
+            .language__add-button {
                 cursor: pointer;
                 position: relative;
                 height: 8rem;
@@ -199,7 +197,7 @@
                 }
             }
 
-            .resource__list {
+            .language__list {
                 margin: {
                     top: 2rem;
                     bottom: 4rem;
@@ -214,6 +212,33 @@
             }
         }
 
+        .tree__add-button {
+            cursor: pointer;
+            position: relative;
+            height: 8rem;
+            margin: {
+                bottom: 1rem;
+            }
+            background: {
+                color: $color-m-grey-darken-3;
+            }
+
+            .button__content {
+                @include center-content();
+
+                p {
+                    text-transform: uppercase;
+                    color: $color-m-grey-darken-1;
+                    font-weight: $font-weight-bold;
+                }
+
+                .v-icon {
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        }
+
         .tree__container {
             padding: 1.25rem;
             min-height: 30rem;
@@ -221,12 +246,6 @@
                 color: $color-app-black-alpha-25;
             }
 
-            .tree__input {
-                padding: 1rem;
-                background: {
-                    color: $color-app-black-alpha-25;
-                }
-            }
 
             .v-treeview-node__label {
                 font-size: 0.95rem;
@@ -249,7 +268,7 @@
 
 
 
-
+    // Override
     .theme--dark.v-text-field--box>.v-input__control>.v-input__slot {
         background: {
             color: rgba(0,0,0,0.2);

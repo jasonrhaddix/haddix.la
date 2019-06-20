@@ -139,11 +139,12 @@
                                 </div>
                                 <div class="dropzone__scrim" />
                             </div>
-                            <div class="images__list">
+                            <div
+                                v-if="fileAttachments.length > 0" 
+                                class="images__list">
                                 <attachment-item 
-                                    v-if="fileAttachments.length > 0"
                                     v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, true)"
-                                    :key="`attachment-item--thumbnail-${$uuid.v4()}`"
+                                    :key="`attachment-item--thumbnail-${i}-${$uuid.v4()}`"
                                     :data="file"/>
                             </div>
                         </div>
@@ -160,6 +161,7 @@
                         </div>
                         <div class="images__container">
                             <attachment-uploader
+                                multiple
                                 ref="attachmentUploader_Carousel"
                                 :attach-to="getAttachTo"
                                 :file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL"/>
@@ -179,11 +181,12 @@
                                 </div>
                                 <div class="dropzone__scrim" />
                             </div>
-                            <div class="images__list">
+                            <div
+                                v-if="fileAttachments.length > 0" 
+                                class="images__list">
                                 <attachment-item 
-                                    v-if="fileAttachments.length > 0"
                                     v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL)"
-                                    :key="`attachment-item--carousel-${$uuid.v4()}`"
+                                    :key="`attachment-item--carousel-${i}-${$uuid.v4()}`"
                                     :data="file"/>
                             </div>
                         </div>
@@ -201,6 +204,7 @@
 
                         <div class="images__container">
                             <attachment-uploader
+                                multiple
                                 ref="attachmentUploader_Body"
                                 :attach-to="getAttachTo"
                                 :file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY"/>
@@ -220,11 +224,12 @@
                                 </div>
                                 <div class="dropzone__scrim" />
                             </div>
-                            <div class="images__list">
-                                <attachment-item 
-                                    v-if="fileAttachments.length > 0"
+                            <div
+                                v-if="fileAttachments.length > 0" 
+                                class="images__list">
+                                <attachment-item         
                                     v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY)"
-                                    :key="`attachment-item--body-${$uuid.v4()}`"
+                                    :key="`attachment-item--body-${i}-${$uuid.v4()}`"
                                     :data="file"/>
                             </div>
                         </div>
@@ -245,6 +250,7 @@
                 </div>
                 <div class="images__container">
                     <attachment-uploader
+                        multiple
                         ref="attachmentUploader_Video"
                         :attach-to="getAttachTo"
                         :file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO"/>
@@ -258,17 +264,18 @@
                             @drop.prevent.stop="dropFiles"
                             @click="$refs.attachmentUploader_Video.select()">
                             <div class="button__content">
-                                <p class="subheading">Upload Images</p>
+                                <p class="subheading">Upload Video</p>
                                 <v-icon color="grey darken-1">add</v-icon>
                             </div>
                         </div>
                         <div class="dropzone__scrim" />
                     </div>
-                    <div class="images__list">
+                    <div
+                        v-if="fileAttachments.length > 0" 
+                        class="images__list">
                         <attachment-item 
-                            v-if="fileAttachments.length > 0"
-                            v-for="(file, i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO)"
-                            :key="`attachment-item--video-${$uuid.v4()}`"
+                            v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO)"
+                            :key="`attachment-item--video-${i}-${$uuid.v4()}`"
                             :data="file"/>
                     </div>
                 </div>
@@ -280,30 +287,40 @@
 
             <div class="inner__divider" />
 
-            <div class="meta-section project__resources">
+            <div class="meta-section project__languages">
                 <div class="section__title">
                     <h3>Project Languages</h3>
                     <p>Projects page image.</p>
                 </div>
-                <div class="resources__container">
+                <div class="languages__container">
                     <div 
                         v-ripple
-                        class="resource__add-button"
-                        @click="addResource">
+                        class="language__add-button"
+                        @click="addLanguage">
                         <div class="button__content">
-                            <p class="subheading">Add Resource</p>
+                            <p class="subheading">Add Language</p>
                             <v-icon color="grey darken-1">add</v-icon>
                         </div>
                     </div>
-                    <div class="resource__list">
-                        <resource-item
-                            v-for="(item,i) in model.resources"
-                            :key="`resource-item-${item.id})`"
+                    <div class="language__list">
+                        <language-item
+                            v-for="(item) in model.languages"
+                            :key="`language-item-${item.id})`"
                             :id="item.id"
-                            :value-callback="updateResource"
-                            :resource-callback="updateResource"
-                            :remove-callback="removeResource"/>
+                            :value-callback="updateLanguage"
+                            :language-callback="updateLanguage"
+                            :remove-callback="removeLanguage"/>
                     </div>
+                </div>
+            </div>
+
+            <div class="meta-section project__languages">
+                <div class="section__title">
+                    <h3>Project Resources</h3>
+                    <p>Projects page image.</p>
+                </div>
+                <div class="languages__container">
+                    <resource-picker :items="projectResources"/>
                 </div>
             </div>
 
@@ -313,7 +330,17 @@
                     <p></p>
                 </div>
                 <div class="tree__input">
+                    <div 
+                        v-ripple
+                        class="tree__add-button"
+                        @click="$refs.fileStructureControl.click()">
+                        <div class="button__content">
+                            <p class="subheading">Add JSON File</p>
+                            <v-icon color="grey darken-1">add</v-icon>
+                        </div>
+                    </div>
                     <input 
+                        hidden
                         ref="fileStructureControl"
                         class="file-structure-uploader__input"
                         accept="application/json"
@@ -377,7 +404,8 @@
 
     import AttachmentUploader from '@/components/_global/Attachment_Uploader'
     import CreateAttachmentItem from '@/components/Forms/CreateProject/Project_Create__Attachment_Item'
-    import CreateResourceItem from '@/components/Forms/CreateProject/Project_Create__Resource_Item'
+    import CreateLanguageItem from '@/components/Forms/CreateProject/Project_Create__Language_Item'
+    import CreateResourcePicker from '@/components/Forms/CreateProject/Project_Create__Resource_Picker'
     import AppButton from '@/components/_global/App_Button'
 
 
@@ -388,7 +416,8 @@
             'attachment-uploader' : AttachmentUploader,
             'app-btn'             : AppButton,
             'attachment-item'     : CreateAttachmentItem,
-            'resource-item'       : CreateResourceItem
+            'language-item'       : CreateLanguageItem,
+            'resource-picker'     : CreateResourcePicker
         },
 
         data:() => ({
@@ -402,7 +431,7 @@
                 subtitle     : null,
                 description  : null,
                 link         : null,
-                resources    : []
+                languages    : []
             },
 
             openFolders: [1],
@@ -421,13 +450,14 @@
 
         computed: {
             ...mapState({
-                projectSaving : state => state.projects.projectSaving,
+                projectSaving    : state => state.projects.projectSaving,
 
-                projectTypes  : state => state.config.projectTypes,
-                projectRoles  : state => state.config.projectRoles,
-                clients       : state => state.config.clients,
+                projectTypes     : state => state.config.projectTypes,
+                projectRoles     : state => state.config.projectRoles,
+                projectResources : state => state.config.projectResources,
+                clients          : state => state.config.clients,
 
-                projectTree   : state => state.project_tree.projectTree
+                projectTree      : state => state.project_tree.projectTree
             }),
 
             ...mapGetters({
@@ -445,7 +475,7 @@
                     let paramsWithId = { 
                         attach_to: { 
                             model_id: this.model.project_id,
-                            model: HADDIX_PROJECT_TYPE__WORK
+                            model: HADDIX_ATTACHMENT_TYPE__PROJECT
                         } 
                     }
     
@@ -455,8 +485,6 @@
                         .concat(this.getProcessingFiles(paramsWithId))
                         .concat(this.getQueuedFiles(paramsWithId))
                     
-                    // Then sort all of the files by the time they were added to the queue
-                    // so things don't jump around in the uploader
                     files.sort(function(a, b) {
                         return a.addedToQueue - b.addedToQueue
                     })
@@ -470,7 +498,7 @@
 
             getAttachTo() {
                 return {
-                    model: HADDIX_PROJECT_TYPE__WORK,
+                    model: HADDIX_ATTACHMENT_TYPE__PROJECT,
                     model_id: this.model.project_id,
                 }
             },
@@ -513,26 +541,26 @@
                 this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files)
             },
 
-            addResource() {
-                this.model.resources.push({
+            addLanguage() {
+                this.model.languages.push({
                     id: this.$uuid.v4(),
                     value: 0,
-                    resource: ''
+                    language: ''
                 })
             },
 
-            updateResource(data) {
-                let index = this.model.resources.findIndex(x => x.id === data.id)
+            updateLanguage(data) {
+                let index = this.model.languages.findIndex(x => x.id === data.id)
                 if (index > -1) {
-                    Object.assign(this.model.resources[index], data)
+                    Object.assign(this.model.languages[index], data)
                 }
 
             },
 
-            removeResource(id) {
-                let index = this.model.resources.findIndex(x => x.id === id)
+            removeLanguage(id) {
+                let index = this.model.languages.findIndex(x => x.id === id)
                 if (index > -1) {
-                    this.model.resources.splice(index, 1)
+                    this.model.languages.splice(index, 1)
                 }
                 
             },
@@ -557,14 +585,6 @@
 
             submitForm() {
                 this.createProject(this.model)
-            }
-        },
-        watch: {
-            model: {
-                deep: true,
-                handler(val) {
-                    // console.log(val)
-                } 
             }
         }
     }

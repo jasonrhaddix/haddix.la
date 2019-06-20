@@ -63,7 +63,7 @@
 @import 'components/_global/_hamburger-menu';
 @import 'components/_global/_app-button';
 @import 'components/_global/_google-maps';
-@import 'components/_global/_resource-graph';
+@import 'components/_global/_language-graph';
 
 // Animated Logo
 @import 'components/animatedLogo/_animated-logo';
@@ -75,7 +75,8 @@
 // Forms
 @import 'components/forms/createProject/_create-project';
 @import 'components/forms/createProject/_create-attachment-item';
-@import 'components/forms/createProject/_create-resource-item';
+@import 'components/forms/createProject/_create-language-item';
+@import 'components/forms/createProject/_create-resource-picker';
 
 // Navigation
 @import 'components/navigation/_navigation';

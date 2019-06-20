@@ -1,0 +1,80 @@
+<template>
+    <div class="create-resource-picker">
+        <div class="picker__inner">
+            <div class="list options-list">
+                <h3 class="body-1">Options</h3>
+                <div
+                    v-ripple
+                    v-for="(item,i) in optionItems"
+                    :key="`list-item-${i}`"
+                    :id="i"
+                    class="list-item"
+                    @click="itemClick('optionItems', item.id)">
+                    <p>{{ item.value }}</p>
+                </div>
+            </div>
+            <div class="list selected-list">
+                <h3 class="body-1">Selected</h3>
+                <div
+                    v-ripple
+                    v-for="(item,i) in selectedItems"
+                    :key="`list-item-${i}`"
+                    :id="i"
+                    class="list-item"
+                    @click="itemClick('selectedItems', item.id)">
+                    <p>{{ item.value }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+    export default {
+        name: 'create-resource-picker',
+
+        props: {
+            items: {
+                type: Array,
+                required: false,
+                default: () => ([])
+            },
+            selectedCallback: {
+                type: [Function, Promise],
+                required: false,
+                default: null
+            }
+        },
+
+        data: () => ({
+            optionItems   : [],
+            selectedItems : []
+        }),
+
+        mounted() {
+            this.optionItems = JSON.parse(JSON.stringify(this.items))
+        },
+
+        methods: {
+            itemClick(fromList, id) {
+                setTimeout(() => {
+                    let toList = (fromList === 'optionItems') 
+                                ? 'selectedItems' : 'optionItems'
+
+                    let index = this[fromList].findIndex(item => item.id === id)
+
+                    this[toList].push(this[fromList][index])
+                    this[fromList].splice(index, 1)
+    
+                    this[toList].sort(function(a, b) {
+                        return a.id - b.id
+                    })
+    
+                    if (this.selectedCallback) 
+                        this.selectedCallback(this.selectedItems)
+                },250)
+            }
+        }
+    }
+</script>

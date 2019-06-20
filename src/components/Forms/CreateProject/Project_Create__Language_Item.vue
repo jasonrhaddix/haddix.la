@@ -1,20 +1,20 @@
 <template>
-    <div class="create-resource-item">
-        <div class="resource__graph">
-            <resource-graph
+    <div class="create-language-item">
+        <div class="language__graph">
+            <language-graph
                 :value="parseFloat(value)"
-                :resource="resource"/>
+                :language="language"/>
         </div>
-        <div class="resource__content">
+        <div class="language__content">
             <div class="content__inner">
                 <div class="content__type">
                     <v-select
                         box
                         dense
-                        label="Resource Type"
+                        label="Language"
                         item-text="name"
-                        :items="projectResourceTypes"
-                        v-model="resource"/>
+                        :items="projectLanguages"
+                        v-model="language"/>
                 </div>
                 <div class="content__percentage">
                     <v-text-field
@@ -41,13 +41,13 @@
 <script>
     import { mapState } from 'vuex'
     
-    import ResourceGraph from '@/components/_global/Resource_Graph'
+    import LanguageGraph from '@/components/_global/Language_Graph'
 
     export default {
-        name: 'create-resource-item',
+        name: 'create-language-item',
 
         components: {
-            'resource-graph' : ResourceGraph
+            'language-graph' : LanguageGraph
         },
 
         props: {
@@ -55,7 +55,7 @@
                 type: String,
                 required: true
             },
-            resourceValue: {
+            languageValue: {
                 type: Number,
                 required: false
             },
@@ -63,11 +63,11 @@
                 type: Function,
                 required: false
             },
-            resourceName: {
+            languageName: {
                 type: String,
                 required: false
             },
-            resourceCallback: {
+            languageCallback: {
                 type: Function,
                 required: false
             },
@@ -79,19 +79,19 @@
         },
 
         data:() => ({
-            resource : '',
+            language : '',
             value    : 0 
         }),
 
         computed: {
             ...mapState({
-                projectResourceTypes : state => state.config.projectResourceTypes
+                projectLanguages : state => state.config.projectLanguages
             }),
         },
 
         mounted() {
-            if (this.resourceValue) this.value = this.resourceValue
-            if (this.resourceName) this.resource = this.resourceName
+            if (this.languageValue) this.value = this.languageValue
+            if (this.languageName) this.language = this.languageName
         },
 
         methods: {
@@ -112,10 +112,10 @@
             },
             resource: {
                 handler(value) {
-                    if (this.resourceCallback) 
-                        this.resourceCallback({
+                    if (this.languageCallback) 
+                        this.languageCallback({
                             id : this.id,
-                            resource : value
+                            language : value
                         })
                 }
             }
