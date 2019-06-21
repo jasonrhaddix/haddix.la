@@ -3,7 +3,7 @@
         <div class="language__graph">
             <language-graph
                 :value="parseFloat(value)"
-                :language="language"/>
+                :language="languageName"/>
         </div>
         <div class="language__content">
             <div class="content__inner">
@@ -14,14 +14,14 @@
                         label="Language"
                         item-text="name"
                         :items="projectLanguages"
-                        v-model="language"/>
+                        v-model="languageLocal"/>
                 </div>
                 <div class="content__percentage">
                     <v-text-field
                         box
                         label="Percentage"
                         type="number"
-                        v-model="value"
+                        v-model="valueLocal"
                         :value="0"/>
                 </div>
                 <div class="content__actions">
@@ -39,7 +39,7 @@
 
 
 <script>
-    import { mapState } from 'vuex'
+    import { mapState, mapGetters } from 'vuex'
     
     import LanguageGraph from '@/components/_global/Language_Graph'
 
@@ -55,15 +55,15 @@
                 type: String,
                 required: true
             },
-            languageValue: {
-                type: Number,
+            value: {
+                type: [String, Number],
                 required: false
             },
             valueCallback: {
                 type: Function,
                 required: false
             },
-            languageName: {
+            language: {
                 type: String,
                 required: false
             },
@@ -79,19 +79,28 @@
         },
 
         data:() => ({
-            language : '',
-            value    : 0 
+            languageLocal : {},
+            valueLocal    : 0 
         }),
 
         computed: {
             ...mapState({
                 projectLanguages : state => state.config.projectLanguages
             }),
+
+            ...mapGetters({
+                getPropertyByKey : 'getPropertyByKey'
+            }),
+
+            languageName() {
+                if (!this.language) return ""
+                return this.getPropertyByKey('projectLanguages', this.language, 'value', 'name')
+            }
         },
 
-        mounted() {
-            if (this.languageValue) this.value = this.languageValue
-            if (this.languageName) this.language = this.languageName
+        updated() {
+            if (this.value) this.valueLocal = this.value
+            if (this.language) this.languageLocal = this.language
         },
 
         methods: {
@@ -101,7 +110,7 @@
         },
 
         watch: {
-            value: {
+            valueLocal: {
                 handler(value) {
                     if (this.valueCallback) 
                         this.valueCallback({
@@ -110,8 +119,9 @@
                         })
                 }
             },
-            resource: {
+            languageLocal: {
                 handler(value) {
+                    console.log(value)
                     if (this.languageCallback) 
                         this.languageCallback({
                             id : this.id,

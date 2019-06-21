@@ -9,7 +9,7 @@
             <div class="view-work-btn">
                 <app-btn 
                     label="View Works"
-                    @click.native="navigateToRoute('projects')"/>
+                    @click.native="navigateToRoute({ name:'projects' })"/>
             </div>
         </div>
         
@@ -21,7 +21,7 @@
     import { mapActions } from 'vuex'
 
     import { 
-        VUEX_ROUTING_NAVIGATE_TO_ROUTE
+        VUEX_ROUTING_PUSH_ROUTE
     } from '@/store/constants/routing'
     
     import SphereBG from '@/components/SphereBG/Sphere_BG'
@@ -44,7 +44,7 @@
 
         methods : {
             ...mapActions({
-                navigateToRoute: VUEX_ROUTING_NAVIGATE_TO_ROUTE
+                navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
             })
         }
     }

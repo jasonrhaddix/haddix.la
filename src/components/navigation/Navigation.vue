@@ -8,14 +8,14 @@
                     v-match-route:class.active="item.routeName"
                     :text="item.label"
                     :styles="{ color:'#646468', fontSize:'4rem' }"
-                    @click.native="navigateToRoute(item.routeName)"/>
+                    @click.native="navigateToRoute({ name: item.routeName })"/>
             </nav>
         </div>
         <header :class="[{ open:headerState }]">
             <div class="header--logo-container">
                 <div 
                     class="app-logo"
-                    @click="navigateToRoute('home')">
+                    @click="navigateToRoute({ name: 'home' })">
                     <img :src="headerLogo"/>
                 </div>
                 <div class="divider"/>
@@ -43,7 +43,7 @@
         VUEX_UI_HEADER_LOGO
     } from '@/store/constants/ui'
     import {
-        VUEX_ROUTING_NAVIGATE_TO_ROUTE
+        VUEX_ROUTING_PUSH_ROUTE
     } from '@/store/constants/routing'
 
 
@@ -84,7 +84,7 @@
         methods: {
             ...mapActions({
                 toggleNavigationMenu : VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
-                navigateToRoute      : VUEX_ROUTING_NAVIGATE_TO_ROUTE
+                navigateToRoute      : VUEX_ROUTING_PUSH_ROUTE
             })
         }
     }

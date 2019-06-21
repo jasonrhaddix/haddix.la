@@ -1,0 +1,41 @@
+.project-details-view {
+    width: 90%;
+    min-height:100%;
+    padding: 0;
+    padding: {
+        top: 40px;
+    }
+    background: {
+        color: $color-m-white;
+    }
+
+    .details__content {
+
+        .header__container {
+            width: 100%;
+            min-height: 750px;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+
+        .subtitle__container {
+            
+        }
+
+        .video__container {
+            
+        }
+
+        .description__container {
+            
+        }
+
+        .photos__container {
+            
+        }
+
+        .meta__container {
+            
+        }
+    }
+}

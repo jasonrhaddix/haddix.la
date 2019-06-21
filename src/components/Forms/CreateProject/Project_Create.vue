@@ -116,7 +116,7 @@
                     <div class="images-section images__thumbnails">
                         <div class="section__title">
                             <h3>Thumbnail Image</h3>
-                            <p>Projects page image.</p>
+                            <p>Projects page image</p>
                         </div>
                         <div class="images__container">
                             <attachment-uploader
@@ -157,7 +157,7 @@
                     <div class="images-section images__carousel">
                         <div class="section__title">
                             <h3>Carousel Images</h3>
-                            <p>Project page carousel images.</p>
+                            <p>Project images - header carousel</p>
                         </div>
                         <div class="images__container">
                             <attachment-uploader
@@ -199,7 +199,7 @@
                     <div class="images-section images__body">
                         <div class="section__title">
                             <h3>Body Images</h3>
-                            <p>Project page body images.</p>
+                            <p>Project images - body</p>
                         </div>
 
                         <div class="images__container">
@@ -246,7 +246,7 @@
             <div class="images-section images__thumbnails">
                 <div class="section__title">
                     <h3>Body Videos</h3>
-                    <p>Projects page image.</p>
+                    <p>Project videos</p>
                 </div>
                 <div class="images__container">
                     <attachment-uploader
@@ -290,7 +290,7 @@
             <div class="meta-section project__languages">
                 <div class="section__title">
                     <h3>Project Languages</h3>
-                    <p>Projects page image.</p>
+                    <p>Languages used creating this project</p>
                 </div>
                 <div class="languages__container">
                     <div 
@@ -304,10 +304,12 @@
                     </div>
                     <div class="language__list">
                         <language-item
-                            v-for="(item) in model.languages"
+                            v-for="(item,i) in model.languages"
                             :key="`language-item-${item.id})`"
                             :id="item.id"
+                            :value="model.languages[i].value"
                             :value-callback="updateLanguage"
+                            :language="model.languages[i].language"
                             :language-callback="updateLanguage"
                             :remove-callback="removeLanguage"/>
                     </div>
@@ -317,10 +319,12 @@
             <div class="meta-section project__languages">
                 <div class="section__title">
                     <h3>Project Resources</h3>
-                    <p>Projects page image.</p>
+                    <p>Resources used creating this project</p>
                 </div>
                 <div class="languages__container">
-                    <resource-picker :items="projectResources"/>
+                    <resource-picker 
+                        :items="projectResources"
+                        :items-selected-callback="resourceItemsSelected"/>
                 </div>
             </div>
 
@@ -431,7 +435,8 @@
                 subtitle     : null,
                 description  : null,
                 link         : null,
-                languages    : []
+                languages    : [],
+                resources    : []
             },
 
             openFolders: [1],
@@ -563,6 +568,10 @@
                     this.model.languages.splice(index, 1)
                 }
                 
+            },
+
+            resourceItemsSelected(items) {
+                this.model.resources = items
             },
 
             handleSelectedFileStructFiles(event) {

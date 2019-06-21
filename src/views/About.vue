@@ -291,7 +291,7 @@
         VUEX_UI_LOGO_UNIVERSAL
     } from '@/store/constants/ui'
     import { 
-        VUEX_ROUTING_NAVIGATE_TO_ROUTE
+        VUEX_ROUTING_PUSH_ROUTE
     } from '@/store/constants/routing'
 
     import AppButton from '@/components/_global/App_Button'
@@ -314,7 +314,7 @@
 
         methods: {
             ...mapActions({
-                navigateToRoute: VUEX_ROUTING_NAVIGATE_TO_ROUTE
+                navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
             }),
 
             navigateToExternalRoute(route) {

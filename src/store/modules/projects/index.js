@@ -12,7 +12,9 @@ import {
     
     VUEX_PROJECT_CREATE,
     VUEX_PROJECT_CREATE_SUCCESS,
-    VUEX_PROJECT_CREATE_FAILURE
+    VUEX_PROJECT_CREATE_FAILURE,
+
+    VUEX_PROJECT_TEARDOWN
 } from '@/store/constants/projects'
 import { 
     VUEX_UI_OVERLAY_CONTAINER_HIDE
@@ -20,6 +22,9 @@ import {
 import {
     VUEX_NOTIFICATIONS_ADD_TO_QUEUE
 } from '@/store/constants/notifications'
+import {
+    VUEX_ROUTING_PUSH_ROUTE, 
+} from '@/store/constants/routing'
 
 
 const state = {
@@ -32,7 +37,25 @@ const state = {
 }
 
 
-const getters = {}
+const getters = {
+    hasProjects: state => {
+        return state.projects.length > 0
+    },
+
+    attachmentsByUsageType: state => (type=null, obj=null, index=null) => {
+        if (!type || !obj) return
+
+        let attachments = (obj === 'projects') 
+            ? state.projects[index].attachments 
+            : state.project.attachments
+       
+        if (!attachments || attachments.length == 0) return []
+        
+        return attachments.filter(item => {
+            return item.usage_type == type
+        })
+    }
+}
 
 
 const actions = {
@@ -41,11 +64,23 @@ const actions = {
      * Fetch All Projects
      * 
      */
-    [VUEX_PROJECTS_FETCH_REQUEST]:({commit}) => {
-        api.get(`/projects`).then((response) => {
+    [VUEX_PROJECTS_FETCH_REQUEST]:({ dispatch, commit }) => {
+        api.get(`/projects`).then( response => {
             commit(VUEX_PROJECTS_FETCH_SUCCESS, response.data.data)
-        }).catch((err) => {
+        }).catch(err => {
             commit(VUEX_PROJECTS_FETCH_FAILURE, err)
+
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'error',
+                    message : 'Error: Projects fetch failed',
+                },
+                timeout: 0
+            })
         })
     },
 
@@ -53,11 +88,27 @@ const actions = {
      * Fetch Project by ID (project_id)
      * 
      */
-    [VUEX_PROJECT_FETCH_REQUEST]:({commit}, payload) => {
-        api.get(`/projects/${payload}`).then((response) => {
-            commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data)
-        }).catch((err) => {
+    [VUEX_PROJECT_FETCH_REQUEST]:({ dispatch, commit }, payload) => {
+        api.get(`/projects/${payload}`).then( async response => {
+            await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
+            
+            if (response.data.data.length == 0) 
+                dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
+
+        }).catch(async err => {
             commit(VUEX_PROJECT_FETCH_FAILURE, err)
+
+            await dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'error',
+                    message : 'Error: Project fetch failed',
+                },
+                timeout: 0
+            })
         })
     },
 
@@ -65,9 +116,9 @@ const actions = {
      * Create Project
      * 
      */
-    [VUEX_PROJECT_CREATE]:({commit, dispatch}, payload) => {
+    [VUEX_PROJECT_CREATE]:({ commit, dispatch }, payload) => {
         commit(VUEX_PROJECT_CREATE)
-        api.post(`/projects`, payload).then( async (response) => {
+        api.post(`/projects`, payload).then( async response => {
             // Save returned data back in state.project
             await commit(VUEX_PROJECT_CREATE_SUCCESS, response.data.data)
             // Close Create Form
@@ -86,7 +137,7 @@ const actions = {
             })
             // Retrieve latest Projects
             dispatch(VUEX_PROJECTS_FETCH_REQUEST)
-        }).catch( async (err) => {
+        }).catch( async err => {
             await commit(VUEX_PROJECT_CREATE_FAILURE, err)
 
             dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
@@ -114,7 +165,6 @@ const mutations = {
         state.projectsLoading = true
     },
     [VUEX_PROJECTS_FETCH_SUCCESS]:(state, payload) => {
-        // console.log(payload)
         state.projects = payload
         state.projectsLoading = false
     },
@@ -153,6 +203,10 @@ const mutations = {
         state.projectSaving = false
     },
 
+
+    [VUEX_PROJECT_TEARDOWN]:(state) => {
+        state.project = {}
+    }
 }
 
 

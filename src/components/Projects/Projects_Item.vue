@@ -29,7 +29,9 @@
                     <div class="title">
                         <p>{{ client }}</p>
                         <h4>{{ title }}</h4>
-                        <app-btn label="View Project"/>
+                        <app-btn 
+                            label="View Project"
+                            @click.native.stop="clickItem"/>
                     </div>
                 </div>
             </div>
@@ -52,6 +54,11 @@
         },
 
         props: {
+            id: {
+                type: String,
+                required: true,
+                default: null
+            },
             client: {
                 type: String,
                 required: true,
@@ -65,6 +72,11 @@
             image: {
                 type: String,
                 required: true,
+                default: null
+            },
+            clickCallback: {
+                type: [Function, Promise],
+                required: false,
                 default: null
             }
         },
@@ -94,8 +106,11 @@
         },
 
         methods: {
-            randomPos() { return Math.floor( Math.random() * (-50 - +50)) + 'px' },
-            setHue(v) { this.hue = v }
+            setHue(v) { this.hue = v },
+
+            clickItem() {
+                if (this.clickCallback) this.clickCallback(this.id)
+            }
         }
     }
 </script>

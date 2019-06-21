@@ -8,35 +8,32 @@
                 <v-icon>add</v-icon>
             </v-btn>
         </div>
-        <div class="projects__list">
+        <div
+            v-if="hasProjects" 
+            class="projects__list">
             <projects-item
-                client="The Gary Group"
-                title="Christmas Card"
-                :image="require('@/assets/app/images/projects/christmas_card/img-1.jpg')" />
-            <projects-item
-                client="Skechers"
-                title="Wayfinder Kiosk"
-                :image="require('@/assets/app/images/projects/skechers_kiosk/img-1.png')" />
-            <projects-item
-                client="The Gary Group"
-                title="Christmas Card"
-                :image="require('@/assets/app/images/projects/christmas_card/img-1.jpg')" />
-            <projects-item
-                client="Skechers"
-                title="Wayfinder Kiosk"
-                :image="require('@/assets/app/images/projects/skechers_kiosk/img-1.png')" />
+                v-for="(item,i) in projects"
+                :key="`project-${item.project_id}-${i}`"
+                :id="item.project_id"
+                :client="item.client"
+                :title="item.title"
+                :click-callback="navigateToProject"
+                :image="thumbnailImage(i)" />
         </div>
     </div>
 </template>
 
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapState, mapGetters, mapActions } from 'vuex'
 
     import {
         VUEX_UI_OVERLAY_CONTAINER_SHOW,
         VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT
     } from '@/store/constants/ui'
+    import {
+        VUEX_ROUTING_PUSH_ROUTE
+    } from '@/store/constants/routing'
 
     import ProjectsItem from '@/components/Projects/Projects_Item.vue'
     
@@ -47,10 +44,29 @@
             'projects-item' : ProjectsItem
         },
 
+        computed: {
+            ...mapState({
+                projects : state => state.projects.projects
+            }),
+
+            ...mapGetters({
+                hasProjects : 'hasProjects',
+                attachmentsByUsageType : 'attachmentsByUsageType'
+            }),
+
+            thumbnailImage() {
+                return (index) => {
+                    let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, 'projects', index)
+                    return (images.length > 0) ? images[0].uri : require('@/assets/app/images/projects/christmas_card/img-1.jpg')
+                }
+            }
+        },
+
         methods: {
             ...mapActions({
-                openOverlayContainer: VUEX_UI_OVERLAY_CONTAINER_SHOW,
-                setOverlayComponent: VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT
+                openOverlayContainer : VUEX_UI_OVERLAY_CONTAINER_SHOW,
+                setOverlayComponent  : VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT,
+                navigateToRoute      : VUEX_ROUTING_PUSH_ROUTE
             }),
 
             addProject() {
@@ -63,6 +79,15 @@
                 })
                 
                 this.openOverlayContainer()
+            },
+
+            navigateToProject(id) {
+                this.navigateToRoute({ 
+                    name: 'project-details',
+                    params: {
+                        id: id
+                    }
+                })
             }
         }
     }

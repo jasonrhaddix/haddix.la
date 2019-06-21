@@ -40,7 +40,7 @@
                 required: false,
                 default: () => ([])
             },
-            selectedCallback: {
+            itemsSelectedCallback: {
                 type: [Function, Promise],
                 required: false,
                 default: null
@@ -53,6 +53,7 @@
         }),
 
         mounted() {
+            // decouple incoming items with local items
             this.optionItems = JSON.parse(JSON.stringify(this.items))
         },
 
@@ -71,9 +72,9 @@
                         return a.id - b.id
                     })
     
-                    if (this.selectedCallback) 
-                        this.selectedCallback(this.selectedItems)
-                },250)
+                    if (this.itemsSelectedCallback) 
+                        this.itemsSelectedCallback(this.selectedItems)
+                }, 100)
             }
         }
     }

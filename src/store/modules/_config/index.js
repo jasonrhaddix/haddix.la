@@ -32,7 +32,27 @@ const getters = {
     },
     getProps: (state) => (value) => {
         return state[value]
-    }
+    },
+
+    /* getPropertyItem: (state) => (whichList, val) => {
+        let index = state[whichList][val - 1]
+        return index
+    },
+
+    getPropertyByKey: (state, getters) => (whichList, val, key) => {
+        let item = getters.getPropertyItem(whichList, val)
+        return item ? item[key] : null
+    }, */
+
+    getPropertyItem:(state) => (whichList, val, sortKey) => {
+        let idx = state[whichList].findIndex(x => x[sortKey] === val)
+        return state[whichList][idx]
+    },
+    
+    getPropertyByKey:(state, getters) => (whichList, val, sortKey, returnKey) => {
+        let item = getters.getPropertyItem(whichList, val, sortKey, returnKey )
+        return item ? item[returnKey] : null
+    },
 }
 
 

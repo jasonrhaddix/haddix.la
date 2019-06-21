@@ -19,6 +19,11 @@ const getters = {
     numberOfNotifications: state => {
         return state.notificationsQueue.length
     },
+
+    hasNotificationsPending: state => {
+        return state.notificationsQueue.length > 0
+    },
+    
 }
 
 
@@ -28,8 +33,8 @@ const actions = {
         dispatch(VUEX_NOTIFICATIONS_PROCCESS)
     },
 
-    [VUEX_NOTIFICATIONS_PROCCESS]:({rootState, state, getters, dispatch, commit}) => {
-       if (getters.numberOfNotifications > 0 && !rootState.ui.notificationsContainer.openState) {
+    [VUEX_NOTIFICATIONS_PROCCESS]:({rootState, state, getters, dispatch}) => {
+       if (getters.hasNotificationsPending && !rootState.ui.notificationsContainer.openState) {
             // Kick-off Notification Queue
             dispatch(VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW, state.notificationsQueue[0])
         }

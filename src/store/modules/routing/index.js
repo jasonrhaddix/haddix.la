@@ -7,7 +7,8 @@ import {
     VUEX_ROUTING_PUSH_ROUTE,
     VUEX_ROUTING_ENTER_ROUTE,
     VUEX_ROUTING_SET_PREVIOUS_ROUTE,
-    VUEX_ROUTING_SET_CURRENT_ROUTE
+    VUEX_ROUTING_SET_CURRENT_ROUTE,
+    VUEX_ROUTING_ENTER_PROJECT
 } from '@/store/constants/routing'
 import {
     VUEX_UI_HEADER_SHOW,
@@ -16,7 +17,9 @@ import {
     VUEX_UI_NAVIGATION_DISABLED
 } from '@/store/constants/ui'
 import {
-    VUEX_PROJECTS_FETCH_REQUEST
+    VUEX_PROJECTS_FETCH_REQUEST,
+    VUEX_PROJECT_FETCH_REQUEST,
+    VUEX_PROJECT_TEARDOWN
 } from '@/store/constants/projects'
 
 
@@ -34,8 +37,9 @@ const actions = {
     [VUEX_ROUTING_INIT]:({ commit, dispatch }) => {
         setTimeout(() => {
             let route = router.history.current.name
+
             commit(VUEX_ROUTING_SET_CURRENT_ROUTE, route)
-            dispatch(VUEX_ROUTING_ENTER_ROUTE, route)
+            dispatch(VUEX_ROUTING_PUSH_ROUTE, {name:route})
             dispatch(VUEX_PROJECTS_FETCH_REQUEST)
         },1000)
     },
@@ -45,32 +49,38 @@ const actions = {
     // ROUTE NAVIGATION FLOW
     /**************************/
     // 1.
-    // Navigate to route action
-    [VUEX_ROUTING_NAVIGATE_TO_ROUTE]: async ({ state, dispatch, rootState }, payload) => {
+    // Push the route to the router 
+    [VUEX_ROUTING_PUSH_ROUTE]: async ({}, payload) => {
+        router.push({ ...payload })
+    },
+    
+    // 2.
+    // Navigate to route action call from router/index.js
+    [VUEX_ROUTING_NAVIGATE_TO_ROUTE]: async ({ rootState, dispatch, commit }, payload) => {    
+        let toRoute = payload.to.name
+        let fromRoute = payload.from.name
+        
         if (rootState.ui.navigation.openState) 
             dispatch(VUEX_UI_NAVIGATION_DISABLED, 1000)
             dispatch(VUEX_UI_NAVIGATION_HIDE)
-
-        // Abort if incoming route is same as current current route
-        if (payload === state.route.current) return
         
-        await dispatch(VUEX_ROUTING_EXIT_ROUTE_TEARDOWN, payload)
-        await dispatch(VUEX_ROUTING_PUSH_ROUTE, payload)
-        dispatch(VUEX_ROUTING_ENTER_ROUTE, payload)
-    },
-
-    // 2.
-    // Teardown actions for exiting a route/view
-    [VUEX_ROUTING_EXIT_ROUTE_TEARDOWN]:({}) => {
-        /* ADD TEARDOWN */
+        // Abort if incoming route is same as current current route
+        if (toRoute === fromRoute) return
+        
+        await dispatch(VUEX_ROUTING_EXIT_ROUTE_TEARDOWN, toRoute)
+        await commit(VUEX_ROUTING_SET_PREVIOUS_ROUTE)
+        await commit(VUEX_ROUTING_SET_CURRENT_ROUTE, toRoute)
+        dispatch(VUEX_ROUTING_ENTER_ROUTE, toRoute)
     },
 
     // 3.
-    // Push the route to the router 
-    [VUEX_ROUTING_PUSH_ROUTE]: async ({ commit }, payload) => {
-        await commit(VUEX_ROUTING_SET_PREVIOUS_ROUTE)
-        router.push({ name: payload })
-        commit(VUEX_ROUTING_SET_CURRENT_ROUTE, payload)
+    // Teardown actions for exiting a route/view
+    [VUEX_ROUTING_EXIT_ROUTE_TEARDOWN]:({ commit }, payload) => {
+        switch(payload) {
+            case  'project-details':
+                commit(VUEX_PROJECT_TEARDOWN)
+                break
+        }
     },
 
     // 4.
@@ -81,10 +91,15 @@ const actions = {
         } else {
             dispatch(VUEX_UI_HEADER_HIDE)
         }
-    }
+    },
     /**************************/
+    /*  */
     /**************************/
 
+
+    [VUEX_ROUTING_ENTER_PROJECT]:({ dispatch }, payload) => {
+        dispatch(VUEX_PROJECT_FETCH_REQUEST, payload)
+    }
 
 }
 const mutations = {
