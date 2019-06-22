@@ -15,7 +15,10 @@ import {
     VUEX_PROJECT_CREATE_FAILURE,
 
     VUEX_PROJECT_TEARDOWN
-} from '@/store/constants/projects'
+} from '@/store/constants/projects' 
+import {
+    VUEX_PROJECT_TREE_FETCH_REQUEST
+} from '@/store/constants/projects/project_tree'
 import { 
     VUEX_UI_OVERLAY_CONTAINER_HIDE
 } from '@/store/constants/ui'
@@ -91,14 +94,16 @@ const actions = {
     [VUEX_PROJECT_FETCH_REQUEST]:({ dispatch, commit }, payload) => {
         api.get(`/projects/${payload}`).then( async response => {
             await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
+
+            dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload)
             
             if (response.data.data.length == 0) 
                 dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
 
-        }).catch(async err => {
+        }).catch( err => {
             commit(VUEX_PROJECT_FETCH_FAILURE, err)
 
-            await dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
                 component: {
                     path : 'Notifications',
                     file : 'Notification_Message'

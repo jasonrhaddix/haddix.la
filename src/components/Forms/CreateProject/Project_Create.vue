@@ -354,13 +354,17 @@
                 </div>
                 <div class="tree__container">
                     <v-treeview
+                        hoverable
+                        open-on-click
                         :items="projectTree.tree_data"
-                        :open.sync="openFolders">
-                        <template v-slot:prepend="{ item }">
-                        <v-icon
-                            v-if="item.children"
-                            v-text="`mdi-${item.id === 1 ? 'home-variant' : 'folder-network'}`"
-                        ></v-icon>
+                        :open="[1]">
+                        <template v-slot:prepend="{ item, open }">
+                            <font-awesome-icon 
+                                v-if="!item.file"
+                                :icon="['fas', open ? 'folder-open': 'folder']"/>
+                            <font-awesome-icon 
+                                v-else 
+                                :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
                         </template>
                     </v-treeview>
                 </div>
@@ -439,7 +443,24 @@
                 resources    : []
             },
 
-            openFolders: [1],
+            treeFoldersOpen: [1],
+            treeOptions: {
+                fileIcons: {
+                    css   : { prefix:'fab', icon:'css3' },
+                    fav   : { prefix:'fas', icon:'star'},
+                    group : { prefix:'fas', icon:'ellipsis-h' },
+                    html  : { prefix:'fab', icon:'html5' },
+                    image : { prefix:'fas', icon:'file-image'},
+                    js    : { prefix:'fab', icon:'js' },
+                    json  : { prefix:'fas', icon:'code' },
+                    md    : { prefix:'fab', icon:'markdown' },
+                    node  : { prefix:'fab', icon:'node-js' },
+                    pdf   : { prefix:'fas', icon:'file-pdf' },
+                    vieo  : { prefix:'fas', icon:'file-video'},
+                    vue   : { prefix:'fab', icon:'vuejs' },
+                    yarn  : { prefix:'fab', icon:'yarn' }
+                },
+            },
 
             projectDateMenu  : false,
             fileDragOver     : false,

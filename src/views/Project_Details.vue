@@ -3,15 +3,92 @@
         <div class="details__content">
             <div class="header__container">
                 <v-img 
-                    
+                    contain
                     v-if="headerImage"
                     :src="headerImage"></v-img>
             </div>
-            <div>SUBTITLE</div>
-            <div>VIDEO</div>
-            <div>DESCRIPTION</div>
-            <div>PHOTOS</div>
-            <div>META</div>
+            <v-container class="content__container">
+                <div class="divider" />
+
+                <div class="section subtitle__container">
+                    <h3 class="headline">{{ subtitle }}</h3>
+                </div>
+                
+                <div class="divider" />
+                
+                <div class="section video__container">
+                    <div
+                        v-if="videos" 
+                        class="video__inner">
+                        <video 
+                            loop
+                            muted
+                            autoplay
+                            controls
+                            playsInline
+                            class="project-video">
+                            <source :src="videos.uri" :type="videos.mimetype"/>
+                        </video>
+                    </div>    
+                </div>
+                
+                <div class="divider" />
+
+                <div class="section description__container">
+                    <div class="description__inner">
+                        <div class="description" v-html="description">
+                            <!-- {{ description }} -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider" />
+
+                <div class="section photos__container">
+                    <v-layout class="photos__inner">
+                        <v-flex 
+                            xs6
+                            v-for="(item,i) in photos"
+                            :key="`project-photo-${$uuid.v4()}-${i}`">
+                            <v-img
+                                :src="item.uri"></v-img>
+                        </v-flex>
+                    </v-layout>
+                </div>
+
+                <div class="divider" />
+
+                <div class="section meta__container">
+                    <div class="subsection meta_languages">
+                        Languages
+                    </div>
+
+                    <div class="subsection meta_resources">
+                        Resources
+                    </div>
+
+                    <div class="subsection meta_tree">
+                        <div
+                            v-if="tree" 
+                            class="tree__inner">
+                            <v-treeview
+                                hoverable
+                                open-on-click
+                                :items="tree"
+                                :open="[1]">
+                                <template v-slot:prepend="{ item, open }">
+                                    <font-awesome-icon 
+                                        v-if="!item.file"
+                                        :icon="['fas', open ? 'folder-open': 'folder']"/>
+                                    <font-awesome-icon 
+                                        v-else 
+                                        :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
+                                </template>
+                            </v-treeview>
+                        </div>
+                    </div>
+                </div>
+            </v-container>
         </div>
     </v-container>
 </template>
@@ -23,9 +100,35 @@
     export default {
         name:'project-details-view',
 
+        components: {
+
+        },
+
+        data:() => ({
+            treeFoldersOpen: [1],
+            treeOptions: {
+                fileIcons: {
+                    css   : { prefix:'fab', icon:'css3' },
+                    fav   : { prefix:'fas', icon:'star'},
+                    group : { prefix:'fas', icon:'ellipsis-h' },
+                    html  : { prefix:'fab', icon:'html5' },
+                    image : { prefix:'fas', icon:'file-image'},
+                    js    : { prefix:'fab', icon:'js' },
+                    json  : { prefix:'fas', icon:'code' },
+                    md    : { prefix:'fab', icon:'markdown' },
+                    node  : { prefix:'fab', icon:'node-js' },
+                    pdf   : { prefix:'fas', icon:'file-pdf' },
+                    vieo  : { prefix:'fas', icon:'file-video'},
+                    vue   : { prefix:'fab', icon:'vuejs' },
+                    yarn  : { prefix:'fab', icon:'yarn' }
+                },
+            },
+        }),
+
         computed: {
             ...mapState({
-                project : state => state.projects.project
+                project     : state => state.projects.project,
+                projectTree : state => state.project_tree.projectTree
             }),
 
             ...mapGetters({
@@ -34,7 +137,36 @@
 
             headerImage() {
                 let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
-                return (images.length > 0) ? images[0].uri : null
+                return (images.length > 0)
+                        ? images[0].uri
+                        : null
+            },
+
+            subtitle() {
+                return this.project.subtitle
+            },
+
+            videos() {
+                let videos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO, 'project-details')
+                return (videos.length > 0)
+                        ? videos[0]
+                        : null
+            },
+
+            description() {
+                return this.project.description
+            },
+
+            photos() {
+                let photos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__BODY, 'project-details')
+                return (photos.length > 0) 
+                        ? photos
+                        : null
+            },
+
+            tree() {
+                console.log(this.projectTree.tree_data)
+                return this.projectTree.tree_data ? this.projectTree.tree_data : null
             }
         }
     }

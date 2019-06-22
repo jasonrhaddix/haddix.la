@@ -47,6 +47,19 @@ $font-weight-black  : 900;
 }
 
 @font-face {
+    font-family: 'DIN-Medium';
+    src: url( $fontFolder + 'Din/DINOT-Medium.eot');
+    src: url( $fontFolder + 'Din/DINOT-Medium.eot?#iefix') format('embedded-opentype'),
+        url( $fontFolder + 'Din/DINOT-Medium.otf') format('opentype'),
+        url( $fontFolder + 'Din/DINOT-Medium.svg') format('svg'),
+        url( $fontFolder + 'Din/DINOT-Medium.ttf') format('truetype'),
+        url( $fontFolder + 'Din/DINOT-Medium.woff') format('woff'),
+        url( $fontFolder + 'Din/DINOT-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'DIN-Cond';
     src: url( $fontFolder + 'Din/DINOT-Cond.eot');
     src: url( $fontFolder + 'Din/DINOT-Cond.eot?#iefix') format('embedded-opentype'),

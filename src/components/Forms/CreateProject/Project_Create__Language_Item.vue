@@ -121,7 +121,6 @@
             },
             languageLocal: {
                 handler(value) {
-                    console.log(value)
                     if (this.languageCallback) 
                         this.languageCallback({
                             id : this.id,

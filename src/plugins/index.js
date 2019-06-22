@@ -12,18 +12,54 @@ import Vue from 'vue'
  */
 import {  library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
+import {
+	faCode,
+	faFolder,
+	faFolderOpen,
+	faFileImage,
+	faFileVideo,
+	faFilePdf,
+	faEllipsisH,
+	faStar
+} from '@fortawesome/free-solid-svg-icons'
 import { 
 	faGithub, 
 	faTwitter, 
 	faCodepen, 
-	faLinkedin
+	faLinkedin,
+	faMarkdown,
+	faCss3,
+	faHtml5,
+	faVuejs,
+	faYarn,
+	faNodeJs,
+	faJs
 } from '@fortawesome/free-brands-svg-icons'
 
-library.add(faGithub)
-library.add(faTwitter)
-library.add(faCodepen)
-library.add(faLinkedin)
+library.add(
+		/* FAS Icons */
+		faCode,
+		faFolder,
+		faFolderOpen,
+		faFileImage,
+		faFileVideo,
+		faFilePdf,
+		faEllipsisH,
+		faStar,
+
+		/* FAB Icons */
+		faGithub,
+		faTwitter,
+		faCodepen,
+		faLinkedin,
+		faMarkdown,
+		faCss3,
+		faHtml5,
+		faVuejs,
+		faYarn,
+		faNodeJs,
+		faJs
+)
 
 export const fontawesome = Vue.component('font-awesome-icon', FontAwesomeIcon)
 

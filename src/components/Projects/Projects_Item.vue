@@ -1,12 +1,16 @@
 <template>
     <div :class="['projects-item', hue]">
         <div class="project__inner">
-            <v-img 
-                contain
-                class="hidden-img"
-                :src="image"></v-img>
 
-            <div 
+            <div class="image__main">
+                <v-img 
+                    contain
+                    class="hidden-img"
+                    :src="image"></v-img>
+                <div class="scrim"/>
+            </div>
+
+            <!-- <div 
                 class="image-container">
                 <div :class="['background-container', hue]"/>
                 <div
@@ -22,7 +26,7 @@
                     contain
                     class="hidden-img"
                     :src="image"></v-img>
-            </div>
+            </div> -->
 
             <div class="title-container" >
                 <div class="title-inner">

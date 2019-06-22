@@ -15,10 +15,10 @@
                 v-for="(item,i) in projects"
                 :key="`project-${item.project_id}-${i}`"
                 :id="item.project_id"
-                :client="item.client"
+                :client="getClientName(item.client)"
                 :title="item.title"
                 :click-callback="navigateToProject"
-                :image="thumbnailImage(i)" />
+                :image="getThumbnailImage(i)" />
         </div>
     </div>
 </template>
@@ -51,15 +51,24 @@
 
             ...mapGetters({
                 hasProjects : 'hasProjects',
-                attachmentsByUsageType : 'attachmentsByUsageType'
+                attachmentsByUsageType : 'attachmentsByUsageType',
+                getPropertyByKey : 'getPropertyByKey'
             }),
 
-            thumbnailImage() {
+            getThumbnailImage() {
                 return (index) => {
                     let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, 'projects', index)
                     return (images.length > 0) ? images[0].uri : require('@/assets/app/images/projects/christmas_card/img-1.jpg')
                 }
+            },
+
+            getClientName() {
+                return (client) => {
+                    if (!client) return ""
+                    return this.getPropertyByKey('clients', client, 'value', 'name')
+                }
             }
+
         },
 
         methods: {

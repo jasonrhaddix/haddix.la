@@ -6,3 +6,15 @@
     -ms-user-select: $value;
     user-select: $value;
   }
+
+  @mixin drop-cap() {
+    &:first-child:first-letter { 
+      float: left; 
+        font-size: 60px;
+        line-height: 45px;
+        padding-top: 4px;
+        padding-right: 10px;
+        padding-left: 3px;
+        font-weight: bolder;
+    }
+  }
