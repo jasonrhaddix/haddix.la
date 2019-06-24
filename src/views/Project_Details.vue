@@ -5,6 +5,7 @@
             contain
             :src="require('@/assets/app/images/project-details-footer-grey.jpg')"></img>
         </div> 
+        
         <div class="details__content">
             <div class="header__container">
                 <v-img 
@@ -18,6 +19,12 @@
                     <h3>{{ client }}</h3>
                     <h1>{{ title }}</h1>
                 </div>
+                <v-btn 
+                    fab small depressed
+                    class="header__close-btn"
+                    @click="navigateToRoute({name:'projects'})">
+                    <v-icon>close</v-icon>
+                </v-btn>
             </div>
 
             <v-container class="content__container">
@@ -76,13 +83,13 @@
                         <h4>Languages</h4>
                     </div>
                     <div class="subsection meta_languages">
-                        <div class="languages__inner">
+                        <v-layout class="languages__inner">
                             <language-graph 
                                 v-for="(item, i) in languages"
                                 :key="`project-language-${$uuid.v4()}-${i}`"
                                 :value="item.value"
                                 :language="item.language"/>
-                        </div>
+                        </v-layout>
                     </div>
 
                     <div class="meta__title languages">
@@ -133,6 +140,10 @@
 
 <script>
     import { mapState, mapGetters, mapActions } from 'vuex'
+
+    import {
+        VUEX_ROUTING_PUSH_ROUTE
+    } from '@/store/constants/routing'
 
     import LanguageGraph from '@/components/_global/Language_Graph'
 
@@ -222,6 +233,12 @@
             tree() {
                 return this.projectTree.tree_data ? this.projectTree.tree_data : null
             }
+        },
+
+        methods: {
+            ...mapActions({
+                navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+            })
         }
     }
 </script>

@@ -59,6 +59,13 @@
                     line-height: 7rem;
                 }
             }
+
+            .header__close-btn {
+                position: absolute;
+                top: 45px;
+                right: 0;
+                z-index: 99;
+            }
         }
         
         .content__container {
