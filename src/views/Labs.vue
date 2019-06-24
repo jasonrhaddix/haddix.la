@@ -1,6 +1,6 @@
 <template>
     <div class="labs-view">
-
+        LABS
     </div>
 </template>
 
