@@ -15,7 +15,7 @@
 
         props: {
             value: {
-                type: Number,
+                type: [String, Number],
                 required: true,
                 default: 0
             },
@@ -32,9 +32,11 @@
 
         computed: {
             languageValue() {
-                if (!this.value) return 0
-                if (this.value >= 100) return this.value.toFixed(0)
-                return (this.value.toFixed(1) % 1 != 0) ? this.value.toFixed(1) : parseInt(this.value.toFixed(1).toString().substring(0, this.value.toFixed(1).length - 1))
+                let value = parseInt(this.value)
+                
+                if (!value) return 0
+                if (value >= 100) return value.toFixed(0)
+                return (value.toFixed(1) % 1 != 0) ? value.toFixed(1) : parseInt(value.toFixed(1).toString().substring(0, value.toFixed(1).length - 1))
             }
         },
 

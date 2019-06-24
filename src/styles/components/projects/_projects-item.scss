@@ -7,13 +7,15 @@ $animationDelay: 100ms;
     .project__inner {
         @include center-content();
 
+        /* .hidden-img {
+            width: 70rem;
+            opacity: 0;
+        } */
+
         .image__main {
             width: 70rem;
+            // opacity: 0;
 
-            .hidden-img {
-                width: 70rem;
-                // opacity: 0;
-            }
             .scrim {
                 position: absolute;
                 top: 0;
@@ -94,16 +96,6 @@ $animationDelay: 100ms;
                 .title {
                     @include center-content('vertical', -40px);
                     width: 100%;
-                    // opacity: 0;
-                    // filter: blur(0.5rem);
-                    // transform-origin: center bottom;
-                    // transform: scale(0.8) translateY(-50%);
-                    // will-change: opacity,
-                    //              filter,
-                    //              transform;
-                    // transition: opacity $animationSpeed linear $animationDelay,
-                    //             filter $animationSpeed linear $animationDelay,
-                    //             transform $animationSpeed linear $animationDelay;
                     
                     p, h4 { 
                         text-align: center;
@@ -132,8 +124,11 @@ $animationDelay: 100ms;
             }
         }
 
-        &:hover {
-        // &.visible {
+        /* &:hover {
+
+            .image__main {
+                opacity:0;
+            }
 
             .image-container {
                 filter: blur(0.5rem);
@@ -166,18 +161,6 @@ $animationDelay: 100ms;
                 .poly-6 { left: 60px; top: 70px}
                 .poly-7 { left: -70px; top: 70px}
             }
-
-            /* .title-container {
-
-                .title-inner {
-
-                    .title {
-                        opacity: 1;
-                        transform: scale(1) translateY(-50%);
-                        filter: blur(0rem);
-                    }
-                }
-            } */
-        }
+        } */
     }
 }

@@ -1,18 +1,10 @@
 <template>
-    <div :class="['projects-item', hue]">
+    <!-- <div :class="['projects-item', hue]"> -->
+    <div :class="['projects-item', {'hover':hover}]">
         <div class="project__inner">
-
-            <div class="image__main">
-                <v-img 
-                    contain
-                    class="hidden-img"
-                    :src="image"></v-img>
-                <div class="scrim"/>
-            </div>
 
             <!-- <div 
                 class="image-container">
-                <div :class="['background-container', hue]"/>
                 <div
                     v-for="(item, index) in patterns[0].p"
                     :key="$uuid.v4()"
@@ -28,6 +20,14 @@
                     :src="image"></v-img>
             </div> -->
 
+            <div class="image__main">
+                <v-img 
+                    contain
+                    class=""
+                    :src="image"></v-img>
+                <div class="scrim"/>
+            </div>
+
             <div class="title-container" >
                 <div class="title-inner">
                     <div class="title">
@@ -35,7 +35,9 @@
                         <h4>{{ title }}</h4>
                         <app-btn 
                             label="View Project"
-                            @click.native.stop="clickItem"/>
+                            @click.native.stop="clickItem"
+                            @mouseover.native.stop="hover=true"
+                            @mouseout.native.stop="hover=false"/>
                     </div>
                 </div>
             </div>
@@ -88,6 +90,7 @@
         data:() =>({
             hue: null,
             visible: null,
+            hover: false,
             patterns: [
                 {
                     p: [
@@ -110,7 +113,11 @@
         },
 
         methods: {
-            setHue(v) { this.hue = v },
+            setHue(val) { this.hue = val },
+
+            itemHover(val) {
+                this.hover = val
+            },
 
             clickItem() {
                 if (this.clickCallback) this.clickCallback(this.id)

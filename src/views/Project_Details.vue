@@ -1,12 +1,25 @@
 <template>
     <v-container fluid class="project-details-view">
+        <div class="footer__container">
+        <img 
+            contain
+            :src="require('@/assets/app/images/project-details-footer-grey.jpg')"></img>
+        </div> 
         <div class="details__content">
             <div class="header__container">
                 <v-img 
                     contain
                     v-if="headerImage"
                     :src="headerImage"></v-img>
+                
+                <div class="scrim"/>
+                
+                <div class="title__container">
+                    <h3>{{ client }}</h3>
+                    <h1>{{ title }}</h1>
+                </div>
             </div>
+
             <v-container class="content__container">
                 <div class="divider" />
 
@@ -59,14 +72,36 @@
                 <div class="divider" />
 
                 <div class="section meta__container">
+                    <div class="meta__title languages">
+                        <h4>Languages</h4>
+                    </div>
                     <div class="subsection meta_languages">
-                        Languages
+                        <div class="languages__inner">
+                            <language-graph 
+                                v-for="(item, i) in languages"
+                                :key="`project-language-${$uuid.v4()}-${i}`"
+                                :value="item.value"
+                                :language="item.language"/>
+                        </div>
                     </div>
 
+                    <div class="meta__title languages">
+                        <h4>Resources</h4>
+                    </div>
                     <div class="subsection meta_resources">
-                        Resources
+                        <v-layout row wrap class="resources__inner">
+                            <v-flex xs6
+                                v-for="(item,i) in resources"
+                                :key="`resource-item-${i}`"
+                                class="resource-item">
+                                <p> {{ item.value }}</p>
+                            </v-flex>
+                        </v-layout>
                     </div>
 
+                    <div class="meta__title languages">
+                        <h4>File Structure</h4>
+                    </div>
                     <div class="subsection meta_tree">
                         <div
                             v-if="tree" 
@@ -79,9 +114,11 @@
                                 <template v-slot:prepend="{ item, open }">
                                     <font-awesome-icon 
                                         v-if="!item.file"
+                                        color="grey"
                                         :icon="['fas', open ? 'folder-open': 'folder']"/>
                                     <font-awesome-icon 
                                         v-else 
+                                        color="grey"
                                         :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
                                 </template>
                             </v-treeview>
@@ -97,11 +134,13 @@
 <script>
     import { mapState, mapGetters, mapActions } from 'vuex'
 
+    import LanguageGraph from '@/components/_global/Language_Graph'
+
     export default {
         name:'project-details-view',
 
         components: {
-
+            'language-graph' : LanguageGraph
         },
 
         data:() => ({
@@ -142,6 +181,14 @@
                         : null
             },
 
+            client() {
+                return this.project.client
+            },
+
+            title() {
+                return this.project.title
+            },
+
             subtitle() {
                 return this.project.subtitle
             },
@@ -164,8 +211,15 @@
                         : null
             },
 
+            languages() {
+                return this.project.languages
+            },
+
+            resources() {
+                return this.project.resources
+            },
+
             tree() {
-                console.log(this.projectTree.tree_data)
                 return this.projectTree.tree_data ? this.projectTree.tree_data : null
             }
         }
