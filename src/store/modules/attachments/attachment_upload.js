@@ -121,18 +121,23 @@ const actions = {
         })
     },
 
-    [VUEX_UPLOAD_ATTACHMENT_REQUEST]: ({dispatch, commit}, payload) => {
+    [VUEX_UPLOAD_ATTACHMENT_REQUEST]: ({ rootState, dispatch, commit}, payload) => {
         commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
             hashId: payload.hashId,
             status: HADDIX_UPLOAD_ATTACHMENT_STATUS__STARTED
         })
 
-        api.post(`/attachments`, payload).then((response) => {
+        let data = {
+			...payload,
+			session_id: rootState.app.sessionToken
+        }
+
+        api.post(`/attachments`, data).then( response => {
             commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
                 hashId: payload.hashId,
                 status: HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS
             })
-        }).catch((err) => {
+        }).catch( err => {
             commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
                 hashId: payload.hashId,
                 status: HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE

@@ -15,8 +15,10 @@
                 v-for="(item,i) in projects"
                 :key="`project-${item.project_id}-${i}`"
                 :id="item.project_id"
+                :session-id="item.session_id"
                 :client="getClientName(item.client)"
                 :title="item.title"
+                :is-guest-project="item.is_guest_project"
                 :click-callback="navigateToProject"
                 :image="getThumbnailImage(i)" />
         </div>
@@ -90,11 +92,12 @@
                 this.openOverlayContainer()
             },
 
-            navigateToProject(id) {
+            navigateToProject(data) {
+                console.log(data)
                 this.navigateToRoute({ 
                     name: 'project-details',
                     params: {
-                        id: id
+                        ...data
                     }
                 })
             }

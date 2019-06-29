@@ -65,6 +65,11 @@
                 required: true,
                 default: null
             },
+            sessionId: {
+                type: String,
+                required: false,
+                default: null
+            },
             client: {
                 type: String,
                 required: true,
@@ -78,6 +83,11 @@
             image: {
                 type: String,
                 required: true,
+                default: null
+            },
+            isGuestProject: {
+                type: Boolean,
+                required: false,
                 default: null
             },
             clickCallback: {
@@ -120,7 +130,11 @@
             },
 
             clickItem() {
-                if (this.clickCallback) this.clickCallback(this.id)
+                if (this.clickCallback) this.clickCallback({
+                    project_id: this.id,
+                    session_id: this.sessionId,
+                    is_guest_project: this.isGuestProject
+                })
             }
         }
     }

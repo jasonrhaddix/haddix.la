@@ -74,15 +74,16 @@ const actions = {
         })
     },
 
-    [VUEX_PROJECT_TREE_CREATE_REQUEST]:({dispatch, commit}, payload) => {
+    [VUEX_PROJECT_TREE_CREATE_REQUEST]:({ rootState, dispatch, commit}, payload) => {
         commit(VUEX_PROJECT_TREE_CREATE_REQUEST)
-
-        let obj = { 
+        
+        let data = { 
             project_id : payload.project_id,
+            session_id: rootState.app.sessionToken,
             tree_data  : payload.tree_data
         }
 
-        api.post(`/project-trees`, obj).then( response => {
+        api.post(`/project-trees`, data).then( response => {
             commit(VUEX_PROJECT_TREE_CREATE_SUCCESS, response.data.data)
         }).catch( err => {
             dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
@@ -120,6 +121,8 @@ const mutations = {
     },
 
     [VUEX_PROJECT_TREE_FETCH_SUCCESS]: (state, payload) => {
+        if (payload.length == 0) return
+        
         state.projectTree = {
             project_id : payload[0].id,
             tree_data  : [payload[0].tree_data]

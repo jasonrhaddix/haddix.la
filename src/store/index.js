@@ -11,6 +11,7 @@ import logger from 'vuex/dist/logger'
 
 import config from '@/store/modules/_config'
 
+import auth from '@/store/modules/auth'
 import app from '@/store/modules/app'
 import attachment_upload from '@/store/modules/attachments/attachment_upload.js'
 import attachment_queue_manager from '@/store/modules/attachments/attachment_queue_manager.js'
@@ -31,6 +32,7 @@ const store = new Vuex.Store({
     modules: {
         config,
         
+        auth,
         app,
         attachment_upload,
         attachment_queue_manager,

@@ -14,6 +14,10 @@ import {
     VUEX_UI_OVERLAY_CONTAINER_SET_STATE,
     VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT,
 
+    VUEX_UI_LOGIN_CONTAINER_SHOW,
+    VUEX_UI_LOGIN_CONTAINER_HIDE,
+    VUEX_UI_LOGIN_CONTAINER_SET_STATE,
+
     VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW,
     VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE,
     VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE,
@@ -33,6 +37,9 @@ const state = {
     overlayContainer: {
         component: null,
         title: '',
+        openState: false
+    },
+    loginContainer: {
         openState: false
     },
     notificationsContainer : {
@@ -99,8 +106,21 @@ const actions = {
         commit(VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT, payload)
     },
 
+    // LOGIN CONTAINER
+    [VUEX_UI_LOGIN_CONTAINER_SHOW]:({ commit }) => {
+        commit(VUEX_UI_LOGIN_CONTAINER_SHOW)   
+    },
+
+    [VUEX_UI_LOGIN_CONTAINER_HIDE]:({ commit }) => {
+        commit(VUEX_UI_LOGIN_CONTAINER_HIDE)   
+    },
+
+    [VUEX_UI_LOGIN_CONTAINER_SET_STATE]:({ commit }, payload) => {
+        commit(VUEX_UI_LOGIN_CONTAINER_SET_STATE, payload)
+    },
+
     // NOTIFICATIONS CONTAINER UI
-    [VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW]:({ state, commit }, payload) => {
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW]:({ commit }, payload) => {
         commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SHOW, payload)
     },
 
@@ -108,7 +128,7 @@ const actions = {
         commit(VUEX_UI_NOTIFICATIONS_CONTAINER_HIDE)
     },
     
-    [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE]:( {commit, dispatch}, payload) => {
+    [VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE]:({ commit, dispatch }, payload) => {
         commit(VUEX_UI_NOTIFICATIONS_CONTAINER_SET_STATE, payload)
         setTimeout(() => {
             dispatch(VUEX_NOTIFICATIONS_CYCLE_COMPLETE)
@@ -164,6 +184,19 @@ const mutations = {
     [VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT]:( state, payload ) => {
         if (payload.component) state.overlayContainer.component = payload.component
         if (payload.title) state.overlayContainer.title = payload.title
+    },
+
+    // LOGIN CONTAINER
+    [VUEX_UI_LOGIN_CONTAINER_SHOW]:( state, payload ) => {
+        state.loginContainer.openState = true; 
+    },
+
+    [VUEX_UI_LOGIN_CONTAINER_HIDE]:( state, payload ) => {
+        state.loginContainer.openState = false; 
+    },
+
+    [VUEX_UI_LOGIN_CONTAINER_SET_STATE]:( state, payload ) => {
+        state.loginContainer.openState = payload; 
     },
 
     // NOTIFICATIONS CONTAINER UI

@@ -1,0 +1,67 @@
+.login-container {
+
+    .login-drawer__container {
+        .v-navigation-drawer {
+            background: {
+                color: $color-m-grey-darken-4;
+            }
+        }
+        
+        .login-input__container {
+            position: relative;
+            height: 100vh;
+            
+            .login-input__inner {
+                @include center-content(0, -50px);
+                padding: 0 1rem;
+                width: 100%;
+                /* margin: {
+                    top: 8rem;
+                } */
+
+                h3 {
+                    font-display: 'Roboto';
+                    color: $color-m-grey-lighten-3;
+                    text-align: center;
+                    text-transform: uppercase;
+                    margin: {
+                        bottom: 0.5rem;
+                    }
+                }
+                
+                .login-btn {
+                    width: 100%;
+                    margin: 0;
+                }
+                
+                /* Change the white to any color ;) */
+                input:-webkit-autofill,
+                input:-webkit-autofill:hover, 
+                input:-webkit-autofill:focus, 
+                input:-webkit-autofill:active  {
+                    -webkit-box-shadow: 0 0 0 30px $color-m-grey-darken-3 inset !important;
+                }
+
+                /*Change text in autofill textbox*/
+                input:-webkit-autofill {
+                    -webkit-text-fill-color: white !important;
+                }
+            }
+        }
+    }
+
+    .login-btn__container {
+        transition: opacity 400ms ease-in-out;
+        opacity: 0;
+
+        .login-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

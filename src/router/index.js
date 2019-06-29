@@ -16,6 +16,7 @@ Vue.use(Router)
 
 
 const beforeEnterWatcher = (to, from, next) => {
+    // TODO: use if for auth route blocking
     // eslint-disable-next-line no-constant-condition
     if (true) {
         store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, {to:to, from:from})
@@ -58,13 +59,13 @@ const router = new Router({
             },
         },
         {
-            path: '/project/:id',
+            path: '/project/:project_id',
             name: 'project-details',
             component: loadView({ file:'Project_Details' }),
             beforeEnter: beforeEnterWatcher,
             meta: {
                 beforeEnterCallback: (to, from, next) => {
-                    store.dispatch(VUEX_ROUTING_ENTER_PROJECT, to.params.id).then(() => next())
+                    store.dispatch(VUEX_ROUTING_ENTER_PROJECT, to.params).then(() => next())
                 }
             },
         },

@@ -6,6 +6,10 @@ import {
     VUEX_PROJECTS_FETCH_SUCCESS,
     VUEX_PROJECTS_FETCH_FAILURE,
 
+    VUEX_PROJECTS_GUEST_FETCH_REQUEST,
+    VUEX_PROJECTS_GUEST_FETCH_SUCCESS,
+    VUEX_PROJECTS_GUEST_FETCH_FAILURE,
+
     VUEX_PROJECT_FETCH_REQUEST,
     VUEX_PROJECT_FETCH_SUCCESS,
     VUEX_PROJECT_FETCH_FAILURE,
@@ -70,6 +74,11 @@ const actions = {
     [VUEX_PROJECTS_FETCH_REQUEST]:({ dispatch, commit }) => {
         api.get(`/projects`).then( response => {
             commit(VUEX_PROJECTS_FETCH_SUCCESS, response.data.data)
+
+            Promise.all([
+                dispatch(VUEX_PROJECTS_GUEST_FETCH_REQUEST)
+            ])
+
         }).catch(err => {
             commit(VUEX_PROJECTS_FETCH_FAILURE, err)
 
@@ -87,15 +96,37 @@ const actions = {
         })
     },
 
+    [VUEX_PROJECTS_GUEST_FETCH_REQUEST]: ({ rootState, dispatch, commit }) => {
+        api.get(`/projects/guest/${rootState.app.sessionToken}`).then( response => {
+            commit(VUEX_PROJECTS_GUEST_FETCH_SUCCESS, response.data.data)
+        }).catch(err => {
+            commit(VUEX_PROJECTS_GUEST_FETCH_FAILURE, err)
+
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'error',
+                    message : 'Error: Guest Projects fetch failed',
+                },
+                timeout: 0
+            })
+        })
+    },
+
     /**
      * Fetch Project by ID (project_id)
      * 
      */
-    [VUEX_PROJECT_FETCH_REQUEST]:({ dispatch, commit }, payload) => {
-        api.get(`/projects/${payload}`).then( async response => {
+    [VUEX_PROJECT_FETCH_REQUEST]:({ dispatch, commit }, payload) => {        
+        let api_route = payload.session_id ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
+
+        api.get(api_route).then( async response => {
             await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
 
-            dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload)
+            dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload.project_id)
             
             if (response.data.data.length == 0) 
                 dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
@@ -121,9 +152,19 @@ const actions = {
      * Create Project
      * 
      */
-    [VUEX_PROJECT_CREATE]:({ commit, dispatch }, payload) => {
+    [VUEX_PROJECT_CREATE]:({ rootState, rootGetters, commit, dispatch }, payload) => {
         commit(VUEX_PROJECT_CREATE)
-        api.post(`/projects`, payload).then( async response => {
+
+        let api_route = rootGetters.appAuthenticated ? `/projects` : `/projects/guest`
+        let auth = `Authorization: Bearer ${rootState.app.appToken}`
+        let headers = rootGetters.appAuthenticated ? {headers:{auth}} : null
+
+        let data = {
+			...payload,
+			session_id: rootState.app.sessionToken
+        }
+
+        api.post(api_route, data, headers).then( async response => {
             // Save returned data back in state.project
             await commit(VUEX_PROJECT_CREATE_SUCCESS, response.data.data)
             // Close Create Form
@@ -137,8 +178,7 @@ const actions = {
                 data: {
                     type    : 'success',
                     message : 'Success: Project created!',
-                },
-                timeout: 0
+                }
             })
             // Retrieve latest Projects
             dispatch(VUEX_PROJECTS_FETCH_REQUEST)
@@ -174,6 +214,27 @@ const mutations = {
         state.projectsLoading = false
     },
     [VUEX_PROJECTS_FETCH_FAILURE]:(state) => {
+        state.projectsLoading = false
+    },
+
+    /**
+     * Fetch GUEST Projects Mutations
+     * 
+     */
+    [VUEX_PROJECTS_GUEST_FETCH_REQUEST]:(state) => {
+        // state.projects = []
+        state.projectsLoading = true
+    },
+    [VUEX_PROJECTS_GUEST_FETCH_SUCCESS]:(state, payload) => {
+        // state.projects.concat(payload)
+        //state.projects = payload
+        payload.flatMap(project => {
+            state.projects.unshift(project)
+        })
+
+        state.projectsLoading = false
+    },
+    [VUEX_PROJECTS_GUEST_FETCH_FAILURE]:(state) => {
         state.projectsLoading = false
     },
 

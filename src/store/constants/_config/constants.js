@@ -1,4 +1,7 @@
 export default {
+    HADDIX_APP_AUTHORIZATION_AUTHORIZED       : 'authorized',
+    HADDIX_APP_AUTHORIZATION_NOT_AUTHORIZED   : 'not_authorized',
+
     HADDIX_PROJECT_TYPE__WORK                 : 'work',
     HADDIX_PROJECT_TYPE__COLLAB               : 'collab',
     HADDIX_PROJECT_TYPE__PERSONAL             : 'personal',
