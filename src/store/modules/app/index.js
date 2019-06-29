@@ -64,7 +64,6 @@ const mutations = {
 
     [VUEX_APP_GENERATE_SESSION_TOKEN]: ( state ) => {
         state.sessionToken = uuid()
-        console.log("session token: " + state.sessionToken)
     }
 }
 

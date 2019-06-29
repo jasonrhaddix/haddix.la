@@ -274,7 +274,7 @@
                     <app-btn 
                         light
                         label="Contact"
-                        @click.native="navigateToRoute('contact')"/>
+                        @click.native="navigateToRoute({ name:'contact' })"/>
                 </div>
 
             </div>

@@ -24,6 +24,8 @@
                             v-model="model.password"/>
                         <v-btn
                             class="auth-btn login-btn"
+                            :disabled="appAuthenticated"
+                            :loading="isAuthorizing"
                             color="primary"
                             @click="submitCredentials">Login</v-btn>
                     </div>
@@ -59,7 +61,8 @@
         VUEX_UI_LOGIN_CONTAINER_SHOW
     } from '@/store/constants/ui'
     import { 
-        VUEX_AUTH_REQUEST
+        VUEX_AUTH_REQUEST,
+        VUEX_AUTH_LOGOUT
     } from '@/store/constants/auth'
 
     export default {
@@ -74,7 +77,8 @@
 
         computed: {
             ...mapState({
-                loginOpenState : state => state.ui.loginContainer.openState
+                loginOpenState : state => state.ui.loginContainer.openState,
+                isAuthorizing  : state => state.auth.authorizing
             }),
 
             ...mapGetters({
@@ -89,16 +93,13 @@
 
         methods: {
             ...mapActions({
-                openLoginDrawer   : VUEX_UI_LOGIN_CONTAINER_SHOW,
-                submitForAuth : VUEX_AUTH_REQUEST
+                openLoginDrawer : VUEX_UI_LOGIN_CONTAINER_SHOW,
+                submitForAuth   : VUEX_AUTH_REQUEST,
+                logout          : VUEX_AUTH_LOGOUT
             }),
 
             submitCredentials() {
                 this.submitForAuth({...this.model})
-            },
-
-            logout() {
-                console.log("logout")
             }
         }
     }

@@ -48,7 +48,7 @@ const actions = {
                 },
                 data: {
                     type    : 'error',
-                    message : 'Error: Project trees fetch failed',
+                    message : "Error: Project trees fetch failed"
                 }
             })
         })
@@ -68,7 +68,7 @@ const actions = {
                 },
                 data: {
                     type    : 'error',
-                    message : 'Error: Project tree fetch failed',
+                    message : "Error: Project tree fetch failed"
                 }
             })
         })
@@ -93,7 +93,7 @@ const actions = {
                 },
                 data: {
                     type    : 'error',
-                    message : 'Error: Project tree creation failed',
+                    message : "Error: Project tree creation failed"
                 }
             })
         })
@@ -122,7 +122,7 @@ const mutations = {
 
     [VUEX_PROJECT_TREE_FETCH_SUCCESS]: (state, payload) => {
         if (payload.length == 0) return
-        
+
         state.projectTree = {
             project_id : payload[0].id,
             tree_data  : [payload[0].tree_data]

@@ -38,10 +38,6 @@
             'app-btn'   : AppButton
         },
 
-        data : () => ({
-            /*  */
-        }),
-
         methods : {
             ...mapActions({
                 navigateToRoute: VUEX_ROUTING_PUSH_ROUTE

@@ -8,6 +8,12 @@
         content-class="overlay-container"
         v-model="openState">
 
+        <div
+            v-if="!appAuthenticated" 
+            class="overlay__guest-warning">
+            <p><span>You're not currently logged.</span> Projects created as guest will be removed after each session.</p>
+        </div>
+
         <v-container grid-list-md>
             <v-layout column>
 
@@ -29,7 +35,7 @@
 </template>
 
 <script>
-    import { mapState, mapActions } from 'vuex'
+    import { mapState, mapGetters, mapActions } from 'vuex'
 
     import {
         VUEX_UI_OVERLAY_CONTAINER_HIDE
@@ -43,6 +49,10 @@
                 overlayOpenState: state => state.ui.overlayContainer.openState,
                 overlayComponent: state => state.ui.overlayContainer.component,
                 overlayTitle:     state => state.ui.overlayContainer.title
+            }),
+
+            ...mapGetters({
+                appAuthenticated : 'appAuthenticated'
             }),
 
             loadComponent() {

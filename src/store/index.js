@@ -44,7 +44,7 @@ const store = new Vuex.Store({
     },
 
     strict: debug,
-    plugins: process.env.NODE_ENV === 'development' ? [logger({ 'collapsed': true })] : []
+    // plugins: process.env.NODE_ENV === 'development' ? [logger({ 'collapsed': true })] : []
 })
 
 

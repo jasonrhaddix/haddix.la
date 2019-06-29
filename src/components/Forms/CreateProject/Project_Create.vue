@@ -1,7 +1,6 @@
 <template>
     <v-flex xs12>
     <div class="form--project-create">
-        NOPE
         <div class="form-section create__form">
             <v-layout row wrap>
                 <v-flex xs4>

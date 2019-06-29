@@ -93,7 +93,6 @@
             },
 
             navigateToProject(data) {
-                console.log(data)
                 this.navigateToRoute({ 
                     name: 'project-details',
                     params: {
