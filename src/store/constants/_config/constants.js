@@ -7,6 +7,11 @@ export default {
     HADDIX_PROJECT_TYPE__PERSONAL             : 'personal',
     HADDIX_PROJECT_TYPE__EXPERIMENT           : 'experiment',
 
+    HADDIX_CONTACT_STATUS__READY              : 'ready',
+    HADDIX_CONTACT_STATUS__PENDING            : 'pending',
+    HADDIX_CONTACT_STATUS__SUCCESS            : 'success',
+    HADDIX_CONTACT_STATUS__FAILURE            : 'failure',
+
     HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL   : 'thumbnail',
     HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL    : 'carousel',
     HADDIX_ATTACHMENT_USAGE_TYPE__BODY        : 'body',

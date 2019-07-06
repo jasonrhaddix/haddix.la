@@ -8,6 +8,7 @@
                         box dense
                         label="Project Type"
                         item-text="name"
+                        :error="$v.model.type.$invalid && submitted"
                         :items="projectTypes"
                         v-model="model.type"/>
                 </v-flex>
@@ -23,6 +24,7 @@
                     <v-text-field 
                         box
                         label="Title"
+                        :error="$v.model.title.$invalid && submitted"
                         v-model="model.title"/>
 
                 </v-flex>
@@ -35,6 +37,7 @@
                         label="Client"
                         item-text="name"
                         :items="clients"
+                        :error="$v.model.client.$invalid && submitted"
                         v-model="model.client"/>
                 </v-flex>
                 <v-flex xs4>
@@ -43,6 +46,7 @@
                         label="Role"
                         item-text="name"
                         :items="projectRoles"
+                        :error="$v.model.role.$invalid && submitted"
                         v-model="model.role"/>
                 </v-flex>
                 <v-flex xs4>
@@ -64,6 +68,7 @@
                             v-on="on"
                             append-icon="event"
                             label="Project Date"
+                            :error="$v.model.project_date.$invalid && submitted"
                             v-model="formattedDateDisplay">
                         </v-text-field>
                         </template>
@@ -81,6 +86,7 @@
                     <v-text-field 
                         box
                         label="Subtitle"
+                        :error="$v.model.subtitle.$invalid && submitted"
                         v-model="model.subtitle"/>
                 </v-flex>
             </v-layout>
@@ -90,6 +96,7 @@
                     <v-textarea 
                         box
                         label="Description"
+                        :error="$v.model.description.$invalid && submitted"
                         v-model="model.description"/>
                 </v-flex>
             </v-layout>
@@ -99,6 +106,8 @@
                     <v-text-field 
                         box
                         label="Project Link"
+                        hint="Requires link format (Example: http://www.my-link.com)"
+                        :error="$v.model.link.$invalid && submitted"
                         v-model="model.link"/>
                 </v-flex>
             </v-layout>
@@ -115,7 +124,7 @@
                     <div class="images-section images__thumbnails">
                         <div class="section__title">
                             <h3>Thumbnail Image</h3>
-                            <p>Projects page image</p>
+                            <p>Projects page thumbnail.</p>
                         </div>
                         <div class="images__container">
                             <attachment-uploader
@@ -156,7 +165,7 @@
                     <div class="images-section images__carousel">
                         <div class="section__title">
                             <h3>Carousel Images</h3>
-                            <p>Project images - header carousel</p>
+                            <p>Header images.</p>
                         </div>
                         <div class="images__container">
                             <attachment-uploader
@@ -197,8 +206,8 @@
                 <v-flex xs4 >
                     <div class="images-section images__body">
                         <div class="section__title">
-                            <h3>Body Images</h3>
-                            <p>Project images - body</p>
+                            <h3>Body Images <span class="caption">(Optional)</span></h3>
+                            <p>Project images.</p>
                         </div>
 
                         <div class="images__container">
@@ -244,14 +253,15 @@
 
             <div class="images-section images__thumbnails">
                 <div class="section__title">
-                    <h3>Body Videos</h3>
-                    <p>Project videos</p>
+                    <h3>Body Videos <span class="caption">(Optional)</span></h3>
+                    <p>Project videos.</p>
                 </div>
                 <div class="images__container">
                     <attachment-uploader
                         multiple
                         ref="attachmentUploader_Video"
                         :attach-to="getAttachTo"
+                        :accepted-file-types="['video/mp4']"
                         :file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO"/>
                     <div :class="['images__dropzone', {'drag-over':fileDragOver}]">
                         <div 
@@ -288,8 +298,8 @@
 
             <div class="meta-section project__languages">
                 <div class="section__title">
-                    <h3>Project Languages</h3>
-                    <p>Languages used creating this project</p>
+                    <h3>Project Languages <span class="caption">(Optional)</span></h3>
+                    <p>Languages used creating this project.</p>
                 </div>
                 <div class="languages__container">
                     <div 
@@ -317,8 +327,8 @@
 
             <div class="meta-section project__languages">
                 <div class="section__title">
-                    <h3>Project Resources</h3>
-                    <p>Resources used creating this project</p>
+                    <h3>Project Resources <span class="caption">(Optional)</span></h3>
+                    <p>Resources used creating this project.</p>
                 </div>
                 <div class="languages__container">
                     <resource-picker 
@@ -329,8 +339,8 @@
 
             <div class="meta-section project__file-tree">
                 <div class="section__title">
-                    <h3>File Structure</h3>
-                    <p></p>
+                    <h3>File Structure <span class="caption">(Optional)</span></h3>
+                    <p>Project file structure. Requires JSON file.</p>
                 </div>
                 <div class="tree__input">
                     <div 
@@ -388,6 +398,12 @@
                 color="primary"
                 width="8"
                 size="38"/>
+            <div
+                v-if="$v.$invalid && submitted"
+                class="error-prompt">
+                <p>Please complete all require fields</p>
+                <div class="divider"/>
+            </div>
             <app-btn 
                 label="Save Project"
                 :disabled="projectSaving"
@@ -400,6 +416,8 @@
 
 
 <script>
+    import { required, maxValue, url } from 'vuelidate/lib/validators'
+    
     import { mapState, mapGetters, mapActions } from 'vuex'
 
     import {
@@ -442,6 +460,7 @@
                 resources    : []
             },
 
+            // TODO: Create as mixin
             treeFoldersOpen: [1],
             treeOptions: {
                 fileIcons: {
@@ -463,15 +482,21 @@
 
             projectDateMenu  : false,
             fileDragOver     : false,
-
-            /* cmOptions: {
-                tabSize      : 4,
-                mode         : 'text/javascript',
-                theme        : 'base16-dark',
-                lineNumbers  : true,
-                line         : true
-            } */
+            submitted        : false
         }),
+
+        validations: {
+            model: {
+                type         : { required },
+                title        : { required },
+                client       : { required },
+                role         : { required },
+                project_date : { required },
+                subtitle     : { required },
+                description  : { required },
+                link         : { url }
+            }
+        },
 
         computed: {
             ...mapState({
@@ -490,7 +515,7 @@
                 getQueuedFiles     : 'getQueuedFiles',
 				getUploadingFiles  : 'getUploadingFiles',
 				getProcessingFiles : 'getProcessingFiles',
-				getCompletedFiles  : 'getCompletedFiles',
+				getCompletedFiles  : 'getCompletedFiles'
             }),
 
             fileAttachments() {
@@ -525,7 +550,7 @@
             getAttachTo() {
                 return {
                     model: HADDIX_ATTACHMENT_TYPE__PROJECT,
-                    model_id: this.model.project_id,
+                    model_id: this.model.project_id
                 }
             },
             
@@ -614,7 +639,11 @@
             },
 
             submitForm() {
-                this.createProject(this.model)
+                this.submitted = true
+
+                if (!this.$v.$invalid) {
+                    this.createProject(this.model)
+                }
             }
         }
     }

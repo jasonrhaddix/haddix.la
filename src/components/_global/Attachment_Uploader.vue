@@ -1,5 +1,15 @@
 <template>
     <div class="attahment-uploader">
+        <div>
+            <video
+                ref="videoControl"
+                type="video/mp4"
+                :style="{width: 'auto', display:'none'}"></video>
+            <canvas 
+                ref="videoControlCanvas"
+                :style="{width: 'auto', display:'none'}"></canvas>
+            <v-img :src="base64" alt=""></v-img>
+        </div>
         <input
             hidden
 			ref="fileControl"
@@ -60,7 +70,9 @@
             processedFiles    : [],
 
             previewsPending   : [],
-            previewLoadTicker : null
+            previewLoadTicker : null,
+
+            base64: ''
         }),
 
         methods: {
@@ -85,18 +97,16 @@
                 if (this.$refs.fileControl !== undefined) {
                     this.files = this.$refs.fileControl.files
                 } else {
-                    if ( event.path &&  event.path[0].files) {
+                    if ( event.path && event.path[0].files) {
                         this.files = event.path[0].files
                     }
                 }
 
                 // 2) Abort if no files are selected
                 if (!this.files.length) return
-                
 
                 // 3) Loop through files
                 Array.prototype.forEach.call(this.files, (file, index) => {
-
                     let	data = {
                         project_id          : this.attachTo.model_id,
                         file_id             : this.$uuid.v4(),
@@ -113,27 +123,53 @@
                     // Assign props from incoming 'setProps Obj'
                     if (this.setProps) Object.assign(data, this.setProps)
                     
-                    // FILES LESS THAT 10MB get preview
-                    if (file.size < 10 * 1024 * 1024) {
-                        var fr = new FileReader()
-						fr.onload = function() {
-							Object.assign(data, { preview:fr.result })
-							self.processedFiles.push(data)
-						}
+                    
+                    if (file.type == 'video/mp4') {
+                        let video = this.$refs.videoControl
+                        let canvas = this.$refs.videoControlCanvas
+                        
+                        video.src = URL.createObjectURL(file)
+                        video.currentTime = 15
+                        
+                        let ctx = canvas.getContext('2d')
+                        
+                        video.onloadedmetadata = function() {
+                            ctx.canvas.width = video.videoWidth
+                            ctx.canvas.height = video.videoHeight
 
-						fr.readAsDataURL(file)
-						self.previewsPending.push(fr)
-
-					} else {
-
-						Object.assign(data, { preview:null })
-						self.processedFiles.push(data)
-
-						self.previewsPending.push(null)
-					}
+                            setTimeout(() => {
+                                ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight)
+                                
+                                let base64Img = canvas.toDataURL("image/jpeg");
+                                Object.assign(data, { preview:base64Img })
+                                
+                                self.addFilesToAQM([data])
+                            },1000)
+                        }
+                    } else {
+                        // FILES LESS THAT 20MB get preview
+                        if (file.size < 20 * 1024 * 1024) {
+                            var fr = new FileReader()
+                            fr.onload = function() {
+                                Object.assign(data, { preview:fr.result })
+                                self.processedFiles.push(data)
+                            }
+    
+                            fr.readAsDataURL(file)
+                            self.previewsPending.push(fr)
+    
+                        } else {
+                            Object.assign(data, { preview:null })
+                            self.processedFiles.push(data)
+    
+                            self.previewsPending.push(null)
+                        }
+                        
+                    }
+                    
+                    this.previewLoadTicker = setInterval(this.checkPreviewsReadyState, 100)
                 })
 
-                this.previewLoadTicker = setInterval(this.checkPreviewsReadyState, 100)
             },
 
             checkPreviewsReadyState() {

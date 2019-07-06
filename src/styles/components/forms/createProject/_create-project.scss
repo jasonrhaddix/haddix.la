@@ -77,7 +77,11 @@
                 h3 {
                     font-size: 1.4rem;
                     color: $color-m-grey;
-                    text-transform: uppercase; 
+                    text-transform: uppercase;
+                    
+                    span {
+                        text-transform: capitalize;
+                    }
                 }
 
                 p {
@@ -163,6 +167,10 @@
                     font-size: 1.4rem;
                     color: $color-m-grey;
                     text-transform: uppercase; 
+
+                    span {
+                        text-transform: capitalize;
+                    }
                 }
 
                 p {
@@ -257,6 +265,29 @@
     .project__save-btn {
         display: flex;
         float: right;
+
+        .error-prompt {
+            display: flex;
+
+            .divider {
+                height: 95%;
+                width: 1px;
+                background: {
+                    color: red;
+                }
+                margin: {
+                    left: 0.75rem;
+                    right: 0.75rem;
+                }
+            }
+
+            p {
+                color: red;
+                margin: {
+                    top: 12px;
+                }
+            }
+        }
 
         .progress__ind {
             margin: {

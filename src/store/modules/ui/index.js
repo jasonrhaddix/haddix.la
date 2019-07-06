@@ -5,9 +5,9 @@ import {
     VUEX_UI_NAVIGATION_SHOW,
     VUEX_UI_NAVIGATION_HIDE,
     VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
-
     VUEX_UI_NAVIGATION_ENABLED,
     VUEX_UI_NAVIGATION_DISABLED,
+    VUEX_UI_NAVIGATION_SET_TITLE,
 
     VUEX_UI_OVERLAY_CONTAINER_SHOW,
     VUEX_UI_OVERLAY_CONTAINER_HIDE,
@@ -32,7 +32,8 @@ const state = {
     headerState: false, 
     navigation: {
         isEnabled: true,
-        openState: false
+        openState: false,
+        title: null
     },
     overlayContainer: {
         component: null,
@@ -91,6 +92,10 @@ const actions = {
                 commit(VUEX_UI_NAVIGATION_ENABLED)
             }, delay)
         }
+    },
+
+    [VUEX_UI_NAVIGATION_SET_TITLE]:({commit}, payload) => {
+        commit(VUEX_UI_NAVIGATION_SET_TITLE, payload)
     },
 
     // OVERLAY CONTAINER UI
@@ -167,6 +172,10 @@ const mutations = {
     [VUEX_UI_NAVIGATION_DISABLED]:( state ) => {
         state.navigation.isEnabled = false
     },
+
+    [VUEX_UI_NAVIGATION_SET_TITLE]:( state, payload ) => {
+        state.navigation.title = payload
+    }, 
 
     // OVERLAY CONTAINER UI
     [VUEX_UI_OVERLAY_CONTAINER_SHOW]:( state ) => {

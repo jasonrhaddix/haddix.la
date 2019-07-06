@@ -28,6 +28,14 @@
                         bottom: 0.5rem;
                     }
                 }
+
+                .input-error {
+                        
+                    .v-input__slot {
+                        border: 1px solid red !important;
+                    }
+                }
+                
                 
                 .auth-btn {
                     width: 100%;

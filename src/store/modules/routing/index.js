@@ -14,7 +14,8 @@ import {
     VUEX_UI_HEADER_SHOW,
     VUEX_UI_HEADER_HIDE,
     VUEX_UI_NAVIGATION_HIDE,
-    VUEX_UI_NAVIGATION_DISABLED
+    VUEX_UI_NAVIGATION_DISABLED,
+    VUEX_UI_NAVIGATION_SET_TITLE
 } from '@/store/constants/ui'
 import {
     VUEX_PROJECTS_FETCH_REQUEST,
@@ -50,13 +51,14 @@ const actions = {
     /**************************/
     // 1.
     // Push the route to the router 
-    [VUEX_ROUTING_PUSH_ROUTE]: async ({}, payload) => {
+    [VUEX_ROUTING_PUSH_ROUTE]: async ({dispatch}, payload) => {
+        if (payload.title) dispatch(VUEX_UI_NAVIGATION_SET_TITLE, payload.title)
         router.push({ ...payload })
     },
     
     // 2.
     // Navigate to route action call from router/index.js
-    [VUEX_ROUTING_NAVIGATE_TO_ROUTE]: async ({ rootState, dispatch, commit }, payload) => {    
+    [VUEX_ROUTING_NAVIGATE_TO_ROUTE]: async ({ rootState, dispatch, commit }, payload) => {
         let toRoute = payload.to.name
         let fromRoute = payload.from.name
         

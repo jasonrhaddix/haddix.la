@@ -4,7 +4,7 @@ export const VUEX_UI_HEADER_HIDE                            = 'VUEX_UI_HEADER_HI
 export const VUEX_UI_NAVIGATION_SHOW                        = 'VUEX_UI_NAVIGATION_SHOW'
 export const VUEX_UI_NAVIGATION_HIDE                        = 'VUEX_UI_NAVIGATION_HIDE'
 export const VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE            = 'VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE'
-
+export const VUEX_UI_NAVIGATION_SET_TITLE                   = 'VUEX_UI_NAVIGATION_SET_TITLE'
 export const VUEX_UI_NAVIGATION_ENABLED                     = 'VUEX_UI_NAVIGATION_ENABLED'
 export const VUEX_UI_NAVIGATION_DISABLED                    = 'VUEX_UI_NAVIGATION_DISABLED'
 

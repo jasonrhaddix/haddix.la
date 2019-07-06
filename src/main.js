@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import Vuelidate from 'vuelidate'
 import UUID from 'vue-uuid'
-// let VueCodemirror = require( 'vue-codemirror')
 
 
 import App from '@/App.vue'
@@ -31,11 +31,7 @@ Vue.directive('match-route', MatchRoute)
 
 // Vue - Use statements
 Vue.use(UUID)
-/* Vue.use(VueCodemirror, {
-	options: { 
-		theme: 'base16-dark'
-	}
-}) */
+Vue.use(Vuelidate)
 Vue.use(Vuetify, {
 	directives: {
 		Ripple

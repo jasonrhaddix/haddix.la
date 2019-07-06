@@ -19,6 +19,7 @@ const beforeEnterWatcher = (to, from, next) => {
     // TODO: use if for auth route blocking
     // eslint-disable-next-line no-constant-condition
     if (true) {
+        console.log(to.params)
         store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, {to:to, from:from})
         
         if (to.meta.hasOwnProperty('beforeEnterCallback')) {

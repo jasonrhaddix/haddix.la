@@ -2,30 +2,35 @@
     <div class="create-attachment-item">
         <div class="item__inner">
             <div class="item__image">
-                <img :src="data.preview" />
+                <video 
+                    v-if="data.file.type == 'video/mp4'" 
+                    autoplay loop
+                    controls muted
+                    :src="compileVideoSrc"></video>
+                    
+                <img v-else :src="data.preview" />
             </div>
             <div :class="['item__progress', `upload_${data.upload_status}`]">
-                    <div
-                        v-if="data.status == $store.state.config.HADDIX_UPLOAD_ATTACHMENT_STATUS__STARTED" 
-                        class="progress">
-                        <div class="progress__ind-background" />
-                        <div class="progress__ind" :style="fileProgress"/>
-                        <div class="progress__percentage">
-                            <p>{{fileProgressPercent}}</p>
-                        </div>
-                    </div> 
-
-                    <div 
-                        v-else-if="$store.state.config.HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS"
-                        class="status">
-                        <div><v-icon color="success">check_circle_outline</v-icon></div>
+                <div
+                    v-if="data.status == $store.state.config.HADDIX_UPLOAD_ATTACHMENT_STATUS__STARTED" 
+                    class="progress">
+                    <div class="progress__ind-background"/>
+                    <div class="progress__ind" :style="fileProgress"/>
+                    <div class="progress__percentage">
+                        <p>{{fileProgressPercent}}</p>
                     </div>
+                </div> 
 
-                    <div 
-                        v-else-if="$store.state.config.HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE"
-                        class="status">
-                        <div><v-icon color="error">highlight_off</v-icon></div>
-                    </div>
+                <div 
+                    v-else-if="$store.state.config.HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS"
+                    class="status">
+                    <div><v-icon color="success">check_circle_outline</v-icon></div>
+                </div>
+
+                <div 
+                    v-else-if="$store.state.config.HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE"
+                    class="status">
+                    <div><v-icon color="error">highlight_off</v-icon></div>
                 </div>
             </div>
            <!--  <div class="item__actions">
@@ -61,6 +66,10 @@
 				
                 if(!total) return 0
 				return { transform:'scaleX(' + loaded/total + ')' }
+            },
+
+            compileVideoSrc() {
+                return URL.createObjectURL(this.data.file)
             }
         }
     }

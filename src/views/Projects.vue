@@ -9,6 +9,15 @@
             </v-btn>
         </div>
         <div
+            v-if="!hasProjects && projectsLoading">
+            <v-progress-circular
+                indeterminate
+                class="progress__ind" 
+                color="primary"
+                width="8"
+                size="38"/>
+        </div>
+        <div
             v-if="hasProjects" 
             class="projects__list">
             <projects-item
@@ -48,7 +57,9 @@
 
         computed: {
             ...mapState({
-                projects : state => state.projects.projects
+                projects        : state => state.projects.projects,
+                projectsLoading : state => state.projects.projectsLoading
+
             }),
 
             ...mapGetters({

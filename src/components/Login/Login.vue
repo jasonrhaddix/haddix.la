@@ -8,17 +8,19 @@
                 v-model="openState">
 
                 <div class="login-input__container">
-                    <div
+                    <div    
                         v-if="!appAuthenticated" 
                         class="login-input__inner">
                         <h3>Admin Login</h3>
                         <v-text-field
                             solo dark
+                            :class="['login-input', {'input-error': $v.model.email.$invalid && submitted}]"
                             label="Email"
                             type="email"
                             v-model="model.email"/>
                         <v-text-field
                             solo dark
+                             :class="['login-input', {'input-error': $v.model.password.$invalid && submitted}]"
                             label="Password"
                             type="password"
                             v-model="model.password"/>
@@ -55,6 +57,8 @@
 </template>
 
 <script>
+    import { required } from 'vuelidate/lib/validators'
+
     import { mapState, mapGetters, mapActions } from 'vuex'
 
     import { 
@@ -72,8 +76,20 @@
             model: {
                 email: null,
                 password: null
-            }
+            },
+            submitted: false
         }),
+
+        validations: {
+            model: {
+                email: {
+                    required
+                },
+                password: {
+                    required
+                }
+            }
+        },
 
         computed: {
             ...mapState({
@@ -99,7 +115,13 @@
             }),
 
             submitCredentials() {
-                this.submitForAuth({...this.model})
+                if (!this.$v.$invalid) {
+                    this.submitted = false
+                    // TODO: need spread operator?
+                    this.submitForAuth({...this.model})
+                } else {
+                    this.submitted = true
+                }
             }
         }
     }

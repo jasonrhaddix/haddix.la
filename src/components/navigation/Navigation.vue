@@ -67,9 +67,10 @@
 
         computed: {
             ...mapState({
-                headerState : state => state.ui.headerState,
+                headerState         : state => state.ui.headerState,
                 navigationOpenState : state => state.ui.navigation.openState,
-                navigationIsEnabled : state => state.ui.navigation.isEnabled
+                navigationIsEnabled : state => state.ui.navigation.isEnabled,
+                routeTitle          : state => state.ui.navigation.title
             }),
 
             headerLogo() {
@@ -77,7 +78,7 @@
             },
 
             routeName(){
-                return this.$route.name !== 'home' ? this.$route.name : ''
+                return this.routeTitle ? this.routeTitle : this.$route.name
             }
         },
 
