@@ -42,17 +42,23 @@
                 cursor: pointer;
                 padding: 0.5rem 1rem;
 
-                options-list {
+                p {
+                    margin: {
+                        bottom: 0;
+                    }
+                }
+                /* options-list {
                     grid-area: options;
+                    
                 }
 
                 selected-list {
                     grid-area: selected;
-                }
+                } */
 
                 &:hover {
                     background: {
-                        color: $color-m-grey-darken-3;
+                        color: $color-m-grey-darken-4;
                     }
                 }   
             }

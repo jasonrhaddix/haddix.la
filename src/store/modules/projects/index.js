@@ -73,12 +73,24 @@ const actions = {
      */
     [VUEX_PROJECTS_FETCH_REQUEST]:({ dispatch, commit }) => {
         api.get(`/projects`).then( response => {
+            console.log(response)
             commit(VUEX_PROJECTS_FETCH_SUCCESS, response.data.data)
 
             Promise.all([
                 dispatch(VUEX_PROJECTS_GUEST_FETCH_REQUEST)
             ])
 
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'success',
+                    message : 'Success: Projects loaded',
+                },
+                timeout: 0
+            })
         }).catch(err => {
             commit(VUEX_PROJECTS_FETCH_FAILURE, err)
 
@@ -98,7 +110,20 @@ const actions = {
 
     [VUEX_PROJECTS_GUEST_FETCH_REQUEST]: ({ rootState, dispatch, commit }) => {
         api.get(`/projects/guest/${rootState.app.sessionToken}`).then( response => {
+            console.log(response)
             commit(VUEX_PROJECTS_GUEST_FETCH_SUCCESS, response.data.data)
+
+            dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+                component: {
+                    path : 'Notifications',
+                    file : 'Notification_Message'
+                },
+                data: {
+                    type    : 'success',
+                    message : 'Success: Guest Projects loaded',
+                },
+                timeout: 0
+            })
         }).catch(err => {
             commit(VUEX_PROJECTS_GUEST_FETCH_FAILURE, err)
 
@@ -226,11 +251,11 @@ const mutations = {
         state.projectsLoading = true
     },
     [VUEX_PROJECTS_GUEST_FETCH_SUCCESS]:(state, payload) => {
-        // state.projects.concat(payload)
-        //state.projects = payload
-        payload.flatMap(project => {
-            state.projects.unshift(project)
-        })
+        if (payload) {
+            payload.flatMap(project => {
+                state.projects.unshift(project)
+            })
+        }
 
         state.projectsLoading = false
     },

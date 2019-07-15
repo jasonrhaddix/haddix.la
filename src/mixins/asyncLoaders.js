@@ -8,7 +8,7 @@ const loadView = (fileObj) => {
 }
 
 const loadComponent = (fileObj) => {
-	if (fileObj.hasOwnProperty('path') && fileObj.path !== null && fileObj.path !== ''  && fileObj.hasOwnProperty('file')) {
+	if (fileObj.hasOwnProperty('path') && fileObj.path !== null && fileObj.path !== '' && fileObj.hasOwnProperty('file')) {
 		return () => import(/* webpackChunkName: "component-[request]" */ `@/components/${fileObj.path}/${fileObj.file}.vue`)
 	} else if (fileObj.hasOwnProperty('file')) {
 		return () => import(/* webpackChunkName: "component-[request]" */ `@/components/${fileObj.file}.vue`)

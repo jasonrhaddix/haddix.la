@@ -6,25 +6,25 @@
         <div class="contact--form">
             <div class="form-row form-flield--name">
                 <v-text-field
-                    box
+                    filled
                     label="First Name"
                     :error="$v.model.first_name.$invalid && submitted"
                     v-model="model.first_name" />
                 <v-text-field
-                    box
+                    filled
                     label="Last Name"
                     v-model="model.last_name" />
             </div>
             <div class="form-row">
                 <v-text-field
-                box
+                filled
                 label="Email"
                 :error="$v.model.email.$invalid && submitted"
                 v-model="model.email" />
             </div>
             <div class="form-row">
                 <v-textarea
-                box
+                filled
                 no-resize
                 label="Message"
                 :error="$v.model.message.$invalid && submitted"

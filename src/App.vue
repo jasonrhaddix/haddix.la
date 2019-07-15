@@ -32,7 +32,6 @@
 
 
 <style lang="scss">
-	@import '~vuetify/dist/vuetify.min.css';
 	@import '~codemirror/lib/codemirror.css';
 	@import '@/styles/index.scss';
 </style>
