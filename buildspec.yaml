@@ -26,11 +26,11 @@ phases:
   build:
     commands:
       - echo Entered the build phase...
-      - yarn build --modern
+      - yarn build
   post_build:
     commands:
       - echo Entered the post_build phase...
-      - aws s3 sync ./dist $S3_BUCKET
+      # - aws s3 sync ./dist $S3_BUCKET
       #   - cp index.html dist/index.html
       #   - cp -R static dist/static
       - echo Build completed on `date`
