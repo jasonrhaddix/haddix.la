@@ -14,8 +14,12 @@
 		}
 		
 		.text {
-			font-size: 0.9rem;
+			font-size: 0.7rem;
 			font-weight: $font-weight-medium;
+			padding: {
+                top: 10px;
+                bottom: 8px;
+            }
 		}
 		
 		&:hover:not(.disabled) {
@@ -69,13 +73,9 @@
 			text-align: center;
 			transition-delay: 0s;
 			opacity: 0;
-			font-size: 0.8rem;
+			// font-size: 0.7rem;
 			font-weight: $font-weight-medium;
 			color: $color-app-button-text-hover;
-            padding: {
-                top: 11px;
-                bottom: 10px;
-            }
 		}
 
         .app-button__bg,
@@ -110,8 +110,8 @@
 			text-transform: uppercase;
 		    display: block;
 	    	position: relative;
-	    	padding: 10px 40px;
-	    	font-size: 0.8rem;
+	    	// padding: 8px 40px;
+	    	// font-size: 0.8rem;
 		}
 		
 		&.light {

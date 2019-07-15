@@ -5,7 +5,7 @@
             <v-layout row wrap>
                 <v-flex xs4>
                     <v-select
-                        box dense
+                        filled dense
                         label="Project Type"
                         item-text="name"
                         :error="$v.model.type.$invalid && submitted"
@@ -22,7 +22,7 @@
             <v-layout row wrap>
                 <v-flex xs12>
                     <v-text-field 
-                        box
+                        filled
                         label="Title"
                         :error="$v.model.title.$invalid && submitted"
                         v-model="model.title"/>
@@ -33,7 +33,7 @@
             <v-layout row wrap>
                 <v-flex xs4>
                     <v-select
-                        box dense
+                        filled dense
                         label="Client"
                         item-text="name"
                         :items="clients"
@@ -42,7 +42,7 @@
                 </v-flex>
                 <v-flex xs4>
                     <v-select
-                        box dense
+                        filled dense
                         label="Role"
                         item-text="name"
                         :items="projectRoles"
@@ -56,14 +56,13 @@
                         :close-on-content-click="false"
                         :nudge-right="40"
                         :return-value="formattedDate"
-                        lazy
                         transition="scale-transition"
                         offset-y
                         full-width
                         min-width="290px">
                         <template v-slot:activator="{ on }">
                         <v-text-field
-                            box
+                            filled
                             readonly
                             v-on="on"
                             append-icon="event"
@@ -74,8 +73,8 @@
                         </template>
                         <v-date-picker v-model="formattedDate" type="month" scrollable>
                             <v-spacer></v-spacer>
-                            <v-btn flat color="primary" @click="projectDateMenu = false">Cancel</v-btn>
-                            <v-btn flat color="primary" @click="$refs.projectDateMenu.save(formattedDate)">OK</v-btn>
+                            <v-btn text color="primary" @click="projectDateMenu = false">Cancel</v-btn>
+                            <v-btn text color="primary" @click="$refs.projectDateMenu.save(formattedDate)">OK</v-btn>
                         </v-date-picker>
                     </v-menu>
                 </v-flex>
@@ -84,7 +83,7 @@
             <v-layout row wrap>
                 <v-flex xs12>
                     <v-text-field 
-                        box
+                        filled
                         label="Subtitle"
                         :error="$v.model.subtitle.$invalid && submitted"
                         v-model="model.subtitle"/>
@@ -94,7 +93,7 @@
             <v-layout row wrap>
                 <v-flex xs12>
                     <v-textarea 
-                        box
+                        filled
                         label="Description"
                         :error="$v.model.description.$invalid && submitted"
                         v-model="model.description"/>
@@ -104,7 +103,7 @@
             <v-layout row wrap>
                 <v-flex>
                     <v-text-field 
-                        box
+                        filled
                         label="Project Link"
                         hint="Requires link format (Example: http://www.my-link.com)"
                         :error="$v.model.link.$invalid && submitted"

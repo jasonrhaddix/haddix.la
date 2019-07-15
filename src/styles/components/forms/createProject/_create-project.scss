@@ -10,9 +10,6 @@
         margin: {
             bottom: 7rem;
         }
-        /* background: {
-            color: $color-app-black-alpha-25;
-        } */
     }
 
     .inner__divider {
@@ -22,7 +19,7 @@
             color: $color-m-grey-darken-3;
         }
         margin: {
-            top: 1.5rem;
+            top: 0.75rem;
         }
     }
 
@@ -48,7 +45,7 @@
     .create__images {
         
         h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
         }
         
@@ -75,7 +72,7 @@
                 }
 
                 h3 {
-                    font-size: 1.4rem;
+                    // font-size: 1.4rem;
                     color: $color-m-grey;
                     text-transform: uppercase;
                     
@@ -115,6 +112,7 @@
                             text-transform: uppercase;
                             color: $color-m-grey-darken-1;
                             font-weight: $font-weight-bold;
+                            margin: 0;
                         }
     
                         .v-icon {
@@ -146,7 +144,10 @@
     }
 
     .create__meta {
-        
+        margin: {
+            bottom: 4rem;
+        }
+
         h2 {
             font-size: 2.2rem;
             text-transform: uppercase;
@@ -164,7 +165,6 @@
                 }
 
                 h3 {
-                    font-size: 1.4rem;
                     color: $color-m-grey;
                     text-transform: uppercase; 
 
@@ -196,6 +196,7 @@
                         text-transform: uppercase;
                         color: $color-m-grey-darken-1;
                         font-weight: $font-weight-bold;
+                        margin: 0;
                     }
 
                     .v-icon {
@@ -238,6 +239,7 @@
                     text-transform: uppercase;
                     color: $color-m-grey-darken-1;
                     font-weight: $font-weight-bold;
+                    margin: 0;
                 }
 
                 .v-icon {
@@ -254,7 +256,6 @@
                 color: $color-app-black-alpha-25;
             }
 
-
             .v-treeview-node__label {
                 font-size: 0.95rem;
                 color: $color-m-grey-lighten-1;
@@ -270,7 +271,7 @@
             display: flex;
 
             .divider {
-                height: 95%;
+                height: 93%;
                 width: 1px;
                 background: {
                     color: red;

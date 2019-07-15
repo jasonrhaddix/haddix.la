@@ -7,11 +7,6 @@ module.exports = {
 				'es6.symbol',
 				'es6.object.assign'
 			]
-		}],
-		'@babel/preset-env'
-	],
-
-	ignore: [
-		'node_modules/*'
+		}]
 	]
 }

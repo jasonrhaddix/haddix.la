@@ -4,6 +4,7 @@
             <v-navigation-drawer
                 fixed
                 temporary
+                width="300"
                 class="login-drawer"
                 v-model="openState">
 
@@ -47,10 +48,10 @@
 
         <div class="login-btn__container">
             <v-btn
-                flat fab small
+                fab small
                 class="login-btn"
                 @click="openLoginDrawer">
-                <v-icon color="grey">vpn_key</v-icon>     
+                <v-icon size="20" color="grey darken-2">vpn_key</v-icon>     
             </v-btn>           
         </div>
     </div>

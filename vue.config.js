@@ -1,17 +1,31 @@
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
-
+// eslint-disable-next-line no-undef
 module.exports = {
-    runtimeCompiler: process.env.USE_RUNTIME_COMPILER,
-
-    configureWebpack: {
-        plugins: [
-            new VuetifyLoaderPlugin()
-        ]
+   configureWebpack: {
+        optimization: {
+            runtimeChunk: 'single',
+            splitChunks: {
+                chunks: 'all',
+                maxInitialRequests: Infinity,
+                minSize: 30000,
+                cacheGroups: {
+                    vendors: {
+                        reuseExistingChunk: true,
+                        test: /[\\/]node_modules[\\/]/,
+                        name(module) {
+                            const name = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
+                            const packageName = (name !== null) ? name[1] : ''
+                            return `npm.${packageName.replace('@', '')}`
+                        }
+                    }
+                }
+            }
+        }
     },
 
     chainWebpack : config => {
+        config.plugins.delete('prefetch')
 
-        config.module
+        /* config.module
             .rule('css')
             .oneOf('module')
             .resourceQuery(/module/)
@@ -22,6 +36,6 @@ module.exports = {
                 importLoaders: 2,
                 modules: true,
                 localIdentName: '[name]-[hash]'
-            })
+            }) */
     }
 }

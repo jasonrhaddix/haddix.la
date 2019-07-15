@@ -9,7 +9,7 @@
             <div class="content__inner">
                 <div class="content__type">
                     <v-select
-                        box
+                        filled
                         dense
                         label="Language"
                         item-text="name"
@@ -18,7 +18,7 @@
                 </div>
                 <div class="content__percentage">
                     <v-text-field
-                        box
+                        filled
                         label="Percentage"
                         type="number"
                         v-model="valueLocal"
