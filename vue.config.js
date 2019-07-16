@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-   /* configureWebpack: {
+   configureWebpack: {
         optimization: {
             runtimeChunk: 'single',
             splitChunks: {
@@ -20,7 +20,7 @@ module.exports = {
                 }
             }
         }
-    }, */
+    },
 
     chainWebpack : config => {
         config.plugins.delete('prefetch')
