@@ -30,15 +30,13 @@ phases:
   post_build:
     commands:
       - echo Entered the post_build phase...
-      # - aws s3 sync ./dist $S3_BUCKET
-      #   - cp index.html dist/index.html
-      #   - cp -R static dist/static
+      - aws s3 sync ./dist $S3_BUCKET
       - echo Build completed on `date`
-artifacts:
-  files:
-    - '**/*'
-  discard-paths: no
-  base-directory: dist
+# artifacts:
+#   files:
+#     - '**/*'
+#   discard-paths: no
+#   base-directory: dist
 
 
   # version: 0.2
