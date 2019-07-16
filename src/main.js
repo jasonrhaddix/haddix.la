@@ -5,7 +5,7 @@ import UUID from 'vue-uuid'
 
 
 // Mixins
-import { loadView, loadComponent } from '@/mixins/asyncLoaders'
+// import { loadView, loadComponent } from '@/mixins/asyncLoaders'
 // Directives
 import { MatchRoute } from '@/directives'
 //Plugins
@@ -52,10 +52,10 @@ store.dispatch(VUEX_APP_INIT).then(() => {
 			// For Electron app
 			// this.$router.push('/')
 		},
-		methods: {
+		/* methods: {
 			loadView,
 			loadComponent
-		},
+		}, */
 		render: h => h(App)
 	}).$mount('#app')
 })

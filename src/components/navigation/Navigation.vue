@@ -2,13 +2,13 @@
     <div :class="['navigation-container', {'open':navigationOpenState}, {'endabled':navigationIsEnabled}]">
         <div class="navigation-poly">
             <nav>
-                <!-- <navigation-item 
+                <navigation-item 
                     v-for="item in navItems"
                     :key="`${item.label}-${$uuid.v4()}`"
                     v-match-route:class.active="item.routeName"
                     :text="item.label"
                     :styles="{ color:'#646468', fontSize:'4rem' }"
-                    @click.native="navigateToRoute({ name: item.routeName })"/> -->
+                    @click.native="navigateToRoute({ name: item.routeName })"/>
             </nav>
         </div>
         <header :class="[{ open:headerState }]">
@@ -50,7 +50,7 @@
     import sitenav from '@/config/sitenav'
 
     import HamburgerMenu from '@/components/_global/Hamburger_Menu'
-    // import NavigationItem from '@/components/Navigation/Navigation_Item'
+    import NavigationItem from '@/components/Navigation/Navigation_Item'
 
 
     export default {

@@ -56,7 +56,8 @@
             }),
 
             loadComponent() {
-                return this.overlayComponent ? this.$root.loadComponent(this.overlayComponent) : null
+                return null
+                // return this.overlayComponent ? this.$root.loadComponent(this.overlayComponent) : null
             },
 
             openState: {
