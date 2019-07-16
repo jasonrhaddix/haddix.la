@@ -44,8 +44,7 @@
             }),
 
             loadComponent() {
-                return null
-                // return this.notificationsComponent ? this.$root.loadComponent(this.notificationsComponent) : null
+                return this.notificationsComponent ? this.$root.loadComponent(this.notificationsComponent) : null
             },
 
             openState: {
