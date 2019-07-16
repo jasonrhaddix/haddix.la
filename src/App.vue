@@ -13,7 +13,7 @@
 
 
 <script>
-	import Navigation from '@/components/_Navigation/Navigation'
+	import Navigation from '@/components/Navigation/Navigation'
 	import OverlayContainer from '@/components/Containers/Overlay_Container'
 	import NotificationContainer from '@/components/Containers/Notification_Container'
 	import LoginContainer from '@/components/Login/Login.vue'
