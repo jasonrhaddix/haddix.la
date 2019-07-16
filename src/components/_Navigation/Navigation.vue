@@ -50,7 +50,7 @@
     import sitenav from '@/config/sitenav'
 
     import HamburgerMenu from '@/components/_global/Hamburger_Menu'
-    import NavigationItem from '@/components/Navigation/Navigation_Item'
+    import NavigationItem from '@/components/_Navigation/Navigation_Item'
 
 
     export default {
