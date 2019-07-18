@@ -11,7 +11,7 @@
         <div
             v-if="!appAuthenticated" 
             class="overlay__guest-warning">
-            <p><span>You're not currently logged.</span> Projects created as guest will be removed after each session.</p>
+            <p><span>You're not currently logged in.</span> Projects created as Guest will be removed after each session.</p>
         </div>
 
         <v-container grid-list-md>

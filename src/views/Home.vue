@@ -9,7 +9,7 @@
             <div class="view-work-btn">
                 <app-btn 
                     label="View Works"
-                    @click.native="navigateToRoute({ name:'projects', title:'Projectssss' })"/>
+                    @click.native="navigateToRoute({ name: 'projects' })"/>
             </div>
         </div>
         

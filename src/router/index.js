@@ -16,8 +16,7 @@ Vue.use(Router)
 
 
 const beforeEnterWatcher = (to, from, next) => {
-    console.log(process)
-    // TODO: use if for auth route blocking
+    // TODO: use if for auth route blocking | authenticated?
     // eslint-disable-next-line no-constant-condition
     if (true) {
         store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, {to:to, from:from})
