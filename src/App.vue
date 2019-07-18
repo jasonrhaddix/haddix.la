@@ -32,6 +32,5 @@
 
 
 <style lang="scss">
-	// @import '~codemirror/lib/codemirror.css';
 	@import '@/styles/index.scss';
 </style>
