@@ -53,6 +53,7 @@
             pointer-events: all;
             
             .app-logo {
+                height: 40px;
                 cursor: pointer;
                 position: relative;
                 border: 1px solid #CCC;
@@ -67,14 +68,14 @@
                 background-color: $color-app-text-light;
                 margin: 10px 10px;
                 width: 1px;
-                height: 24px;
+                height: 20px;
                 transition: transform 0.25s ease-in-out;
                 transform: translateY(0);
                 box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
             }
     
             .breadcrumb {
-                margin: 12px 0 0;
+                margin: 10px 0 0;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
     
                 p {

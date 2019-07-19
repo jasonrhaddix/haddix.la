@@ -34,12 +34,20 @@
 
                 <div class="about--bio">
                     <div class="about-bio--inner">
-                        <h2>Hi, I'm jason Haddix</h2>
-                        <p>I’m a front-end web developer currently living in Los Angeles. My main area of focus is building small and medium Javascript sites with some experience developing in enterprise level web applications. My  passion for development started with Flash/Actionscript in 2005 and eventually spread into HTML/CSS and Javascript, where working outside of a self-contained application framework has its challenges and its advantages. I love experiementing with trending web technologies including WebGL and WebRTC, and frameworks such as React and VueJS.</p>
+                        <h2>Hi, I'm Jason Haddix.</h2>
+                        <p>I'm a Web Engineer living in the Los Angeles area where I develop web apps and creative projects for leading lifestyle and entertainment companies. I have previously lead developers, consulted with agencies and collaborated with many talented engineers and designers to create digital products for companies like Skechers, Universal Studios and Showtime. My experience as a developer has been highlighted with many projects that I can proudly add my name to. </p>
+                        <p>My free time is spent with my family, tinkering with emerging technologies and spearfishing in our beautiful Pacific Ocean. I am eagerly looking forward to upcoming challenges to conquer.</p>
                     </div>
                 </div>
 
                 <div class="section-divider" />
+
+                <!-- <div class="quote-container">
+                    <blockquote>Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.</blockquote>
+                    <p>Thomas A. Edison</p>
+                </div>
+                
+                <div class="section-divider" /> -->
 
                 <div class="section about--skillset">
                     <div class="section--title">
@@ -125,10 +133,41 @@
                     <div class="section--title">
                         <h2>Experience</h2>
                     </div>
+                    
+                    <div class="subsection">
+                        <h3>The Branding Farm</h3>
+                        <div class="about-experience-role"><h4>Engineer<span> | 2018 - PRESENT</span></h4></div>
+                        <div class="about-experience-role"><h4>Contract Developer<span> | 2007 - 2018</span></h4></div>
+                        <p class="description">The Branding Farm focuses mainly on lifestyle and entertainment clients - providing web applications and engaging experiences for their clients.</p>
+                        <div class="about-section-experience-roles">
+                            <p>Roles Included :</p>
+                            <ul>
+                                <li><p>Front-end development of web applications</p></li>
+                                <li><p>Interactive Kiosk development</p></li>
+                                <li><p>Updates to legacy Flash applications</p></li>
+                                <li><p>Motion graphics creation</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <h3>Dot Squirrels</h3>
+                        <div class="about-experience-role"><h4>Contract Developer<span> | 2016 - 2017</span></h4></div>
+                        <p class="description">Dot Squirrels focuses mainly on retail and coporate websites with CMS integration.</p>
+                        <div class="about-section-experience-roles">
+                            <p>Roles Included :</p>
+                            <ul>
+                                <li><p>Front-end and Back-end development including custom Wordpress templates and backend CMS</p></li>
+                                <li><p>Project concepting</p></li>
+                                <li><p>Design and motion graphic work</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="subsection">
                         <h3>The Gary Group</h3>
-                        <div class="about-experience-role"><h4>Senior Developer<span> | 2007 - 2016</span></h4></div>
-                        <p>The Gary Group handles a range of services that include web application development and advertising for a multitude of entertainment and retail clients.</p>
+                        <div class="about-experience-role"><h4>Senior Engineer<span> | 2007 - 2016</span></h4></div>
+                        <p class="description">The Gary Group handles a range of services that include web application development and advertising for a multitude of entertainment and retail clients.</p>
                         <div class="about-section-experience-roles">
                             <p>Roles Included :</p>
                             <ul>
@@ -138,35 +177,6 @@
                                 <li><p>Setting up live broadcast events to be streamed over hundreds of products</p></li>
                             </ul>
                         </div>
-                    </div>
-
-                    <div class="subsection">
-                        <h3>The Branding Farm</h3>
-                        <div class="about-experience-role"><h4>Contract Developer<span> | 2007 - PRESENT</span></h4></div>
-                        <p>The Branding Farm focuses mainly on the Entertainment industry  - providing rich web applications and engaging experiences for their clients.</p>
-                        <div class="about-section-experience-roles">
-                            <p>Roles Included :</p>
-                            <ul>
-                                <li><p>Front-end development of rich web applications, including framework development, templating, and styling</p></li>
-                                <li><p>Motion graphics creation</p></li>
-                                <li><p>Updates to legacy Flash applications</p></li>
-                                <li><p>Interactive Kiosk development</p></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="subsection">
-                        <h3>Dot Squirrels</h3>
-                            <div class="about-experience-role"><h4>Contract Developer<span> | 2016 - PRESENT</span></h4></div>
-                            <p>Dot Squirrels focuses mainly on retail and coporate websites with CMS integration.</p>
-                            <div class="about-section-experience-roles">
-                                <p>Roles Included :</p>
-                                <ul>
-                                    <li><p>Front-end development including custom Wordpress templates and backend CMS</p></li>
-                                    <li><p>Project concepting</p></li>
-                                    <li><p>Light design and motion graphic work</p></li>
-                                </ul>
-                            </div>
                     </div>
                 </div>
 

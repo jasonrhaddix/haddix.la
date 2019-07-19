@@ -112,10 +112,32 @@
             .about--bio {
 
                 h2 {
+                    // text-align: left;
                     text-transform: uppercase;
+                    // font-size: 1.2rem;
                     margin: {
                         bottom: 0.5rem;
                     }
+                }
+
+                p {
+                    text-align: left;
+                    margin: {
+                        bottom: 1rem;
+                    }
+                }
+            }
+            
+            .quote-container {
+                color: $color-m-grey;
+
+                blockquote,
+                p {
+                    text-align: center;
+                }
+
+                p {
+                    font-style: italic;
                 }
             }
 
@@ -123,20 +145,26 @@
                 
                 .about-experience-role {
                     text-transform: uppercase;
-                    margin: 10px 0 15px;
+                    // margin: 10px 0 15px;
                     
                     h4 {
                         font-weight: $font-weight-light;
 
                         span {
-                            font-family: 'Din-Light', Helvetica, sans-serif;
-    
-                            color: #999;
+                            color: $color-m-grey;
                         }
                     }
                 }
-                .about-section-experience-roles {
 
+                .description {
+                    margin: {
+                        top: 1rem;
+                        bottom: 1rem;
+                    }
+                 }
+
+                .about-section-experience-roles {
+                    
                     ul {
                         padding-left: 15px;
 
