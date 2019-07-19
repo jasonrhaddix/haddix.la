@@ -1,31 +1,31 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-   configureWebpack: {
-        optimization: {
-            runtimeChunk: 'single',
-            splitChunks: {
-                chunks: 'all',
-                maxInitialRequests: Infinity,
-                minSize: 30000,
-                cacheGroups: {
-                    vendors: {
-                        reuseExistingChunk: true,
-                        test: /[\\/]node_modules[\\/]/,
-                        name(module) {
-                            const name = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
-                            const packageName = (name !== null) ? name[1] : ''
-                            return `npm.${packageName.replace('@', '')}`
-                        }
-                    }
-                }
+  configureWebpack: {
+    optimization: {
+      runtimeChunk: 'single',
+      splitChunks: {
+        chunks: 'all',
+        maxInitialRequests: Infinity,
+        minSize: 30000,
+        cacheGroups: {
+          vendors: {
+            reuseExistingChunk: true,
+            test: /[\\/]node_modules[\\/]/,
+            name (module) {
+              const name = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)
+              const packageName = (name !== null) ? name[1] : ''
+              return `npm.${packageName.replace('@', '')}`
             }
+          }
         }
-    },
+      }
+    }
+  },
 
-    chainWebpack : config => {
-        config.plugins.delete('prefetch')
+  chainWebpack: config => {
+    config.plugins.delete('prefetch')
 
-        /* config.module
+    /* config.module
             .rule('css')
             .oneOf('module')
             .resourceQuery(/module/)
@@ -37,5 +37,5 @@ module.exports = {
                 modules: true,
                 localIdentName: '[name]-[hash]'
             }) */
-    }
+  }
 }

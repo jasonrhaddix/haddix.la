@@ -9,8 +9,8 @@
                 v-model="openState">
 
                 <div class="login-input__container">
-                    <div    
-                        v-if="!appAuthenticated" 
+                    <div
+                        v-if="!appAuthenticated"
                         class="login-input__inner">
                         <h3>Admin Login</h3>
                         <v-text-field
@@ -32,7 +32,7 @@
                             color="primary"
                             @click="submitCredentials">Login</v-btn>
                     </div>
-                    <div 
+                    <div
                         v-else
                         class="login-input__inner">
                         <h3>You're currently logged in</h3>
@@ -51,79 +51,79 @@
                 fab small
                 class="login-btn"
                 @click="openLoginDrawer">
-                <v-icon size="20" color="grey darken-2">vpn_key</v-icon>     
-            </v-btn>           
+                <v-icon size="20" color="grey darken-2">vpn_key</v-icon>
+            </v-btn>
         </div>
     </div>
 </template>
 
 <script>
-    import { required } from 'vuelidate/lib/validators'
+import { required } from 'vuelidate/lib/validators'
 
-    import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
-    import { 
-        VUEX_UI_LOGIN_CONTAINER_SHOW
-    } from '@/store/constants/ui'
-    import { 
-        VUEX_AUTH_REQUEST,
-        VUEX_AUTH_LOGOUT
-    } from '@/store/constants/auth'
+import {
+  VUEX_UI_LOGIN_CONTAINER_SHOW
+} from '@/store/constants/ui'
+import {
+  VUEX_AUTH_REQUEST,
+  VUEX_AUTH_LOGOUT
+} from '@/store/constants/auth'
 
-    export default {
-        name: 'login-container',
+export default {
+  name: 'login-container',
 
-        data:() => ({
-            model: {
-                email: null,
-                password: null
-            },
-            submitted: false
-        }),
+  data: () => ({
+    model: {
+      email: null,
+      password: null
+    },
+    submitted: false
+  }),
 
-        validations: {
-            model: {
-                email: {
-                    required
-                },
-                password: {
-                    required
-                }
-            }
-        },
-
-        computed: {
-            ...mapState({
-                loginOpenState : state => state.ui.loginContainer.openState,
-                isAuthorizing  : state => state.auth.authorizing
-            }),
-
-            ...mapGetters({
-                appAuthenticated : 'appAuthenticated'
-            }),
-
-            openState: {
-                get() { return this.loginOpenState },
-                set(val) { this.$store.dispatch('VUEX_UI_LOGIN_CONTAINER_SET_STATE', val) }
-            }
-        },
-
-        methods: {
-            ...mapActions({
-                openLoginDrawer : VUEX_UI_LOGIN_CONTAINER_SHOW,
-                submitForAuth   : VUEX_AUTH_REQUEST,
-                logout          : VUEX_AUTH_LOGOUT
-            }),
-
-            submitCredentials() {
-                if (!this.$v.$invalid) {
-                    this.submitted = false
-                    // TODO: need spread operator?
-                    this.submitForAuth({...this.model})
-                } else {
-                    this.submitted = true
-                }
-            }
-        }
+  validations: {
+    model: {
+      email: {
+        required
+      },
+      password: {
+        required
+      }
     }
+  },
+
+  computed: {
+    ...mapState({
+      loginOpenState: state => state.ui.loginContainer.openState,
+      isAuthorizing: state => state.auth.authorizing
+    }),
+
+    ...mapGetters({
+      appAuthenticated: 'appAuthenticated'
+    }),
+
+    openState: {
+      get () { return this.loginOpenState },
+      set (val) { this.$store.dispatch('VUEX_UI_LOGIN_CONTAINER_SET_STATE', val) }
+    }
+  },
+
+  methods: {
+    ...mapActions({
+      openLoginDrawer: VUEX_UI_LOGIN_CONTAINER_SHOW,
+      submitForAuth: VUEX_AUTH_REQUEST,
+      logout: VUEX_AUTH_LOGOUT
+    }),
+
+    submitCredentials () {
+      if (!this.$v.$invalid) {
+        this.submitted = false
+        // TODO: need spread operator?
+        this.submitForAuth({ ...this.model })
+      } else {
+        this.submitted = true
+      }
+    }
+  }
+}
 </script>

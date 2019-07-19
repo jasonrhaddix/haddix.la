@@ -35,7 +35,7 @@
                     <v-progress-circular
                         v-if="mailSending"
                         indeterminate
-                        class="progress__ind" 
+                        class="progress__ind"
                         color="primary"
                         width="8"
                         size="38"/>
@@ -51,77 +51,77 @@
 </template>
 
 <script>
-    import { required, email } from 'vuelidate/lib/validators'
-    
-    import { mapState, mapActions } from 'vuex'
+import { required, email } from 'vuelidate/lib/validators'
 
-    import {
-        VUEX_CONTACT_SEND_EMAIL_REQUEST
-    } from '@/store/constants/contact'
+import { mapState, mapActions } from 'vuex'
 
-    import AppButton from '@/components/_global/App_Button'
+import {
+  VUEX_CONTACT_SEND_EMAIL_REQUEST
+} from '@/store/constants/contact'
 
-    export default {
-        name: 'contact-form',
+import AppButton from '@/components/_global/App_Button'
 
-        components: {
-            'app-btn' : AppButton
-        },
+export default {
+  name: 'contact-form',
 
-        data:() => ({
-            model: {
-                first_name : null,
-                last_name  : null,
-                email      : null,
-                message    : null
-            },
-            submitted : false
-        }),
+  components: {
+    'app-btn': AppButton
+  },
 
-        validations: {
-            model: {
-                first_name : { required },
-                email      : { required, email },
-                message    : { required }
-            }
-        },
+  data: () => ({
+    model: {
+      first_name: null,
+      last_name: null,
+      email: null,
+      message: null
+    },
+    submitted: false
+  }),
 
-        computed: {
-            ...mapState({
-                mailSending : state => state.contact.mailSending,
-                mailStatus  : state => state.contact.mailStatus
-            })
-        },
-
-        methods: {
-            ...mapActions({
-                submitForm: VUEX_CONTACT_SEND_EMAIL_REQUEST
-            }),
-
-            sendEmail() {
-                this.submitted = true
-                
-                if (!this.$v.$invalid) {
-                    this.submitForm(this.model)
-                }
-            }
-        },
-
-        watch: {
-            mailStatus: {
-                deep: true,
-                handler(val) {
-                    if (val === HADDIX_CONTACT_STATUS__READY) {
-                        this.submitted = false
-                        this.model = {
-                            first_name : null,
-                            last_name  : null,
-                            email      : null,
-                            message    : null
-                        }
-                    }
-                }
-            }
-        }
+  validations: {
+    model: {
+      first_name: { required },
+      email: { required, email },
+      message: { required }
     }
+  },
+
+  computed: {
+    ...mapState({
+      mailSending: state => state.contact.mailSending,
+      mailStatus: state => state.contact.mailStatus
+    })
+  },
+
+  methods: {
+    ...mapActions({
+      submitForm: VUEX_CONTACT_SEND_EMAIL_REQUEST
+    }),
+
+    sendEmail () {
+      this.submitted = true
+
+      if (!this.$v.$invalid) {
+        this.submitForm(this.model)
+      }
+    }
+  },
+
+  watch: {
+    mailStatus: {
+      deep: true,
+      handler (val) {
+        if (val === HADDIX_CONTACT_STATUS__READY) {
+          this.submitted = false
+          this.model = {
+            first_name: null,
+            last_name: null,
+            email: null,
+            message: null
+          }
+        }
+      }
+    }
+  }
+}
 </script>

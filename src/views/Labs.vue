@@ -4,9 +4,8 @@
     </div>
 </template>
 
-
 <script>
 export default {
-    name: 'labs-view'
+  name: 'labs-view'
 }
 </script>

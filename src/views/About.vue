@@ -2,7 +2,7 @@
     <div class="about-view">
         <div class="about-view--inner">
             <div class="about-view--content">
-                
+
                 <div class="about--header">
                     <div class="header--photo-container">
                         <div class="header--photo">
@@ -46,7 +46,7 @@
                     <blockquote>Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.</blockquote>
                     <p>Thomas A. Edison</p>
                 </div>
-                
+
                 <div class="section-divider" /> -->
 
                 <div class="section about--skillset">
@@ -82,7 +82,7 @@
 							</ul>
 						</div>
                     </div>
-                    
+
                     <div class="subsection">
                         <h3>Services</h3>
 						<div class="about-items--list">
@@ -133,7 +133,7 @@
                     <div class="section--title">
                         <h2>Experience</h2>
                     </div>
-                    
+
                     <div class="subsection">
                         <h3>The Branding Farm</h3>
                         <div class="about-experience-role"><h4>Engineer<span> | 2018 - PRESENT</span></h4></div>
@@ -166,7 +166,8 @@
 
                     <div class="subsection">
                         <h3>The Gary Group</h3>
-                        <div class="about-experience-role"><h4>Senior Engineer<span> | 2007 - 2016</span></h4></div>
+                        <div class="about-experience-role"><h4>Senior Engineer<span> | 2013 - 2016</span></h4></div>
+                        <div class="about-experience-role"><h4>Engineer / Creative Developer<span> | 2007 - 2013</span></h4></div>
                         <p class="description">The Gary Group handles a range of services that include web application development and advertising for a multitude of entertainment and retail clients.</p>
                         <div class="about-section-experience-roles">
                             <p>Roles Included :</p>
@@ -281,7 +282,7 @@
                 <div class="section-divider" />
 
                 <div class="section about--footer">
-                    <app-btn 
+                    <app-btn
                         light
                         label="Contact"
                         @click.native="navigateToRoute({ name:'contact' })"/>
@@ -292,44 +293,42 @@
     </div>
 </template>
 
-
 <script>
-    import { mapActions } from 'vuex'
-    
-    import {
-        VUEX_UI_ABOUT_BIO_PHOTO,
-        VUEX_UI_LOGO_UNIVERSAL
-    } from '@/store/constants/ui'
-    import { 
-        VUEX_ROUTING_PUSH_ROUTE
-    } from '@/store/constants/routing'
+import { mapActions } from 'vuex'
 
-    import AppButton from '@/components/_global/App_Button'
+import {
+  VUEX_UI_ABOUT_BIO_PHOTO,
+  VUEX_UI_LOGO_UNIVERSAL
+} from '@/store/constants/ui'
+import {
+  VUEX_ROUTING_PUSH_ROUTE
+} from '@/store/constants/routing'
 
+import AppButton from '@/components/_global/App_Button'
 
-    export default {
-        name: 'about-view',
+export default {
+  name: 'about-view',
 
-        components: {
-            'app-btn' : AppButton
-        },
+  components: {
+    'app-btn': AppButton
+  },
 
-        data:() => ({
-           
-        }),
+  data: () => ({
 
-        computed: {
-            bioPhoto() { return VUEX_UI_ABOUT_BIO_PHOTO }
-        },
+  }),
 
-        methods: {
-            ...mapActions({
-                navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-            }),
+  computed: {
+    bioPhoto () { return VUEX_UI_ABOUT_BIO_PHOTO }
+  },
 
-            navigateToExternalRoute(route) {
-                window.location
-            }
-        }
+  methods: {
+    ...mapActions({
+      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+    }),
+
+    navigateToExternalRoute (route) {
+      window.location
     }
+  }
+}
 </script>

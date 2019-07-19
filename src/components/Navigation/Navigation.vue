@@ -2,7 +2,7 @@
     <div :class="['navigation-container', {'open':navigationOpenState}, {'endabled':navigationIsEnabled}]">
         <div class="navigation-poly">
             <nav>
-                <navigation-item 
+                <navigation-item
                     v-for="item in navItems"
                     :key="`${item.label}-${$uuid.v4()}`"
                     v-match-route:class.active="item.routeName"
@@ -13,7 +13,7 @@
         </div>
         <header :class="[{ open:headerState }]">
             <div class="header--logo-container">
-                <div 
+                <div
                     class="app-logo"
                     @click="navigateToRoute({ name: 'home' })">
                     <img :src="headerLogo"/>
@@ -23,70 +23,66 @@
                     <p>{{routeName}}</p>
                 </div>
             </div>
-            <div 
+            <div
                 class="nav-menu-button"
                 @click="toggleNavigationMenu">
                 <hamburger-menu :menu-state="navigationOpenState"/>
             </div>
         </header>
-        
+
     </div>
 </template>
 
-
 <script>
-    import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
+import {
+  VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
+  VUEX_UI_HEADER_LOGO
+} from '@/store/constants/ui'
+import {
+  VUEX_ROUTING_PUSH_ROUTE
+} from '@/store/constants/routing'
 
-    import {
-        VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
-        VUEX_UI_HEADER_LOGO
-    } from '@/store/constants/ui'
-    import {
-        VUEX_ROUTING_PUSH_ROUTE
-    } from '@/store/constants/routing'
+import sitenav from '@/config/sitenav'
 
+import HamburgerMenu from '@/components/_global/Hamburger_Menu'
+import NavigationItem from '@/components/Navigation/Navigation_Item'
 
-    import sitenav from '@/config/sitenav'
+export default {
+  name: 'navigation',
 
-    import HamburgerMenu from '@/components/_global/Hamburger_Menu'
-    import NavigationItem from '@/components/Navigation/Navigation_Item'
+  components: {
+    'hamburger-menu': HamburgerMenu,
+    'navigation-item': NavigationItem
+  },
 
+  data: () => ({
+    navItems: sitenav
+  }),
 
-    export default {
-        name: 'navigation',
+  computed: {
+    ...mapState({
+      headerState: state => state.ui.headerState,
+      navigationOpenState: state => state.ui.navigation.openState,
+      navigationIsEnabled: state => state.ui.navigation.isEnabled,
+      routeTitle: state => state.ui.navigation.title
+    }),
 
-        components: {
-            'hamburger-menu' : HamburgerMenu,
-            'navigation-item' : NavigationItem
-        },
+    headerLogo () {
+      return VUEX_UI_HEADER_LOGO
+    },
 
-        data:() => ({
-            navItems: sitenav
-        }),
-
-        computed: {
-            ...mapState({
-                headerState         : state => state.ui.headerState,
-                navigationOpenState : state => state.ui.navigation.openState,
-                navigationIsEnabled : state => state.ui.navigation.isEnabled,
-                routeTitle          : state => state.ui.navigation.title
-            }),
-
-            headerLogo() {
-                return VUEX_UI_HEADER_LOGO
-            },
-
-            routeName(){
-                return this.routeTitle ? this.routeTitle : this.$route.name
-            }
-        },
-
-        methods: {
-            ...mapActions({
-                toggleNavigationMenu : VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
-                navigateToRoute      : VUEX_ROUTING_PUSH_ROUTE
-            })
-        }
+    routeName () {
+      return this.routeTitle ? this.routeTitle : this.$route.name
     }
+  },
+
+  methods: {
+    ...mapActions({
+      toggleNavigationMenu: VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
+      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+    })
+  }
+}
 </script>

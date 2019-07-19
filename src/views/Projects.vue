@@ -12,13 +12,13 @@
             v-if="!hasProjects && projectsLoading">
             <v-progress-circular
                 indeterminate
-                class="progress__ind" 
+                class="progress__ind"
                 color="primary"
                 width="8"
                 size="38"/>
         </div>
         <div
-            v-if="hasProjects" 
+            v-if="hasProjects"
             class="projects__list">
             <projects-item
                 v-for="(item,i) in projects"
@@ -34,83 +34,82 @@
     </div>
 </template>
 
-
 <script>
-    import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
-    import {
-        VUEX_UI_OVERLAY_CONTAINER_SHOW,
-        VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT
-    } from '@/store/constants/ui'
-    import {
-        VUEX_ROUTING_PUSH_ROUTE
-    } from '@/store/constants/routing'
+import {
+  VUEX_UI_OVERLAY_CONTAINER_SHOW,
+  VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT
+} from '@/store/constants/ui'
+import {
+  VUEX_ROUTING_PUSH_ROUTE
+} from '@/store/constants/routing'
 
-    import ProjectsItem from '@/components/Projects/Projects_Item.vue'
-    
-    export default {
-        name : 'projects-view',
+import ProjectsItem from '@/components/Projects/Projects_Item.vue'
 
-        components: {
-            'projects-item' : ProjectsItem
-        },
+export default {
+  name: 'projects-view',
 
-        computed: {
-            ...mapState({
-                projects        : state => state.projects.projects,
-                projectsLoading : state => state.projects.projectsLoading
+  components: {
+    'projects-item': ProjectsItem
+  },
 
-            }),
+  computed: {
+    ...mapState({
+      projects: state => state.projects.projects,
+      projectsLoading: state => state.projects.projectsLoading
 
-            ...mapGetters({
-                hasProjects : 'hasProjects',
-                attachmentsByUsageType : 'attachmentsByUsageType',
-                getPropertyByKey : 'getPropertyByKey'
-            }),
+    }),
 
-            getThumbnailImage() {
-                return (index) => {
-                    let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, 'projects', index)
-                    return (images.length > 0) ? images[0].uri : require('@/assets/app/images/projects/christmas_card/img-1.jpg')
-                }
-            },
+    ...mapGetters({
+      hasProjects: 'hasProjects',
+      attachmentsByUsageType: 'attachmentsByUsageType',
+      getPropertyByKey: 'getPropertyByKey'
+    }),
 
-            getClientName() {
-                return (client) => {
-                    if (!client) return ""
-                    return this.getPropertyByKey('clients', client, 'value', 'name')
-                }
-            }
+    getThumbnailImage () {
+      return (index) => {
+        let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, 'projects', index)
+        return (images.length > 0) ? images[0].uri : require('@/assets/app/images/projects/christmas_card/img-1.jpg')
+      }
+    },
 
-        },
-
-        methods: {
-            ...mapActions({
-                openOverlayContainer : VUEX_UI_OVERLAY_CONTAINER_SHOW,
-                setOverlayComponent  : VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT,
-                navigateToRoute      : VUEX_ROUTING_PUSH_ROUTE
-            }),
-
-            addProject() {
-                this.setOverlayComponent({ 
-                    component:{ 
-                        path:'Forms/CreateProject',
-                        file:'Project_Create'
-                    }, 
-                    title:'Create Project'
-                })
-                
-                this.openOverlayContainer()
-            },
-
-            navigateToProject(data) {
-                this.navigateToRoute({ 
-                    name: 'project-details',
-                    params: {
-                        ...data
-                    }
-                })
-            }
-        }
+    getClientName () {
+      return (client) => {
+        if (!client) return ''
+        return this.getPropertyByKey('clients', client, 'value', 'name')
+      }
     }
+
+  },
+
+  methods: {
+    ...mapActions({
+      openOverlayContainer: VUEX_UI_OVERLAY_CONTAINER_SHOW,
+      setOverlayComponent: VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT,
+      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+    }),
+
+    addProject () {
+      this.setOverlayComponent({
+        component: {
+          path: 'Forms/CreateProject',
+          file: 'Project_Create'
+        },
+        title: 'Create Project'
+      })
+
+      this.openOverlayContainer()
+    },
+
+    navigateToProject (data) {
+      this.navigateToRoute({
+        name: 'project-details',
+        params: {
+          ...data
+        }
+      })
+    }
+  }
+}
 </script>

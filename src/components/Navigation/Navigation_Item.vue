@@ -12,22 +12,21 @@
     </div>
 </template>
 
-
 <script>
-    export default {
-        name: 'navigation-item',
-        
-        props: {
-            text: {
-                type: String,
-                required: true,
-                default: null
-            },
-            styles: {
-                type: Object,
-                required: false,
-                default: () => {}
-            }
-        }
+export default {
+  name: 'navigation-item',
+
+  props: {
+    text: {
+      type: String,
+      required: true,
+      default: null
+    },
+    styles: {
+      type: Object,
+      required: false,
+      default: () => {}
     }
+  }
+}
 </script>

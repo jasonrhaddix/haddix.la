@@ -11,29 +11,28 @@
     </div>
 </template>
 
-
 <script>
-    export default {
-        name : 'app-button',
-        
-        props: {
-            label: {
-                type : String,
-                required : true,
-                default: null
-            },
+export default {
+  name: 'app-button',
 
-            light: {
-                type : Boolean,
-                required : false,
-                default: false
-            },
+  props: {
+    label: {
+      type: String,
+      required: true,
+      default: null
+    },
 
-            disabled: {
-                type: Boolean,
-                required: false,
-                default: false
-            }
-        }
+    light: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
     }
+  }
+}
 </script>

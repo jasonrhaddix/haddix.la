@@ -31,11 +31,9 @@
     </div>
 </template>
 
-
 <script>
-    export default {
-        name: 'animated-logo-container',
+export default {
+  name: 'animated-logo-container'
 
-
-    }
+}
 </script>

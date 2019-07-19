@@ -15,39 +15,35 @@ import auth from '@/store/modules/auth'
 import app from '@/store/modules/app'
 import attachment_upload from '@/store/modules/attachments/attachment_upload.js'
 import attachment_queue_manager from '@/store/modules/attachments/attachment_queue_manager.js'
-import contact from  '@/store/modules/contact'
-import notifications from  '@/store/modules/notifications'
+import contact from '@/store/modules/contact'
+import notifications from '@/store/modules/notifications'
 import projects from '@/store/modules/projects'
 import project_tree from '@/store/modules/projects/project_tree'
 import routing from '@/store/modules/routing'
 import ui from '@/store/modules/ui'
 
-
 Vue.use(Vuex)
-
 
 const debug = process.env.NODE_ENV !== 'production'
 
-
 const store = new Vuex.Store({
-    modules: {
-        config,
-        
-        auth,
-        app,
-        attachment_upload,
-        attachment_queue_manager,
-        contact,
-        notifications,
-        projects,
-        project_tree,
-        ui,
-        routing
-    },
+  modules: {
+    config,
 
-    strict: debug,
-    // plugins: process.env.NODE_ENV === 'development' ? [logger({ 'collapsed': true })] : []
+    auth,
+    app,
+    attachment_upload,
+    attachment_queue_manager,
+    contact,
+    notifications,
+    projects,
+    project_tree,
+    ui,
+    routing
+  },
+
+  strict: debug
+  // plugins: process.env.NODE_ENV === 'development' ? [logger({ 'collapsed': true })] : []
 })
-
 
 export default store

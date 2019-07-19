@@ -12,17 +12,16 @@
     </div>
 </template>
 
-
 <script>
-    export default {
-        name: 'hamburger-menu',
+export default {
+  name: 'hamburger-menu',
 
-        props: {
-            menuState: {
-                type     : Boolean,
-                required : true,
-                default  : false
-            }
-        }
+  props: {
+    menuState: {
+      type: Boolean,
+      required: true,
+      default: false
     }
+  }
+}
 </script>
