@@ -4,7 +4,7 @@
 
         <div class="home-view--content">
             <logo class="animated-logo" />
-            <p>Portfolio for Jason R Haddix</p>
+            <p>Portfolio for Jason R. Haddix</p>
             <div class="divider" />
             <div class="view-work-btn">
                 <app-btn

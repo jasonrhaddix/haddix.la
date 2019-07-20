@@ -28,13 +28,15 @@
             </div>
 
             <v-container class="content__container">
-                <div class="divider" />
+                <!-- <div class="divider" /> -->
 
                 <div class="section subtitle__container">
                     <h3 class="headline">{{ subtitle }}</h3>
                 </div>
 
-                <div class="divider" />
+                <div
+                  v-if="videos" 
+                  class="divider" />
 
                 <div class="section video__container">
                     <div
@@ -62,12 +64,17 @@
                     </div>
                 </div>
 
-                <div class="divider" />
+                <div
+					v-if="photos" 
+					class="divider" />
 
                 <div class="section photos__container">
-                    <v-layout class="photos__inner">
+                    <v-layout 
+                      row wrap 
+                      class="photos__inner">
                         <v-flex
                             xs6
+                            align-content-center
                             v-for="(item,i) in photos"
                             :key="`project-photo-${$uuid.v4()}-${i}`">
                             <v-img
@@ -76,13 +83,19 @@
                     </v-layout>
                 </div>
 
-                <div class="divider" />
+                <div 
+					v-if="languages || resources || tree"
+					class="divider" />
 
                 <div class="section meta__container">
-                    <div class="meta__title languages">
+                    <div 
+						v-if="languages"
+						class="meta__title languages">
                         <h4>Languages</h4>
                     </div>
-                    <div class="subsection meta_languages">
+                    <div
+						v-if="languages" 
+						class="subsection meta_languages">
                         <v-layout class="languages__inner">
                             <language-graph
                                 v-for="(item, i) in languages"
@@ -92,10 +105,14 @@
                         </v-layout>
                     </div>
 
-                    <div class="meta__title languages">
+                    <div 
+						v-if="resources" 
+						class="meta__title languages">
                         <h4>Resources</h4>
                     </div>
-                    <div class="subsection meta_resources">
+                    <div
+						v-if="resources" 
+						class="subsection meta_resources">
                         <v-layout row wrap class="resources__inner">
                             <v-flex xs6
                                 v-for="(item,i) in resources"
@@ -106,13 +123,15 @@
                         </v-layout>
                     </div>
 
-                    <div class="meta__title languages">
+                    <div
+                        v-if="tree" 
+                        class="meta__title languages">
                         <h4>File Structure</h4>
                     </div>
-                    <div class="subsection meta_tree">
-                        <div
-                            v-if="tree"
-                            class="tree__inner">
+                    <div
+                        v-if="tree" 
+                        class="subsection meta_tree">
+                        <div class="tree__inner">
                             <v-treeview
                                 hoverable
                                 open-on-click
@@ -222,11 +241,11 @@ export default {
     },
 
     languages () {
-      return this.project.languages
+      return (this.project.languages.length > 0) ? this.project.languages : null
     },
 
     resources () {
-      return this.project.resources
+	  return (this.project.resources.length > 0) ? this.project.resources : null
     },
 
     tree () {

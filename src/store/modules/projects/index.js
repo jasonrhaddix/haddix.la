@@ -69,14 +69,13 @@ const actions = {
      */
   [VUEX_PROJECTS_FETCH_REQUEST]: ({ dispatch, commit }) => {
     api.get(`/projects`).then(response => {
-      console.log(response)
       commit(VUEX_PROJECTS_FETCH_SUCCESS, response.data.data)
 
       Promise.all([
         dispatch(VUEX_PROJECTS_GUEST_FETCH_REQUEST)
       ])
 
-      dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+      /* dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
         component: {
           path: 'Notifications',
           file: 'Notification_Message'
@@ -86,7 +85,7 @@ const actions = {
           message: 'Success: Projects loaded'
         },
         timeout: 0
-      })
+      }) */
     }).catch(err => {
       commit(VUEX_PROJECTS_FETCH_FAILURE, err)
 
@@ -106,10 +105,9 @@ const actions = {
 
   [VUEX_PROJECTS_GUEST_FETCH_REQUEST]: ({ rootState, dispatch, commit }) => {
     api.get(`/projects/guest/${rootState.app.sessionToken}`).then(response => {
-      console.log(response)
       commit(VUEX_PROJECTS_GUEST_FETCH_SUCCESS, response.data.data)
 
-      dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+      /* dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
         component: {
           path: 'Notifications',
           file: 'Notification_Message'
@@ -119,7 +117,7 @@ const actions = {
           message: 'Success: Guest Projects loaded'
         },
         timeout: 0
-      })
+      }) */
     }).catch(err => {
       commit(VUEX_PROJECTS_GUEST_FETCH_FAILURE, err)
 
@@ -175,8 +173,8 @@ const actions = {
     commit(VUEX_PROJECT_CREATE)
 
     let api_route = rootGetters.appAuthenticated ? `/projects` : `/projects/guest`
-    let auth = `Authorization: Bearer ${rootState.app.appToken}`
-    let headers = rootGetters.appAuthenticated ? { headers: { auth } } : null
+    let Authorization = `Bearer ${rootState.auth.appToken}`
+    let headers = rootGetters.appAuthenticated ? { headers: { Authorization } } : null
 
     let data = {
       ...payload,

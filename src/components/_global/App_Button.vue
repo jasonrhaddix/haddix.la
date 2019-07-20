@@ -12,27 +12,27 @@
 </template>
 
 <script>
-export default {
-  name: 'app-button',
+	export default {
+		name: 'app-button',
 
-  props: {
-    label: {
-      type: String,
-      required: true,
-      default: null
-    },
+		props: {
+			label: {
+				type: String,
+				required: true,
+				default: null
+			},
 
-    light: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
+			light: {
+				type: Boolean,
+				required: false,
+				default: false
+			},
 
-    disabled: {
-      type: Boolean,
-      required: false,
-      default: false
-    }
-  }
-}
+			disabled: {
+				type: Boolean,
+				required: false,
+				default: false
+			}
+		}
+	}
 </script>

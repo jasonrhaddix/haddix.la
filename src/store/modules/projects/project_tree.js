@@ -57,7 +57,7 @@ const actions = {
     }).catch(err => {
       commit(VUEX_PROJECT_TREE_FETCH_FAILURE, err)
 
-      dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+      /* dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
         component: {
           path: 'Notifications',
           file: 'Notification_Message'
@@ -66,7 +66,7 @@ const actions = {
           type: 'error',
           message: 'Error: Project tree fetch failed'
         }
-      })
+      }) */
     })
   },
 

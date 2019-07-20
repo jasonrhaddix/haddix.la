@@ -93,8 +93,8 @@ $animationDelay: 100ms;
                 width: 100%;
                 height: 100%;
                 
-                .title {
-                    @include center-content('vertical', -40px);
+                .project-title {
+                    @include center-content('vertical', -20px);
                     width: 100%;
                     
                     p, h4 { 
@@ -103,15 +103,24 @@ $animationDelay: 100ms;
                         color: white;
                         text-transform: uppercase;
                     }
-
+                    
                     p {
                         font-family: 'DIN-CondLight';
+                        line-height: 3rem;
                         font-size: 3rem;
                     }
                     
                     h4 {
                         font-family: 'DIN-CondBlack';
                         font-size: 6rem;
+                        line-height: 6rem;
+                    }
+
+                    .divider {
+                        height: 20px;
+                        width: 1px;
+                        background-color: $color-app-text-light;
+                        margin: 0 auto;
                     }
 
                     .app-button__container {

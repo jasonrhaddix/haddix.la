@@ -35,19 +35,16 @@
             .title__container {
                 @include center-content();
                 width: 100%;
-                padding: 1rem;
-                /* background: {
-                    color: $color-app-white-alpha-25;
-                } */
 
                 h3 {
                     // font-size: 7rem;
-                    font-size: 2rem;
+                    font-size: 3rem;
                     font-family: 'DIN-CondLight';
                     text-align: center;
                     text-transform: uppercase;
                     padding: 0 3rem;
-                    color: white; 
+                    line-height: 2.5rem;
+                    color: $color-m-white; 
                 }
                 
                 h1 {
@@ -57,21 +54,21 @@
                     text-transform: uppercase;
                     padding: 0 3rem;
                     color: white;
-                    line-height: 7rem;
+                    line-height: 6.5rem;
                 }
             }
 
             .header__close-btn {
                 position: absolute;
                 top: 45px;
-                right: 0;
+                right: 5px;
                 z-index: 99;
             }
         }
         
         .content__container {
             padding: {
-                top: 0;
+                top: 4rem;
             }
 
             & > div {
@@ -138,10 +135,14 @@
             .photos__container {
                 
                 .photos__inner {
-                    display: flex;
+
+                    & > div {
+                        padding: 4px;
+                    }
+
 
                     .v-img {
-                        width: 50%;
+                        
                     }
                 }
             }

@@ -50,7 +50,8 @@ const actions = {
   // 1.
   // Push the route to the router
   [VUEX_ROUTING_PUSH_ROUTE]: async ({ dispatch }, payload) => {
-    if (payload.title) dispatch(VUEX_UI_NAVIGATION_SET_TITLE, payload.title)
+    let title = (payload.params && payload.params.title) ? payload.params.title : payload.name
+    dispatch(VUEX_UI_NAVIGATION_SET_TITLE, title)
     router.push({ ...payload })
   },
 

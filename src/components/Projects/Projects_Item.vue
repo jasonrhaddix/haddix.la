@@ -30,9 +30,10 @@
 
             <div class="title-container" >
                 <div class="title-inner">
-                    <div class="title">
+                    <div class="project-title">
                         <p>{{ client }}</p>
                         <h4>{{ title }}</h4>
+                        <div class="divider" />
                         <app-btn
                             label="View Project"
                             @click.native.stop="clickItem"
@@ -133,7 +134,8 @@ export default {
         this.clickCallback({
           project_id: this.id,
           session_id: this.sessionId,
-          is_guest_project: this.isGuestProject
+          is_guest_project: this.isGuestProject,
+          title: this.title
         })
       }
     }
