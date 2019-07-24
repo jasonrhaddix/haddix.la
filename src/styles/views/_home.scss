@@ -32,8 +32,9 @@
 }
 
 
-@include respond-to(small) {
-    .home-view--container {
+@include respond-to(medium) {
+    
+    .home-view {
     
         .home-view--content {
             @include center-content(0, -50px);

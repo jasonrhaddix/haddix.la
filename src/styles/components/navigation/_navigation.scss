@@ -25,7 +25,7 @@
         }
         
         nav {
-            @include center-content(0, -3rem);
+            @include center-content(0, -4.5rem);
             width: 400px;
 
             & > div {
@@ -124,6 +124,25 @@
     &.enabled {
         nav {
             pointer-events: all;
+        }
+    }
+}
+
+
+@include respond-to(medium) {
+    
+    .navigation-container {
+    
+        .navigation-poly {
+            
+            nav {
+                & > div {
+                    margin: {
+                        top: 1rem;
+                        bottom: 1rem;
+                    }
+                }
+            }
         }
     }
 }

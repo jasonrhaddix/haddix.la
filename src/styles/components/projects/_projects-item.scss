@@ -6,6 +6,8 @@ $animationDelay: 100ms;
 
     .project__inner {
         @include center-content();
+        width: 90%;
+        max-width: 70rem;
 
         /* .hidden-img {
             width: 70rem;
@@ -13,7 +15,8 @@ $animationDelay: 100ms;
         } */
 
         .image__main {
-            width: 70rem;
+            // max-width: 70rem;
+            // width: 90%;
             // opacity: 0;
 
             .scrim {
@@ -29,7 +32,8 @@ $animationDelay: 100ms;
 
         .image-container {
             position: absolute;        
-            width: 70rem;
+            // max-width: 70rem;
+            // width: 90%;
             opacity: 1;
             top: 50%;
             left: 50%;
@@ -171,5 +175,34 @@ $animationDelay: 100ms;
                 .poly-7 { left: -70px; top: 70px}
             }
         } */
+    }
+}
+
+
+@include respond-to(medium) {
+
+    .projects-item {
+
+        .project__inner {
+            
+            .title-container {
+
+                .title-inner {
+                    
+                    .project-title {
+
+                        p {
+                            line-height: 2rem;
+                            font-size: 2rem;
+                        }
+                        
+                        h4 {
+                            font-size: 3rem;
+                            line-height: 3rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

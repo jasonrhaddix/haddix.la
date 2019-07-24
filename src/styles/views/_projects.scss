@@ -18,3 +18,22 @@
         }
     }
 }
+
+
+@include respond-to(medium) {
+    
+    .projects-view {
+    
+        .projects__list {
+    
+            .projects-item {
+                width: 100vw;
+                height: 15rem;
+                
+                margin: {
+                    top: 5rem;
+                }
+            }
+        }
+    }
+}

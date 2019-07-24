@@ -159,6 +159,8 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
+// import VuePureLightbox from 'vue-pure-lightbox'
+
 import {
   VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'

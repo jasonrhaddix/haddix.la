@@ -7,7 +7,7 @@
                     :key="`${item.label}-${$uuid.v4()}`"
                     v-match-route:class.active="item.routeName"
                     :text="item.label"
-                    :styles="{ color:'#646468', fontSize:'4rem' }"
+                    :styles="{ color:'#646468', fontSize:'3rem' }"
                     @click.native="navigateToRoute({ name: item.routeName })"/>
             </nav>
         </div>

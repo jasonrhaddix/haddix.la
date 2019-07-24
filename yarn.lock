@@ -10467,6 +10467,14 @@ vue-observe-visibility@^0.4.4:
   resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-0.4.4.tgz#cf3e945bf80c1317a1c32bc516d6cfd4dda8f8fd"
   integrity sha512-2eDYHgL2MJ2wkkNZnus56D0CG8m80BFLuvEcGnD7rQ9jxFogpXMsM9aM5Md+XT8AmYGYCqVfOVBaWFtVvwbpmw==
 
+vue-pure-lightbox@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/vue-pure-lightbox/-/vue-pure-lightbox-3.1.0.tgz#2c110f948bc9af27668900980fd19b7b208a3389"
+  integrity sha512-SYYn6wTXXcM3zXoV4MZJrGFvt8LHno3yI49wA/NDT5wB9mDyLNJyMyY9TQyENx604/42x+uhpdR9QYWX/aaK8g==
+  dependencies:
+    core-js "^2.6.5"
+    vue "^2.6.10"
+
 vue-router@^3.0.6:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.7.tgz#b36ca107b4acb8ff5bc4ff824584059c23fcb87b"
@@ -10532,10 +10540,10 @@ vuetify-loader@^1.2.2:
   dependencies:
     loader-utils "^1.1.0"
 
-vuetify@2.0.0-beta.7:
-  version "2.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.0-beta.7.tgz#157a38531ea083ae5fec0a7022ca089e865fc2d8"
-  integrity sha512-+65qvCSeVFagkYuY4vRtI32H+K5MvNBbzrrKrUrwUXYZWpmfDa3idCMh3FjdJokX61fUhrIa2it6FoQecZiQJg==
+vuetify@2.0.0-beta.9:
+  version "2.0.0-beta.9"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.0-beta.9.tgz#bdb5430eac5f4d2c8f16ed046787f227343827bf"
+  integrity sha512-4xEqiwor93TDeDDTpp846ik6UvQEUk2TP7cRBt4cZpE5xIhpMjOM2oo4CajOoHOBkYKd6kNslYnsIXINkIYCSw==
 
 vuex-router-sync@^5.0.0:
   version "5.0.0"
