@@ -4,33 +4,41 @@
             <h2>Drop Me a Line</h2>
         </div>
         <div class="contact--form">
-            <div class="form-row form-flield--name">
-                <v-text-field
+            <v-row class="form-flield--name">
+                <v-col class="py-0 col-12 col-sm-12 col-md-6">
+                  <v-text-field
+                      filled
+                      label="First Name"
+                      :error="$v.model.first_name.$invalid && submitted"
+                      v-model="model.first_name" />
+                </v-col>
+                <v-col class="py-0 col-12 col-sm-12 col-md-6">
+                  <v-text-field
+                      filled
+                      label="Last Name"
+                      v-model="model.last_name" />
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col xs12 class="py-0">
+                  <v-text-field
                     filled
-                    label="First Name"
-                    :error="$v.model.first_name.$invalid && submitted"
-                    v-model="model.first_name" />
-                <v-text-field
+                    label="Email"
+                    :error="$v.model.email.$invalid && submitted"
+                    v-model="model.email" />
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-col xs12 class="py-0">
+                  <v-textarea
                     filled
-                    label="Last Name"
-                    v-model="model.last_name" />
-            </div>
-            <div class="form-row">
-                <v-text-field
-                filled
-                label="Email"
-                :error="$v.model.email.$invalid && submitted"
-                v-model="model.email" />
-            </div>
-            <div class="form-row">
-                <v-textarea
-                filled
-                no-resize
-                label="Message"
-                :error="$v.model.message.$invalid && submitted"
-                v-model="model.message" />
-            </div>
-            <div class="form-row form-submit--container">
+                    no-resize
+                    label="Message"
+                    :error="$v.model.message.$invalid && submitted"
+                    v-model="model.message" />
+                </v-col>
+            </v-row>
+            <div class="form-submit--container">
                 <div class="form-submit__inner">
                     <v-progress-circular
                         v-if="mailSending"

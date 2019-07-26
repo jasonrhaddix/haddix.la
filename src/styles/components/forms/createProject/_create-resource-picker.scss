@@ -15,8 +15,6 @@
 
         & > div {
             flex: 1;
-            height: 30rem;
-            overflow: scroll;
             background: {
                 color: $color-app-black-alpha-25;
             }
@@ -35,6 +33,11 @@
                 background: {
                     color: $color-m-grey-darken-4;
                 }
+            }
+
+            .list-content {
+                height: 30rem;
+                overflow: scroll;
             }
 
             .list-item {

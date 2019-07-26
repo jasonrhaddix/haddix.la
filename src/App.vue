@@ -1,9 +1,11 @@
 <template>
 	<v-app id="app">
-		<transition
-			name="fade">
-			<router-view></router-view>
-		</transition>
+		<!-- <v-content> -->
+			<transition
+				name="fade">
+				<router-view></router-view>
+			</transition>
+		<!-- </v-content> -->
 		<navigation />
 		<overlay-container />
 		<login-container />

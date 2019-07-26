@@ -15,7 +15,7 @@
                 background-color: #DDD;
                 width: 60%;
                 height: 1px;
-                margin: 5vw auto 5vw;
+                margin: 6vw auto;
 
                 &.last-item {
                     margin: 0 auto;
@@ -61,8 +61,8 @@
                     .about-items--list {
                         display: flex;
 
-                        ul {
-                            width: 50%;
+                        .item-group {
+                            padding: 0 !important;
                         }
                     }
                 }
@@ -187,18 +187,19 @@
             .about--client-list {
                 
                 .client-list {
-                    display: inline-block;
+                    // display: inline-block;
                     
                     .client-item {
-                        float: left;
-                        text-align: center;  
-                        width: 33.33%;
+                        // float: left;
+                        // text-align: center;  
+                        // width: 33.33%;
                         padding-top: 40px;
-                        padding-bottom: 120px;
+                        padding-bottom: 90px;
     
                         .item {
 
                             img {
+                                display: block;
                                 width: 120px;
                                 height: 60px;
                                 margin: 0 auto;
@@ -211,80 +212,6 @@
             /* FOOTER */
             .about--footer {
                 text-align: center;
-            }
-        }
-    }
-}
-
-
-@include respond-to("small") {
-    .about-view--container {
-    
-        .about-view--inner {
-            
-            .about-view--content {
-
-                .section {
-
-                    .subsection {
-    
-                    }
-                }
-                
-                .about-items--list {
-                    flex-direction: column;
-
-                    ul {
-                        width: 100%;
-                    }
-                }
-                
-                .about--client-list {
-                    
-                    .client-list {
-                        
-                        .client-item {
-                            padding-top: 40px;
-                            padding-bottom: 20px;
-                            
-                            .item {
-                                
-                                img {
-                                    width: 60px;
-                                    height: 40px
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@include respond-from("xlarge") {
-    .about-view--container {
-    
-        .about-view--inner {
-            
-            .about-view--content {
-            
-                .about--client-list {
-                    
-                    .client-list {
-                        
-                        .client-item {
-                            width: 25%;
-
-                            .item {
-    
-                                img {
-
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
     }

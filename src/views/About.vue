@@ -34,7 +34,7 @@
 
                 <div class="about--bio">
                     <div class="about-bio--inner">
-                        <h2>Hi, I'm Jason Haddix.</h2>
+                        <h2>Hi, I'm Jason Haddix</h2>
                         <p>I'm a Web Engineer living in the Los Angeles area where I develop web apps and creative projects for leading lifestyle and entertainment companies. I have previously lead developers, consulted with agencies and collaborated with many talented engineers and designers to create digital products for companies like Skechers, Universal Studios and Showtime. My experience as a developer has been highlighted with many projects that I can proudly add my name to. </p>
                         <p>My free time is spent with my family, tinkering with emerging technologies and spearfishing in our beautiful Pacific Ocean. I am eagerly looking forward to upcoming challenges to conquer.</p>
                     </div>
@@ -55,75 +55,87 @@
                     </div>
                     <div class="subsection">
                         <h3>Languages | Frameworks | Libs</h3>
-						<div class="about-items--list">
-							<ul>
-								<li><p>HTML</p></li>
-								<li><p>CSS3 / SASS</p></li>
-								<li><p>Javascript</p></li>
-								<li><p>XML</p></li>
-								<li><p>PHP</p></li>
-								<li><p>JSON</p></li>
-								<li><p>ReactJS</p></li>
-								<li><p>Redux</p></li>
-								<li><p>VueJS</p></li>
-								<li><p>AngularJS</p></li>
-							</ul>
+						<v-row class="about-items--list">
+                            <v-col class="col-12 col-md-6 item-group">
+                                <ul>
+                                    <li><p>HTML</p></li>
+                                    <li><p>CSS3 / SASS</p></li>
+                                    <li><p>Javascript</p></li>
+                                    <li><p>XML</p></li>
+                                    <li><p>PHP</p></li>
+                                    <li><p>JSON</p></li>
+                                    <li><p>ReactJS</p></li>
+                                    <li><p>Redux</p></li>
+                                    <li><p>VueJS</p></li>
+                                    <li><p>AngularJS</p></li>
+                                </ul>
+                            </v-col>
 
-							<ul>
-								<li><p>ActionScript</p></li>
-								<li><p>Backbone-Marionette</p></li>
-								<li><p>jQuery</p></li>
-								<li><p>Handlebars / Mustache</p></li>
-								<li><p>Bootstrap</p></li>
-								<li><p>Grunt / Gulp</p></li>
-								<li><p>NodeJS</p></li>
-								<li><p>Yarn / NPM</p></li>
-								<li><p>ThreeJS</p></li>
-							</ul>
-						</div>
+                            <v-col class="col-12 col-md-6 item-group">
+                                <ul>
+                                    <li><p>ActionScript</p></li>
+                                    <li><p>Backbone-Marionette</p></li>
+                                    <li><p>jQuery</p></li>
+                                    <li><p>Handlebars / Mustache</p></li>
+                                    <li><p>Bootstrap</p></li>
+                                    <li><p>Grunt / Gulp</p></li>
+                                    <li><p>NodeJS</p></li>
+                                    <li><p>Yarn / NPM</p></li>
+                                    <li><p>ThreeJS</p></li>
+                                </ul>
+                            </v-col>
+						</v-row>
                     </div>
 
                     <div class="subsection">
                         <h3>Services</h3>
-						<div class="about-items--list">
-							<ul>
-								<li><p>Git / GitHub</p></li>
-								<li><p>RESTful APIs</p></li>
-								<li><p>Google Cloud Platform</p></li>
-								<li><p>Amazon Web Services</p></li>
-								<li><p>Akamai CDN</p></li>
-								<li><p>Atlassian / JIRA</p></li>
-							</ul>
+						<v-row class="about-items--list">
+                            <v-col class="col-12 col-md-6 item-group">
+                                <ul>
+                                    <li><p>Git / GitHub</p></li>
+                                    <li><p>RESTful APIs</p></li>
+                                    <li><p>Google Cloud Platform</p></li>
+                                    <li><p>Amazon Web Services</p></li>
+                                    <li><p>Akamai CDN</p></li>
+                                    <li><p>Atlassian / JIRA</p></li>
+                                </ul>
+                            </v-col>
 
-							<ul>
-								<li><p>Plesk / Paralells</p></li>
-								<li><p>Wordpress</p></li>
-								<li><p>Sizmek</p></li>
-								<li><p>DoubleClick</p></li>
-								<li><p>WAMP</p></li>
-							</ul>
-						</div>
+                            <v-col class="col-12 col-md-6 item-group">
+                                <ul>
+                                    <li><p>Plesk / Paralells</p></li>
+                                    <li><p>Wordpress</p></li>
+                                    <li><p>Sizmek</p></li>
+                                    <li><p>DoubleClick</p></li>
+                                    <li><p>WAMP</p></li>
+                                </ul>
+                            </v-col>
+						</v-row>
                     </div>
 
                     <div class="subsection">
 						<h3>Applications</h3>
-						<div class="about-items--list">
-							<ul>
-								<li><p>Photoshop</p></li>
-								<li><p>Illustrator</p></li>
-								<li><p>Sublime Text</p></li>
-								<li><p>Git GUI / GitKraken</p></li>
-								<li><p>After Effects</p></li>
-								<li><p>Flash / Animate CC</p></li>
-							</ul>
+						<v-row class="about-items--list">
+                            <v-col class="col-12 col-md-6 item-group">
+                                <ul>
+                                    <li><p>Photoshop</p></li>
+                                    <li><p>Illustrator</p></li>
+                                    <li><p>Sublime Text</p></li>
+                                    <li><p>Git GUI / GitKraken</p></li>
+                                    <li><p>After Effects</p></li>
+                                    <li><p>Flash / Animate CC</p></li>
+                                </ul>
+                            </v-col>
 
-							<ul>
-								<li><p>Indesign</p></li>
-								<li><p>Audition</p></li>
-								<li><p>Particle Illusion</p></li>
-								<li><p>PuTTy SSH</p></li>
-							</ul>
-						</div>
+                            <v-col class="col-12 col-md-6 item-group">
+                                <ul>
+                                    <li><p>Indesign</p></li>
+                                    <li><p>Audition</p></li>
+                                    <li><p>Particle Illusion</p></li>
+                                    <li><p>PuTTy SSH</p></li>
+                                </ul>
+                            </v-col>
+						</v-row>
 					</div>
                 </div>
 
@@ -188,94 +200,93 @@
                         <div class="section--title client-list--inner">
                             <h2>Notable Clients</h2>
                         </div>
-                        <div class="client-list">
-                            <div class="client-item">
+                        <v-row class="client-list">
+                            <v-col align-self="center" class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/universal.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/amazon.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/mgm-grand.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/skechers.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/nike-swoosh.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/itunes.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/fx.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/chevron.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/cirq-du-soleil.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                             </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/disney.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/propel.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/showtime.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/best-buy.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/cvs.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/directv.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/hbo.svg')" alt="">
                                 </div>
-                            </div>
-                            <div class="client-item">
+                            </v-col>
+                            <v-col class="col-6 col-md-4 col-lg-3 client-item">
                                 <div class="item">
                                     <img :src="require('@/assets/app/icons/client_logos/espn.svg')" alt="">
                                 </div>
-                            </div>
-
-                        </div>
+                            </v-col>
+                        </v-row>
                     </div>
                 </div>
 

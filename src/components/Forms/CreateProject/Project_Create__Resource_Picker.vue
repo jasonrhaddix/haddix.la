@@ -3,26 +3,30 @@
         <div class="picker__inner">
             <div class="list options-list">
                 <h3 class="body-1">Options</h3>
-                <div
-                    v-ripple
-                    v-for="(item,i) in optionItems"
-                    :key="`list-item-${i}`"
-                    :id="i"
-                    class="list-item"
-                    @click="itemClick('optionItems', item.id)">
-                    <p>{{ item.value }}</p>
+                <div class="list-content">
+                  <div
+                      v-ripple
+                      v-for="(item,i) in optionItems"
+                      :key="`list-item-${i}`"
+                      :id="i"
+                      class="list-item"
+                      @click="itemClick('optionItems', item.id)">
+                      <p>{{ item.value }}</p>
+                  </div>
                 </div>
             </div>
             <div class="list selected-list">
                 <h3 class="body-1">Selected</h3>
-                <div
-                    v-ripple
-                    v-for="(item,i) in selectedItems"
-                    :key="`list-item-${i}`"
-                    :id="i"
-                    class="list-item"
-                    @click="itemClick('selectedItems', item.id)">
-                    <p>{{ item.value }}</p>
+                <div class="list-content">
+                  <div
+                      v-ripple
+                      v-for="(item,i) in selectedItems"
+                      :key="`list-item-${i}`"
+                      :id="i"
+                      class="list-item"
+                      @click="itemClick('selectedItems', item.id)">
+                      <p>{{ item.value }}</p>
+                  </div>
                 </div>
             </div>
         </div>

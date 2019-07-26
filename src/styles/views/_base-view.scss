@@ -9,7 +9,7 @@
         right: auto;
         bottom: 4rem;
         left: auto;
-    };
+    }
     padding: {
         top: 5rem;
     }
@@ -29,7 +29,10 @@
     }
     
     .app-view--inner {
-        max-width: 90%;        
+        max-width: 90%;
+        padding: {
+            top: 4rem;
+        }    
     }
     
     .app-view--content {

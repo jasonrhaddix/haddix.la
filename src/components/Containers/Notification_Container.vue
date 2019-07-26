@@ -1,7 +1,6 @@
 <template>
     <v-snackbar
         bottom right
-        auto-height
         v-model="openState"
         :timeout="notificationTimeout"
         class="notifications-container"
