@@ -184,7 +184,23 @@ $animationDelay: 100ms;
     .projects-item {
 
         .project__inner {
+            width: 100%;
+            height: 100%;
             
+            .image__main {
+                height: 100%;
+                
+                .v-image {
+                    height: 100%;
+
+                    .v-image__image--contain {
+                        background: {
+                            size: cover;
+                        }
+                    }
+                }
+            }
+
             .title-container {
 
                 .title-inner {

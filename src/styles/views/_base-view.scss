@@ -42,3 +42,27 @@
         padding: 5rem 5%;
     }
 }
+
+
+@include respond-to(small) {
+    .app-view {
+    
+    }
+    
+    .app-view--inner {
+        max-width: 100%;
+        padding: {
+            top: 0rem;
+        } 
+        margin: {
+            bottom: 0;
+        }   
+    }
+    
+    .app-view--content {
+        background: {
+            color: $color-m-white;
+        }
+        padding: 5rem 5%;
+    }
+}
