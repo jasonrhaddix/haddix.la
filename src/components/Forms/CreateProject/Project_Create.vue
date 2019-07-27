@@ -1,37 +1,36 @@
 <template>
-    <v-flex xs12>
     <div class="form--project-create">
         <div class="form-section create__form">
-            <v-layout row wrap>
-                <v-flex xs4>
-                    <v-select
-                        filled dense
-                        label="Project Type"
-                        item-text="name"
-                        :error="$v.model.type.$invalid && submitted"
-                        :items="projectTypes"
-                        v-model="model.type"/>
-                </v-flex>
-                <v-flex xs4 offset-xs4>
-                    <div class="project__pending-id">
-                        <p>{{ model.project_id }}</p>
-                    </div>
-                </v-flex>
-            </v-layout>
+			<v-row>
+				<v-col class="col-12 order-md-12 offset-md-4 col-md-4">
+					<div class="project__pending-id">
+						<p>{{ model.project_id }}</p>
+					</div>
+				</v-col>
+				<v-col class="col-12 col-md-4">
+					<v-select
+					filled dense
+					label="Project Type"
+					item-text="name"
+					:error="$v.model.type.$invalid && submitted"
+					:items="projectTypes"
+					v-model="model.type"/>
+				</v-col>
+			</v-row>
 
-            <v-layout row wrap>
-                <v-flex xs12>
+            <v-row>
+                <v-col class="col-12">
                     <v-text-field
                         filled
                         label="Title"
                         :error="$v.model.title.$invalid && submitted"
                         v-model="model.title"/>
 
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
 
-            <v-layout row wrap>
-                <v-flex xs4>
+            <v-row>
+                <v-col class="col-12 col-md-4">
                     <v-select
                         filled dense
                         label="Client"
@@ -39,8 +38,8 @@
                         :items="clients"
                         :error="$v.model.client.$invalid && submitted"
                         v-model="model.client"/>
-                </v-flex>
-                <v-flex xs4>
+                </v-col>
+                <v-col class="col-12 col-md-4">
                     <v-select
                         filled dense
                         label="Role"
@@ -48,8 +47,8 @@
                         :items="projectRoles"
                         :error="$v.model.role.$invalid && submitted"
                         v-model="model.role"/>
-                </v-flex>
-                <v-flex xs4>
+                </v-col>
+                <v-col class="col-12 col-md-4">
                     <v-menu
                         ref="projectDateMenu"
                         v-model="projectDateMenu"
@@ -77,39 +76,39 @@
                             <v-btn text color="primary" @click="$refs.projectDateMenu.save(formattedDate)">OK</v-btn>
                         </v-date-picker>
                     </v-menu>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
 
-            <v-layout row wrap>
-                <v-flex xs12>
+            <v-row>
+                <v-col class="col-12">
                     <v-text-field
                         filled
                         label="Subtitle"
                         :error="$v.model.subtitle.$invalid && submitted"
                         v-model="model.subtitle"/>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
 
-            <v-layout row wrap>
-                <v-flex xs12>
+            <v-row>
+                <v-col class="col-12">
                     <v-textarea
                         filled
                         label="Description"
                         :error="$v.model.description.$invalid && submitted"
                         v-model="model.description"/>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
 
-            <v-layout row wrap>
-                <v-flex>
+            <v-row>
+                <v-col clasa="col-12">
                     <v-text-field
                         filled
                         label="Project Link"
                         hint="Requires link format (Example: http://www.my-link.com)"
                         :error="$v.model.link.$invalid && submitted"
                         v-model="model.link"/>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
         </div>
 
         <div class="form-section create__images">
@@ -117,8 +116,8 @@
 
             <div class="inner__divider" />
 
-            <v-layout row wrap>
-                <v-flex xs4 align-content-center>
+            <v-row>
+                <v-col class="col-12 col-md-4">
                     <div class="images-section images__thumbnails">
                         <div class="section__title">
                             <h3>Thumbnail Image</h3>
@@ -155,11 +154,11 @@
                             </div>
                         </div>
                     </div>
-                </v-flex>
+                </v-col>
 
                 <!-- <div class="inner__divider" /> -->
 
-                <v-flex xs4 align-content-center>
+               	<v-col class="col-12 col-md-4">
                     <div class="images-section images__carousel">
                         <div class="section__title">
                             <h3>Carousel Images</h3>
@@ -197,11 +196,11 @@
                             </div>
                         </div>
                     </div>
-                </v-flex>
+                </v-col>
 
-            <!-- <div class="inner__divider" /> -->
+            	<!-- <div class="inner__divider" /> -->
 
-                <v-flex xs4 >
+                <v-col class="col-12 col-md-4">
                     <div class="images-section images__body">
                         <div class="section__title">
                             <h3>Body Images <span class="caption">(Optional)</span></h3>
@@ -240,8 +239,8 @@
                             </div>
                         </div>
                     </div>
-                </v-flex>
-            </v-layout>
+                </v-col>
+            </v-row>
         </div>
 
         <div class="form-section create__images">
@@ -409,7 +408,6 @@
         </div>
 
     </div>
-    </v-flex>
 </template>
 
 <script>

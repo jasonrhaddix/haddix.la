@@ -1,35 +1,35 @@
 <template>
     <div class="create-resource-picker">
-        <div class="picker__inner">
-            <div class="list options-list">
+        <v-row class="picker__inner">
+            <v-col class="col-12 col-md-6 list options-list">
                 <h3 class="body-1">Options</h3>
                 <div class="list-content">
-                  <div
-                      v-ripple
-                      v-for="(item,i) in optionItems"
-                      :key="`list-item-${i}`"
-                      :id="i"
-                      class="list-item"
-                      @click="itemClick('optionItems', item.id)">
-                      <p>{{ item.value }}</p>
-                  </div>
+					<div
+						v-ripple
+						v-for="(item,i) in optionItems"
+						:key="`list-item-${i}`"
+						:id="i"
+						class="list-item"
+						@click="itemClick('optionItems', item.id)">
+						<p>{{ item.value }}</p>
+					</div>	
                 </div>
-            </div>
-            <div class="list selected-list">
+            </v-col>
+            <v-col class="col-12 col-md-6 list selected-list">
                 <h3 class="body-1">Selected</h3>
                 <div class="list-content">
-                  <div
-                      v-ripple
-                      v-for="(item,i) in selectedItems"
-                      :key="`list-item-${i}`"
-                      :id="i"
-                      class="list-item"
-                      @click="itemClick('selectedItems', item.id)">
-                      <p>{{ item.value }}</p>
-                  </div>
+					<div
+						v-ripple
+						v-for="(item,i) in selectedItems"
+						:key="`list-item-${i}`"
+						:id="i"
+						class="list-item"
+						@click="itemClick('selectedItems', item.id)">
+						<p>{{ item.value }}</p>
+					</div>
                 </div>
-            </div>
-        </div>
+            </v-col>
+        </v-row>
     </div>
 </template>
 
