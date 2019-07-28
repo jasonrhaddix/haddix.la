@@ -101,7 +101,7 @@ $animationDelay: 100ms;
                     @include center-content('vertical', -20px);
                     width: 100%;
                     
-                    p, h4 { 
+                    p, h4, h5 { 
                         text-align: center;
                         width: 100%;
                         color: white;
@@ -118,6 +118,16 @@ $animationDelay: 100ms;
                         font-family: 'DIN-CondBlack';
                         font-size: 6rem;
                         line-height: 6rem;
+                    }
+                    
+                    h5 {
+                        font-family: 'DIN-Cond';
+                        font-size: 1.2rem;
+                        line-height: 1.2rem;
+                        padding: {
+                            top: 0.5rem;
+                            bottom: 0.75rem;
+                        }
                     }
 
                     .divider {
