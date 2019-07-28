@@ -30,6 +30,15 @@
             </v-row>
 
             <v-row>
+                <v-col class="col-12">
+                    <v-text-field
+                        filled
+                        label="Subtitle"
+                        v-model="model.subtitle"/>
+                </v-col>
+            </v-row>
+
+            <v-row>
                 <v-col class="col-12 col-md-4">
                     <v-select
                         filled dense
@@ -83,9 +92,8 @@
                 <v-col class="col-12">
                     <v-text-field
                         filled
-                        label="Subtitle"
-                        :error="$v.model.subtitle.$invalid && submitted"
-                        v-model="model.subtitle"/>
+                        label="Excerpt"
+                        v-model="model.excerpt"/>
                 </v-col>
             </v-row>
 
@@ -444,12 +452,14 @@ export default {
       project_id: null,
       type: null,
       title: null,
+      subtitle: null,
       client: null,
       role: null,
       project_date: null,
-      subtitle: null,
+      excerpt: null,
       description: null,
       link: null,
+      published: true,
       languages: [],
       resources: []
     },
@@ -487,6 +497,7 @@ export default {
       role: { required },
       project_date: { required },
       subtitle: { required },
+      // exerpt: { required },
       description: { required },
       link: { url }
     }

@@ -33,6 +33,7 @@
                     <div class="project-title">
                         <p>{{ client }}</p>
                         <h4>{{ title }}</h4>
+                        <h5>{{ subtitle }}</h5>
                         <div class="divider" />
                         <app-btn
                             label="View Project"
@@ -76,6 +77,11 @@ export default {
       default: null
     },
     title: {
+      type: String,
+      required: true,
+      default: null
+    },
+    subtitle: {
       type: String,
       required: true,
       default: null

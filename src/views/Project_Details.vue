@@ -18,6 +18,7 @@
                 <div class="title__container">
                     <h3>{{ client }}</h3>
                     <h1>{{ title }}</h1>
+                    <h3>{{ subtitle }}</h3>
                 </div>
                 <v-btn
                     fab small depressed
@@ -30,8 +31,8 @@
             <v-container class="content__container">
                 <!-- <div class="divider" /> -->
 
-                <div class="section subtitle__container">
-                    <h3 class="headline">{{ subtitle }}</h3>
+                <div class="section excerpt__container">
+                    <h3 class="headline">{{ excerpt }}</h3>
                 </div>
 
                 <div
@@ -207,7 +208,7 @@ export default {
 
     headerImage () {
       let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
-      return (images.length > 0)
+      return (images && images.length > 0)
         ? images[0].uri
         : null
     },
@@ -224,9 +225,13 @@ export default {
       return this.project.subtitle
     },
 
+    excerpt () {
+      return this.project.excerpt
+    },
+
     videos () {
       let videos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO, 'project-details')
-      return (videos.length > 0)
+      return (videos && videos.length > 0)
         ? videos[0]
         : null
     },
@@ -243,11 +248,11 @@ export default {
     },
 
     languages () {
-      return (this.project.languages.length > 0) ? this.project.languages : null
+      return (this.project.languages && this.project.languages.length > 0) ? this.project.languages : null
     },
 
     resources () {
-	  return (this.project.resources.length > 0) ? this.project.resources : null
+	  return (this.project.resources && this.project.resources.length > 0) ? this.project.resources : null
     },
 
     tree () {

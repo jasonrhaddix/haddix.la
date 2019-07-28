@@ -27,6 +27,7 @@
                 :session-id="item.session_id"
                 :client="getClientName(item.client)"
                 :title="item.title"
+                :subtitle="item.subtitle"
                 :is-guest-project="item.is_guest_project"
                 :click-callback="navigateToProject"
                 :image="getThumbnailImage(i)" />
