@@ -152,8 +152,16 @@ export default {
       value: 'skechers'
     },
     {
-      name: 'Universal',
-      value: 'universal'
+      name: 'Universal Orlando',
+      value: 'universal_orlando'
+    },
+    {
+      name: 'Universal Pictures',
+      value: 'universal_pictures'
+    },
+    {
+      name: 'Universal Studios',
+      value: 'universal_studios'
     },
     {
       name: 'Satchi & Satchi',
