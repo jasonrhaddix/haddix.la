@@ -85,8 +85,8 @@ const actions = {
   },
 
   /**
-	 * Amend the DB record upon success
-	 */
+  * Amend the DB record upon success
+  */
   [VUEX_UPLOAD_S3_REQUEST_SUCCESS]: async ({ commit, dispatch }, payload) => {
     dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
       hashId: payload.hashId,
@@ -96,8 +96,8 @@ const actions = {
   },
 
   /**
-	 * Amend the DB record upon failure
-	 */
+  * Amend the DB record upon failure
+  */
   [VUEX_UPLOAD_S3_REQUEST_FAILURE]: async ({ dispatch }, payload) => {
     dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
       hashId: payload.hashId,
@@ -132,7 +132,7 @@ const actions = {
         hashId: payload.hashId,
         status: HADDIX_UPLOAD_ATTACHMENT_STATUS__SUCCESS
       })
-    }).catch(err => {
+    }).catch(() => {
       commit(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
         hashId: payload.hashId,
         status: HADDIX_UPLOAD_ATTACHMENT_STATUS__FAILURE
