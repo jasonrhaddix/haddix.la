@@ -30,13 +30,13 @@ const getters = {
 	},
 
 	userIsAuthorized: state => {
-		return (!state.authorizationStatus || state.authorizationStatus === HADDIX_APP_AUTHORIZATION_AUTHORIZED) ? true : false
+		return !!((!state.authorizationStatus || state.authorizationStatus === HADDIX_APP_AUTHORIZATION_AUTHORIZED))
 	}
 }
 
 const actions = {
-[	VUEX_AUTH_REQUEST]: ({ dispatch, commit }, payload) => {
-    	commit(VUEX_AUTH_REQUEST)
+	[VUEX_AUTH_REQUEST]: ({ dispatch, commit }, payload) => {
+		commit(VUEX_AUTH_REQUEST)
 
 		api.post(`/auth/login`, payload).then(response => {
 			let token = response.data.access_token

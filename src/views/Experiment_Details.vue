@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: 'experiment-details-view'
+	name: 'experiment-details-view'
 }
 </script>

@@ -34,7 +34,7 @@
     "vue-uuid": "^1.1.1",
     "vue2-google-maps": "^0.10.6",
     "vuelidate": "^0.7.4",
-    "vuetify": "^2.0.1",
+    "vuetify": "^2.0.5",
     "vuex": "3.1.1",
     "vuex-router-sync": "^5.0.0"
   },
@@ -53,20 +53,6 @@
     "sass-loader": "^7.1.0",
     "vue-template-compiler": "2.6.10",
     "vuetify-loader": "^1.2.2"
-  },
-  "eslintConfig": {
-    "root": false,
-    "env": {
-      "node": false
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "postcss": {
     "plugins": {

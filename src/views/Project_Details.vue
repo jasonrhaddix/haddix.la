@@ -1,10 +1,5 @@
 <template>
     <v-container fluid class="project-details-view">
-        <div class="footer__container">
-        <img
-            contain
-            :src="require('@/assets/app/images/project-details-footer-grey.jpg')"></img>
-        </div>
 
         <div class="details__content">
             <div class="header__container">
@@ -36,7 +31,7 @@
                 </div>
 
                 <div
-                  v-if="videos" 
+                  v-if="videos"
                   class="divider" />
 
                 <div class="section video__container">
@@ -66,12 +61,12 @@
                 </div>
 
                 <div
-					v-if="photos" 
+					v-if="photos"
 					class="divider" />
 
                 <div class="section photos__container">
-                    <v-layout 
-                      row wrap 
+                    <v-layout
+                      row wrap
                       class="photos__inner">
                         <v-flex
                             xs6
@@ -84,18 +79,18 @@
                     </v-layout>
                 </div>
 
-                <div 
+                <div
 					v-if="languages || resources || tree"
 					class="divider" />
 
                 <div class="section meta__container">
-                    <div 
+                    <div
 						v-if="languages"
 						class="meta__title languages">
                         <h4>Languages</h4>
                     </div>
                     <div
-						v-if="languages" 
+						v-if="languages"
 						class="subsection meta_languages">
                         <v-layout class="languages__inner">
                             <language-graph
@@ -106,13 +101,13 @@
                         </v-layout>
                     </div>
 
-                    <div 
-						v-if="resources" 
+                    <div
+						v-if="resources"
 						class="meta__title languages">
                         <h4>Resources</h4>
                     </div>
                     <div
-						v-if="resources" 
+						v-if="resources"
 						class="subsection meta_resources">
                         <v-layout row wrap class="resources__inner">
                             <v-flex xs6
@@ -125,12 +120,12 @@
                     </div>
 
                     <div
-                        v-if="tree" 
+                        v-if="tree"
                         class="meta__title languages">
                         <h4>File Structure</h4>
                     </div>
                     <div
-                        v-if="tree" 
+                        v-if="tree"
                         class="subsection meta_tree">
                         <div class="tree__inner">
                             <v-treeview
@@ -163,107 +158,108 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 // import VuePureLightbox from 'vue-pure-lightbox'
 
 import {
-  VUEX_ROUTING_PUSH_ROUTE
+	VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'
 
 import LanguageGraph from '@/components/_global/Language_Graph'
 
 export default {
-  name: 'project-details-view',
+	name: 'project-details-view',
 
-  components: {
-    'language-graph': LanguageGraph
-  },
+	components: {
+		'language-graph': LanguageGraph
+	},
 
-  data: () => ({
-    treeFoldersOpen: [1],
-    treeOptions: {
-      fileIcons: {
-        css: { prefix: 'fab', icon: 'css3' },
-        fav: { prefix: 'fas', icon: 'star' },
-        group: { prefix: 'fas', icon: 'ellipsis-h' },
-        html: { prefix: 'fab', icon: 'html5' },
-        image: { prefix: 'fas', icon: 'file-image' },
-        js: { prefix: 'fab', icon: 'js' },
-        json: { prefix: 'fas', icon: 'code' },
-        md: { prefix: 'fab', icon: 'markdown' },
-        node: { prefix: 'fab', icon: 'node-js' },
-        pdf: { prefix: 'fas', icon: 'file-pdf' },
-        vieo: { prefix: 'fas', icon: 'file-video' },
-        vue: { prefix: 'fab', icon: 'vuejs' },
-        yarn: { prefix: 'fab', icon: 'yarn' }
-      }
-    }
-  }),
+	data: () => ({
+		treeFoldersOpen: [1],
+		treeOptions: {
+			fileIcons: {
+				css: { prefix: 'fab', icon: 'css3' },
+				fav: { prefix: 'fas', icon: 'star' },
+				group: { prefix: 'fas', icon: 'ellipsis-h' },
+				html: { prefix: 'fab', icon: 'html5' },
+				image: { prefix: 'fas', icon: 'file-image' },
+				js: { prefix: 'fab', icon: 'js' },
+				json: { prefix: 'fas', icon: 'code' },
+				md: { prefix: 'fab', icon: 'markdown' },
+				node: { prefix: 'fab', icon: 'node-js' },
+				pdf: { prefix: 'fas', icon: 'file-pdf' },
+				vieo: { prefix: 'fas', icon: 'file-video' },
+				vue: { prefix: 'fab', icon: 'vuejs' },
+				yarn: { prefix: 'fab', icon: 'yarn' }
+			}
+		}
+	}),
 
-  computed: {
-    ...mapState({
-      project: state => state.projects.project,
-      projectTree: state => state.project_tree.projectTree
-    }),
+	computed: {
+		...mapState({
+			project: state => state.projects.project,
+			projectTree: state => state.projectTree.projectTree
+		}),
 
-    ...mapGetters({
-      attachmentsByUsageType: 'attachmentsByUsageType'
-    }),
+		...mapGetters({
+			attachmentsByUsageType: 'attachmentsByUsageType',
+			getPropertyByKey: 'getPropertyByKey'
+		}),
 
-    headerImage () {
-      let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
-      return (images && images.length > 0)
-        ? images[0].uri
-        : null
-    },
+		headerImage () {
+			let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
+			return (images && images.length > 0)
+				? images[0].uri
+				: null
+		},
 
-    client () {
-      return this.project.client
-    },
+		client () {
+			return this.getPropertyByKey('clients', this.project.client, 'value', 'name')
+		},
 
-    title () {
-      return this.project.title
-    },
+		title () {
+			return this.project.title
+		},
 
-    subtitle () {
-      return this.project.subtitle
-    },
+		subtitle () {
+			return this.project.subtitle
+		},
 
-    excerpt () {
-      return this.project.excerpt
-    },
+		excerpt () {
+			return this.project.excerpt
+		},
 
-    videos () {
-      let videos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO, 'project-details')
-      return (videos && videos.length > 0)
-        ? videos[0]
-        : null
-    },
+		videos () {
+			let videos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO, 'project-details')
+			return (videos && videos.length > 0)
+				? videos[0]
+				: null
+		},
 
-    description () {
-      return this.project.description
-    },
+		description () {
+			return this.project.description
+		},
 
-    photos () {
-      let photos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__BODY, 'project-details')
-      return (photos.length > 0)
-        ? photos
-        : null
-    },
+		photos () {
+			let photos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__BODY, 'project-details')
+			return (photos.length > 0)
+				? photos
+				: null
+		},
 
-    languages () {
-      return (this.project.languages && this.project.languages.length > 0) ? this.project.languages : null
-    },
+		languages () {
+			return (this.project.languages && this.project.languages.length > 0) ? this.project.languages : null
+		},
 
-    resources () {
-	  return (this.project.resources && this.project.resources.length > 0) ? this.project.resources : null
-    },
+		resources () {
+			return (this.project.resources && this.project.resources.length > 0) ? this.project.resources : null
+		},
 
-    tree () {
-      return this.projectTree.tree_data ? this.projectTree.tree_data : null
-    }
-  },
+		tree () {
+			return this.projectTree.tree_data ? this.projectTree.tree_data : null
+		}
+	},
 
-  methods: {
-    ...mapActions({
-      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-    })
-  }
+	methods: {
+		...mapActions({
+			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+		})
+	}
 }
 </script>

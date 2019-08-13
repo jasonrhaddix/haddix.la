@@ -5,7 +5,7 @@
         color: $color-m-grey !important;
         font-size: 1rem;
     }
-    
+
     .form-section {
         margin: {
             bottom: 7rem;
@@ -29,7 +29,7 @@
             background: {
                 color: #282828;
             }
-    
+
             p {
                 text-align: center;
                 color: $color-m-grey;
@@ -43,12 +43,12 @@
 
     // Images section
     .create__images {
-        
+
         h2 {
             font-size: 1.8rem;
             text-transform: uppercase;
         }
-        
+
         .images-section {
             margin: {
                 top: 1.5rem;
@@ -65,7 +65,7 @@
                     left: 0.25rem;
                 }
             }
-            
+
             .section__title {
                 margin: {
                     bottom: 0.75rem;
@@ -75,7 +75,7 @@
                     // font-size: 1.4rem;
                     color: $color-m-grey;
                     text-transform: uppercase;
-                    
+
                     span {
                         text-transform: capitalize;
                     }
@@ -88,7 +88,7 @@
         }
 
         .images__container {
-            
+
             .images__dropzone {
                 position: relative;
                 width: 100%;
@@ -96,32 +96,35 @@
                 margin: {
                     bottom: 1rem;
                 }
-    
+
                 .dropzone__button {
                     cursor: pointer;
                     position: relative;
                     height: 100%;
                     background: {
                         color: $color-m-grey-darken-3;
-                    }
-    
+					}
+					border: {
+						radius: 4px;
+					}
+
                     .button__content {
                         @include center-content();
-    
+
                         p {
                             text-transform: uppercase;
                             color: $color-m-grey-darken-1;
                             font-weight: $font-weight-bold;
                             margin: 0;
                         }
-    
+
                         .v-icon {
                             width: 100%;
                             text-align: center;
                         }
                     }
                 }
-    
+
                 .dropzone__scrim {
                     transition: background-color 250ms ease-in-out;
                     pointer-events: none;
@@ -132,7 +135,7 @@
                     left: 0;
                     background: rgba(49, 0, 189, 0);
                 }
-    
+
                 &.drag-over {
                     .dropzone__scrim {
                         border: 2px dashed $color-app-primary;
@@ -152,13 +155,13 @@
             font-size: 2.2rem;
             text-transform: uppercase;
         }
-        
+
         .meta-section {
             margin: {
                 top: 1.5rem;
                 bottom: 3rem;
             }
-            
+
             .section__title {
                 margin: {
                     bottom: 0.75rem;
@@ -166,7 +169,7 @@
 
                 h3 {
                     color: $color-m-grey;
-                    text-transform: uppercase; 
+                    text-transform: uppercase;
 
                     span {
                         text-transform: capitalize;
@@ -187,7 +190,10 @@
                 height: 8rem;
                 background: {
                     color: $color-m-grey-darken-3;
-                }
+				}
+				border: {
+					radius: 4px;
+				}
 
                 .button__content {
                     @include center-content();
@@ -230,7 +236,10 @@
             }
             background: {
                 color: $color-m-grey-darken-3;
-            }
+			}
+			border: {
+				radius: 4px;
+			}
 
             .button__content {
                 @include center-content();
@@ -254,7 +263,10 @@
             min-height: 30rem;
             background: {
                 color: $color-app-black-alpha-25;
-            }
+			}
+			border: {
+				radius: 4px;
+			}
 
             .v-treeview-node__label {
                 font-size: 0.95rem;

@@ -63,67 +63,67 @@ import { required } from 'vuelidate/lib/validators'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 import {
-  VUEX_UI_LOGIN_CONTAINER_SHOW
+	VUEX_UI_LOGIN_CONTAINER_SHOW
 } from '@/store/constants/ui'
 import {
-  VUEX_AUTH_REQUEST,
-  VUEX_AUTH_LOGOUT
+	VUEX_AUTH_REQUEST,
+	VUEX_AUTH_LOGOUT
 } from '@/store/constants/auth'
 
 export default {
-  name: 'login-container',
+	name: 'login-container',
 
-  data: () => ({
-    model: {
-      email: null,
-      password: null
-    },
-    submitted: false
-  }),
+	data: () => ({
+		model: {
+			email: null,
+			password: null
+		},
+		submitted: false
+	}),
 
-  validations: {
-    model: {
-      email: {
-        required
-      },
-      password: {
-        required
-      }
-    }
-  },
+	validations: {
+		model: {
+			email: {
+				required
+			},
+			password: {
+				required
+			}
+		}
+	},
 
-  computed: {
-    ...mapState({
-      loginOpenState: state => state.ui.loginContainer.openState,
-      isAuthorizing: state => state.auth.authorizing
-    }),
+	computed: {
+		...mapState({
+			loginOpenState: state => state.ui.loginContainer.openState,
+			isAuthorizing: state => state.auth.authorizing
+		}),
 
-    ...mapGetters({
-      appAuthenticated: 'appAuthenticated'
-    }),
+		...mapGetters({
+			appAuthenticated: 'appAuthenticated'
+		}),
 
-    openState: {
-      get () { return this.loginOpenState },
-      set (val) { this.$store.dispatch('VUEX_UI_LOGIN_CONTAINER_SET_STATE', val) }
-    }
-  },
+		openState: {
+			get () { return this.loginOpenState },
+			set (val) { this.$store.dispatch('VUEX_UI_LOGIN_CONTAINER_SET_STATE', val) }
+		}
+	},
 
-  methods: {
-    ...mapActions({
-      openLoginDrawer: VUEX_UI_LOGIN_CONTAINER_SHOW,
-      submitForAuth: VUEX_AUTH_REQUEST,
-      logout: VUEX_AUTH_LOGOUT
-    }),
+	methods: {
+		...mapActions({
+			openLoginDrawer: VUEX_UI_LOGIN_CONTAINER_SHOW,
+			submitForAuth: VUEX_AUTH_REQUEST,
+			logout: VUEX_AUTH_LOGOUT
+		}),
 
-    submitCredentials () {
-      if (!this.$v.$invalid) {
-        this.submitted = false
-        // TODO: need spread operator?
-        this.submitForAuth({ ...this.model })
-      } else {
-        this.submitted = true
-      }
-    }
-  }
+		submitCredentials () {
+			if (!this.$v.$invalid) {
+				this.submitted = false
+				// TODO: need spread operator?
+				this.submitForAuth({ ...this.model })
+			} else {
+				this.submitted = true
+			}
+		}
+	}
 }
 </script>

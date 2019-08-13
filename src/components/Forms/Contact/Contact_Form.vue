@@ -64,72 +64,72 @@ import { required, email } from 'vuelidate/lib/validators'
 import { mapState, mapActions } from 'vuex'
 
 import {
-  VUEX_CONTACT_SEND_EMAIL_REQUEST
+	VUEX_CONTACT_SEND_EMAIL_REQUEST
 } from '@/store/constants/contact'
 
 import AppButton from '@/components/_global/App_Button'
 
 export default {
-  name: 'contact-form',
+	name: 'contact-form',
 
-  components: {
-    'app-btn': AppButton
-  },
+	components: {
+		'app-btn': AppButton
+	},
 
-  data: () => ({
-    model: {
-      first_name: null,
-      last_name: null,
-      email: null,
-      message: null
-    },
-    submitted: false
-  }),
+	data: () => ({
+		model: {
+			first_name: null,
+			last_name: null,
+			email: null,
+			message: null
+		},
+		submitted: false
+	}),
 
-  validations: {
-    model: {
-      first_name: { required },
-      email: { required, email },
-      message: { required }
-    }
-  },
+	validations: {
+		model: {
+			first_name: { required },
+			email: { required, email },
+			message: { required }
+		}
+	},
 
-  computed: {
-    ...mapState({
-      mailSending: state => state.contact.mailSending,
-      mailStatus: state => state.contact.mailStatus
-    })
-  },
+	computed: {
+		...mapState({
+			mailSending: state => state.contact.mailSending,
+			mailStatus: state => state.contact.mailStatus
+		})
+	},
 
-  methods: {
-    ...mapActions({
-      submitForm: VUEX_CONTACT_SEND_EMAIL_REQUEST
-    }),
+	methods: {
+		...mapActions({
+			submitForm: VUEX_CONTACT_SEND_EMAIL_REQUEST
+		}),
 
-    sendEmail () {
-      this.submitted = true
+		sendEmail () {
+			this.submitted = true
 
-      if (!this.$v.$invalid) {
-        this.submitForm(this.model)
-      }
-    }
-  },
+			if (!this.$v.$invalid) {
+				this.submitForm(this.model)
+			}
+		}
+	},
 
-  watch: {
-    mailStatus: {
-      deep: true,
-      handler (val) {
-        if (val === HADDIX_CONTACT_STATUS__READY) {
-          this.submitted = false
-          this.model = {
-            first_name: null,
-            last_name: null,
-            email: null,
-            message: null
-          }
-        }
-      }
-    }
-  }
+	watch: {
+		mailStatus: {
+			deep: true,
+			handler (val) {
+				if (val === HADDIX_CONTACT_STATUS__READY) {
+					this.submitted = false
+					this.model = {
+						first_name: null,
+						last_name: null,
+						email: null,
+						message: null
+					}
+				}
+			}
+		}
+	}
 }
 </script>

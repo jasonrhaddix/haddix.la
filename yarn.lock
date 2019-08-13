@@ -10540,10 +10540,10 @@ vuetify-loader@^1.2.2:
   dependencies:
     loader-utils "^1.1.0"
 
-vuetify@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.1.tgz#27b2ea314f5eba7eff9993d4d97110d5563a4b57"
-  integrity sha512-UOBpJQdEwvoqH7zXEVo0YGLT5bKKXZxa8+MzBKaQK/Evbo5XjbEt5mxbO7f/9bCO5XqM825u4eNxcEUhV4sT1Q==
+vuetify@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.5.tgz#3e9cd992bed2f4013bfcfc045ff2e301deb3272d"
+  integrity sha512-t2JNarqqJRzOEtNg2nP9U5EFU4jR6unA8RIiqBGb3pjSCaTxwHzu5H3wkcBh/NM3y6fd40EuIS+SkFejwGD6RQ==
 
 vuex-router-sync@^5.0.0:
   version "5.0.0"

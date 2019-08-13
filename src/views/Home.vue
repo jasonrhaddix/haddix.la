@@ -20,7 +20,7 @@
 import { mapActions } from 'vuex'
 
 import {
-  VUEX_ROUTING_PUSH_ROUTE
+	VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'
 
 import SphereBG from '@/components/SphereBG/Sphere_BG'
@@ -28,18 +28,18 @@ import Logo from '@/components/AnimatedLogo/Animated_Logo'
 import AppButton from '@/components/_global/App_Button'
 
 export default {
-  name: 'home-view',
+	name: 'home-view',
 
-  components: {
-    'sphere-bg': SphereBG,
-    'logo': Logo,
-    'app-btn': AppButton
-  },
+	components: {
+		'sphere-bg': SphereBG,
+		'logo': Logo,
+		'app-btn': AppButton
+	},
 
-  methods: {
-    ...mapActions({
-      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-    })
-  }
+	methods: {
+		...mapActions({
+			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+		})
+	}
 }
 </script>

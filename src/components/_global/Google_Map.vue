@@ -24,23 +24,23 @@
 
 <script>
 export default {
-  name: 'google-map',
+	name: 'google-map',
 
-  data: () => ({
-    mapOptions: {
-      lat: 33.7714398,
-      lng: -118.1503778
-    },
-    markerOptions: {
-      url: require('@/assets/app/images/map-marker.svg'),
-      // size: {width: 60, height: 90, f: 'px', b: 'px',},
-      scaledSize: { width: 60, height: 75, f: 'px', b: 'px' }
-    },
-    mapStyles: require('@/config/mapstyles.json')
-  }),
+	data: () => ({
+		mapOptions: {
+			lat: 33.7714398,
+			lng: -118.1503778
+		},
+		markerOptions: {
+			url: require('@/assets/app/images/map-marker.svg'),
+			// size: {width: 60, height: 90, f: 'px', b: 'px',},
+			scaledSize: { width: 60, height: 75, f: 'px', b: 'px' }
+		},
+		mapStyles: require('@/config/mapstyles.json')
+	}),
 
-  mounted () {
+	mounted () {
 
-  }
+	}
 }
 </script>

@@ -18,11 +18,11 @@ import ContactForm from '@/components/Forms/Contact/Contact_Form'
 import GoogleMap from '@/components/_global/Google_Map'
 
 export default {
-  name: 'contact-view',
+	name: 'contact-view',
 
-  components: {
-    'contact-form': ContactForm,
-    'google-map': GoogleMap
-  }
+	components: {
+		'contact-form': ContactForm,
+		'google-map': GoogleMap
+	}
 }
 </script>

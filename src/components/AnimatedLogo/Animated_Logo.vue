@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'animated-logo-container'
+	name: 'animated-logo-container'
 
 }
 </script>

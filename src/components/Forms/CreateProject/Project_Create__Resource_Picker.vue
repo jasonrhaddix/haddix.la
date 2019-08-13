@@ -12,7 +12,7 @@
 						class="list-item"
 						@click="itemClick('optionItems', item.id)">
 						<p>{{ item.value }}</p>
-					</div>	
+					</div>
                 </div>
             </v-col>
             <v-col class="col-12 col-md-6 list selected-list">
@@ -35,49 +35,49 @@
 
 <script>
 export default {
-  name: 'create-resource-picker',
+	name: 'create-resource-picker',
 
-  props: {
-    items: {
-      type: Array,
-      required: false,
-      default: () => ([])
-    },
-    itemsSelectedCallback: {
-      type: [Function, Promise],
-      required: false,
-      default: null
-    }
-  },
+	props: {
+		items: {
+			type: Array,
+			required: false,
+			default: () => ([])
+		},
+		itemsSelectedCallback: {
+			type: [Function, Promise],
+			required: false,
+			default: null
+		}
+	},
 
-  data: () => ({
-    optionItems: [],
-    selectedItems: []
-  }),
+	data: () => ({
+		optionItems: [],
+		selectedItems: []
+	}),
 
-  mounted () {
-    // decouple incoming items with local items
-    this.optionItems = JSON.parse(JSON.stringify(this.items))
-  },
+	mounted () {
+		// decouple incoming items with local items
+		this.optionItems = JSON.parse(JSON.stringify(this.items))
+	},
 
-  methods: {
-    itemClick (fromList, id) {
-      setTimeout(() => {
-        let toList = (fromList === 'optionItems')
-          ? 'selectedItems' : 'optionItems'
+	methods: {
+		itemClick (fromList, id) {
+			setTimeout(() => {
+				let toList = (fromList === 'optionItems')
+					? 'selectedItems' : 'optionItems'
 
-        let index = this[fromList].findIndex(item => item.id === id)
+				let index = this[fromList].findIndex(item => item.id === id)
 
-        this[toList].push(this[fromList][index])
-        this[fromList].splice(index, 1)
+				this[toList].push(this[fromList][index])
+				this[fromList].splice(index, 1)
 
-        this[toList].sort(function (a, b) {
-          return a.id - b.id
-        })
+				this[toList].sort(function (a, b) {
+					return a.id - b.id
+				})
 
-        if (this.itemsSelectedCallback) { this.itemsSelectedCallback(this.selectedItems) }
-      }, 100)
-    }
-  }
+				if (this.itemsSelectedCallback) { this.itemsSelectedCallback(this.selectedItems) }
+			}, 100)
+		}
+	}
 }
 </script>

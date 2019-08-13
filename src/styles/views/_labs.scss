@@ -1,6 +1,48 @@
 .labs-view {
-    min-height: 100vh;
+	min-height: 100vh;
+	overflow: hidden;
     background: {
         color: $color-m-white;
-    }
+	}
+
+	.labs__header {
+		position: relative;
+		height: 100vh;
+
+		.header__content {
+			@include center-content();
+
+			p {
+				text-transform: uppercase;
+				text-align: center;
+				color: $color-m-grey-darken-3;
+				padding: {
+					top: 0.5rem;
+				}
+			}
+		}
+
+		.header__scroll {
+			@include center-content('horizontal');
+			position: fixed;
+			bottom: 0;
+			transition: opacity 250ms ease-in-out;
+
+			p {
+				color: $color-m-grey-darken-2
+			}
+
+			.v-icon {
+				width: 100%;
+			}
+
+			&:not(.visible) {
+				opacity: 0;
+			}
+
+			&.visible {
+				opacity: 1;
+			}
+		}
+	}
 }

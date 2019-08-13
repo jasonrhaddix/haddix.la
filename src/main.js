@@ -15,7 +15,7 @@ import router from '@/router'
 import store from '@/store'
 
 import {
-  VUEX_APP_INIT
+	VUEX_APP_INIT
 } from '@/store/constants/app'
 
 // Vue - Directive statements
@@ -30,20 +30,20 @@ Vue.config.productionTip = false
 
 let app = null
 store.dispatch(VUEX_APP_INIT).then(() => {
-  app = new Vue({
-    vuetify,
-    router,
-    store,
-    created () {
-      // For Electron app
-      // this.$router.push('/')
-    },
-    methods: {
-      loadView,
-      loadComponent
-    },
-    render: h => h(App)
-  }).$mount('#app')
+	app = new Vue({
+		vuetify,
+		router,
+		store,
+		created () {
+			// For Electron app
+			// this.$router.push('/')
+		},
+		methods: {
+			loadView,
+			loadComponent
+		},
+		render: h => h(App)
+	}).$mount('#app')
 })
 
 export default app

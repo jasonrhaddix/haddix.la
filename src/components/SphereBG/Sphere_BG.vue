@@ -8,10 +8,10 @@
 import ThreeRender_Opt from '@/js/threejs/three-optimize.js'
 
 export default {
-  name: 'sphere-bg-container',
+	name: 'sphere-bg-container',
 
-  mounted () {
-    this.$refs.threeContainer.appendChild(ThreeRender_Opt)
-  }
+	mounted () {
+		this.$refs.threeContainer.appendChild(ThreeRender_Opt)
+	}
 }
 </script>

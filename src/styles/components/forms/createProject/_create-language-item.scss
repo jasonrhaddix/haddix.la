@@ -1,10 +1,16 @@
 .create-language-item {
-    display: flex;
-    
+	display: flex;
+	border: {
+		radius: 4px;
+	}
+	background: {
+		color: $color-app-black-alpha-25;
+	}
+
     .content__graph {
         width: 140px;
     }
-    
+
     .language__content {
         flex: 1;
         display: flex;
@@ -18,14 +24,14 @@
             .v-text-field__details {
                 display: none;
             }
-    
+
             .content__type,
             .content__percentage {
                 flex: 1;
                 padding: 0 1rem;
             }
-        
-            .content__actions { 
+
+            .content__actions {
                 width: 50px;
                 margin: {
                     top: 1rem;

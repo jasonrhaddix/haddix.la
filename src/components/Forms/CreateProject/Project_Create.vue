@@ -1,5 +1,5 @@
 <template>
-    <div class="form--project-create">
+    <v-container class="form--project-create">
         <div class="form-section create__form">
 			<v-row>
 				<v-col class="col-12 order-md-12 offset-md-4 col-md-4">
@@ -415,7 +415,7 @@
                 @click.native="submitForm"/>
         </div>
 
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -424,10 +424,10 @@ import { required, maxValue, url } from 'vuelidate/lib/validators'
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 import {
-  VUEX_PROJECT_CREATE
+	VUEX_PROJECT_CREATE
 } from '@/store/constants/projects'
 import {
-  VUEX_PROJECT_TREE_CREATE_REQUEST
+	VUEX_PROJECT_TREE_CREATE_REQUEST
 } from '@/store/constants/projects/project_tree'
 
 import AttachmentUploader from '@/components/_global/Attachment_Uploader'
@@ -437,216 +437,216 @@ import CreateResourcePicker from '@/components/Forms/CreateProject/Project_Creat
 import AppButton from '@/components/_global/App_Button'
 
 export default {
-  name: 'project-create-form',
+	name: 'project-create-form',
 
-  components: {
-    'attachment-uploader': AttachmentUploader,
-    'app-btn': AppButton,
-    'attachment-item': CreateAttachmentItem,
-    'language-item': CreateLanguageItem,
-    'resource-picker': CreateResourcePicker
-  },
+	components: {
+		'attachment-uploader': AttachmentUploader,
+		'app-btn': AppButton,
+		'attachment-item': CreateAttachmentItem,
+		'language-item': CreateLanguageItem,
+		'resource-picker': CreateResourcePicker
+	},
 
-  data: () => ({
-    model: {
-      project_id: null,
-      type: null,
-      title: null,
-      subtitle: null,
-      client: null,
-      role: null,
-      project_date: null,
-      excerpt: null,
-      description: null,
-      link: null,
-      published: true,
-      languages: [],
-      resources: []
-    },
+	data: () => ({
+		model: {
+			project_id: null,
+			type: null,
+			title: null,
+			subtitle: null,
+			client: null,
+			role: null,
+			project_date: null,
+			excerpt: null,
+			description: null,
+			link: null,
+			published: true,
+			languages: [],
+			resources: []
+		},
 
-    // TODO: Create as mixin
-    treeFoldersOpen: [1],
-    treeOptions: {
-      fileIcons: {
-        css: { prefix: 'fab', icon: 'css3' },
-        fav: { prefix: 'fas', icon: 'star' },
-        group: { prefix: 'fas', icon: 'ellipsis-h' },
-        html: { prefix: 'fab', icon: 'html5' },
-        image: { prefix: 'fas', icon: 'file-image' },
-        js: { prefix: 'fab', icon: 'js' },
-        json: { prefix: 'fas', icon: 'code' },
-        md: { prefix: 'fab', icon: 'markdown' },
-        node: { prefix: 'fab', icon: 'node-js' },
-        pdf: { prefix: 'fas', icon: 'file-pdf' },
-        vieo: { prefix: 'fas', icon: 'file-video' },
-        vue: { prefix: 'fab', icon: 'vuejs' },
-        yarn: { prefix: 'fab', icon: 'yarn' }
-      }
-    },
+		// TODO: Create as mixin
+		treeFoldersOpen: [1],
+		treeOptions: {
+			fileIcons: {
+				css: { prefix: 'fab', icon: 'css3' },
+				fav: { prefix: 'fas', icon: 'star' },
+				group: { prefix: 'fas', icon: 'ellipsis-h' },
+				html: { prefix: 'fab', icon: 'html5' },
+				image: { prefix: 'fas', icon: 'file-image' },
+				js: { prefix: 'fab', icon: 'js' },
+				json: { prefix: 'fas', icon: 'code' },
+				md: { prefix: 'fab', icon: 'markdown' },
+				node: { prefix: 'fab', icon: 'node-js' },
+				pdf: { prefix: 'fas', icon: 'file-pdf' },
+				vieo: { prefix: 'fas', icon: 'file-video' },
+				vue: { prefix: 'fab', icon: 'vuejs' },
+				yarn: { prefix: 'fab', icon: 'yarn' }
+			}
+		},
 
-    projectDateMenu: false,
-    fileDragOver: false,
-    submitted: false
-  }),
+		projectDateMenu: false,
+		fileDragOver: false,
+		submitted: false
+	}),
 
-  validations: {
-    model: {
-      type: { required },
-      title: { required },
-      client: { required },
-      role: { required },
-      project_date: { required },
-      subtitle: { required },
-      // exerpt: { required },
-      description: { required },
-      link: { url }
-    }
-  },
+	validations: {
+		model: {
+			type: { required },
+			title: { required },
+			client: { required },
+			role: { required },
+			project_date: { required },
+			subtitle: { required },
+			// exerpt: { required },
+			description: { required },
+			link: { url }
+		}
+	},
 
-  computed: {
-    ...mapState({
-      projectSaving: state => state.projects.projectSaving,
+	computed: {
+		...mapState({
+			projectSaving: state => state.projects.projectSaving,
 
-      projectTypes: state => state.config.projectTypes,
-      projectRoles: state => state.config.projectRoles,
-      projectResources: state => state.config.projectResources,
-      clients: state => state.config.clients,
+			projectTypes: state => state.config.projectTypes,
+			projectRoles: state => state.config.projectRoles,
+			projectResources: state => state.config.projectResources,
+			clients: state => state.config.clients,
 
-      projectTree: state => state.project_tree.projectTree
-    }),
+			projectTree: state => state.projectTree.projectTree
+		}),
 
-    ...mapGetters({
-      appAuthenticated: 'appAuthenticated',
-      getQueuedFiles: 'getQueuedFiles',
-      getUploadingFiles: 'getUploadingFiles',
-      getProcessingFiles: 'getProcessingFiles',
-      getCompletedFiles: 'getCompletedFiles'
-    }),
+		...mapGetters({
+			appAuthenticated: 'appAuthenticated',
+			getQueuedFiles: 'getQueuedFiles',
+			getUploadingFiles: 'getUploadingFiles',
+			getProcessingFiles: 'getProcessingFiles',
+			getCompletedFiles: 'getCompletedFiles'
+		}),
 
-    fileAttachments () {
-      return (usageType, singleReturn) => {
-        let files = new Array()
+		fileAttachments () {
+			return (usageType, singleReturn) => {
+				let files = new Array()
 
-        let paramsWithId = {
-          attach_to: {
-            model_id: this.model.project_id,
-            model: HADDIX_ATTACHMENT_TYPE__PROJECT
-          }
-        }
+				let paramsWithId = {
+					attach_to: {
+						model_id: this.model.project_id,
+						model: HADDIX_ATTACHMENT_TYPE__PROJECT
+					}
+				}
 
-        files = files
-          .concat(this.getCompletedFiles(paramsWithId))
-          .concat(this.getUploadingFiles(paramsWithId))
-          .concat(this.getProcessingFiles(paramsWithId))
-          .concat(this.getQueuedFiles(paramsWithId))
+				files = files
+					.concat(this.getCompletedFiles(paramsWithId))
+					.concat(this.getUploadingFiles(paramsWithId))
+					.concat(this.getProcessingFiles(paramsWithId))
+					.concat(this.getQueuedFiles(paramsWithId))
 
-        files.sort(function (a, b) {
-          return a.addedToQueue - b.addedToQueue
-        })
+				files.sort(function (a, b) {
+					return a.addedToQueue - b.addedToQueue
+				})
 
-        let filteredFiles = files.filter(file => file.usage_type === usageType)
+				let filteredFiles = files.filter(file => file.usage_type === usageType)
 
-        if (filteredFiles.length == 0) return []
-        return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
-      }
-    },
+				if (filteredFiles.length == 0) return []
+				return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
+			}
+		},
 
-    getAttachTo () {
-      return {
-        model: HADDIX_ATTACHMENT_TYPE__PROJECT,
-        model_id: this.model.project_id
-      }
-    },
+		getAttachTo () {
+			return {
+				model: HADDIX_ATTACHMENT_TYPE__PROJECT,
+				model_id: this.model.project_id
+			}
+		},
 
-    formattedDate: {
-      get () {
-        if (!this.model.project_date) return
+		formattedDate: {
+			get () {
+				if (!this.model.project_date) return
 
-        let [month, day, year] = this.model.project_date.split(' ')[0].split('-')
-        return `${year}-${month}`
-      },
-      set (val) {
-        let [year, month] = val.split('-')
-        this.model.project_date = `${month}-01-${year} 00:00:00`
-      }
-    },
+				let [month, day, year] = this.model.project_date.split(' ')[0].split('-')
+				return `${year}-${month}`
+			},
+			set (val) {
+				let [year, month] = val.split('-')
+				this.model.project_date = `${month}-01-${year} 00:00:00`
+			}
+		},
 
-    formattedDateDisplay () {
-      if (!this.model.project_date) return
-      return `${this.formattedDate.split('-').reverse().join('/')}`
-    }
-  },
+		formattedDateDisplay () {
+			if (!this.model.project_date) return
+			return `${this.formattedDate.split('-').reverse().join('/')}`
+		}
+	},
 
-  mounted () {
-    this.model.project_id = this.$uuid.v4()
-  },
+	mounted () {
+		this.model.project_id = this.$uuid.v4()
+	},
 
-  methods: {
-    ...mapActions({
-      createProject: VUEX_PROJECT_CREATE,
-      createProjectTree: VUEX_PROJECT_TREE_CREATE_REQUEST
-    }),
+	methods: {
+		...mapActions({
+			createProject: VUEX_PROJECT_CREATE,
+			createProjectTree: VUEX_PROJECT_TREE_CREATE_REQUEST
+		}),
 
-    uploadDragOver (value) {
-      this.fileDragOver = value
-    },
+		uploadDragOver (value) {
+			this.fileDragOver = value
+		},
 
-    dropFiles (event) {
-      this.fileDragOver = false
-      this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files)
-    },
+		dropFiles (event) {
+			this.fileDragOver = false
+			this.$refs.attachmentUploader.loadFiles(event.dataTransfer.files)
+		},
 
-    addLanguage () {
-      this.model.languages.push({
-        id: this.$uuid.v4(),
-        value: 0,
-        language: ''
-      })
-    },
+		addLanguage () {
+			this.model.languages.push({
+				id: this.$uuid.v4(),
+				value: 0,
+				language: ''
+			})
+		},
 
-    updateLanguage (data) {
-      let index = this.model.languages.findIndex(x => x.id === data.id)
-      if (index > -1) {
-        Object.assign(this.model.languages[index], data)
-      }
-    },
+		updateLanguage (data) {
+			let index = this.model.languages.findIndex(x => x.id === data.id)
+			if (index > -1) {
+				Object.assign(this.model.languages[index], data)
+			}
+		},
 
-    removeLanguage (id) {
-      let index = this.model.languages.findIndex(x => x.id === id)
-      if (index > -1) {
-        this.model.languages.splice(index, 1)
-      }
-    },
+		removeLanguage (id) {
+			let index = this.model.languages.findIndex(x => x.id === id)
+			if (index > -1) {
+				this.model.languages.splice(index, 1)
+			}
+		},
 
-    resourceItemsSelected (items) {
-      this.model.resources = items
-    },
+		resourceItemsSelected (items) {
+			this.model.resources = items
+		},
 
-    handleSelectedFileStructFiles (event) {
-      let file = this.$refs.fileStructureControl.files[0]
+		handleSelectedFileStructFiles (event) {
+			let file = this.$refs.fileStructureControl.files[0]
 
-      let reader = new FileReader()
-      reader.onload = this.onReaderLoad
-      reader.readAsText(file)
-    },
+			let reader = new FileReader()
+			reader.onload = this.onReaderLoad
+			reader.readAsText(file)
+		},
 
-    onReaderLoad (event) {
-      var json_tree = JSON.parse(event.target.result)
-      this.createProjectTree(
-        {
-          project_id: this.model.project_id,
-          tree_data: json_tree
-        }
-      )
-    },
+		onReaderLoad (event) {
+			var json_tree = JSON.parse(event.target.result)
+			this.createProjectTree(
+				{
+					project_id: this.model.project_id,
+					tree_data: json_tree
+				}
+			)
+		},
 
-    submitForm () {
-      this.submitted = true
+		submitForm () {
+			this.submitted = true
 
-      if (!this.$v.$invalid) {
-        this.createProject(this.model)
-      }
-    }
-  }
+			if (!this.$v.$invalid) {
+				this.createProject(this.model)
+			}
+		}
+	}
 }
 </script>

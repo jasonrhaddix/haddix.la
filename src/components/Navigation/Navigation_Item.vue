@@ -14,19 +14,19 @@
 
 <script>
 export default {
-  name: 'navigation-item',
+	name: 'navigation-item',
 
-  props: {
-    text: {
-      type: String,
-      required: true,
-      default: null
-    },
-    styles: {
-      type: Object,
-      required: false,
-      default: () => {}
-    }
-  }
+	props: {
+		text: {
+			type: String,
+			required: true,
+			default: null
+		},
+		styles: {
+			type: Object,
+			required: false,
+			default: () => {}
+		}
+	}
 }
 </script>

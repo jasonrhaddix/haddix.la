@@ -20,14 +20,14 @@ import NotificationContainer from '@/components/Containers/Notification_Containe
 import LoginContainer from '@/components/Login/Login.vue'
 
 export default {
-  name: 'app',
+	name: 'app',
 
-  components: {
-    'navigation': Navigation,
-    'overlay-container': OverlayContainer,
-    'notification-container': NotificationContainer,
-    'login-container': LoginContainer
-  }
+	components: {
+		'navigation': Navigation,
+		'overlay-container': OverlayContainer,
+		'notification-container': NotificationContainer,
+		'login-container': LoginContainer
+	}
 }
 </script>
 

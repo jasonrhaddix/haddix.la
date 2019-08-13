@@ -37,11 +37,11 @@
 import { mapState, mapActions } from 'vuex'
 
 import {
-  VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
-  VUEX_UI_HEADER_LOGO
+	VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
+	VUEX_UI_HEADER_LOGO
 } from '@/store/constants/ui'
 import {
-  VUEX_ROUTING_PUSH_ROUTE
+	VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'
 
 import sitenav from '@/config/sitenav'
@@ -50,39 +50,39 @@ import HamburgerMenu from '@/components/_global/Hamburger_Menu'
 import NavigationItem from '@/components/Navigation/Navigation_Item'
 
 export default {
-  name: 'navigation',
+	name: 'navigation',
 
-  components: {
-    'hamburger-menu': HamburgerMenu,
-    'navigation-item': NavigationItem
-  },
+	components: {
+		'hamburger-menu': HamburgerMenu,
+		'navigation-item': NavigationItem
+	},
 
-  data: () => ({
-    navItems: sitenav
-  }),
+	data: () => ({
+		navItems: sitenav
+	}),
 
-  computed: {
-    ...mapState({
-      headerState: state => state.ui.headerState,
-      navigationOpenState: state => state.ui.navigation.openState,
-      navigationIsEnabled: state => state.ui.navigation.isEnabled,
-      routeTitle: state => state.ui.navigation.title
-    }),
+	computed: {
+		...mapState({
+			headerState: state => state.ui.headerState,
+			navigationOpenState: state => state.ui.navigation.openState,
+			navigationIsEnabled: state => state.ui.navigation.isEnabled,
+			routeTitle: state => state.ui.navigation.title
+		}),
 
-    headerLogo () {
-      return VUEX_UI_HEADER_LOGO
-    },
+		headerLogo () {
+			return VUEX_UI_HEADER_LOGO
+		},
 
-    routeName () {
-      return this.routeTitle ? this.routeTitle : this.$route.name
-    }
-  },
+		routeName () {
+			return this.routeTitle ? this.routeTitle : this.$route.name
+		}
+	},
 
-  methods: {
-    ...mapActions({
-      toggleNavigationMenu: VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
-      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-    })
-  }
+	methods: {
+		...mapActions({
+			toggleNavigationMenu: VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
+			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+		})
+	}
 }
 </script>

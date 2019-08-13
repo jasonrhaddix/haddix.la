@@ -42,34 +42,34 @@
 
 <script>
 export default {
-  name: 'create-attachment-item',
+	name: 'create-attachment-item',
 
-  props: {
-    data: {
-      type: Object,
-      required: true
-    }
-  },
+	props: {
+		data: {
+			type: Object,
+			required: true
+		}
+	},
 
-  computed: {
-    fileProgressPercent () {
-      let total = this.data.progress.total
-      let loaded = this.data.progress.loaded
-      return (total) ? Math.round(loaded / total * 100) + '%' : '0%'
-      // return (total) ? (loaded/total * 100).toFixed(1) + "%" : "0.0%"
-    },
+	computed: {
+		fileProgressPercent () {
+			let total = this.data.progress.total
+			let loaded = this.data.progress.loaded
+			return (total) ? Math.round(loaded / total * 100) + '%' : '0%'
+			// return (total) ? (loaded/total * 100).toFixed(1) + "%" : "0.0%"
+		},
 
-    fileProgress () {
-      let total = this.data.progress.total
-      let loaded = this.data.progress.loaded
+		fileProgress () {
+			let total = this.data.progress.total
+			let loaded = this.data.progress.loaded
 
-      if (!total) return 0
-      return { transform: 'scaleX(' + loaded / total + ')' }
-    },
+			if (!total) return 0
+			return { transform: 'scaleX(' + loaded / total + ')' }
+		},
 
-    compileVideoSrc () {
-      return URL.createObjectURL(this.data.file)
-    }
-  }
+		compileVideoSrc () {
+			return URL.createObjectURL(this.data.file)
+		}
+	}
 }
 </script>

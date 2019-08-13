@@ -31,7 +31,7 @@ $animationDelay: 100ms;
         }
 
         .image-container {
-            position: absolute;        
+            position: absolute;
             // max-width: 70rem;
             // width: 90%;
             opacity: 1;
@@ -49,12 +49,12 @@ $animationDelay: 100ms;
                         transform $animationSpeed linear $animationDelay,
                         left $animationSpeed linear $animationDelay,
                         top $animationSpeed linear $animationDelay;
-            
+
             .v-image {
                 transition: left $animationSpeed linear $animationDelay,
                             top $animationSpeed linear $animationDelay;
             }
-            
+
             .poly,
             .background-container {
                 position: absolute;
@@ -66,16 +66,16 @@ $animationDelay: 100ms;
                              top;
                 transition: left $animationSpeed linear $animationDelay,
                             top $animationSpeed linear $animationDelay;
-                
+
             }
-            
+
             .background-container {
                 transition: background 100ms linear 300ms;
-                
+
                 &.light {
                     background: {
                         color: rgba(255,255,255,1);
-                    }   
+                    }
                 }
 
                 &.dark {
@@ -83,9 +83,9 @@ $animationDelay: 100ms;
                         color: rgba(0,0,0,1);
                     }
                 }
-            }  
+            }
         }
-        
+
         .title-container {
             position: absolute;
             width: 100%;
@@ -96,30 +96,30 @@ $animationDelay: 100ms;
                 position: relative;
                 width: 100%;
                 height: 100%;
-                
+
                 .project-title {
                     @include center-content('vertical', -20px);
                     width: 100%;
-                    
-                    p, h4, h5 { 
+
+                    p, h4, h5 {
                         text-align: center;
                         width: 100%;
-                        color: white;
+                        color: $color-app-white;
                         text-transform: uppercase;
                     }
-                    
+
                     p {
                         font-family: 'DIN-CondLight';
                         line-height: 3rem;
                         font-size: 3rem;
                     }
-                    
+
                     h4 {
                         font-family: 'DIN-CondBlack';
                         font-size: 6rem;
                         line-height: 6rem;
                     }
-                    
+
                     h5 {
                         font-family: 'DIN-Cond';
                         font-size: 1.2rem;
@@ -160,12 +160,12 @@ $animationDelay: 100ms;
 
                 .background-container {
                     transition: background 100ms linear 0ms;
-                    
+
 
                     &.light {
                         background: {
                             color: rgba(255,255,255,0);
-                        }   
+                        }
                     }
 
                     &.dark {
@@ -196,10 +196,10 @@ $animationDelay: 100ms;
         .project__inner {
             width: 100%;
             height: 100%;
-            
+
             .image__main {
                 height: 100%;
-                
+
                 .v-image {
                     height: 100%;
 
@@ -214,14 +214,14 @@ $animationDelay: 100ms;
             .title-container {
 
                 .title-inner {
-                    
+
                     .project-title {
 
                         p {
                             line-height: 2rem;
                             font-size: 2rem;
                         }
-                        
+
                         h4 {
                             font-size: 3rem;
                             line-height: 3rem;

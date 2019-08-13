@@ -14,14 +14,14 @@
 
 <script>
 export default {
-  name: 'hamburger-menu',
+	name: 'hamburger-menu',
 
-  props: {
-    menuState: {
-      type: Boolean,
-      required: true,
-      default: false
-    }
-  }
+	props: {
+		menuState: {
+			type: Boolean,
+			required: true,
+			default: false
+		}
+	}
 }
 </script>

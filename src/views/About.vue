@@ -308,38 +308,38 @@
 import { mapActions } from 'vuex'
 
 import {
-  VUEX_UI_ABOUT_BIO_PHOTO,
-  VUEX_UI_LOGO_UNIVERSAL
+	VUEX_UI_ABOUT_BIO_PHOTO,
+	VUEX_UI_LOGO_UNIVERSAL
 } from '@/store/constants/ui'
 import {
-  VUEX_ROUTING_PUSH_ROUTE
+	VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'
 
 import AppButton from '@/components/_global/App_Button'
 
 export default {
-  name: 'about-view',
+	name: 'about-view',
 
-  components: {
-    'app-btn': AppButton
-  },
+	components: {
+		'app-btn': AppButton
+	},
 
-  data: () => ({
+	data: () => ({
 
-  }),
+	}),
 
-  computed: {
-    bioPhoto () { return VUEX_UI_ABOUT_BIO_PHOTO }
-  },
+	computed: {
+		bioPhoto () { return VUEX_UI_ABOUT_BIO_PHOTO }
+	},
 
-  methods: {
-    ...mapActions({
-      navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
-    }),
+	methods: {
+		...mapActions({
+			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+		}),
 
-    navigateToExternalRoute (route) {
-      window.location
-    }
-  }
+		navigateToExternalRoute (route) {
+			window.location
+		}
+	}
 }
 </script>
