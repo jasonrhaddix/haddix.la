@@ -5,9 +5,11 @@
 				<particle-text text="HADDIX"/>
 				<p>Experiments for Jason R. Haddix</p>
 				<div class="divider"/>
-				<div><h3>{{getMessage}}</h3></div>
+				<div class="coming-soon"><h3>--> {{getMessage}} <--</h3></div>
 			</div>
-			<div :class="['header__scroll', {'visible':scrollIndVisible}]">
+			<div
+				v-if="false"
+				:class="['header__scroll', {'visible':scrollIndVisible}]">
 				<p>SCROLL</p>
 				<v-icon>keyboard_arrow_down</v-icon>
 			</div>
@@ -41,7 +43,7 @@
 
 		computed: {
 			getMessage() {
-				return this.comingSoonMessages[Math.random()*this.comingSoonMessages.length-1]
+				return this.comingSoonMessages[Math.round(Math.random()*this.comingSoonMessages.length-1)]
 			}
 		},
 
