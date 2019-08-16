@@ -12,7 +12,7 @@ module.exports = {
 		node: true
 	},
 
-	"globals": {
+	globals: {
 		"HADDIX_APP_AUTHORIZATION_AUTHORIZED": 'readonly',
 		"HADDIX_APP_AUTHORIZATION_NOT_AUTHORIZED": 'readonly',
 

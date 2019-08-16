@@ -23,21 +23,21 @@
             }
 
             .section {
-                
+
                 .section--title {
                     display: flex;
                     margin: {
                         bottom: 0.5rem;
                     }
-                    
+
                     h2 {
                         text-transform: uppercase;
-                        background-color: $color-app-text-dark;
+                        background-color: $color-app-primary;
                         color: $color-app-text-light;
                         padding: 5px 20px;
                     }
                 }
-                    
+
                 .subsection {
                     padding: 20px;
                     margin: {
@@ -71,10 +71,10 @@
 
             /* HEADER */
             .about--header {
-                
+
                 .header--photo-container {
                    display: flex;
-                    
+
                     .header--photo {
                         margin: 0 auto;
 
@@ -90,19 +90,19 @@
                     margin: {
                         top: 2rem;
                     }
-                    
+
                     .social-media--list {
                         position: relative;
                         display: flex;
                         margin: 0 auto;
-                        
+
                         a {
                             color: $color-app-text-dark;
                             cursor: pointer;
                             margin: 0 1.5rem;
 
                             &:hover {
-                                color: $color-app-primary;
+                                color: $color-app-secondary;
                             }
                         }
                     }
@@ -127,7 +127,7 @@
                     }
                 }
             }
-            
+
             .quote-container {
                 color: $color-m-grey;
 
@@ -142,11 +142,11 @@
             }
 
             .about--experience {
-                
+
                 .about-experience-role {
                     text-transform: uppercase;
                     // margin: 10px 0 15px;
-                    
+
                     h4 {
                         font-weight: $font-weight-light;
 
@@ -164,7 +164,7 @@
                  }
 
                 .about-section-experience-roles {
-                    
+
                     ul {
                         padding-left: 15px;
 
@@ -185,17 +185,17 @@
 
             /* CLIENT LIST */
             .about--client-list {
-                
+
                 .client-list {
                     // display: inline-block;
-                    
+
                     .client-item {
                         // float: left;
-                        // text-align: center;  
+                        // text-align: center;
                         // width: 33.33%;
                         padding-top: 40px;
                         padding-bottom: 90px;
-    
+
                         .item {
 
                             img {

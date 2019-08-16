@@ -5,31 +5,31 @@
         margin: {
             bottom: 2rem;
         }
-    
+
         h2 {
             text-transform: uppercase;
-            background-color: $color-app-text-dark;
+            background-color: $color-app-primary;
             color: $color-app-text-light;
             padding: 5px 20px;
         }
     }
-    
+
     .contact--form {
         display: inline-block;
         width: 100%;
         margin: {
             bottom: 4rem;
         }
-        
+
         // Global form row class
         .form-row {
             input {
-                transition: 90ms linear; 
+                transition: 90ms linear;
             }
 
             input:-webkit-autofill,
-            input:-webkit-autofill:hover, 
-            input:-webkit-autofill:focus, 
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
             input:-webkit-autofill:active  {
                 -webkit-box-shadow: 0 0 0 30px #F0F0F0 inset !important;
             }
@@ -44,21 +44,21 @@
 
             .v-input__slot:hover {
                 input:-webkit-autofill,
-                input:-webkit-autofill:hover, 
-                input:-webkit-autofill:focus, 
+                input:-webkit-autofill:hover,
+                input:-webkit-autofill:focus,
                 input:-webkit-autofill:active  {
                     -webkit-box-shadow: 0 0 0 30px #E0E0E0 inset !important;
                 }
             }
         }
-        
+
         // First Name | Last Name form flied area
         .form-flield--name {
             /* display: flex;
-            
+
             & > div {
                 flex: 1;
-                
+
                 &:first-of-type {
                     margin: { right: 0.5rem; }
                 }
@@ -67,9 +67,9 @@
                 }
             } */
         }
-        
-        // Form submit 
-        
+
+        // Form submit
+
         .form-submit--container {
             display: inline-block;
             float: right;
@@ -78,7 +78,7 @@
                 display: flex;
                 float: right;
             }
-    
+
             .form-submit--btn {
                 // display: inline-block;
                 margin: {

@@ -7,7 +7,7 @@
 	z-index: 200;
     overflow: hidden;
     pointer-events: none;
-    
+
     & > div,
     header {
         pointer-events: all;
@@ -19,11 +19,11 @@
         width: 100vw;
         overflow: hidden;
         clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
-        transition: clip-path 650ms ease-in-out;
+        transition: clip-path 650ms ease-in-out, background-color 650ms ease-in-out;
         background:{
             color: $color-app-nav-background;
         }
-        
+
         nav {
             @include center-content(0, -4.5rem);
             width: 400px;
@@ -42,7 +42,7 @@
         width: 100vw;
         top: 0;
         left: 0;
-        transition: top 500ms ease-in-out 150ms;
+        transition: top 500ms ease-in-out 150ms, background-color 650ms ease-in-out;
         background: {
             color: $color-app-nav-background;
         };
@@ -51,19 +51,19 @@
             display: flex;
             flex-direction: row;
             pointer-events: all;
-            
+
             .app-logo {
                 height: 40px;
                 cursor: pointer;
                 position: relative;
                 border: 1px solid #CCC;
                 background: $color-m-white;
-                
+
                 img, svg {
                     width: 100px;
                 }
             }
-    
+
             .divider {
                 background-color: $color-app-text-light;
                 margin: 10px 10px;
@@ -73,17 +73,17 @@
                 transform: translateY(0);
                 box-shadow: 1px 1px rgba(0, 0, 0, 0.5);
             }
-    
+
             .breadcrumb {
                 margin: 10px 0 0;
                 text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
-    
+
                 p {
                     color: $color-app-text-light;
                     line-height: 1.4rem;
                     text-transform: uppercase;
                 }
-            }	
+            }
         }
 
         .nav-menu-button {
@@ -102,7 +102,7 @@
         &:not(.open) { top: -50px; }
         &.open { top: 0; }
     }
-    
+
     &:not(.open) {
         .navigation-poly {
             clip-path: polygon(0% 0%, 110% 0%, 0% 0%, 0% 0%, 0% 50%, 0% 100%);
@@ -110,8 +110,17 @@
     }
 
     &.open {
+		header {
+			background:{
+				color: $color-m-black;
+			}
+		}
+
 		.navigation-poly {
-            clip-path: polygon(0% 0%, 110% 0%, 90% 80%, 30% 93%, 10% 90%, 0% 100%)
+			clip-path: polygon(0% 0%, 110% 0%, 90% 80%, 30% 93%, 10% 90%, 0% 100%);
+			background:{
+				color: $color-m-black;
+			}
 		}
     }
 
@@ -130,11 +139,11 @@
 
 
 @include respond-to(medium) {
-    
+
     .navigation-container {
-    
+
         .navigation-poly {
-            
+
             nav {
                 & > div {
                     margin: {

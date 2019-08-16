@@ -10,7 +10,7 @@
 		height: 100vh;
 
 		.header__content {
-			@include center-content();
+			@include center-content(0, -50px);
 
 			p {
 				text-transform: uppercase;

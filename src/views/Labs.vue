@@ -5,7 +5,10 @@
 				<particle-text text="HADDIX"/>
 				<p>Experiments for Jason R. Haddix</p>
 				<div class="divider"/>
-				<div class="coming-soon"><h3>--> {{getMessage}} <--</h3></div>
+				<div class="coming-soon">
+					<h3>--> {{getMessage}} <--</h3>
+					<p>Instead, try looking at this pretty animation.</p>
+				</div>
 			</div>
 			<div
 				v-if="false"
@@ -37,7 +40,9 @@
 			comingSoonMessages: [
 				"Nope...Not Yet",
 				"Coming Soon-ish",
-				"Workin' On It"
+				"Workin' On It",
+				"Nothing Here",
+				""
 			]
 		}),
 
