@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 21.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 108.3 124.5" style="enable-background:new 0 0 108.3 124.5;" xml:space="preserve">
+<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 446 500" style="enable-background:new 0 0 446 500;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#17004D;stroke-width:3;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#17004D;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:9.2464,2.0548;}
+	.st0{fill:url(#SVGID_1_);}
 </style>
-<polygon class="st0" points="54.1,89.8 6.8,89.8 30.5,48.9 54.1,7.9 77.8,48.9 101.4,89.8 "/>
-<polygon class="st0" points="54.1,50.3 76.2,50.3 65.2,69.4 54.1,88.4 43.1,69.4 32.1,50.3 "/>
-<polygon class="st0" points="103,90.5 103,34 54.2,5.8 5.3,34 5.3,90.5 54.2,118.7 "/>
 <g>
 	<g>
-		<line class="st0" x1="5.3" y1="34" x2="13" y2="38.7"/>
-		<line class="st1" x1="14.8" y1="39.8" x2="23.5" y2="45.1"/>
-		<line class="st0" x1="24.4" y1="45.6" x2="32.1" y2="50.3"/>
-	</g>
-</g>
-<g>
-	<g>
-		<line class="st0" x1="75.8" y1="50.8" x2="83.4" y2="45.9"/>
-		<line class="st1" x1="85.1" y1="44.8" x2="93.8" y2="39.2"/>
-		<line class="st0" x1="94.6" y1="38.7" x2="102.2" y2="33.8"/>
-	</g>
-</g>
-<g>
-	<g>
-		<line class="st0" x1="54.2" y1="119.2" x2="54.2" y2="110.2"/>
-		<line class="st1" x1="54.2" y1="108.1" x2="54.2" y2="97.8"/>
-		<line class="st0" x1="54.2" y1="96.8" x2="54.2" y2="87.8"/>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="2" y1="250.0116" x2="443.977" y2="250.0116">
+			<stop  offset="0" style="stop-color:#34009C"/>
+			<stop  offset="1" style="stop-color:#34009C"/>
+		</linearGradient>
+		<path class="st0" d="M443.7,135.4c-0.1-1-0.1-1.9-0.5-2.9c-0.1-0.2-0.3-0.4-0.4-0.7c-0.3-0.5-0.6-1-0.9-1.4
+			c-0.7-1-1.4-1.8-2.4-2.4c-0.2-0.2-0.3-0.5-0.6-0.6L228,3.4c-3.1-1.8-6.9-1.8-10,0L7.1,127.4c-0.2,0.2-0.3,0.5-0.6,0.6
+			c-1,0.7-1.8,1.5-2.5,2.5c-0.3,0.4-0.6,0.8-0.8,1.2c-0.1,0.3-0.4,0.5-0.5,0.7c-0.4,1.1-0.6,2.3-0.6,3.5c0,0.1-0.1,0.2-0.1,0.4v0.2
+			c0,0,0,0,0,0v227c0,0,0,0.1,0,0.1v0.1c0,0.2,0.1,0.4,0.2,0.6c0.1,1.4,0.3,2.9,1,4.2c0,0.1,0.1,0.1,0.2,0.2
+			c0.3,0.5,0.7,0.8,1.1,1.2c0.7,1,1.5,1.9,2.5,2.5c0.1,0.1,0.1,0.2,0.2,0.2l210.9,124c1.6,0.9,3.3,1.4,5,1.4s3.4-0.5,5-1.4
+			l210.9-124c0.1-0.1,0.1-0.2,0.2-0.2c0.9-0.6,1.6-1.4,2.3-2.3c0.4-0.5,0.9-0.9,1.2-1.4c0-0.1,0.1-0.1,0.1-0.2
+			c0.5-1.1,0.6-2.3,0.8-3.4c0.1-0.5,0.4-0.9,0.4-1.4V136.4C444,136,443.8,135.7,443.7,135.4z M410.9,134.7L337.2,165l-81-121.3
+			L410.9,134.7z M223,30.6l91.4,136.8H131.6L223,30.6z M189.8,43.8l-81,121.3l-73.7-30.3L189.8,43.8z M22.1,151.6l76.1,31.3
+			L22.1,323.8V151.6z M112.5,199L205,372.2L28.3,354.9L112.5,199z M212.9,469.9L57.4,378.5l155.5,15.1V469.9z M223,362.9L129.5,188
+			h187L223,362.9z M233,469.9v-76.1l155.4-15.2L233,469.9z M240.9,372.4l92.7-173.3l84.2,155.8L240.9,372.4z M423.9,323.8
+			l-76.1-140.9l76.1-31.3V323.8z"/>
 	</g>
 </g>
 </svg>

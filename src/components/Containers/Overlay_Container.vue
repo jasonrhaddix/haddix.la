@@ -18,7 +18,12 @@
             <v-layout column>
 
             <v-container class="section section__header">
-                <h1 class="header__title">{{ overlayTitle }}</h1>
+				<div class="header__content">
+					<img
+						class="header__geo-image"
+						:src="require('@/assets/app/images/geo.svg')"/>
+                	<h1 class="header__title">{{ overlayTitle }}</h1>
+				</div>
                 <v-btn
                     light fab small
                     class="header__close-btn"

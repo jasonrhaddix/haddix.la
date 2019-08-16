@@ -10,7 +10,7 @@
 		height: 100vh;
 
 		.header__content {
-			@include center-content(0, -50px);
+			@include center-content(0, -75px);
 
 			p {
 				text-transform: uppercase;
@@ -25,10 +25,27 @@
 				position: absolute;
 				width: 100%;
 				text-align: center;
-				text-transform: uppercase;
 				margin: {
-					top: 2rem
+					top: 4rem
 				}
+
+				h3,
+				p {
+					color: $color-m-grey !important;
+				}
+
+				h3 {
+					text-transform: uppercase;
+
+					span {
+						font-weight: 400;
+						font-size: 0.9rem;
+					}
+				}
+
+				/* p {
+					color: $color-m-grey-lighten-1
+				} */
 			}
 		}
 

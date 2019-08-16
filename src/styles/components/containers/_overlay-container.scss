@@ -1,6 +1,6 @@
 .overlay-container {
     background: {
-        color: $color-app-text-dark;
+        color: $color-app-ui-background;
     }
 
     .overlay__guest-warning {
@@ -30,22 +30,39 @@
     }
 
     .section__header {
-        position: relative;
+		position: relative;
 
-        .header__title {
-            font-size: 3rem;
-            font-family: 'Din-CondBlack';
-            color: white;
-            text-transform: uppercase;
-            padding: 2rem 0;
-        }
+		.header__content {
+			display: flex;
+			padding: 2rem 0;
 
-        .header__close-btn {
-            @include center-content('vertical');
-            position: absolute;
-            right: 1rem;
-            margin: 0;
-        }
+			.header__title {
+				flex: 1;
+				font-size: 3rem;
+				font-family: 'Din-CondBlack';
+				color: white;
+				text-transform: uppercase;
+			}
+
+			.header__geo-image {
+				height: 3rem;
+				width: 3rem;
+				margin: {
+					top: 13px;
+					right: 1rem;
+				}
+			}
+
+
+		}
+
+		.header__close-btn {
+			@include center-content('vertical');
+			position: absolute;
+			right: 1rem;
+			margin: 0;
+		}
+
     }
 
     .section__content {

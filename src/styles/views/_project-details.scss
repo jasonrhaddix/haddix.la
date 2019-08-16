@@ -30,7 +30,8 @@
 
             .title__container {
                 @include center-content();
-                width: 100%;
+				width: 100%;
+				text-shadow: 2px 1px 3px rgba(0,0,0,0.2);
 
                 h3 {
                     // font-size: 7rem;

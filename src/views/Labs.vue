@@ -6,8 +6,8 @@
 				<p>Experiments for Jason R. Haddix</p>
 				<div class="divider"/>
 				<div class="coming-soon">
-					<h3>--> {{getMessage}} <--</h3>
-					<p>Instead, try looking at this pretty animation.</p>
+					<h3><span>¯\_(ツ)_/¯</span> {{getMessage}}</h3>
+					<p><small>Instead, try looking at this pretty animation.</small></p>
 				</div>
 			</div>
 			<div

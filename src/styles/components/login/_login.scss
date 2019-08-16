@@ -3,14 +3,14 @@
     .login-drawer__container {
         .v-navigation-drawer {
             background: {
-                color: $color-m-grey-darken-4;
+                color: $color-app-ui-background;
             }
         }
-        
+
         .login-input__container {
             position: relative;
             height: 100vh;
-            
+
             .login-input__inner {
                 @include center-content(0, -50px);
                 padding: 0 1rem;
@@ -30,21 +30,21 @@
                 }
 
                 .input-error {
-                        
+
                     .v-input__slot {
                         border: 1px solid red !important;
                     }
                 }
-                
+
                 .auth-btn {
                     width: 100%;
                     margin: 0;
                 }
-                
+
                 /* Change the white to any color ;) */
                 input:-webkit-autofill,
-                input:-webkit-autofill:hover, 
-                input:-webkit-autofill:focus, 
+                input:-webkit-autofill:hover,
+                input:-webkit-autofill:focus,
                 input:-webkit-autofill:active  {
                     -webkit-box-shadow: 0 0 0 30px $color-m-grey-darken-3 inset !important;
                 }
