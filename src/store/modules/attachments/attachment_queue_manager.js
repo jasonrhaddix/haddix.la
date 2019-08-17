@@ -92,6 +92,8 @@ const actions = {
 	[VUEX_ATTACHMENT_QUEUE_MANAGER_ADD_FILES]: async ({ commit, dispatch }, payload) => {
 		let fileObj
 
+		console.log(payload)
+
 		for (var item in payload) {
 			fileObj = payload[item]
 
@@ -201,10 +203,11 @@ const mutations = {
 	// This little gem is what moves our hashIds from one bucket to the next
 	[VUEX_ATTACHMENT_QUEUE_MANAGER_FILE_MOVE_TO_BUCKET]: (state, payload) => {
 		// Remove it from preceding bucket
-		/* if (payload.from) {
+		if (payload.from) {
 			let index = state[payload.from].indexOf(payload.hashId)
+			// eslint-disable-next-line no-unused-vars
 			let removed = (index > -1) ? state[payload.from].splice(index, 1) : null
-		} */
+		}
 
 		// Add it to next bucket
 		state[payload.to].unshift(payload.hashId)
