@@ -50,7 +50,9 @@
                     </div>
                 </div>
 
-                <div class="divider" />
+                <div
+					v-if="description"
+					class="divider" />
 
                 <div class="section description__container">
                     <div class="description__inner">

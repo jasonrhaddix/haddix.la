@@ -92,8 +92,6 @@ const actions = {
 	[VUEX_ATTACHMENT_QUEUE_MANAGER_ADD_FILES]: async ({ commit, dispatch }, payload) => {
 		let fileObj
 
-		console.log(payload)
-
 		for (var item in payload) {
 			fileObj = payload[item]
 

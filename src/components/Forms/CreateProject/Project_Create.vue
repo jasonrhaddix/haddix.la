@@ -45,7 +45,6 @@
                         label="Client"
                         item-text="name"
                         :items="clients"
-                        :error="$v.model.client.$invalid && submitted"
                         v-model="model.client"/>
                 </v-col>
                 <v-col class="col-12 col-md-4">
@@ -54,7 +53,6 @@
                         label="Role"
                         item-text="name"
                         :items="projectRoles"
-                        :error="$v.model.role.$invalid && submitted"
                         v-model="model.role"/>
                 </v-col>
                 <v-col class="col-12 col-md-4">
@@ -75,7 +73,6 @@
                             v-on="on"
                             append-icon="event"
                             label="Project Date"
-                            :error="$v.model.project_date.$invalid && submitted"
                             v-model="formattedDateDisplay">
                         </v-text-field>
                         </template>
@@ -102,7 +99,6 @@
                     <v-textarea
                         filled
                         label="Description"
-                        :error="$v.model.description.$invalid && submitted"
                         v-model="model.description"/>
                 </v-col>
             </v-row>
@@ -461,7 +457,8 @@ export default {
 			link: null,
 			published: true,
 			languages: [],
-			resources: []
+			resources: [],
+			hasTree: false
 		},
 
 		// TODO: Create as mixin
@@ -493,12 +490,12 @@ export default {
 		model: {
 			type: { required },
 			title: { required },
-			client: { required },
-			role: { required },
-			project_date: { required },
-			subtitle: { required },
+			// client: { required },
+			// role: { required },
+			// project_date: { required },
+			// subtitle: { required },
 			// exerpt: { required },
-			description: { required },
+			// description: { required },
 			link: { url }
 		}
 	},
@@ -645,6 +642,15 @@ export default {
 
 			if (!this.$v.$invalid) {
 				this.createProject(this.model)
+			}
+		}
+	},
+
+	watch: {
+		projectTree: {
+			deep: true,
+			handler(val) {
+				if (val.tree_data.length) this.model.hasTree = true
 			}
 		}
 	}
