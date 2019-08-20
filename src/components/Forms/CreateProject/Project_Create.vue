@@ -650,7 +650,7 @@ export default {
 		projectTree: {
 			deep: true,
 			handler(val) {
-				if (val.tree_data.length) this.model.hasTree = true
+				// if (val && val.tree_data.length) this.model.hasTree = true
 			}
 		}
 	}

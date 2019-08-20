@@ -74,18 +74,6 @@ const actions = {
 			Promise.all([
 				dispatch(VUEX_PROJECTS_GUEST_FETCH_REQUEST)
 			])
-
-			/* dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
-        		component: {
-          			path: 'Notifications',
-          			file: 'Notification_Message'
-        		},
-        		data: {
-          			type: 'success',
-          			message: 'Success: Projects loaded'
-        		},
-        		timeout: 0
-      		}) */
 		}).catch(err => {
 			commit(VUEX_PROJECTS_FETCH_FAILURE, err)
 
@@ -106,18 +94,6 @@ const actions = {
 	[VUEX_PROJECTS_GUEST_FETCH_REQUEST]: ({ rootState, dispatch, commit }) => {
 		api.get(`/projects/guest/${rootState.app.sessionToken}`).then(response => {
 			commit(VUEX_PROJECTS_GUEST_FETCH_SUCCESS, response.data.data)
-
-			/* dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
-			component: {
-			path: 'Notifications',
-			file: 'Notification_Message'
-			},
-			data: {
-			type: 'success',
-			message: 'Success: Guest Projects loaded'
-			},
-			timeout: 0
-			}) */
 		}).catch(err => {
 			commit(VUEX_PROJECTS_GUEST_FETCH_FAILURE, err)
 
@@ -140,7 +116,7 @@ const actions = {
      *
      */
 	[VUEX_PROJECT_FETCH_REQUEST]: ({ dispatch, commit }, payload) => {
-		let apiRoute = payload.session_id ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
+		let apiRoute = payload.is_guest_project ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
 
 		api.get(apiRoute).then(async response => {
 			await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
