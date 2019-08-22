@@ -121,7 +121,9 @@ const actions = {
 		api.get(apiRoute).then(async response => {
 			await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
 
-			dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload.project_id)
+			if (response.data.data[0].hasTree) {
+				dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload.project_id)
+			}
 
 			if (response.data.data.length === 0) {
 				dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })

@@ -2,44 +2,24 @@
 export default {
 	projectTypes: [
 		{
-			name: 'Project',
-			value: 'project'
-		},
-		{
-			name: 'Personal',
-			value: 'personal'
-		},
-		{
 			name: 'Collaberation',
 			value: 'collaberation'
 		},
 		{
 			name: 'Experiment',
 			value: 'experiment'
+		},
+		{
+			name: 'Personal',
+			value: 'personal'
+		},
+		{
+			name: 'Project',
+			value: 'project'
 		}
 	],
 
 	projectRoles: [
-		{
-			name: 'Lead Front-end Engineer',
-			value: 'lead_front_end_engineer'
-		},
-		{
-			name: 'Front-end Engineer',
-			value: 'front_end_engineer'
-		},
-		{
-			name: 'Support Engineer',
-			value: 'support_engineer'
-		},
-		{
-			name: 'Lead Developer',
-			value: 'lead_developer'
-		},
-		{
-			name: 'Developer',
-			value: 'developer'
-		},
 		{
 			name: 'Creative Director',
 			value: 'creative_director'
@@ -47,6 +27,26 @@ export default {
 		{
 			name: 'Designer',
 			value: 'designer'
+		},
+		{
+			name: 'Developer',
+			value: 'developer'
+		},
+		{
+			name: 'Front-end Engineer',
+			value: 'front_end_engineer'
+		},
+		{
+			name: 'Lead Developer',
+			value: 'lead_developer'
+		},
+		{
+			name: 'Lead Front-end Engineer',
+			value: 'lead_front_end_engineer'
+		},
+		{
+			name: 'Support Engineer',
+			value: 'support_engineer'
 		},
 		{
 			name: 'Technical Consultant',
@@ -148,8 +148,92 @@ export default {
 
 	clients: [
 		{
+			name: 'Amazon',
+			value: 'amazon'
+		},
+		{
+			name: 'Best Buy',
+			value: 'best_buy'
+		},
+		{
+			name: 'Blowfish Shoes',
+			value: 'blowfish_shoes'
+		},
+		{
+			name: 'Chevron',
+			value: 'chevron'
+		},
+		{
+			name: 'City of New York',
+			value: 'new_york'
+		},
+		{
+			name: 'Cirque Du Solel',
+			value: 'cirque_du_solel'
+		},
+		{
+			name: 'DirecTv',
+			value: 'directv'
+		},
+		{
+			name: 'Disney Channel',
+			value: 'disney_channel'
+		},
+		{
+			name: 'ESPN',
+			value: 'espn'
+		},
+		{
+			name: 'FX',
+			value: 'fx'
+		},
+		{
+			name: 'The Gary Group',
+			value: 'gary_group'
+		},
+		{
+			name: 'HBO',
+			value: 'hbo'
+		},
+		{
+			name: 'iTunes',
+			value: 'itunes'
+		},
+		{
+			name: 'MGM Grand',
+			value: 'mgm_grand'
+		},
+		{
+			name: 'Nexon',
+			value: 'nexon'
+		},
+		{
+			name: 'Nike',
+			value: 'nike'
+		},
+		{
+			name: 'Oasis',
+			value: 'oasis'
+		},
+		{
+			name: 'Propel',
+			value: 'propel'
+		},
+		{
+			name: 'Satchi & Satchi',
+			value: 'satchi_satchi'
+		},
+		{
+			name: 'Showtime',
+			value: 'showtime'
+		},
+		{
 			name: 'Skechers',
 			value: 'skechers'
+		},
+		{
+			name: 'Top Rank',
+			value: 'top_rank'
 		},
 		{
 			name: 'Universal Orlando',
@@ -162,86 +246,6 @@ export default {
 		{
 			name: 'Universal Studios',
 			value: 'universal_studios'
-		},
-		{
-			name: 'Satchi & Satchi',
-			value: 'satchi_satchi'
-		},
-		{
-			name: 'City of New York',
-			value: 'new_york'
-		},
-		{
-			name: 'Nexon',
-			value: 'nexon'
-		},
-		{
-			name: 'Oasis',
-			value: 'oasis'
-		},
-		{
-			name: 'Showtime',
-			value: 'showtime'
-		},
-		{
-			name: 'Top Rank',
-			value: 'top_rank'
-		},
-		{
-			name: 'HBO',
-			value: 'hbo'
-		},
-		{
-			name: 'Cirque Du Solel',
-			value: 'cirque_du_solel'
-		},
-		{
-			name: 'Amazon',
-			value: 'amazon'
-		},
-		{
-			name: 'iTunes',
-			value: 'itunes'
-		},
-		{
-			name: 'Propel',
-			value: 'propel'
-		},
-		{
-			name: 'FX',
-			value: 'fx'
-		},
-		{
-			name: 'MGM Grand',
-			value: 'mgm_grand'
-		},
-		{
-			name: 'DirecTv',
-			value: 'directv'
-		},
-		{
-			name: 'ESPN',
-			value: 'espn'
-		},
-		{
-			name: 'Nike',
-			value: 'nike'
-		},
-		{
-			name: 'Chevron',
-			value: 'chevron'
-		},
-		{
-			name: 'Blowfish Shoes',
-			value: 'blowfish_shoes'
-		},
-		{
-			name: 'Disney Channel',
-			value: 'disney_channel'
-		},
-		{
-			name: 'Best Buy',
-			value: 'best_buy'
 		}
 	],
 
