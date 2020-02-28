@@ -1,12 +1,12 @@
 <template>
 	<v-app id="app">
-		<!-- <v-content> -->
-			<transition
-				name="fade">
-				<router-view></router-view>
-			</transition>
-		<!-- </v-content> -->
+		<transition
+			name="fade">
+			<router-view></router-view>
+		</transition>
+		<under-construction-bar />
 		<navigation />
+		<!-- <footer-container /> -->
 		<overlay-container />
 		<login-container />
 		<notification-container />
@@ -14,7 +14,9 @@
 </template>
 
 <script>
+import UnderContructionBar from '@/components/_global/Under_Construction_Bar'
 import Navigation from '@/components/Navigation/Navigation'
+// import Footer from '@/components/Footer/Footer'
 import OverlayContainer from '@/components/Containers/Overlay_Container'
 import NotificationContainer from '@/components/Containers/Notification_Container'
 import LoginContainer from '@/components/Login/Login.vue'
@@ -23,7 +25,9 @@ export default {
 	name: 'app',
 
 	components: {
+		'under-construction-bar': UnderContructionBar,
 		'navigation': Navigation,
+		// 'footer-container': Footer,
 		'overlay-container': OverlayContainer,
 		'notification-container': NotificationContainer,
 		'login-container': LoginContainer

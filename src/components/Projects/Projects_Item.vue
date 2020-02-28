@@ -20,15 +20,7 @@
                     :src="image"></v-img>
             </div> -->
 
-            <div class="image__main">
-                <v-img
-                    contain
-                    class=""
-                    :src="image"></v-img>
-                <div class="scrim"/>
-            </div>
-
-            <div class="title-container" >
+            <!-- <div class="title-container" >
                 <div class="title-inner">
                     <div class="project-title">
                         <p>{{ client }}</p>
@@ -42,6 +34,28 @@
                             @mouseout.native.stop="hover=false"/>
                     </div>
                 </div>
+            </div> -->
+
+			<div class="image__main">
+                <v-img
+                    contain
+                    class=""
+                    :src="image"></v-img>
+                <div class="scrim"/>
+            </div>
+
+			<div class="title-container" >
+                <div class="title-inner">
+                    <div class="project-title">
+                        <p>{{ client }}</p>
+                        <h4>{{ title }}</h4>
+                        <h5>{{ subtitle }}</h5>
+                        <div class="divider" />
+                        <app-btn
+                            label="View Project"
+                            @click.native.stop="clickItem"/>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -49,7 +63,7 @@
 </template>
 
 <script>
-import detectImageDark from '@/js/detectImageDark'
+// import detectImageDark from '@/js/detectImageDark'
 
 import AppButton from '@/components/_global/App_Button'
 
@@ -104,9 +118,9 @@ export default {
 	},
 
 	data: () => ({
-		hue: null,
-		visible: null,
-		hover: false,
+		// hue: null,
+		// visible: null
+		/* hover: false,
 		patterns: [
 			{
 				p: [
@@ -121,19 +135,19 @@ export default {
 				]
 
 			}
-		]
+		] */
 	}),
 
-	mounted () {
+	/* mounted () {
 		detectImageDark(this.image, this.setHue)
-	},
+	}, */
 
 	methods: {
-		setHue (val) { this.hue = val },
+		/*  */setHue (val) { this.hue = val },
 
-		itemHover (val) {
+		/* itemHover (val) {
 			this.hover = val
-		},
+		}, */
 
 		clickItem () {
 			if (this.clickCallback) {

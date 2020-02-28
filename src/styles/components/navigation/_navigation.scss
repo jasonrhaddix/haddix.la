@@ -134,7 +134,13 @@
         nav {
             pointer-events: all;
         }
-    }
+	}
+
+	.header--under-construction {
+		background: {
+			color: red;
+		}
+	}
 }
 
 

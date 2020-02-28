@@ -144,17 +144,22 @@
             .about--experience {
 
                 .about-experience-role {
-                    text-transform: uppercase;
-                    // margin: 10px 0 15px;
+					text-transform: uppercase;
 
                     h4 {
-                        font-weight: $font-weight-light;
+                        font-weight: $font-weight-medium;
 
                         span {
                             color: $color-m-grey;
                         }
                     }
-                }
+				}
+
+				.about-section-experience-roles {
+					& > p {
+						font-weight: $font-weight-medium;
+					}
+				}
 
                 .description {
                     margin: {
@@ -181,9 +186,9 @@
                         }
                     }
                 }
-            }
+			}
 
-            /* CLIENT LIST */
+			/* CLIENT LIST */
             .about--client-list {
 
                 .client-list {
@@ -208,6 +213,44 @@
                     }
                 }
             }
+
+            /* CLIENT LIST */
+            .about--skillset {
+
+				.about-items--list {
+					margin: 0;
+				}
+
+                ul {
+					padding: {
+						left: 24px;
+					};
+					margin: {
+						bottom: 2rem;
+					}
+
+					li {
+						list-style: disc;
+					}
+				}
+			}
+
+			.about--about-site {
+
+				.about--about-section {
+					margin: {
+						top: 2rem;
+						bottom: 2rem;
+					}
+
+					p {
+						margin: {
+							// top: 0.5rem;
+							bottom: 1.25rem;
+						}
+					}
+				}
+			}
 
             /* FOOTER */
             .about--footer {

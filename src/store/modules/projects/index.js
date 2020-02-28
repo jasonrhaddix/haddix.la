@@ -125,6 +125,7 @@ const actions = {
 				dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload.project_id)
 			}
 
+			// if project doesnt exist, route back to 'home'
 			if (response.data.data.length === 0) {
 				dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
 			}

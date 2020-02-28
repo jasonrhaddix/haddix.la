@@ -24,10 +24,13 @@ const getters = {}
 
 const actions = {
 	[VUEX_UPLOAD_S3_REQUEST]: ({ dispatch, commit }, payload) => {
-		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
+		// was VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT
+		// ...but this didn't seem right.
+		// Also is this needed? Shouldn't I set status in AQM?
+		/* dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_CHANGE_STATUS, {
 			hashId: payload.hashId,
 			status: HADDIX_UPLOAD_S3_UPLOAD_STATUS__STARTED
-		})
+		}) */
 
 		let destinationFileKey = `files/${payload.project_id}/${payload.file_id}_${payload.filename}`
 

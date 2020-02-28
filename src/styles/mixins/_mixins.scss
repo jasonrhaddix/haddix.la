@@ -8,8 +8,8 @@
   }
 
   @mixin drop-cap() {
-    &:first-child:first-letter { 
-      float: left; 
+    &:first-child:first-letter {
+      float: left;
         font-size: 60px;
         line-height: 45px;
         padding-top: 4px;

@@ -1,0 +1,17 @@
+.under-construction-container {
+	position: fixed;
+	height: 1.5rem;
+	width: 100vw;
+
+	background: {
+		color: orange;
+	}
+
+	.under-construction-content {
+
+		p {
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+}

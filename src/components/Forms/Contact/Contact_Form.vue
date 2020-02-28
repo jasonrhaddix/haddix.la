@@ -40,14 +40,8 @@
             </v-row>
             <div class="form-submit--container">
                 <div class="form-submit__inner">
-                    <v-progress-circular
-                        v-if="mailSending"
-                        indeterminate
-                        class="progress__ind"
-                        color="primary"
-                        width="8"
-                        size="38"/>
                     <app-btn
+						:loading="mailSending"
                         class="form-submit--btn"
                         light
                         label="Submit"

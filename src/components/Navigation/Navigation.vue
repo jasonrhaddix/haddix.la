@@ -29,7 +29,6 @@
                 <hamburger-menu :menu-state="navigationOpenState"/>
             </div>
         </header>
-
     </div>
 </template>
 

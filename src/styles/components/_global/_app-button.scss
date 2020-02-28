@@ -12,7 +12,20 @@
         background: {
             color: $color-app-button-background;
 		}
-		
+
+		.inner {
+			.progress__ind__container {
+				height: 34px;
+				text-align: center;
+				background: {
+					color: $color-m-grey-lighten-3;
+				}
+				padding: {
+					top: 1px;
+				}
+			}
+		}
+
 		.text {
 			font-size: 0.7rem;
 			font-weight: $font-weight-medium;
@@ -21,7 +34,7 @@
                 bottom: 8px;
             }
 		}
-		
+
 		&:hover:not(.disabled) {
 
 			.app-button__text {
@@ -49,7 +62,7 @@
 		.app-button__text {
 			color: $color-app-button-text;
 			transition: all 0.2s ease-in-out;
-			transition-delay: 0.25s;	
+			transition-delay: 0.25s;
 			text-align: center;
 		}
 
@@ -83,7 +96,7 @@
 			transition-delay: 0.2s;
 			background-color: $color-app-button-background-hover;
 			transform: translateX( -150% );
-		
+
 			&:after {
 				content: "";
 				margin-left: 145px;
@@ -113,23 +126,23 @@
 	    	// padding: 8px 40px;
 	    	// font-size: 0.8rem;
 		}
-		
+
 		&.light {
 			color: $color-app-button-text-light;
 			background-color: $color-app-button-background-light;
 			border: 1px solid $color-app-button-border-light;
-	
+
 			.app-button__text {
 				color: $color-app-button-text-light;
 			}
-	
+
 			.app-button__text-animated {
 				color: $color-app-button-text-hover-light;
 			}
-	
+
 			.app-button__bg {
 				background-color: $color-app-button-background-hover-light;
-	
+
 				&:after {
 					border-top: 70px solid $color-app-button-background-hover-light;
 				}
@@ -137,15 +150,16 @@
 		}
 
 	}
-	
+
 	&.disabled {
 		pointer-events: none !important;
-		
+
 		.app-button {
 			color: $color-m-grey-darken-3;
 			background-color: $color-m-grey-darken-4;
-			border: 1px solid $color-m-grey-darken-3;
-	
+			border: 1px solid $color-m-grey-lighten-2;
+			// border: 1px solid $color-m-grey-darken-3;
+
 			.app-button__text {
 				color: $color-m-grey-darken-2;
 			}

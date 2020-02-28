@@ -30,10 +30,6 @@ import {
 export default {
 	name: 'notification-container',
 
-	data: () => ({
-		//
-	}),
-
 	computed: {
 		...mapState({
 			notificationsOpenState: state => state.ui.notificationsContainer.openState,

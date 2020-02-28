@@ -61,7 +61,9 @@ module.exports = {
 
 	// add your custom rules here
 	rules: {
-		"indent": [1, "tab"],
+		"template-curly-spacing" : "off",
+		"indent" : "off",
+		// "indent": [1, "tab"],
         "no-tabs": 0,
 		'generator-star-spacing': 'off',
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
