@@ -255,7 +255,6 @@ export default {
 		},
 
 		tree () {
-			console.log(this.projectTree)
 			return (this.projectTree && this.projectTree.tree_data.length > 0) ? this.projectTree.tree_data : null
 		}
 	},
