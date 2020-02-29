@@ -17,7 +17,11 @@ $animationDelay: 100ms;
         .image__main {
             // max-width: 70rem;
             // width: 90%;
-            // opacity: 0;
+			// opacity: 0;
+
+			img {
+				width: 100%;
+			}
 
             .scrim {
                 position: absolute;
@@ -53,7 +57,7 @@ $animationDelay: 100ms;
             .v-image {
                 transition: left $animationSpeed linear $animationDelay,
                             top $animationSpeed linear $animationDelay;
-            }
+			}
 
             .poly,
             .background-container {

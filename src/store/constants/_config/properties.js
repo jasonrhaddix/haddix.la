@@ -127,7 +127,7 @@ export default {
 		{ id: 43, value: 'Quill Editor' },
 		{ id: 44, value: 'ReactJS' },
 		{ id: 45, value: 'REST API' },
-		{ id: 46, value: 'SCSS/SASS' },
+		{ id: 46, value: 'SCSS/Sass' },
 		{ id: 47, value: 'Service Workers' },
 		{ id: 48, value: 'Sizmek/MediaMind' },
 		{ id: 49, value: 'SocketJS' },

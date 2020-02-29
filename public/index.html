@@ -27,5 +27,10 @@
 			<strong>We're sorry but fe doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
 		</noscript>
 		<div id="app"></div>
+		<script>
+			if ('scrollRestoration' in window.history) {
+				window.history.scrollRestoration = 'manual'
+			}
+		</script>
 	</body>
 </html>

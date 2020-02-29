@@ -18,7 +18,7 @@
                 <v-btn
                     fab small depressed
                     class="header__close-btn"
-                    @click="navigateToRoute({name:'projects'})">
+                    @click="$router.go(-1)">
                     <v-icon>close</v-icon>
                 </v-btn>
             </div>
@@ -75,8 +75,9 @@
                             align-content-center
                             v-for="(item,i) in photos"
                             :key="`project-photo-${$uuid.v4()}-${i}`">
-                            <v-img
-                                :src="item.uri"></v-img>
+
+							<img :src="item.uri" />
+
                         </v-flex>
                     </v-layout>
                 </div>
@@ -254,7 +255,8 @@ export default {
 		},
 
 		tree () {
-			return this.projectTree.tree_data ? this.projectTree.tree_data : null
+			console.log(this.projectTree)
+			return (this.projectTree && this.projectTree.tree_data.length > 0) ? this.projectTree.tree_data : null
 		}
 	},
 

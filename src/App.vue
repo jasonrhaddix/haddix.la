@@ -1,8 +1,9 @@
 <template>
 	<v-app id="app">
-		<transition
-			name="fade">
-			<router-view></router-view>
+		<transition name="fade">
+			<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
 		</transition>
 		<under-construction-bar />
 		<navigation />

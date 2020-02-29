@@ -1,6 +1,6 @@
 <template>
     <!-- <div :class="['projects-item', hue]"> -->
-    <div :class="['projects-item', {'hover':hover}]">
+    <div :class="['projects-item']">
         <div class="project__inner">
 
             <!-- <div
@@ -37,10 +37,7 @@
             </div> -->
 
 			<div class="image__main">
-                <v-img
-                    contain
-                    class=""
-                    :src="image"></v-img>
+                <img :src="image" />
                 <div class="scrim"/>
             </div>
 

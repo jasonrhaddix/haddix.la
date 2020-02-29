@@ -23,7 +23,8 @@ import {
 	VUEX_PROJECT_TREE_FETCH_REQUEST
 } from '@/store/constants/projects/project_tree'
 import {
-	VUEX_UI_OVERLAY_CONTAINER_HIDE
+	VUEX_UI_OVERLAY_CONTAINER_HIDE,
+	VUEX_UI_NAVIGATION_SET_TITLE
 } from '@/store/constants/ui'
 import {
 	VUEX_NOTIFICATIONS_ADD_TO_QUEUE
@@ -120,6 +121,8 @@ const actions = {
 
 		api.get(apiRoute).then(async response => {
 			await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
+
+			dispatch(VUEX_UI_NAVIGATION_SET_TITLE, response.data.data[0].title)
 
 			if (response.data.data[0].hasTree) {
 				dispatch(VUEX_PROJECT_TREE_FETCH_REQUEST, payload.project_id)
