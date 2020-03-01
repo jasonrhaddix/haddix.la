@@ -18,7 +18,7 @@
                 <v-btn
                     fab small depressed
                     class="header__close-btn"
-                    @click="$router.go(-1)">
+                    @click="navigateToPreviousPage">
                     <v-icon>close</v-icon>
                 </v-btn>
             </div>
@@ -161,7 +161,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 // import VuePureLightbox from 'vue-pure-lightbox'
 
 import {
-	VUEX_ROUTING_PUSH_ROUTE
+	VUEX_ROUTING_PREVIOUS_PAGE
 } from '@/store/constants/routing'
 
 import LanguageGraph from '@/components/_global/Language_Graph'
@@ -261,7 +261,7 @@ export default {
 
 	methods: {
 		...mapActions({
-			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+			navigateToPreviousPage: VUEX_ROUTING_PREVIOUS_PAGE
 		})
 	}
 }

@@ -37,7 +37,10 @@
             </div> -->
 
 			<div class="image__main">
-                <img :src="image" />
+                <v-img
+					eager
+					contain
+					:src="image"></v-img>
                 <div class="scrim"/>
             </div>
 

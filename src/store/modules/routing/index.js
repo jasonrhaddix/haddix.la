@@ -8,7 +8,8 @@ import {
 	VUEX_ROUTING_ENTER_ROUTE,
 	VUEX_ROUTING_SET_PREVIOUS_ROUTE,
 	VUEX_ROUTING_SET_CURRENT_ROUTE,
-	VUEX_ROUTING_ENTER_PROJECT
+	VUEX_ROUTING_ENTER_PROJECT,
+	VUEX_ROUTING_PREVIOUS_PAGE
 } from '@/store/constants/routing'
 import {
 	VUEX_UI_HEADER_SHOW,
@@ -50,12 +51,12 @@ const actions = {
 	// 1.
 	// Push the route to the router
 	[VUEX_ROUTING_PUSH_ROUTE]: async ({ rootState, dispatch }, payload) => {
-		if (payload.name !== 'project-details') {
+		/* if (payload.name !== 'project-details') {
 			let title = (payload.params && payload.params.title) ? payload.params.title : payload.name
 			dispatch(VUEX_UI_NAVIGATION_SET_TITLE, title)
-		}
+		} */
 
-		router.push({ ...payload })
+		router.push({ ...payload }).catch(() => {})
 	},
 
 	// 2.
@@ -101,6 +102,13 @@ const actions = {
 
 	[VUEX_ROUTING_ENTER_PROJECT]: ({ dispatch }, payload) => {
 		dispatch(VUEX_PROJECT_FETCH_REQUEST, payload)
+	},
+
+	[VUEX_ROUTING_PREVIOUS_PAGE]: async ({ commit, dispatch }) => {
+		router.go(-1)
+		// console.log(router)
+		// let title = (payload.params && payload.params.title) ? payload.params.title : payload.name
+		// dispatch(VUEX_UI_NAVIGATION_SET_TITLE, router.currentRoute.name)
 	}
 
 }

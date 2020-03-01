@@ -1,5 +1,8 @@
 <template>
     <div :class="['navigation-container', {'open':navigationOpenState}, {'endabled':navigationIsEnabled}]">
+		<div
+			:class="['navigation-skrim', {'enabled':navigationOpenState}]"
+			@click="toggleNavigationMenu" />
         <div class="navigation-poly">
             <nav>
                 <navigation-item

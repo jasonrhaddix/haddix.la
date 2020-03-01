@@ -11,6 +11,10 @@ import {
 	VUEX_ROUTING_NAVIGATE_TO_ROUTE
 } from '@/store/constants/routing'
 
+import {
+	VUEX_UI_NAVIGATION_SET_TITLE
+} from '@/store/constants/ui'
+
 Vue.use(Router)
 
 const beforeEnterWatcher = (to, from, next) => {
@@ -54,6 +58,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, '')
 					next()
 				}
 			}
@@ -65,6 +70,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Projects')
 					next()
 				}
 			}
@@ -87,6 +93,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'About')
 					next()
 				}
 			}
@@ -98,6 +105,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Contact')
 					next()
 				}
 			}
@@ -109,6 +117,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Labs')
 					next()
 				}
 			}

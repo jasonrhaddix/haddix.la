@@ -19,17 +19,18 @@ $animationDelay: 100ms;
             // width: 90%;
 			// opacity: 0;
 
-			img {
+			/* img {
 				width: 100%;
-			}
+			} */
 
             .scrim {
+				transition: background 0.25s ease-in-out;
                 position: absolute;
                 top: 0;
                 height: 100%;
                 width: 100%;
                 background: {
-                    color: $color-app-black-alpha-25;
+                    color: $color-app-black-alpha-35;
                 }
             }
         }
@@ -189,7 +190,18 @@ $animationDelay: 100ms;
                 .poly-6 { left: 60px; top: 70px}
                 .poly-7 { left: -70px; top: 70px}
             }
-        } */
+		} */
+
+		&:hover {
+			.image__main {
+
+				.scrim {
+					background: {
+						color: $color-app-black-alpha-15;
+					}
+				}
+			}
+		}
     }
 }
 
@@ -203,7 +215,8 @@ $animationDelay: 100ms;
             height: 100%;
 
             .image__main {
-                height: 100%;
+				height: 100%;
+				padding: 1rem;
 
                 .v-image {
                     height: 100%;

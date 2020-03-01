@@ -11,7 +11,18 @@
     & > div,
     header {
         pointer-events: all;
-    }
+	}
+
+	.navigation-skrim {
+		height: 100vh;
+		width: 100vw;
+		position: absolute;
+		display: none;
+
+		&.enabled {
+			display: block;
+		}
+	}
 
     .navigation-poly {
         position: fixed;
@@ -20,7 +31,7 @@
         overflow: hidden;
         clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
         transition: clip-path 650ms ease-in-out, background-color 650ms ease-in-out;
-        background:{
+        background: {
             color: $color-app-nav-background;
         }
 
