@@ -67,24 +67,17 @@
 					margin: 0 auto;
 					width: 75%;
 					height: 100%;
-					display: flex;
+					// display: flex;
 					background: {
 						color: rgba(0, 0, 0, 0.75);
 						// color: rgba(255, 255, 255, 0.9);
 					}
 
 					.project-info__item {
-						flex: 1;
-						margin: {
-							top: 0.75rem;
-						}
 
 						h4 {
 							text-transform: uppercase;
 							font-weight: bold;
-							padding: {
-								bottom: 0.2rem;
-							}
 						}
 
 						.project-btn__container {
@@ -94,6 +87,7 @@
 
 							.project-btn {
 								@include center-content(0, -4px);
+								display: contents;
 							}
 						}
 					}
@@ -270,13 +264,25 @@
         }
     }
     .footer__container {
-        position: absolute;
-        width: 100%;
-        bottom: -10px;
+        position: fixed;
+		width: 100%;
+		height: 60px;
+		bottom: 0;
+		background: {
+			color: $color-app-black;
+		}
 
-        img {
-            width: 100%;
-        }
+		.project-btn__container {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			display: flex;
+
+			.project-btn {
+				@include center-content(0, -4px);
+				display: contents;
+			}
+		}
     }
 }
 
@@ -287,6 +293,7 @@
         width: 100%;
 
         .details__content {
+			padding: 0 0 60px;
 
             .header__container {
 
@@ -303,25 +310,59 @@
                 .title__container {
 
                     h3 {
-                        font-size: 2rem;
-                        line-height: 2.5rem;
+                        font-size: 1.5rem;
+                        line-height: 2.25rem;
                         padding: 0 0.7rem;
                     }
 
                     h1 {
-                        font-size: 3.5rem;
-                        line-height: 3.5rem;
+                        font-size: 3.0rem;
+                        line-height: 2.75rem;
                         padding: 0 0.7rem;
                     }
 				}
 
 				.project-info__container {
+					height: auto;
+					position: relative;
 
 					.project-info__inner {
 						width: 100%;
+                        background: {
+                            color: $color-app-black;
+                        };
+
+                        .project-info__item {
+
+                            h4 {
+                                text-transform: uppercase;
+                                font-weight: bold;
+                            }
+
+                            .project-btn__container {
+                                width: 100%;
+                                height: 100%;
+                                position: relative;
+                                display: inline-grid;
+
+                                .project-btn {
+                                    position: relative;
+                                }
+                            }
+                        }
 					}
 				}
-            }
+			}
+
+			.content__container {
+
+				.excerpt__container {
+
+					h3 {
+						font-size: 1.3rem !important;
+					}
+				}
+			}
         }
     }
 }

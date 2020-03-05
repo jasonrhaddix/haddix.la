@@ -23,6 +23,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import {
 	faGithub,
+	faMedium,
 	faTwitter,
 	faCodepen,
 	faLinkedin,
@@ -54,6 +55,7 @@ library.add(
 
 	/* FAB Icons */
 	faGithub,
+	faMedium,
 	faTwitter,
 	faCodepen,
 	faLinkedin,

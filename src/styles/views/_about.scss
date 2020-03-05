@@ -109,7 +109,7 @@
                 }
             }
 
-            .about--bio {
+            .about-bio {
 
                 h2 {
                     // text-align: left;
@@ -258,4 +258,21 @@
             }
         }
     }
+}
+
+@include respond-to(medium) {
+	.about-view {
+
+		.about-view--inner {
+
+			.about-view--content {
+
+				.about-bio {
+					p {
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
 }

@@ -19,6 +19,10 @@
                                  <font-awesome-icon :icon="['fab', 'codepen']" size="2x" />
                             </a> -->
 
+							<a class="social-list" href="https://medium.com/@jasonrhaddix" target="_blank">
+                                 <font-awesome-icon :icon="['fab', 'medium']" size="2x" />
+                            </a>
+
                             <a class="social-list" href="https://twitter.com/jasonrhaddix" target="_blank">
                                 <font-awesome-icon :icon="['fab', 'twitter']" size="2x" />
                             </a>
@@ -32,7 +36,7 @@
 
                 <div class="section-divider" />
 
-                <div class="about--bio">
+                <div class="about-bio">
                     <div class="about-bio--inner">
                         <h2>Hi, I'm Jason R. Haddix</h2>
                         <p>I’m a Software Engineer with experience in development of high-traffic, data-intensive web applications with a focus on architecting systems for scalability. I’m looking to take ownership in projects I enjoy and to expand my skillset, while making a collaborative effort toward a central goal. In my free time I enjoy DIY projects and being in nature with my family.</p>
@@ -173,7 +177,7 @@
                             </v-col>
 							<v-col class="col-12 col-md-2 item-group">
                                 <ul>
-                                    <li><p>TailwindCSS</p></li>
+                                    <li><p>TensorflowJS</p></li>
                                     <li><p>Gatsby</p></li>
                                 </ul>
                             </v-col>

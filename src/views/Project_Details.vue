@@ -17,24 +17,32 @@
                 </div>
 
 				<div class="project-info__container">
-					<div class="project-info__inner">
-						<div class="project-info__item">
-							<h4>Client</h4>
-							<p>{{ client }}</p>
-						</div>
-						<div class="project-info__item">
-							<h4>Role</h4>
-							<p>{{ role }}</p>
-						</div>
-						<div class="project-info__item">
-							<div
-								v-if="link"
-								class="project-btn__container"
-								@click="navigateToProject">
-								<app-btn class="project-btn" label="View Project"/>
+					<v-row class="project-info__inner">
+						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
+							<div class="item">
+								<h4>Client</h4>
+								<p>{{ client }}</p>
 							</div>
-						</div>
-					</div>
+						</v-col>
+
+						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
+							<div class="item">
+								<h4>Role</h4>
+								<p>{{ role }}</p>
+							</div>
+						</v-col>
+
+						<v-col align-self="center" class="d-none d-md-block col-12 col-md-4 project-info__item">
+							<div class="item">
+								<div
+									v-if="link"
+									class="project-btn__container"
+									@click="navigateToProject">
+									<app-btn class="project-btn" label="View Project"/>
+								</div>
+							</div>
+						</v-col>
+					</v-row>
 				</div>
 
                 <v-btn
@@ -174,6 +182,20 @@
                 </div>
             </v-container>
         </div>
+
+		<div
+			v-if="link"
+			class="d-sm-block d-md-none footer__container">
+			<v-row class="footer__inner">
+				<v-col align-self="center" class="col-12 project-info__item">
+					<div
+						class="project-btn__container"
+						@click="navigateToProject">
+						<app-btn class="project-btn" label="View Project"/>
+					</div>
+				</v-col>
+			</v-row>
+		</div>
     </v-container>
 </template>
 
