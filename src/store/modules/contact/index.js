@@ -21,6 +21,8 @@ const actions = {
 	[VUEX_CONTACT_SEND_EMAIL_REQUEST]: ({ commit, dispatch }, payload) => {
 		commit(VUEX_CONTACT_SEND_EMAIL_REQUEST)
 
+		console.log(payload)
+
 		api.post(`/contact`, payload).then(response => {
 			commit(VUEX_CONTACT_SEND_EMAIL_SUCCESS, response)
 
@@ -40,6 +42,7 @@ const actions = {
 				commit(VUEX_CONTACT_SEND_EMAIL_RESET)
 			}, 100)
 		}).catch(err => {
+			console.log(err)
 			commit(VUEX_CONTACT_SEND_EMAIL_FAILURE, err)
 
 			dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {

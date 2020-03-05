@@ -15,6 +15,28 @@
                     <h1>{{ title }}</h1>
                     <h3>{{ subtitle }}</h3>
                 </div>
+
+				<div class="project-info__container">
+					<div class="project-info__inner">
+						<div class="project-info__item">
+							<h4>Client</h4>
+							<p>{{ client }}</p>
+						</div>
+						<div class="project-info__item">
+							<h4>Role</h4>
+							<p>{{ role }}</p>
+						</div>
+						<div class="project-info__item">
+							<div
+								v-if="link"
+								class="project-btn__container"
+								@click="navigateToProject">
+								<app-btn class="project-btn" label="View Project"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
                 <v-btn
                     fab small depressed
                     class="header__close-btn"
@@ -165,12 +187,14 @@ import {
 } from '@/store/constants/routing'
 
 import LanguageGraph from '@/components/_global/Language_Graph'
+import AppButton from '@/components/_global/App_Button.vue'
 
 export default {
 	name: 'project-details-view',
 
 	components: {
-		'language-graph': LanguageGraph
+		'language-graph': LanguageGraph,
+		'app-btn': AppButton
 	},
 
 	data: () => ({
@@ -228,6 +252,14 @@ export default {
 			return this.project.excerpt
 		},
 
+		link () {
+			return this.project.link
+		},
+
+		role () {
+			return this.getPropertyByKey('projectRoles', this.project.role, 'value', 'name')
+		},
+
 		videos () {
 			let videos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO, 'project-details')
 			return (videos && videos.length > 0)
@@ -262,7 +294,11 @@ export default {
 	methods: {
 		...mapActions({
 			navigateToPreviousPage: VUEX_ROUTING_PREVIOUS_PAGE
-		})
+		}),
+
+		navigateToProject () {
+			window.location.href = this.project.link
+		}
 	}
 }
 </script>

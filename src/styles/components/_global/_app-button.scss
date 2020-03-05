@@ -13,6 +13,10 @@
             color: $color-app-button-background;
 		}
 
+		* {
+			pointer-events: none;
+		}
+
 		.inner {
 			.progress__ind__container {
 				height: 34px;
