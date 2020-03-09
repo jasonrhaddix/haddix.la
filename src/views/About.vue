@@ -227,7 +227,7 @@
 								<p>I have a login feature (authenticated using JSON Web Tokens), which allows me add projects through a custom CMS on the font-end. The CMS is also accessible on the front-end as a guest, but projects created as a guest will only be alive for the duration of the session. If the user refreshed the site the project will be gone. This is done by giving the user a session token, creating projects under that token. If the session token doesn't match the project token, it is not displayed. Further more saving projects as a guest are to a different DB table as an authenticated user, thus allow me to keep my 'guest' projects from contaminating my actual project table. The CMS supports asset uploads to an AWS S3 buck.</p>
 								<p>I've also added section for displaying my experiments. I can create a new experiment project through the CMS,  which is great for localizing content creation. I will (eventually) populate this section with some, hopefully cool, projects.</p>
 								<p>Since this site is also a proving ground for my skills, I plan on eventually adding features to extend functionality. I'd like to try adding facial recognition for quick login using Google's Tensorflow library.</p>
-								<p>There's a lot going on in this site, so, please enjoy! :)</p>
+								<p>There's a lot going on in this site, so, please enjoy!</p>
 							</div>
 
 						</div>

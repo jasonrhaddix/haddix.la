@@ -5,7 +5,7 @@
 				<router-view></router-view>
 			</keep-alive>
 		</transition>
-		<under-construction-bar />
+		<!-- <under-construction-bar /> -->
 		<navigation />
 		<!-- <footer-container /> -->
 		<overlay-container />
@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import UnderContructionBar from '@/components/_global/Under_Construction_Bar'
+// import UnderContructionBar from '@/components/_global/Under_Construction_Bar'
 import Navigation from '@/components/Navigation/Navigation'
 // import Footer from '@/components/Footer/Footer'
 import OverlayContainer from '@/components/Containers/Overlay_Container'
@@ -26,7 +26,7 @@ export default {
 	name: 'app',
 
 	components: {
-		'under-construction-bar': UnderContructionBar,
+		// 'under-construction-bar': UnderContructionBar,
 		'navigation': Navigation,
 		// 'footer-container': Footer,
 		'overlay-container': OverlayContainer,

@@ -37,7 +37,8 @@
 
         nav {
             @include center-content(0, -4.5rem);
-            width: 400px;
+			width: 400px;
+			pointer-events: none !important;
 
             & > div {
                 margin: {
@@ -117,35 +118,51 @@
     &:not(.open) {
         .navigation-poly {
             clip-path: polygon(0% 0%, 110% 0%, 0% 0%, 0% 0%, 0% 50%, 0% 100%);
-        }
+		}
+
+		nav {
+			* {
+				pointer-events: none !important;
+			}
+		}
     }
 
     &.open {
 		header {
-			background:{
+			background: {
 				color: $color-m-black;
 			}
 		}
 
 		.navigation-poly {
 			clip-path: polygon(0% 0%, 110% 0%, 90% 80%, 30% 93%, 10% 90%, 0% 100%);
-			background:{
+			background: {
 				color: $color-m-black;
+			}
+		}
+
+		nav {
+			* {
+				pointer-events: all !important;
 			}
 		}
     }
 
-    &:not(.enabled) {
-        nav {
-            pointer-events: none;
-        }
+    /* &:not(.enabled) {
+       nav {
+			* {
+				pointer-events: none !important;
+			}
+		}
     }
 
     &.enabled {
         nav {
-            pointer-events: all;
-        }
-	}
+			* {
+				pointer-events: all !important;
+			}
+		}
+	} */
 
 	.header--under-construction {
 		background: {
