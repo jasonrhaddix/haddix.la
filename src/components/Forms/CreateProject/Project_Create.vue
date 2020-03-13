@@ -556,7 +556,7 @@ export default {
 		},
 
 		formattedDate: {
-			get () {
+			/* get () {
 				if (!this.model.project_date) return
 
 				let [month, year] = this.model.project_date.split(' ')[0].split('-')
@@ -565,6 +565,14 @@ export default {
 			set (val) {
 				let [year, month] = val.split('-')
 				this.model.project_date = `${month}-01-${year} 00:00:00`
+			} */
+
+			get () {
+				return this.model.project_date
+			},
+
+			set (val) {
+				this.model.project_date = val
 			}
 		},
 
@@ -648,8 +656,14 @@ export default {
 					this.model[k].length === 0) delete this.model[k]
 			})
 
+			let [projectDateYear, projectDateMonth] = this.model.project_date.split('-')
+
 			if (!this.$v.$invalid) {
-				this.createProject(this.model)
+				this.createProject({
+					...this.model,
+					project_date: `${projectDateMonth}-01-${projectDateYear} 00:00:00`
+
+				})
 			}
 		}
 	},
