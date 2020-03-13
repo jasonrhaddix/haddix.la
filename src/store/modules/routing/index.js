@@ -15,8 +15,7 @@ import {
 	VUEX_UI_HEADER_SHOW,
 	VUEX_UI_HEADER_HIDE,
 	VUEX_UI_NAVIGATION_HIDE,
-	VUEX_UI_NAVIGATION_DISABLED,
-	VUEX_UI_NAVIGATION_SET_TITLE
+	VUEX_UI_NAVIGATION_DISABLED
 } from '@/store/constants/ui'
 import {
 	VUEX_PROJECTS_FETCH_REQUEST,
@@ -51,11 +50,6 @@ const actions = {
 	// 1.
 	// Push the route to the router
 	[VUEX_ROUTING_PUSH_ROUTE]: async ({ rootState, dispatch }, payload) => {
-		/* if (payload.name !== 'project-details') {
-			let title = (payload.params && payload.params.title) ? payload.params.title : payload.name
-			dispatch(VUEX_UI_NAVIGATION_SET_TITLE, title)
-		} */
-
 		router.push({ ...payload }).catch(() => {})
 	},
 
@@ -106,9 +100,6 @@ const actions = {
 
 	[VUEX_ROUTING_PREVIOUS_PAGE]: async ({ commit, dispatch }) => {
 		router.go(-1)
-		// console.log(router)
-		// let title = (payload.params && payload.params.title) ? payload.params.title : payload.name
-		// dispatch(VUEX_UI_NAVIGATION_SET_TITLE, router.currentRoute.name)
 	}
 
 }

@@ -27,7 +27,7 @@
 
         .project__pending-id {
             background: {
-                color: #222224;
+                color: #1B172A;
             }
 
             p {
@@ -102,7 +102,7 @@
                     position: relative;
                     height: 100%;
                     background: {
-                        color: #333336;
+                        color: #1B172A;
 					}
 					border: {
 						radius: 4px;
@@ -189,7 +189,7 @@
                 position: relative;
                 height: 8rem;
                 background: {
-                    color: #333336;
+                    color: #1B172A;
 				}
 				border: {
 					radius: 4px;
@@ -202,7 +202,8 @@
                         text-transform: uppercase;
                         color: $color-m-grey-darken-1;
                         font-weight: $font-weight-bold;
-                        margin: 0;
+						margin: 0;
+						text-align: center;
                     }
 
                     .v-icon {
@@ -235,7 +236,7 @@
                 bottom: 1rem;
             }
             background: {
-                color: #333336;
+                color: #1B172A;
 			}
 			border: {
 				radius: 4px;

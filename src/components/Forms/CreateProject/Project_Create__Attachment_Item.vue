@@ -3,7 +3,7 @@
         <div class="item__inner">
             <div class="item__image">
                 <video
-                    v-if="data.file.type == 'video/mp4'"
+                    v-if="data.file.type == 'video/mp4' || data.file.type == 'video/quicktime'"
                     autoplay loop
                     controls muted
                     :src="compileVideoSrc"></video>

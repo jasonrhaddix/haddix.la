@@ -47,18 +47,15 @@ const getters = {
 		return state.projects.length > 0
 	},
 
-	attachmentsByUsageType: state => (type = null, obj = null, index = null) => {
+	attachmentsByUsageType: state => (type = null, obj = null, id = null) => {
 		if (!type || !obj) return
 
 		let attachments = (obj === 'projects')
-			? state.projects[index].attachments
+			? state.projects.find(p => p.project_id === id).attachments
 			: state.project.attachments
 
 		if (!attachments || attachments.length === 0) return []
-
-		return attachments.filter(item => {
-			return item.usage_type === type
-		})
+		return attachments.filter(item => item.usage_type === type)
 	}
 }
 
@@ -68,13 +65,15 @@ const actions = {
      * Fetch All Projects
      *
      */
-	[VUEX_PROJECTS_FETCH_REQUEST]: ({ dispatch, commit }) => {
-		api.get(`/projects`).then(response => {
+	[VUEX_PROJECTS_FETCH_REQUEST]: ({ rootState, dispatch, commit }) => {
+		api.get(`/projects`, {
+			params: { session_id: rootState.app.sessionToken }
+		}).then(response => {
 			commit(VUEX_PROJECTS_FETCH_SUCCESS, response.data.data)
 
-			Promise.all([
+			/* Promise.all([
 				dispatch(VUEX_PROJECTS_GUEST_FETCH_REQUEST)
-			])
+			]) */
 		}).catch(err => {
 			commit(VUEX_PROJECTS_FETCH_FAILURE, err)
 
@@ -117,7 +116,8 @@ const actions = {
      *
      */
 	[VUEX_PROJECT_FETCH_REQUEST]: ({ dispatch, commit }, payload) => {
-		let apiRoute = payload.is_guest_project ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
+		// let apiRoute = payload.is_guest_project ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
+		let apiRoute = `/projects/${payload.project_id}`
 
 		api.get(apiRoute).then(async response => {
 			await commit(VUEX_PROJECT_FETCH_SUCCESS, response.data.data[0])
@@ -156,7 +156,9 @@ const actions = {
 	[VUEX_PROJECT_CREATE]: ({ rootState, rootGetters, commit, dispatch }, payload) => {
 		commit(VUEX_PROJECT_CREATE)
 
-		let apiRoute = rootGetters.appAuthenticated ? `/projects` : `/projects/guest`
+		// console.log(payload)
+
+		// let apiRoute = rootGetters.appAuthenticated ? `/projects` : `/projects/guest`
 		let Authorization = `Bearer ${rootState.auth.appToken}`
 		let headers = rootGetters.appAuthenticated ? { headers: { Authorization } } : null
 
@@ -165,7 +167,7 @@ const actions = {
 			session_id: rootState.app.sessionToken
 		}
 
-		api.post(apiRoute, data, headers).then(async response => {
+		api.post(`/projects`, data, headers).then(async response => {
 			// Save returned data back in state.project
 			await commit(VUEX_PROJECT_CREATE_SUCCESS, response.data.data)
 			// Close Create Form

@@ -50,8 +50,11 @@
                         <p>{{ client }}</p>
                         <h4>{{ title }}</h4>
                         <h5>{{ subtitle }}</h5>
-                        <div class="divider" />
+                        <div
+							v-if="clickCallback || link"
+							class="divider" />
                         <app-btn
+							v-if="clickCallback || link"
                             label="View Project"
                             @click.native.stop="clickItem"/>
                     </div>
@@ -105,8 +108,8 @@ export default {
 			required: true,
 			default: null
 		},
-		isGuestProject: {
-			type: Boolean,
+		link: {
+			type: String,
 			required: false,
 			default: null
 		},
@@ -138,14 +141,14 @@ export default {
 		] */
 	}),
 
-	/* mounted () {
-		detectImageDark(this.image, this.setHue)
-	}, */
+	mounted () {
+		// detectImageDark(this.image, this.setHue)
+	},
 
 	methods: {
-		/*  */setHue (val) { this.hue = val },
+		/* setHue (val) { this.hue = val },
 
-		/* itemHover (val) {
+		itemHover (val) {
 			this.hover = val
 		}, */
 
@@ -157,6 +160,9 @@ export default {
 					is_guest_project: this.isGuestProject,
 					title: this.title
 				})
+			} else {
+				var win = window.open(this.link, '_blank')
+				win.focus()
 			}
 		}
 	}

@@ -1,24 +1,39 @@
 .labs-view {
-	min-height: 100vh;
-	overflow: hidden;
-    background: {
-        color: $color-m-white;
+	position: relative;
+    min-height: 100vh;
+    width: 100vw;
+	background: {
+		// color: $color-m-white;
+		color: #070707;
+		// color: rgba(0, 0, 0, 0.5);
 	}
+
+	.labs__add-btn {
+        @include center-content('horizontal');
+        bottom: 1rem;
+        position: fixed;
+        z-index: 6;
+    }
 
 	.labs__header {
 		position: relative;
+		width: 100vw;
 		height: 100vh;
 
 		.header__content {
-			@include center-content(0, -75px);
+			@include center-content();
 
 			p {
 				text-transform: uppercase;
 				text-align: center;
-				color: $color-m-grey-darken-3;
+				color: $color-m-grey-darken-2;
 				padding: {
 					top: 0.5rem;
 				}
+			}
+
+			.scroll-arrow {
+				text-align: center;
 			}
 
 			.coming-soon {
@@ -72,6 +87,18 @@
 			}
 		}
 	}
+
+	.projects__list {
+
+        .projects-item {
+            width: 100vw;
+			height: 100vh;
+
+			& > * {
+				border: 1px solid $color-m-grey-darken-3;
+			}
+        }
+    }
 }
 
 @include respond-to(medium) {

@@ -123,7 +123,7 @@
                 <v-col class="col-12 col-md-4">
                     <div class="images-section images__thumbnails">
                         <div class="section__title">
-                            <h3>Thumbnail Image</h3>
+                            <h3>Thumbnail</h3>
                             <p>Projects page thumbnail.</p>
                         </div>
                         <div class="images__container">
@@ -141,7 +141,7 @@
                                     @drop.prevent.stop="dropFiles"
                                     @click="$refs.attachmentUploader_Thumbnail.select()">
                                     <div class="button__content">
-                                        <p class="subheading">Upload Images</p>
+                                        <p class="subheading">Upload Image</p>
                                         <v-icon color="grey darken-1">add</v-icon>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
 
                 <!-- <div class="inner__divider" /> -->
 
-               	<v-col class="col-12 col-md-4">
+				<v-col class="col-12 col-md-4">
                     <div class="images-section images__carousel">
                         <div class="section__title">
                             <h3>Carousel Images</h3>
@@ -201,7 +201,7 @@
                     </div>
                 </v-col>
 
-            	<!-- <div class="inner__divider" /> -->
+				<!-- <div class="inner__divider" /> -->
 
                 <v-col class="col-12 col-md-4">
                     <div class="images-section images__body">
@@ -414,7 +414,7 @@
 </template>
 
 <script>
-import { required, maxValue, url } from 'vuelidate/lib/validators'
+import { required, url } from 'vuelidate/lib/validators'
 
 import { mapState, mapGetters, mapActions } from 'vuex'
 
@@ -445,6 +445,7 @@ export default {
 	data: () => ({
 		model: {
 			project_id: null,
+			is_guest_project: null,
 			type: null,
 			title: null,
 			subtitle: null,
@@ -521,7 +522,7 @@ export default {
 
 		fileAttachments () {
 			return (usageType, singleReturn) => {
-				let files = new Array()
+				let files = []
 
 				let paramsWithId = {
 					attach_to: {
@@ -542,7 +543,7 @@ export default {
 
 				let filteredFiles = files.filter(file => file.usage_type === usageType)
 
-				if (filteredFiles.length == 0) return []
+				if (filteredFiles.length === 0) return []
 				return singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
 			}
 		},
@@ -558,7 +559,7 @@ export default {
 			get () {
 				if (!this.model.project_date) return
 
-				let [month, day, year] = this.model.project_date.split(' ')[0].split('-')
+				let [month, year] = this.model.project_date.split(' ')[0].split('-')
 				return `${year}-${month}`
 			},
 			set (val) {
@@ -575,6 +576,7 @@ export default {
 
 	mounted () {
 		this.model.project_id = this.$uuid.v4()
+		this.model.is_guest_project = !this.appAuthenticated
 	},
 
 	methods: {
@@ -627,17 +629,24 @@ export default {
 		},
 
 		onReaderLoad (event) {
-			var json_tree = JSON.parse(event.target.result)
+			var jsonTree = JSON.parse(event.target.result)
 			this.createProjectTree(
 				{
 					project_id: this.model.project_id,
-					tree_data: json_tree
+					tree_data: jsonTree
 				}
 			)
 		},
 
 		submitForm () {
 			this.submitted = true
+
+			// Clean model before send
+			Object.keys(this.model).forEach(k => {
+				if (this.model[k] === null ||
+					this.model[k] === undefined ||
+					this.model[k].length === 0) delete this.model[k]
+			})
 
 			if (!this.$v.$invalid) {
 				this.createProject(this.model)
@@ -648,7 +657,7 @@ export default {
 	watch: {
 		projectTree: {
 			deep: true,
-			handler(val) {
+			handler (val) {
 				// if (val && val.tree_data.length) this.model.hasTree = true
 			}
 		}

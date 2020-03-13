@@ -14,14 +14,15 @@
                         label="Language"
                         item-text="name"
                         :items="projectLanguages"
-                        v-model="languageLocal"/>
+                        v-model="localLang"/>
                 </div>
                 <div class="content__percentage">
                     <v-text-field
                         filled
+						dense
                         label="Percentage"
-                        type="number"
-                        v-model="valueLocal"
+                        :type="computedValue >= 100 ? '' : 'number'"
+                        v-model="computedValue"
                         :value="0"/>
                 </div>
                 <div class="content__actions">
@@ -78,8 +79,8 @@ export default {
 	},
 
 	data: () => ({
-		languageLocal: {},
-		valueLocal: 0
+		localLang: {},
+		localValue: 0
 	}),
 
 	computed: {
@@ -94,12 +95,19 @@ export default {
 		languageName () {
 			if (!this.language) return ''
 			return this.getPropertyByKey('projectLanguages', this.language, 'value', 'name')
+		},
+
+		computedValue: {
+			get () { return this.localValue },
+			set (val) {
+				this.localValue = (val >= 100) ? 100 : val
+			}
 		}
 	},
 
 	updated () {
-		if (this.value) this.valueLocal = this.value
-		if (this.language) this.languageLocal = this.language
+		if (this.value) this.localValue = this.value
+		if (this.language) this.localLang = this.language
 	},
 
 	methods: {
@@ -109,7 +117,7 @@ export default {
 	},
 
 	watch: {
-		valueLocal: {
+		localValue: {
 			handler (value) {
 				if (this.valueCallback) {
 					this.valueCallback({
@@ -119,7 +127,7 @@ export default {
 				}
 			}
 		},
-		languageLocal: {
+		localLang: {
 			handler (value) {
 				if (this.languageCallback) {
 					this.languageCallback({

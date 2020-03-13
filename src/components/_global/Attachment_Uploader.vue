@@ -1,13 +1,14 @@
 <template>
     <div class="attahment-uploader">
         <div>
-            <video
+            <!-- <video
+				loop
                 ref="videoControl"
                 type="video/mp4"
-                :style="{width: 'auto', display:'none'}"></video>
-            <canvas
+                :style="{width: 'auto', display:'none'}"></video> -->
+            <!-- <canvas
                 ref="videoControlCanvas"
-                :style="{width: 'auto', display:'none'}"></canvas>
+                :style="{width: 'auto', display:'none'}"></canvas> -->
             <v-img :src="base64" alt=""></v-img>
         </div>
         <input
@@ -123,8 +124,10 @@ export default {
 				// Assign props from incoming 'setProps Obj'
 				if (this.setProps) Object.assign(data, this.setProps)
 
-				if (file.type == 'video/mp4') {
-					let video = this.$refs.videoControl
+				if (file.type === 'video/mp4' || file.type === 'video/quicktime') {
+					// get thumbnail from video
+
+					/* let video = this.$refs.videoControl
 					let canvas = this.$refs.videoControlCanvas
 
 					video.src = URL.createObjectURL(file)
@@ -144,7 +147,10 @@ export default {
 
 							self.addFilesToAQM([data])
 						}, 1000)
-					}
+					} */
+
+					this.addFilesToAQM([data])
+
 				} else {
 					// FILES LESS THAT 20MB get preview
 					if (file.size < 20 * 1024 * 1024) {
@@ -171,10 +177,10 @@ export default {
 		checkPreviewsReadyState () {
 			let isPending = this.previewsPending.filter(item => {
 				if (!item) return
-				return item['readyState'] != 2 // is finished
+				return item['readyState'] !== 2 // is finished
 			})
 
-			if (isPending.length == 0) {
+			if (isPending.length === 0) {
 				clearInterval(this.previewLoadTicker)
 
 				this.addFilesToAQM(this.processedFiles)

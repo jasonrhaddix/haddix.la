@@ -21,7 +21,7 @@
             v-if="hasProjects"
             class="projects__list">
             <projects-item
-                v-for="(item,i) in projects"
+                v-for="(item,i) in filteredProjects"
                 :key="`project-${item.project_id}-${i}`"
                 :id="item.project_id"
                 :session-id="item.session_id"
@@ -30,7 +30,7 @@
                 :subtitle="item.subtitle"
                 :is-guest-project="item.is_guest_project"
                 :click-callback="navigateToProject"
-                :image="getThumbnailImage(i)" />
+                :image="getThumbnailImage(item.project_id)" />
         </div>
     </div>
 </template>
@@ -58,8 +58,8 @@ export default {
 	computed: {
 		...mapState({
 			projects: state => state.projects.projects,
-			projectsLoading: state => state.projects.projectsLoading
-
+			projectsLoading: state => state.projects.projectsLoading,
+			sessionId: state => state.app.sessionToken
 		}),
 
 		...mapGetters({
@@ -68,10 +68,16 @@ export default {
 			getPropertyByKey: 'getPropertyByKey'
 		}),
 
+		filteredProjects () {
+			return this.projects.filter(p => {
+				if (p.type !== HADDIX_PROJECT_TYPE__EXPERIMENT && (!p.is_guest_project || p.session_id === this.sessionId)) return p
+			})
+		},
+
 		getThumbnailImage () {
-			return (index) => {
-				let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, 'projects', index)
-				return (images.length > 0) ? images[0].uri : require('@/assets/app/images/projects/christmas_card/img-1.jpg')
+			return (id) => {
+				let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__THUMBNAIL, 'projects', id)
+				return (images.length > 0) ? images[0].uri : require('@/assets/app/images/project-placeholder-thumb.jpg')
 			}
 		},
 

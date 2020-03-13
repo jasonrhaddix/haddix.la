@@ -25,10 +25,14 @@ $animationDelay: 100ms;
 
             .scrim {
 				transition: background 0.25s ease-in-out;
-                position: absolute;
-                top: 0;
-                height: 100%;
-                width: 100%;
+				position: absolute;
+				// padding: 1rem;
+				overflow: hidden;
+				background-clip: content-box;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
                 background: {
                     color: $color-app-black-alpha-25;
                 }
@@ -226,7 +230,11 @@ $animationDelay: 100ms;
                             size: cover;
                         }
                     }
-                }
+				}
+
+				.scrim {
+					padding: 1rem;
+				}
             }
 
             .title-container {
