@@ -42,9 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
-	/* .photo-viewer {
-		background: {
-			color: white;
-		}
-	} */
+	.photo-viewer {
+		display: flex;
+	}
 </style>
