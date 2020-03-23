@@ -14,6 +14,11 @@ import {
 	VUEX_UI_OVERLAY_CONTAINER_SET_STATE,
 	VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT,
 
+	VUEX_UI_DIALOG_CONTAINER_SHOW,
+	VUEX_UI_DIALOG_CONTAINER_HIDE,
+	VUEX_UI_DIALOG_CONTAINER_SET_STATE,
+	VUEX_UI_DIALOG_CONTAINER_SET_COMPONENT,
+
 	VUEX_UI_LOGIN_CONTAINER_SHOW,
 	VUEX_UI_LOGIN_CONTAINER_HIDE,
 	VUEX_UI_LOGIN_CONTAINER_SET_STATE,
@@ -38,6 +43,11 @@ const state = {
 		component: null,
 		title: '',
 		openState: false
+	},
+	dialogContainer: {
+		openState: false,
+		component: null,
+		props: null
 	},
 	loginContainer: {
 		openState: false
@@ -106,6 +116,19 @@ const actions = {
 
 	[VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT]: ({ commit }, payload) => {
 		commit(VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT, payload)
+	},
+
+	// DIALOG CONTAINER UI
+	[VUEX_UI_DIALOG_CONTAINER_SHOW]: ({ commit }, payload) => {
+		commit(VUEX_UI_DIALOG_CONTAINER_SHOW, payload)
+	},
+
+	[VUEX_UI_DIALOG_CONTAINER_HIDE]: ({ commit }) => {
+		commit(VUEX_UI_DIALOG_CONTAINER_HIDE)
+	},
+
+	[VUEX_UI_DIALOG_CONTAINER_SET_COMPONENT]: ({ commit }, payload) => {
+		commit(VUEX_UI_DIALOG_CONTAINER_SET_COMPONENT, payload)
 	},
 
 	// LOGIN CONTAINER
@@ -189,6 +212,26 @@ const mutations = {
 	[VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT]: (state, payload) => {
 		if (payload.component) state.overlayContainer.component = payload.component
 		if (payload.title) state.overlayContainer.title = payload.title
+	},
+
+	// DIALOG CONTAINER UI
+	[VUEX_UI_DIALOG_CONTAINER_SHOW]: (state, payload) => {
+		state.dialogContainer.openState = true
+
+		if (payload.component) state.dialogContainer.component = payload.component
+		if (payload.props) state.dialogContainer.props = payload.props
+	},
+
+	[VUEX_UI_DIALOG_CONTAINER_HIDE]: (state) => {
+		state.dialogContainer.openState = false
+	},
+
+	[VUEX_UI_DIALOG_CONTAINER_SET_STATE]: (state, payload) => {
+		state.dialogContainer.openState = payload
+	},
+
+	[VUEX_UI_DIALOG_CONTAINER_SET_COMPONENT]: (state, payload) => {
+		if (payload.component) state.dialogContainer.component = payload.component
 	},
 
 	// LOGIN CONTAINER

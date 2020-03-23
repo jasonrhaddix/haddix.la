@@ -492,7 +492,7 @@ export default {
 			title: { required },
 			// client: { required },
 			// role: { required },
-			// project_date: { required },
+			project_date: { required },
 			// subtitle: { required },
 			// exerpt: { required },
 			// description: { required },

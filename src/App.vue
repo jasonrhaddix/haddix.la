@@ -8,30 +8,33 @@
 		<!-- <under-construction-bar /> -->
 		<navigation />
 		<!-- <footer-container /> -->
-		<overlay-container />
 		<login-container />
+		<overlay-container />
+		<dialog-container />
 		<notification-container />
 	</v-app>
 </template>
 
 <script>
-// import UnderContructionBar from '@/components/_global/Under_Construction_Bar'
 import Navigation from '@/components/Navigation/Navigation'
-// import Footer from '@/components/Footer/Footer'
 import OverlayContainer from '@/components/Containers/Overlay_Container'
+import DialogContainer from '@/components/Containers/Dialog_Container'
 import NotificationContainer from '@/components/Containers/Notification_Container'
 import LoginContainer from '@/components/Login/Login.vue'
+// import UnderContructionBar from '@/components/_global/Under_Construction_Bar'
+// import Footer from '@/components/Footer/Footer'
 
 export default {
 	name: 'app',
 
 	components: {
-		// 'under-construction-bar': UnderContructionBar,
 		'navigation': Navigation,
-		// 'footer-container': Footer,
 		'overlay-container': OverlayContainer,
+		'dialog-container': DialogContainer,
 		'notification-container': NotificationContainer,
 		'login-container': LoginContainer
+		// 'under-construction-bar': UnderContructionBar,
+		// 'footer-container': Footer,
 	}
 }
 </script>

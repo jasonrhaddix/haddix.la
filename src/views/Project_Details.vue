@@ -69,11 +69,8 @@
                         v-if="videos"
                         class="video__inner">
                         <video
-                            loop
-                            muted
-                            autoplay
-                            controls
-                            playsInline
+                            loop muted autoplay
+                            controls playsInline
                             class="project-video">
                             <source :src="videos.uri" :type="videos.mimetype"/>
                         </video>
@@ -104,7 +101,8 @@
                             xs6
                             align-content-center
                             v-for="(item,i) in photos"
-                            :key="`project-photo-${$uuid.v4()}-${i}`">
+                            :key="`project-photo-${$uuid.v4()}-${i}`"
+							@click="showFullsizeImage(item)">
 
 							<img :src="item.uri" />
 
@@ -202,11 +200,13 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 
-// import VuePureLightbox from 'vue-pure-lightbox'
-
 import {
 	VUEX_ROUTING_PREVIOUS_PAGE
 } from '@/store/constants/routing'
+
+import {
+	VUEX_UI_DIALOG_CONTAINER_SHOW
+} from '@/store/constants/ui'
 
 import LanguageGraph from '@/components/_global/Language_Graph'
 import AppButton from '@/components/_global/App_Button.vue'
@@ -315,11 +315,25 @@ export default {
 
 	methods: {
 		...mapActions({
-			navigateToPreviousPage: VUEX_ROUTING_PREVIOUS_PAGE
+			navigateToPreviousPage: VUEX_ROUTING_PREVIOUS_PAGE,
+			showDialog: VUEX_UI_DIALOG_CONTAINER_SHOW
 		}),
 
 		navigateToProject () {
 			window.location.href = this.project.link
+		},
+
+		showFullsizeImage (item) {
+			this.showDialog({
+				component: {
+					path: '_global',
+					file: 'Photo_Viewer'
+				},
+				props: {
+					images: this.photos,
+					startImageId: item.attachment_id
+				}
+			})
 		}
 	}
 }

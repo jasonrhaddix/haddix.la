@@ -150,7 +150,7 @@ function spInitGeomSphere1 () {
 	var i = 0
 	while (i < spSphere1SolidVertices.length) {
 		spSphere1SolidVertices[i].originalY = spSphere1SolidVertices[i].y
-		spSphere1SolidVertices[i].multiplyScalar(THREE.Math.randFloat(0.9, 1.1))
+		spSphere1SolidVertices[i].multiplyScalar(THREE.Math.randFloat(0.85, 1.15))
 		++i
 	}
 
@@ -269,7 +269,7 @@ function spInitTwitch () {
 		// var tempB = spSphere1SolidVertices[temp.b]
 		// var tempC = spSphere1SolidVertices[temp.c]
 
-		TweenMax.to(tempA, 0.5, { y: tempA.y + THREE.Math.randFloat(-1, 1), ease: Power4.easeOut })
+		TweenMax.to(tempA, 0.5, { y: tempA.y + THREE.Math.randFloat(-1.4, 1.4), ease: Power4.easeOut })
 		// TweenMax.to(tempB, 0.5, { y: tempB.y + THREE.Math.randFloat(-1, 1), ease: Power4.easeOut })
 		// TweenMax.to(tempC, 0.5, { y: tempC.y + THREE.Math.randFloat(-1, 1), ease: Power4.easeOut })
 
@@ -328,7 +328,7 @@ function spInitMouseMove (event) {
 				// let tempB = spSphere1SolidVertices[temp.b]
 				// let tempC = spSphere1SolidVertices[temp.c]
 
-				TweenMax.to(tempA, 0.3, { y: tempA.y + THREE.Math.randFloat(0.1, 0.3), ease: Expo.easeOut })
+				TweenMax.to(tempA, 0.3, { y: tempA.y + THREE.Math.randFloat(-0.5, 0.5), ease: Expo.easeOut })
 				// TweenMax.to(tempB, 0.3, { y: tempB.y + THREE.Math.randFloat(0.1, 0.3), ease: Expo.easeOut })
 				// TweenMax.to(tempC, 0.3, { y: tempC.y + THREE.Math.randFloat(0.1, 0.3), ease: Expo.easeOut })
 

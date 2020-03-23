@@ -1,0 +1,21 @@
+.dialog-container {
+	width: 80%;
+	min-height: 75px;
+	max-width: 1200px;
+
+	.dialog-container__content {
+		position: relative;
+		width: 100%;
+		height: 100%;
+
+		img {
+			width: 100%;
+		}
+
+		.close-btn {
+			position: absolute;
+			right: 1rem;
+			top: 1rem;
+		}
+	}
+}

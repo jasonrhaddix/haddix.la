@@ -22,7 +22,7 @@
 					<img
 						class="header__geo-image"
 						:src="require('@/assets/app/images/geo.svg')"/>
-                	<h1 class="header__title">{{ overlayTitle }}</h1>
+					<h1 class="header__title">{{ overlayTitle }}</h1>
 				</div>
                 <v-btn
                     light fab small
