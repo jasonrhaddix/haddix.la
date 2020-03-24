@@ -104,7 +104,19 @@
                             :key="`project-photo-${$uuid.v4()}-${i}`"
 							@click="showFullsizeImage(item)">
 
-							<img :src="item.uri" />
+							<div class="photo">
+								<img :src="item.uri" />
+
+								<div class="img-hover">
+									<div class="skrim"/>
+									<v-icon
+										size="32"
+										class="icon"
+										color="white">
+										search
+									</v-icon>
+								</div>
+							</div>
 
                         </v-flex>
                     </v-layout>
