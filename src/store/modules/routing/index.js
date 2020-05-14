@@ -9,19 +9,26 @@ import {
 	VUEX_ROUTING_SET_PREVIOUS_ROUTE,
 	VUEX_ROUTING_SET_CURRENT_ROUTE,
 	VUEX_ROUTING_ENTER_PROJECT,
-	VUEX_ROUTING_PREVIOUS_PAGE
+	VUEX_ROUTING_PREVIOUS_PAGE,
+	VUEX_ROUTING_ENTER_ARTICLES
 } from '@/store/constants/routing'
+
 import {
 	VUEX_UI_HEADER_SHOW,
 	VUEX_UI_HEADER_HIDE,
 	VUEX_UI_NAVIGATION_HIDE,
 	VUEX_UI_NAVIGATION_DISABLED
 } from '@/store/constants/ui'
+
 import {
 	VUEX_PROJECTS_FETCH_REQUEST,
 	VUEX_PROJECT_FETCH_REQUEST,
 	VUEX_PROJECT_TEARDOWN
 } from '@/store/constants/projects'
+
+import {
+	VUEX_ARTICLES_FETCH
+} from '@/store/constants/articles'
 
 const state = {
 	route: {
@@ -96,6 +103,10 @@ const actions = {
 
 	[VUEX_ROUTING_ENTER_PROJECT]: ({ dispatch }, payload) => {
 		dispatch(VUEX_PROJECT_FETCH_REQUEST, payload)
+	},
+
+	[VUEX_ROUTING_ENTER_ARTICLES]: ({ dispatch }) => {
+		dispatch(VUEX_ARTICLES_FETCH)
 	},
 
 	[VUEX_ROUTING_PREVIOUS_PAGE]: async ({ commit, dispatch }) => {

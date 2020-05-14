@@ -7,8 +7,9 @@ import { loadView } from '@/mixins/asyncLoaders'
 
 import {
 	VUEX_ROUTING_ENTER_PROJECT,
-	VUEX_ROUTING_ENTER_EXPERIMENT,
-	VUEX_ROUTING_NAVIGATE_TO_ROUTE
+	// VUEX_ROUTING_ENTER_EXPERIMENT,
+	VUEX_ROUTING_NAVIGATE_TO_ROUTE,
+	VUEX_ROUTING_ENTER_ARTICLES
 } from '@/store/constants/routing'
 
 import {
@@ -58,8 +59,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, '')
-					next()
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, '').then(() => next())
 				}
 			}
 		},
@@ -70,8 +70,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Projects')
-					next()
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Projects').then(() => next())
 				}
 			}
 		},
@@ -93,8 +92,18 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'About')
-					next()
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'About').then(() => next())
+				}
+			}
+		},
+		{
+			path: '/articles',
+			name: 'articles',
+			component: loadView({ file: 'Articles' }),
+			beforeEnter: beforeEnterWatcher,
+			meta: {
+				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_ROUTING_ENTER_ARTICLES, 'Articles').then(() => next())
 				}
 			}
 		},
@@ -105,8 +114,7 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Contact')
-					next()
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Contact').then(() => next())
 				}
 			}
 		},
@@ -117,11 +125,10 @@ const router = new Router({
 			beforeEnter: beforeEnterWatcher,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
-					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Labs')
-					next()
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Labs').then(() => next())
 				}
 			}
-		},
+		}/* ,
 		{
 			path: '/experiment/:id',
 			name: 'experiment-details',
@@ -131,7 +138,7 @@ const router = new Router({
 					store.dispatch(VUEX_ROUTING_ENTER_EXPERIMENT, to.params.id).then(() => next())
 				}
 			}
-		}
+		} */
 	]
 })
 

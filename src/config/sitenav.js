@@ -10,6 +10,11 @@ const sitenav = [
 		children: []
 	},
 	{
+		label: 'Articles',
+		routeName: 'articles',
+		children: []
+	},
+	{
 		label: 'Contact',
 		routeName: 'contact',
 		children: []
