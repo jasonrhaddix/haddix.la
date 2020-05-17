@@ -22,7 +22,7 @@
                     <v-text-field
                         filled
                         label="Job Title"
-                        v-model="model.title"/>
+                        v-model="model.job_title"/>
                 </v-col>
             </v-row>
 
@@ -147,6 +147,7 @@ export default {
 
 	mounted () {
 		this.model.role_id = this.$uuid.v4()
+		// this.model.role_id = `r_${this.$uuid.v4()}`
 	},
 
 	methods: {
@@ -165,7 +166,7 @@ export default {
 		submitForm () {
 			this.submitted = true
 
-			this.model.projects = this.$refs.roleProjects.map(project => project.model)
+			this.model.projects = this.$refs.roleProjects ? this.$refs.roleProjects.map(project => project.model) : []
 
 			// Clean model before send
 			Object.keys(this.model).forEach(k => {
@@ -173,8 +174,6 @@ export default {
 					this.model[k] === undefined ||
 					this.model[k].length === 0) delete this.model[k]
 			})
-
-			console.log(this.model)
 
 			this.createRole(this.model)
 		}

@@ -50,6 +50,12 @@ export default {
 
 	roleClients: [
 		{ name: 'Amazon', value: 'amazon' },
+		{ name: 'Apple', value: 'apple' },
+		{ name: 'Facebook', value: 'facebook' },
+		{ name: 'Google', value: 'google' },
+		{ name: 'Hulu', value: 'hulu' },
+		{ name: 'Microsoft', value: 'microsoft' },
+		{ name: 'Netflix', value: 'netflix' },
 		{ name: 'Snap', value: 'snap' },
 		{ name: 'Tinder', value: 'tinder' },
 		{ name: 'Twitch', value: 'twitch' }

@@ -4,7 +4,7 @@
 			<v-row>
 				<div class="col-12">
 					<div class="section__title">
-						<h3>Project Summary</h3>
+						<h3>Project Title</h3>
 						<!-- <p>Only 1 video allowed</p> -->
 					</div>
 					<v-btn
@@ -13,6 +13,19 @@
 						@click="removeCallback(id)">
 						<v-icon>remove</v-icon>
 					</v-btn>
+					<div class="title__container">
+						<v-text-field
+							filled hide-details
+							v-model="model.title"/>
+					</div>
+				</div>
+			</v-row>
+			<v-row>
+				<div class="col-12">
+					<div class="section__title">
+						<h3>Project Summary</h3>
+						<!-- <p>Only 1 video allowed</p> -->
+					</div>
 					<div class="summary__container">
 						<v-textarea
 							filled hide-details
@@ -140,6 +153,7 @@
 			blah: [],
 			model: {
 				project_id: null,
+				title: '',
 				summary: '',
 				attachments: []
 			},
@@ -207,7 +221,20 @@
 			addToAttachments (files) {
 				files.forEach(projectFile => {
 					let idx = this.model.attachments.findIndex(item => item.file_id === projectFile.file_id)
-					if (idx === -1) this.model.attachments.push(projectFile)
+					if (idx === -1) {
+						// eslint-disable-next-line camelcase
+						const { key, uri, file_id, filename, attach_to, project_id, usage_type } = projectFile
+
+						this.model.attachments.push({
+							key,
+							uri,
+							file_id,
+							filename,
+							attach_to,
+							project_id,
+							usage_type
+						})
+					}
 				})
 			},
 
