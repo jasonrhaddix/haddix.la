@@ -1,12 +1,7 @@
 <template>
     <div class="projects-view">
         <div class="projects__add-btn">
-            <v-btn
-                fab
-                color="primary"
-                @click="addProject">
-                <v-icon>add</v-icon>
-            </v-btn>
+			<create-button />
         </div>
         <div
             v-if="!hasProjects && projectsLoading">
@@ -42,17 +37,20 @@ import {
 	VUEX_UI_OVERLAY_CONTAINER_SHOW,
 	VUEX_UI_OVERLAY_CONTAINER_SET_COMPONENT
 } from '@/store/constants/ui'
+
 import {
 	VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'
 
-import ProjectsItem from '@/components/Projects/Projects_Item.vue'
+import ProjectsItem from '@/components/Projects/Projects_Item'
+import CreateButton from '@/components/_global/Create_Button'
 
 export default {
 	name: 'projects-view',
 
 	components: {
-		'projects-item': ProjectsItem
+		'projects-item': ProjectsItem,
+		'create-button': CreateButton
 	},
 
 	computed: {
@@ -84,7 +82,7 @@ export default {
 		getClientName () {
 			return (client) => {
 				if (!client) return ''
-				return this.getPropertyByKey('clients', client, 'value', 'name')
+				return this.getPropertyByKey('projectClients', client, 'value', 'name')
 			}
 		}
 
@@ -100,7 +98,7 @@ export default {
 		addProject () {
 			this.setOverlayComponent({
 				component: {
-					path: 'Forms/CreateProject',
+					path: 'Forms/CreateProject/Project',
 					file: 'Project_Create'
 				},
 				title: 'Create Project'

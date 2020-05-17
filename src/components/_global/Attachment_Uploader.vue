@@ -150,7 +150,6 @@ export default {
 					} */
 
 					this.addFilesToAQM([data])
-
 				} else {
 					// FILES LESS THAT 20MB get preview
 					if (file.size < 20 * 1024 * 1024) {

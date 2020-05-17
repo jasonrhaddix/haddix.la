@@ -44,7 +44,7 @@
                         filled dense
                         label="Client"
                         item-text="name"
-                        :items="clients"
+                        :items="projectClients"
                         v-model="model.client"/>
                 </v-col>
                 <v-col class="col-12 col-md-4">
@@ -426,9 +426,9 @@ import {
 } from '@/store/constants/projects/project_tree'
 
 import AttachmentUploader from '@/components/_global/Attachment_Uploader'
-import CreateAttachmentItem from '@/components/Forms/CreateProject/Project_Create__Attachment_Item'
-import CreateLanguageItem from '@/components/Forms/CreateProject/Project_Create__Language_Item'
-import CreateResourcePicker from '@/components/Forms/CreateProject/Project_Create__Resource_Picker'
+import CreateAttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item'
+import CreateLanguageItem from '@/components/Forms/CreateProject/Project/Project_Create__Language_Item'
+import CreateResourcePicker from '@/components/Forms/CreateProject/Project/Project_Create__Resource_Picker'
 import AppButton from '@/components/_global/App_Button'
 
 export default {
@@ -507,8 +507,7 @@ export default {
 			projectTypes: state => state.config.projectTypes,
 			projectRoles: state => state.config.projectRoles,
 			projectResources: state => state.config.projectResources,
-			clients: state => state.config.clients,
-
+			projectClients: state => state.config.projectClients,
 			projectTree: state => state.projectTree.projectTree
 		}),
 

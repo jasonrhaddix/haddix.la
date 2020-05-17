@@ -1,5 +1,5 @@
 <template>
-    <v-container fluid class="project-details-view">
+    <v-container fluid class="role-details-view">
 
         <div class="details__content">
             <div class="header__container">
@@ -123,7 +123,7 @@
                 </div>
 
                 <div
-					v-if="languages || resources || tree"
+					v-if="languages || resources"
 					class="divider" />
 
                 <div class="section meta__container">
@@ -160,34 +160,6 @@
                                 <p> {{ item.value }}</p>
                             </v-flex>
                         </v-layout>
-                    </div>
-
-                    <div
-                        v-if="tree"
-                        class="meta__title languages">
-                        <h4>File Structure</h4>
-                    </div>
-                    <div
-                        v-if="tree"
-                        class="subsection meta_tree">
-                        <div class="tree__inner">
-                            <v-treeview
-                                hoverable
-                                open-on-click
-                                :items="tree"
-                                :open="[1]">
-                                <template v-slot:prepend="{ item, open }">
-                                    <font-awesome-icon
-                                        v-if="!item.file"
-                                        color="grey"
-                                        :icon="['fas', open ? 'folder-open': 'folder']"/>
-                                    <font-awesome-icon
-                                        v-else
-                                        color="grey"
-                                        :icon="[treeOptions.fileIcons[item.file].prefix, treeOptions.fileIcons[item.file].icon]" />
-                                </template>
-                            </v-treeview>
-                        </div>
                     </div>
                 </div>
             </v-container>
@@ -232,30 +204,12 @@ export default {
 	},
 
 	data: () => ({
-		treeFoldersOpen: [1],
-		treeOptions: {
-			fileIcons: {
-				css: { prefix: 'fab', icon: 'css3' },
-				fav: { prefix: 'fas', icon: 'star' },
-				group: { prefix: 'fas', icon: 'ellipsis-h' },
-				html: { prefix: 'fab', icon: 'html5' },
-				image: { prefix: 'fas', icon: 'file-image' },
-				js: { prefix: 'fab', icon: 'js' },
-				json: { prefix: 'fas', icon: 'code' },
-				md: { prefix: 'fab', icon: 'markdown' },
-				node: { prefix: 'fab', icon: 'node-js' },
-				pdf: { prefix: 'fas', icon: 'file-pdf' },
-				vieo: { prefix: 'fas', icon: 'file-video' },
-				vue: { prefix: 'fab', icon: 'vuejs' },
-				yarn: { prefix: 'fab', icon: 'yarn' }
-			}
-		}
+
 	}),
 
 	computed: {
 		...mapState({
-			project: state => state.projects.project,
-			projectTree: state => state.projectTree.projectTree
+			project: state => state.projects.project
 		}),
 
 		...mapGetters({
@@ -271,7 +225,7 @@ export default {
 		},
 
 		client () {
-			return this.getPropertyByKey('projectClients', this.project.client, 'value', 'name')
+			return this.getPropertyByKey('clients', this.project.client, 'value', 'name')
 		},
 
 		title () {
@@ -318,10 +272,6 @@ export default {
 
 		resources () {
 			return (this.project.resources && this.project.resources.length > 0) ? this.project.resources : null
-		},
-
-		tree () {
-			return (this.projectTree && this.projectTree.tree_data.length > 0) ? this.projectTree.tree_data : null
 		}
 	},
 

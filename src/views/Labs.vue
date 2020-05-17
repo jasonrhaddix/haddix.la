@@ -149,7 +149,7 @@
 			addProject () {
 				this.setOverlayComponent({
 					component: {
-						path: 'Forms/CreateProject',
+						path: 'Forms/CreateProject/Project',
 						file: 'Project_Create'
 					},
 					title: 'Create Project'

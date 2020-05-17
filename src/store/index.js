@@ -19,6 +19,7 @@ import contact from '@/store/modules/contact'
 import notifications from '@/store/modules/notifications'
 import projects from '@/store/modules/projects'
 import projectTree from '@/store/modules/projects/project_tree'
+import roles from '@/store/modules/roles'
 import routing from '@/store/modules/routing'
 import ui from '@/store/modules/ui'
 
@@ -38,6 +39,7 @@ const store = new Vuex.Store({
 		notifications,
 		projects,
 		projectTree,
+		roles,
 		ui,
 		routing
 	},

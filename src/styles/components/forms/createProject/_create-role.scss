@@ -1,0 +1,162 @@
+.form--role-create {
+    color: white;
+
+    label {
+        color: $color-m-grey !important;
+        font-size: 1rem;
+    }
+
+    .form-section {
+        margin: {
+            bottom: 7rem;
+        }
+    }
+
+    .inner__divider {
+        width: 100%;
+        height: 1px;
+        background: {
+            color: $color-m-grey-darken-3;
+        }
+        margin: {
+            top: 0.75rem;
+        }
+    }
+
+    .create__form {
+
+        .project__pending-id {
+            background: {
+                color: #1B172A;
+            }
+
+            p {
+                text-align: center;
+                color: $color-m-grey;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    // Images section
+    .create__projects {
+
+        h2 {
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .projects-section {
+            margin: {
+                top: 0.5rem;
+            }
+
+            &:first-of-type {
+                padding: {
+                    right: 0.25rem;
+                }
+            }
+
+            &:last-of-type {
+                padding: {
+                    left: 0.25rem;
+                }
+            }
+
+            .section__title {
+                margin: {
+                    bottom: 0.75rem;
+                }
+
+                h3 {
+                    color: $color-m-grey;
+                    text-transform: uppercase;
+
+                    span {
+                        text-transform: capitalize;
+                    }
+                }
+
+                p {
+                    color: $color-m-grey-darken-1;
+                }
+			}
+
+			.projects__container {
+
+				.add-project-btn {
+                    cursor: pointer;
+                    position: relative;
+					height: 8rem;
+					margin: {
+						top: 2rem;
+					}
+                    background: {
+                        color: #1B172A;
+					}
+					border: {
+						radius: 4px;
+					}
+
+                    .button__content {
+                        @include center-content();
+
+                        p {
+                            text-transform: uppercase;
+                            color: $color-m-grey-darken-1;
+                            font-weight: $font-weight-bold;
+                            margin: 0;
+                        }
+
+                        .v-icon {
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+                }
+			}
+        }
+    }
+
+    .role__save-btn {
+        display: flex;
+        float: right;
+
+        .error-prompt {
+            display: flex;
+
+            .divider {
+                height: 93%;
+                width: 1px;
+                background: {
+                    color: red;
+                }
+                margin: {
+                    left: 0.75rem;
+                    right: 0.75rem;
+                }
+            }
+
+            p {
+                color: red;
+                margin: {
+                    top: 12px;
+                }
+            }
+        }
+
+        .progress__ind {
+            margin: {
+                right: 1rem;
+            }
+        }
+    }
+
+    // Override
+    .theme--dark.v-text-field--box>.v-input__control>.v-input__slot {
+        background: {
+            color: rgba(0,0,0,0.3);
+        }
+    }
+}

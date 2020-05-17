@@ -16,7 +16,10 @@
             max-height: 90vh;
             border: {
                 bottom: 1px solid $color-m-grey-lighten-2;
-            }
+			}
+			background: {
+				color: $color-app-black;
+			}
 
             .scrim {
                 position: absolute;
@@ -179,6 +182,7 @@
 						position: relative;
 						display: flex;
 						cursor: pointer;
+						border: 1px solid $color-app-black-alpha-15;
 
 						img {
 							width: 100%
