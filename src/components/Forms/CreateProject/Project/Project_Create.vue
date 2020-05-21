@@ -25,7 +25,6 @@
                         label="Title"
                         :error="$v.model.title.$invalid && submitted"
                         v-model="model.title"/>
-
                 </v-col>
             </v-row>
 

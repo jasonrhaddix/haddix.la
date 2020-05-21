@@ -16,8 +16,8 @@ export default {
 	path: '/roles',
 	name: 'roles',
 	redirect: { name: 'projects' },
-	/* component: loadView({ file: 'Roles' }),
-	beforeEnter: beforeEnterGuard,
+	component: loadView({ file: 'Roles' }),
+	/* beforeEnter: beforeEnterGuard,
 	meta: {
 		beforeEnterCallback: (to, from, next) => {
 			store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Roles')

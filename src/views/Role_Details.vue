@@ -11,35 +11,30 @@
                 <div class="scrim"/>
 
                 <div class="title__container">
-                    <h3>{{ client }}</h3>
-                    <h1>{{ title }}</h1>
-                    <h3>{{ subtitle }}</h3>
+                    <!-- <h3>Role</h3> -->
+                    <h1>{{ job_title }}</h1>
+                    <h3><span>at</span> {{ client.toUpperCase() }}</h3>
                 </div>
 
 				<div class="project-info__container">
 					<v-row class="project-info__inner">
 						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
 							<div class="item">
-								<h4>Client</h4>
+								<h4>Company</h4>
 								<p>{{ client }}</p>
 							</div>
 						</v-col>
 
 						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
 							<div class="item">
-								<h4>Role</h4>
-								<p>{{ role }}</p>
+								<h4>Organization</h4>
+								<p>{{ department }}</p>
 							</div>
 						</v-col>
-
-						<v-col align-self="center" class="d-none d-md-block col-12 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
 							<div class="item">
-								<div
-									v-if="link"
-									class="project-btn__container"
-									@click="navigateToProject">
-									<app-btn class="project-btn" label="View Project"/>
-								</div>
+								<h4>Recruiter</h4>
+								<p>{{ recruiter }}</p>
 							</div>
 						</v-col>
 					</v-row>
@@ -54,130 +49,60 @@
             </div>
 
             <v-container class="content__container">
-                <!-- <div class="divider" /> -->
-
-                <div class="section excerpt__container">
-                    <h3 class="headline">{{ excerpt }}</h3>
-                </div>
-
-                <div
-                  v-if="videos"
-                  class="divider" />
-
-                <div class="section video__container">
-                    <div
-                        v-if="videos"
-                        class="video__inner">
-                        <video
-                            loop muted autoplay
-                            controls playsInline
-                            class="project-video">
-                            <source :src="videos.uri" :type="videos.mimetype"/>
-                        </video>
-                    </div>
-                </div>
-
-                <div
-					v-if="description"
-					class="divider" />
-
                 <div class="section description__container">
-                    <div class="description__inner">
-                        <div class="description" v-html="description">
-                            <!-- {{ description }} -->
-                        </div>
-                    </div>
+                    <p class="body-1" v-html="description"/>
                 </div>
 
-                <div
-					v-if="photos"
-					class="divider" />
+                <div class="divider" />
 
-                <div class="section photos__container">
-                    <v-layout
-                      row wrap
-                      class="photos__inner">
-                        <v-flex
-                            xs6
-                            align-content-center
-                            v-for="(item,i) in photos"
-                            :key="`project-photo-${$uuid.v4()}-${i}`"
-							@click="showFullsizeImage(item)">
+				<div class="section project__container">
+					<!-- <div class="section-title">
+						<h2>Projects</h2>
+					</div> -->
 
-							<div class="photo">
-								<img :src="item.uri" />
+					<div
+						class="project-item"
+						v-for="project in role.projects"
+						:key="`project-item--${project.project_id}}`">
+						<div>
+							<div class="title__container">
+								<div class="title__info">
+									<h3>{{ project.title }}</h3>
+									<p v-html="project.summary"/>
+								</div>
 
-								<div class="img-hover">
-									<div class="skrim"/>
-									<v-icon
-										size="32"
-										class="icon"
-										color="white">
-										search
-									</v-icon>
+								<div
+									v-if="projectVideos(project.project_id)"
+									class="watch__btn">
+									<app-btn
+										light label="Watch Video"
+										@click.native="loadVideo(projectVideos(project.project_id))"/>
 								</div>
 							</div>
 
-                        </v-flex>
-                    </v-layout>
-                </div>
-
-                <div
-					v-if="languages || resources"
-					class="divider" />
-
-                <div class="section meta__container">
-                    <div
-						v-if="languages"
-						class="meta__title languages">
-                        <h4>Languages</h4>
-                    </div>
-                    <div
-						v-if="languages"
-						class="subsection meta_languages">
-                        <v-layout class="languages__inner">
-                            <language-graph
-                                v-for="(item, i) in languages"
-                                :key="`project-language-${$uuid.v4()}-${i}`"
-                                :value="item.value"
-                                :language="item.language"/>
-                        </v-layout>
-                    </div>
-
-                    <div
-						v-if="resources"
-						class="meta__title languages">
-                        <h4>Resources</h4>
-                    </div>
-                    <div
-						v-if="resources"
-						class="subsection meta_resources">
-                        <v-layout row wrap class="resources__inner">
-                            <v-flex xs6
-                                v-for="(item,i) in resources"
-                                :key="`resource-item-${i}`"
-                                class="resource-item">
-                                <p> {{ item.value }}</p>
-                            </v-flex>
-                        </v-layout>
-                    </div>
-                </div>
+							<v-container>
+								<v-layout row wrap class="photos__inner">
+									<v-flex
+										xs6 align-content-center
+										v-for="(item,i) in projectImages(project.project_id)"
+										:key="`project-photo-${$uuid.v4()}-${i}`"
+										@click="showFullsizeImage(item)">
+										<div class="photo">
+											<img :src="item.uri" />
+											<div class="img-hover">
+												<div class="skrim"/>
+												<v-icon size="32" class="icon" color="white">search</v-icon>
+											</div>
+										</div>
+									</v-flex>
+								</v-layout>
+							</v-container>
+						</div>
+						<div class="divider"/>
+					</div>
+				</div>
             </v-container>
         </div>
-
-		<div
-			v-if="link"
-			class="d-sm-block d-md-none footer__container">
-			<v-row class="footer__inner">
-				<v-col align-self="center" class="col-12 project-info__item">
-					<div
-						class="project-btn__container"
-						@click="navigateToProject">
-						<app-btn class="project-btn" label="View Project"/>
-					</div>
-				</v-col>
-			</v-row>
-		</div>
     </v-container>
 </template>
 
@@ -192,86 +117,65 @@ import {
 	VUEX_UI_DIALOG_CONTAINER_SHOW
 } from '@/store/constants/ui'
 
-import LanguageGraph from '@/components/_global/Language_Graph'
-import AppButton from '@/components/_global/App_Button.vue'
+import AppBtn from '@/components/_global/App_Button'
 
 export default {
 	name: 'project-details-view',
 
 	components: {
-		'language-graph': LanguageGraph,
-		'app-btn': AppButton
+		'app-btn': AppBtn
 	},
-
-	data: () => ({
-
-	}),
 
 	computed: {
 		...mapState({
-			project: state => state.projects.project
+			role: state => state.roles.role
 		}),
 
 		...mapGetters({
-			attachmentsByUsageType: 'attachmentsByUsageType',
+			projectAttachmentsByUsageType: 'projectAttachmentsByUsageType',
 			getPropertyByKey: 'getPropertyByKey'
 		}),
 
 		headerImage () {
-			let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
-			return (images && images.length > 0)
-				? images[0].uri
-				: null
+			return require('@/assets/app/images/project-placeholder-thumb.jpg')
 		},
 
 		client () {
-			return this.getPropertyByKey('clients', this.project.client, 'value', 'name')
+			return this.getPropertyByKey('roleClients', this.role.client, 'value', 'name') || ''
 		},
 
-		title () {
-			return this.project.title
+		job_title () {
+			return this.role.job_title
 		},
 
-		subtitle () {
-			return this.project.subtitle
-		},
-
-		excerpt () {
-			return this.project.excerpt
-		},
-
-		link () {
-			return this.project.link
-		},
-
-		role () {
-			return this.getPropertyByKey('projectRoles', this.project.role, 'value', 'name')
-		},
-
-		videos () {
-			let videos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO, 'project-details')
-			return (videos && videos.length > 0)
-				? videos[0]
-				: null
+		department () {
+			return this.role.department
 		},
 
 		description () {
-			return this.project.description
+			return this.role.description
 		},
 
-		photos () {
-			let photos = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__BODY, 'project-details')
-			return (photos.length > 0)
-				? photos
-				: null
+		recruiter () {
+			return this.role.recruiter
 		},
 
-		languages () {
-			return (this.project.languages && this.project.languages.length > 0) ? this.project.languages : null
+		projectVideos () {
+			return projectId => {
+				let videos = this.projectAttachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE, 'roles', projectId)
+				return (videos.length > 0)
+					? videos[0]
+					: null
+			}
 		},
 
-		resources () {
-			return (this.project.resources && this.project.resources.length > 0) ? this.project.resources : null
+		projectImages () {
+			return projectId => {
+				let images = this.projectAttachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__BODY_ROLE, 'roles', projectId)
+				return (images.length > 0)
+					? images
+					: require('@/assets/app/images/project-placeholder-thumb.jpg')
+			}
 		}
 	},
 
@@ -281,10 +185,6 @@ export default {
 			showDialog: VUEX_UI_DIALOG_CONTAINER_SHOW
 		}),
 
-		navigateToProject () {
-			window.location.href = this.project.link
-		},
-
 		showFullsizeImage (item) {
 			this.showDialog({
 				component: {
@@ -292,8 +192,19 @@ export default {
 					file: 'Photo_Viewer'
 				},
 				props: {
-					images: this.photos,
-					startImageId: item.attachment_id
+					images: item
+				}
+			})
+		},
+
+		loadVideo (item) {
+			this.showDialog({
+				component: {
+					path: '_global',
+					file: 'Video_Viewer'
+				},
+				props: {
+					videos: item
 				}
 			})
 		}

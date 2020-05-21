@@ -7,11 +7,12 @@ import { loadView } from '@/mixins/asyncLoaders'
 
 import beforeEnterGuard from '@/router/navigationGuards/beforeEnter'
 
-import roleRoutes from '@/router/modules/routes_roles'
+// import roleRoutes from '@/router/modules/routes_roles'
 
 import {
 	VUEX_ROUTING_ENTER_PROJECT,
-	VUEX_ROUTING_ENTER_EXPERIMENT
+	VUEX_ROUTING_ENTER_EXPERIMENT,
+	VUEX_ROUTING_ENTER_ROLE
 } from '@/store/constants/routing'
 
 import {
@@ -42,7 +43,7 @@ const router = new Router({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes: [
-		roleRoutes,
+		// roleRoutes,
 		{
 			path: '',
 			name: 'home',
@@ -121,6 +122,30 @@ const router = new Router({
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_ROUTING_ENTER_EXPERIMENT, to.params.id).then(() => next())
+				}
+			}
+		},
+		{
+			path: '/roles',
+			name: 'roles',
+			redirect: { name: 'projects' },
+			component: loadView({ file: 'Roles' }),
+			beforeEnter: beforeEnterGuard,
+			meta: {
+				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Roles')
+					next()
+				}
+			}
+		},
+		{
+			path: '/roles/:role_id',
+			name: 'role-details',
+			component: loadView({ file: 'Role_Details' }),
+			beforeEnter: beforeEnterGuard,
+			meta: {
+				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_ROUTING_ENTER_ROLE, to.params).then(() => next())
 				}
 			}
 		}

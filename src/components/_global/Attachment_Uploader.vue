@@ -124,8 +124,9 @@ export default {
 				// Assign props from incoming 'setProps Obj'
 				if (this.setProps) Object.assign(data, this.setProps)
 
-				if (file.type === 'video/mp4' || file.type === 'video/quicktime') {
-					// get thumbnail from video
+				// if (file.type === 'video/mp4' || file.type === 'video/quicktime') {
+				if (false) {
+					// GET VIDEO THUMBNAIL
 
 					/* let video = this.$refs.videoControl
 					let canvas = this.$refs.videoControlCanvas

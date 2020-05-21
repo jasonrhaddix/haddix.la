@@ -30,17 +30,19 @@
                 <v-col class="col-12">
                     <v-text-field
                         filled
-                        label="Department"
+                        label="Organization"
                         v-model="model.department"/>
                 </v-col>
             </v-row>
 
             <v-row>
                 <v-col class="col-12">
-                    <v-textarea
+                    <!-- <v-textarea
                         filled
                         label="Description"
-                        v-model="model.description"/>
+                        v-model="model.description"/> -->
+					<text-editor
+						v-model="model.description" />
                 </v-col>
             </v-row>
 
@@ -114,13 +116,15 @@ import {
 
 import RoleProjectItem from '@/components/Forms/CreateProject/Role/Role_Create__Project_item'
 import AppButton from '@/components/_global/App_Button'
+import TextEditor from '@/components/_global/Text_Editor'
 
 export default {
 	name: 'project-create-form',
 
 	components: {
 		'app-btn': AppButton,
-		'role-project': RoleProjectItem
+		'role-project': RoleProjectItem,
+		'text-editor': TextEditor
 	},
 
 	data: () => ({

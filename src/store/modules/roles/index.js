@@ -34,8 +34,23 @@ const state = {
 }
 
 const getters = {
+	hasRoles: state => {
+		return state.roles.length > 0
+	},
+
     roleHasProjects: state => {
 		return state.role.projects.length > 0
+	},
+
+	projectAttachmentsByUsageType: state => (type = null, obj = null, id = null) => {
+		if (!type || !obj) return
+
+		let attachments = (obj === 'roles')
+			? state.role.projects.find(p => p.project_id === id).attachments
+			: state.role.project.attachments
+
+		if (!attachments || attachments.length === 0) return []
+		return attachments.filter(item => item.usage_type === type)
 	}
 }
 
@@ -44,16 +59,15 @@ const actions = {
 		let apiRoute = `/roles/${payload.role_id}`
 
 		api.get(apiRoute).then(async response => {
-			console.log(response)
-			// await commit(VUEX_ROLE_FETCH_SUCCESS, response.data.data[0])
-			// dispatch(VUEX_UI_NAVIGATION_SET_TITLE, response.data.data[0].job_title)
+			console.log(response.data.data[0])
+			await commit(VUEX_ROLE_FETCH_SUCCESS, response.data.data[0])
+			dispatch(VUEX_UI_NAVIGATION_SET_TITLE, `${response.data.data[0].job_title} - ${response.data.data[0].client}`)
 
 			// if project doesnt exist, route back to 'home'
 			if (response.data.data.length === 0) {
 				dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
 			}
 		}).catch(err => {
-			console.log(err)
 			commit(VUEX_ROLE_FETCH_FAILURE, err)
 			dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
 

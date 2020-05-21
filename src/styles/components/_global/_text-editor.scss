@@ -1,0 +1,31 @@
+.text-editor {
+	background: hsla(0,0%,100%,.08);
+	border-radius: 4px 4px 0 0;
+	margin: {
+		bottom: 2rem;
+	}
+	border: {
+		bottom: 1px solid $color-app-white-alpha-75;
+	}
+
+	.menubar {
+		padding: 0.75rem 0.25rem 0.25rem;
+		/* border: {
+			bottom: 1px solid $color-app-black-alpha-15;
+		} */
+
+		.menubar__button {
+			margin: 0 0.25rem;
+			font-weight: bold;
+			font-size: 1rem;
+		}
+	}
+
+	.editor__content {
+		padding: 1rem;
+
+		* {
+			outline: none;
+		}
+	}
+}

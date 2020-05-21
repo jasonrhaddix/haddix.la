@@ -47,6 +47,7 @@ const state = {
 	dialogContainer: {
 		openState: false,
 		component: null,
+		width: null,
 		props: null
 	},
 	loginContainer: {
@@ -218,8 +219,9 @@ const mutations = {
 	[VUEX_UI_DIALOG_CONTAINER_SHOW]: (state, payload) => {
 		state.dialogContainer.openState = true
 
-		if (payload.component) state.dialogContainer.component = payload.component
-		if (payload.props) state.dialogContainer.props = payload.props
+		state.dialogContainer.component = payload.component || null
+		state.dialogContainer.props = payload.props || null
+		state.dialogContainer.width = payload.width || 800
 	},
 
 	[VUEX_UI_DIALOG_CONTAINER_HIDE]: (state) => {

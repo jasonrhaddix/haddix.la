@@ -90,7 +90,7 @@ const actions = {
 	/**
 	 * Amend the DB record upon success
 	 */
-	[VUEX_UPLOAD_S3_REQUEST_SUCCESS]: async ({ commit, dispatch }, payload) => {
+	[VUEX_UPLOAD_S3_REQUEST_SUCCESS]: async ({ dispatch }, payload) => {
 		dispatch(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, {
 			hashId: payload.hashId,
 			uri: payload.data.Location,

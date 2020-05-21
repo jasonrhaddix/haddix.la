@@ -27,8 +27,7 @@
 						<!-- <p>Only 1 video allowed</p> -->
 					</div>
 					<div class="summary__container">
-						<v-textarea
-							filled hide-details
+						<text-editor
 							v-model="model.summary"/>
 					</div>
 				</div>
@@ -66,7 +65,7 @@
 								class="images__list">
 								<attachment-item
 									v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__BODY_ROLE)"
-									:key="`attachment-item--thumbnail-${i}}`"
+									:key="`attachment-item--body-${i}}`"
 									:data="file"/>
 							</div>
 						</div>
@@ -82,6 +81,7 @@
 							<attachment-uploader
 								ref="attachmentUploader_Video"
 								:attach-to="getAttachTo"
+								:accepted-file-types="['video/mp4']"
 								:file-usage-type="$store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE"/>
 							<div :class="['images__dropzone', {'drag-over':fileDragOver}]">
 								<div
@@ -104,7 +104,7 @@
 								class="images__list">
 								<attachment-item
 									v-for="(file,i) in fileAttachments($store.state.config.HADDIX_ATTACHMENT_USAGE_TYPE__VIDEO_ROLE)"
-									:key="`attachment-item--thumbnail-${i}}`"
+									:key="`attachment-item--video-${i}}`"
 									:data="file"/>
 							</div>
 						</div>
@@ -121,12 +121,14 @@
 
 	import AttachmentUploader from '@/components/_global/Attachment_Uploader'
 	import CreateAttachmentItem from '@/components/Forms/CreateProject/Project/Project_Create__Attachment_Item'
+	import TextEditor from '@/components/_global/Text_Editor'
 
 	export default {
 
 		components: {
 			'attachment-uploader': AttachmentUploader,
-			'attachment-item': CreateAttachmentItem
+			'attachment-item': CreateAttachmentItem,
+			'text-editor': TextEditor
 		},
 
 		props: {
@@ -198,7 +200,8 @@
 					let data = singleReturn ? new Array(filteredFiles[filteredFiles.length - 1]) : filteredFiles
 
 					// Add File to local attachments
-					this.addToAttachments(data)
+					let filteredSuccessFiles = data.filter(item => item.status === HADDIX_UPLOAD_S3_UPLOAD_STATUS__SUCCESS)
+					if (filteredSuccessFiles.length > 0) this.addToAttachments(filteredSuccessFiles)
 
 					return data
 				}

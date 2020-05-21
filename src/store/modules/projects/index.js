@@ -120,7 +120,6 @@ const actions = {
      *
      */
 	[VUEX_PROJECT_FETCH_REQUEST]: ({ dispatch, commit }, payload) => {
-		// let apiRoute = payload.is_guest_project ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
 		let apiRoute = `/projects/${payload.project_id}`
 
 		api.get(apiRoute).then(async response => {
