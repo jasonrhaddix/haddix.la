@@ -22,8 +22,8 @@ import {
 Vue.directive('match-route', MatchRoute)
 
 // Vue - Use statements
-Vue.use(UUID)
 Vue.use(Vuelidate)
+Vue.use(UUID)
 
 // TODO: configure this
 Vue.config.productionTip = false

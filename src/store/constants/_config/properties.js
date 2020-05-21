@@ -4,7 +4,9 @@ export default {
 		{ name: 'Collaberation', value: 'collaberation' },
 		{ name: 'Experiment', value: 'experiment' },
 		{ name: 'Personal', value: 'personal' },
+		{ name: 'New Role', value: 'new_role' },
 		{ name: 'Work', value: 'work' }
+		// { name: '', value: '' },
 	],
 
 	projectRoles: [
@@ -16,6 +18,47 @@ export default {
 		{ name: 'Lead Front-end Engineer', value: 'lead_front_end_engineer' },
 		{ name: 'Support Engineer', value: 'support_engineer' },
 		{ name: 'Technical Consultant', value: 'technical_consultant' }
+	],
+
+	projectClients: [
+		{ name: 'Amazon', value: 'amazon' },
+		{ name: 'Best Buy', value: 'best_buy' },
+		{ name: 'Blowfish Shoes', value: 'blowfish_shoes' },
+		{ name: 'Chevron', value: 'chevron' },
+		{ name: 'City of New York', value: 'new_york' },
+		{ name: 'Cirque Du Solel', value: 'cirque_du_solel' },
+		{ name: 'DirecTv', value: 'directv' },
+		{ name: 'Disney Channel', value: 'disney_channel' },
+		{ name: 'ESPN', value: 'espn' },
+		{ name: 'FX', value: 'fx' },
+		{ name: 'The Gary Group', value: 'gary_group' },
+		{ name: 'HBO', value: 'hbo' },
+		{ name: 'iTunes', value: 'itunes' },
+		{ name: 'MGM Grand', value: 'mgm_grand' },
+		{ name: 'Nexon', value: 'nexon' },
+		{ name: 'Nike', value: 'nike' },
+		{ name: 'Oasis', value: 'oasis' },
+		{ name: 'Propel', value: 'propel' },
+		{ name: 'Satchi & Satchi', value: 'satchi_satchi' },
+		{ name: 'Showtime', value: 'showtime' },
+		{ name: 'Skechers', value: 'skechers' },
+		{ name: 'Top Rank', value: 'top_rank' },
+		{ name: 'Universal Orlando', value: 'universal_orlando' },
+		{ name: 'Universal Pictures', value: 'universal_pictures' },
+		{ name: 'Universal Studios', value: 'universal_studios' }
+	],
+
+	roleClients: [
+		{ name: 'Amazon', value: 'amazon' },
+		{ name: 'Apple', value: 'apple' },
+		{ name: 'Facebook', value: 'facebook' },
+		{ name: 'Google', value: 'google' },
+		{ name: 'Hulu', value: 'hulu' },
+		{ name: 'Microsoft', value: 'microsoft' },
+		{ name: 'Netflix', value: 'netflix' },
+		{ name: 'Snap', value: 'snap' },
+		{ name: 'Tinder', value: 'tinder' },
+		{ name: 'Twitch', value: 'twitch' }
 	],
 
 	projectLanguages: [
@@ -89,35 +132,6 @@ export default {
 		{ id: 59, value: 'Webpack' },
 		{ id: 60, value: 'Wordpress' },
 		{ id: 61, value: 'Yarn' }
-		// { id: 0, value: '' },
-	],
-
-	clients: [
-		{ name: 'Amazon', value: 'amazon' },
-		{ name: 'Best Buy', value: 'best_buy' },
-		{ name: 'Blowfish Shoes', value: 'blowfish_shoes' },
-		{ name: 'Chevron', value: 'chevron' },
-		{ name: 'City of New York', value: 'new_york' },
-		{ name: 'Cirque Du Solel', value: 'cirque_du_solel' },
-		{ name: 'DirecTv', value: 'directv' },
-		{ name: 'Disney Channel', value: 'disney_channel' },
-		{ name: 'ESPN', value: 'espn' },
-		{ name: 'FX', value: 'fx' },
-		{ name: 'The Gary Group', value: 'gary_group' },
-		{ name: 'HBO', value: 'hbo' },
-		{ name: 'iTunes', value: 'itunes' },
-		{ name: 'MGM Grand', value: 'mgm_grand' },
-		{ name: 'Nexon', value: 'nexon' },
-		{ name: 'Nike', value: 'nike' },
-		{ name: 'Oasis', value: 'oasis' },
-		{ name: 'Propel', value: 'propel' },
-		{ name: 'Satchi & Satchi', value: 'satchi_satchi' },
-		{ name: 'Showtime', value: 'showtime' },
-		{ name: 'Skechers', value: 'skechers' },
-		{ name: 'Top Rank', value: 'top_rank' },
-		{ name: 'Universal Orlando', value: 'universal_orlando' },
-		{ name: 'Universal Pictures', value: 'universal_pictures' },
-		{ name: 'Universal Studios', value: 'universal_studios' }
 	],
 
 	imageUsageTypes: [

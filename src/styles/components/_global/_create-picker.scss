@@ -1,0 +1,50 @@
+.create-picker {
+	// position: relative;
+	height: 32rem;
+	background: {
+		// color: $color-app-ui-background;
+		color: #0A0318;
+	}
+
+	.create-picker__content {
+		@include center-content();
+		color: $color-app-white;
+
+		.picker__title {
+			text-align: center;
+			font-size: 1.6rem;
+			font-family: 'Din-CondBlack';
+			text-transform: uppercase;
+		}
+
+		.picker__options {
+			display: flex;
+
+			.content__item {
+				transition: background 100ms ease-in-out;
+				cursor: pointer;
+				border-radius: 4px;
+				position: relative;
+				margin: 1rem 2rem;
+				width: 250px;
+				height: 250px;
+				padding: 3rem;
+
+				.item {
+					@include center-content();
+					text-align: center;
+					font-size: 1.2rem;
+					font-family: 'Din-CondBlack';
+					text-transform: uppercase;
+				}
+
+				&:hover {
+					background: {
+						color: $color-app-white-alpha-10;
+					}
+				}
+			}
+		}
+
+	}
+}

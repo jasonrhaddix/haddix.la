@@ -1,6 +1,7 @@
 .overlay-container {
+	position: relative;
     background: {
-        color: #070318;
+        color: #0A0318;
     }
 
     .overlay__guest-warning {
@@ -52,22 +53,20 @@
 					right: 1rem;
 				}
 			}
-
-
-		}
-
-		.header__close-btn {
-			@include center-content('vertical');
-			position: absolute;
-			right: 1rem;
-			margin: 0;
 		}
 
     }
 
     .section__content {
-        margin: {
-            top: 1rem;
+		margin: {
+			top: 1rem;
         }
     }
+
+	.header__close-btn {
+		@include center-content('vertical');
+		position: absolute;
+		right: 1rem;
+		margin: 0;
+	}
 }

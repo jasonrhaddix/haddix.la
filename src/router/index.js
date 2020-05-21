@@ -5,10 +5,14 @@ import store from '@/store'
 
 import { loadView } from '@/mixins/asyncLoaders'
 
+import beforeEnterGuard from '@/router/navigationGuards/beforeEnter'
+
+// import roleRoutes from '@/router/modules/routes_roles'
+
 import {
 	VUEX_ROUTING_ENTER_PROJECT,
 	VUEX_ROUTING_ENTER_EXPERIMENT,
-	VUEX_ROUTING_NAVIGATE_TO_ROUTE
+	VUEX_ROUTING_ENTER_ROLE
 } from '@/store/constants/routing'
 
 import {
@@ -16,18 +20,6 @@ import {
 } from '@/store/constants/ui'
 
 Vue.use(Router)
-
-const beforeEnterWatcher = (to, from, next) => {
-	// TODO: use if for auth route blocking | authenticated?
-	// eslint-disable-next-line no-constant-condition
-	if (true) {
-		store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, { to: to, from: from })
-
-		if (to.meta.hasOwnProperty('beforeEnterCallback')) {
-			to.meta.beforeEnterCallback(to, from, next)
-		}
-	}
-}
 
 const router = new Router({
 	/* scrollBehavior () {
@@ -51,11 +43,12 @@ const router = new Router({
 	mode: 'history',
 	base: process.env.BASE_URL,
 	routes: [
+		// roleRoutes,
 		{
 			path: '',
 			name: 'home',
 			component: loadView({ file: 'Home' }),
-			beforeEnter: beforeEnterWatcher,
+			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, '')
@@ -67,7 +60,7 @@ const router = new Router({
 			path: '/projects',
 			name: 'projects',
 			component: loadView({ file: 'Projects' }),
-			beforeEnter: beforeEnterWatcher,
+			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Projects')
@@ -79,7 +72,7 @@ const router = new Router({
 			path: '/project/:project_id',
 			name: 'project-details',
 			component: loadView({ file: 'Project_Details' }),
-			beforeEnter: beforeEnterWatcher,
+			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_ROUTING_ENTER_PROJECT, to.params).then(() => next())
@@ -90,7 +83,7 @@ const router = new Router({
 			path: '/about',
 			name: 'about',
 			component: loadView({ file: 'About' }),
-			beforeEnter: beforeEnterWatcher,
+			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'About')
@@ -102,7 +95,7 @@ const router = new Router({
 			path: '/contact',
 			name: 'contact',
 			component: loadView({ file: 'Contact' }),
-			beforeEnter: beforeEnterWatcher,
+			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Contact')
@@ -114,7 +107,7 @@ const router = new Router({
 			path: '/labs',
 			name: 'labs',
 			component: loadView({ file: 'Labs' }),
-			beforeEnter: beforeEnterWatcher,
+			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Labs')
@@ -129,6 +122,30 @@ const router = new Router({
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_ROUTING_ENTER_EXPERIMENT, to.params.id).then(() => next())
+				}
+			}
+		},
+		{
+			path: '/roles',
+			name: 'roles',
+			redirect: { name: 'projects' },
+			component: loadView({ file: 'Roles' }),
+			beforeEnter: beforeEnterGuard,
+			meta: {
+				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Roles')
+					next()
+				}
+			}
+		},
+		{
+			path: '/roles/:role_id',
+			name: 'role-details',
+			component: loadView({ file: 'Role_Details' }),
+			beforeEnter: beforeEnterGuard,
+			meta: {
+				beforeEnterCallback: (to, from, next) => {
+					store.dispatch(VUEX_ROUTING_ENTER_ROLE, to.params).then(() => next())
 				}
 			}
 		}

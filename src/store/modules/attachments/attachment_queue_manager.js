@@ -160,7 +160,7 @@ const actions = {
 	},
 
 	[VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT]: async ({ state, dispatch, commit }, payload) => {
-		// Save the deets to our object before continuing (status, URI, etc)
+		// Save the deets to the object before continuing (status, URI, etc)
 		await commit(VUEX_ATTACHMENT_QUEUE_MANAGER_HANDLE_UPLOAD_RESULT, payload)
 
 		if (payload.status === HADDIX_UPLOAD_S3_UPLOAD_STATUS__SUCCESS) {

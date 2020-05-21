@@ -1,8 +1,6 @@
 <template>
 	<div class="photo-viewer">
-		<img
-			v-if="currentImageId"
-			:src="getImage.uri"/>
+		<img :src="getImage"/>
 	</div>
 </template>
 
@@ -12,7 +10,7 @@ export default {
 
 	props: {
 		images: {
-			type: Array,
+			type: [Object, Array],
 			required: false,
 			default: null
 		},
@@ -30,8 +28,10 @@ export default {
 
 	computed: {
 		getImage () {
+			if (this.images.hasOwnProperty('uri')) return this.images.uri
+
 			let index = this.images.findIndex(i => i.attachment_id === this.startImageId)
-			return this.images[index]
+			return this.images[index].uri
 		}
 	},
 

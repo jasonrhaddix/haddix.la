@@ -56,17 +56,20 @@
 @import 'views/_labs';
 
 @import 'views/_project-details';
+@import 'views/_role-details';
 
 
 
 // COMPONENTS
 //
 // Global
-@import 'components/_global/_hamburger-menu';
 @import 'components/_global/_app-button';
+@import 'components/_global/_create-picker';
 @import 'components/_global/_google-maps';
+@import 'components/_global/_hamburger-menu';
 @import 'components/_global/_language-graph';
 @import 'components/_global/_particle-text';
+@import 'components/_global/_text-editor';
 @import 'components/_global/_under-construction_bar';
 
 // Animated Logo
@@ -83,6 +86,8 @@
 @import 'components/forms/createProject/_create-attachment-item';
 @import 'components/forms/createProject/_create-language-item';
 @import 'components/forms/createProject/_create-resource-picker';
+@import 'components/forms/createProject/_create-role';
+@import 'components/forms/createProject/_create-role--project-item';
 
 //Login
 @import 'components/login/_login';

@@ -1,0 +1,82 @@
+.form--role-create--item {
+	position: relative;
+
+	.remove-btn {
+		position: absolute;
+		right: 15px;
+		top: 10px;
+	}
+
+	.inner {
+		padding: 0 1rem !important;
+		border-radius: 4px;
+		background: {
+			color: $color-app-black-alpha-25;
+		}
+
+		.images__dropzone {
+			position: relative;
+			width: 100%;
+			height: 8rem;
+			margin: {
+				bottom: 1rem;
+			}
+
+			.dropzone__button {
+				cursor: pointer;
+				position: relative;
+				height: 100%;
+				background: {
+					// color: #1B172A;
+					color: rgba(255, 255, 255, 0.1);
+				}
+				border: {
+					radius: 4px;
+				}
+
+				.button__content {
+					@include center-content();
+
+					p {
+						text-transform: uppercase;
+						color: $color-m-grey-darken-1;
+						font-weight: $font-weight-bold;
+						margin: 0;
+					}
+
+					.v-icon {
+						width: 100%;
+						text-align: center;
+					}
+				}
+			}
+
+			.dropzone__scrim {
+				transition: background-color 250ms ease-in-out;
+				pointer-events: none;
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				top: 0;
+				left: 0;
+				background: rgba(49, 0, 189, 0);
+			}
+
+			&.drag-over {
+				.dropzone__scrim {
+					border: 2px dashed $color-app-primary;
+					background: rgba(49, 0, 189, 0.2);
+				}
+			}
+		}
+	}
+
+	.divider {
+		height: 1px;
+		width: 90%;
+		margin: 3rem auto;
+		background: {
+			color: $color-app-white-alpha-10;
+		}
+	}
+}

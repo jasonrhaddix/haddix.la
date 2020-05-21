@@ -9,19 +9,27 @@ import {
 	VUEX_ROUTING_SET_PREVIOUS_ROUTE,
 	VUEX_ROUTING_SET_CURRENT_ROUTE,
 	VUEX_ROUTING_ENTER_PROJECT,
+	VUEX_ROUTING_ENTER_ROLE,
 	VUEX_ROUTING_PREVIOUS_PAGE
 } from '@/store/constants/routing'
+
 import {
 	VUEX_UI_HEADER_SHOW,
 	VUEX_UI_HEADER_HIDE,
 	VUEX_UI_NAVIGATION_HIDE,
 	VUEX_UI_NAVIGATION_DISABLED
 } from '@/store/constants/ui'
+
 import {
 	VUEX_PROJECTS_FETCH_REQUEST,
 	VUEX_PROJECT_FETCH_REQUEST,
 	VUEX_PROJECT_TEARDOWN
 } from '@/store/constants/projects'
+
+import {
+	VUEX_ROLE_FETCH_REQUEST,
+	VUEX_ROLE_TEARDOWN
+} from '@/store/constants/roles'
 
 const state = {
 	route: {
@@ -75,9 +83,12 @@ const actions = {
 	// Teardown actions for exiting a route/view
 	[VUEX_ROUTING_EXIT_ROUTE_TEARDOWN]: ({ commit }, payload) => {
 		switch (payload) {
-		case 'project-details':
-			commit(VUEX_PROJECT_TEARDOWN)
-			break
+			case 'project-details':
+				commit(VUEX_PROJECT_TEARDOWN)
+				break
+			case 'role-details':
+				commit(VUEX_ROLE_TEARDOWN)
+				break
 		}
 	},
 
@@ -90,6 +101,7 @@ const actions = {
 			dispatch(VUEX_UI_HEADER_HIDE)
 		}
 	},
+
 	/**************************/
 	/*  */
 	/**************************/
@@ -98,11 +110,15 @@ const actions = {
 		dispatch(VUEX_PROJECT_FETCH_REQUEST, payload)
 	},
 
+	[VUEX_ROUTING_ENTER_ROLE]: ({ dispatch }, payload) => {
+		dispatch(VUEX_ROLE_FETCH_REQUEST, payload)
+	},
+
 	[VUEX_ROUTING_PREVIOUS_PAGE]: async ({ commit, dispatch }) => {
 		router.go(-1)
 	}
-
 }
+
 const mutations = {
 	[VUEX_ROUTING_INIT]: (state, payload) => {
 		state.route.current = payload

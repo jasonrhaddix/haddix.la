@@ -6,9 +6,8 @@
 	import { mapState } from 'vuex'
 
 	class Particle {
-
-		constructor(canvas, options, colors ) {
-			let random = Math.random()
+		constructor (canvas, options, colors) {
+			// let random = Math.random()
 
 			this.canvas = canvas
 			this.x = options.x
@@ -28,16 +27,16 @@
 			// this.color = this.randomColor()
 		}
 
-		randomColor() {
-			let colors = ["#FE8D36", "#FE6783", '#FB508E', '#C14294', '#57219C']
-			return colors[this.randomIntFromInterval(0,colors.length-1)];
-  		}
-
-		randomIntFromInterval(min,max){
-			return Math.floor(Math.random()*(max-min+1)+min);
+		randomColor () {
+			let colors = ['#FE8D36', '#FE6783', '#FB508E', '#C14294', '#57219C']
+			return colors[this.randomIntFromInterval(0, colors.length - 1)]
 		}
 
-		render(colors=['#FF0000', '#000']){
+		randomIntFromInterval (min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+
+		render (colors = ['#FF0000', '#000']) {
 			this.canvas.beginPath()
 			this.canvas.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
 			this.canvas.lineWidth = 2
@@ -46,7 +45,7 @@
 			this.canvas.closePath()
 		}
 
-		move(colors) {
+		move (colors) {
 			this.x -= Math.cos(this.a) * this.s
 			this.y += Math.sin(this.a) * this.s
 			this.a += Math.random() * 0.8 - 0.4
@@ -66,8 +65,8 @@
 			text: {
 				type: String,
 				required: true,
-				default: ""
-			},
+				default: ''
+			}
 			/* autoStart: {
 				type: [Boolean, Number],
 				required: false,
@@ -75,7 +74,7 @@
 			} */
 		},
 
-		data:() => ({
+		data: () => ({
 			interval: null,
 			colorInterval: null,
 			canvas: null,
@@ -84,13 +83,13 @@
 			particles: [],
 			frequency: 20,
 			particleColors: [
-				['#3100BD','#000000'],
-				['#3100BD','#FFFFFF'],
-				['#FFFFFF','#000000'],
-				['#FF0099','#00FFFF'],
-				['#FF0099','#00FF00'],
-				['#FF0099','#3100BD'],
-				['#0000FF','#3100BD'],
+				['#3100BD', '#000000'],
+				['#3100BD', '#FFFFFF'],
+				['#FFFFFF', '#000000'],
+				['#FF0099', '#00FFFF'],
+				['#FF0099', '#00FF00'],
+				['#FF0099', '#3100BD'],
+				['#0000FF', '#3100BD']
 			]
 		}),
 
@@ -100,7 +99,7 @@
 			})
 		},
 
-		mounted() {
+		mounted () {
 			this.init()
 
 			setTimeout(() => {
@@ -118,19 +117,19 @@
 			}, 100)
 		},
 
-		beforeDestroy() {
+		beforeDestroy () {
 			clearInterval(this.colorInterval)
 			clearInterval(this.interval)
 		},
 
 		methods: {
-			init() {
+			init () {
 				let canvasWidth = 600
 				let canvasHeight = 190
 
-				this.c[0] = this.createCanvas({width: canvasWidth, height: canvasHeight})
-				this.c[1] = this.createCanvas({width: canvasWidth, height: canvasHeight})
-				this.c[2] = this.createCanvas({width: canvasWidth, height: canvasHeight})
+				this.c[0] = this.createCanvas({ width: canvasWidth, height: canvasHeight })
+				this.c[1] = this.createCanvas({ width: canvasWidth, height: canvasHeight })
+				this.c[2] = this.createCanvas({ width: canvasWidth, height: canvasHeight })
 
 				this.tela = this.c[0].canvas
 				this.canvas = this.c[0].context
@@ -138,29 +137,28 @@
 				this.writeText(this.c[1].canvas, this.c[1].context, `\n${this.text}`)
 				this.$refs.particleText.appendChild(this.c[2].canvas)
 
-				this.currentColor = this.particleColors[Math.floor(Math.random()*(this.particleColors.length-0+1)+0)]
-
+				this.currentColor = this.particleColors[Math.floor(Math.random() * (this.particleColors.length - 0 + 1) + 0)]
 
 				this.interval = setInterval(
-					function(){
+					function () {
 						this.populate()
 					}.bind(this), this.frequency
 				)
 
-				let i = 0
+				// let i = 0
 				this.colorInterval = setInterval(
-					function(){
+					function () {
 						// this.currentColor = this.particleColors[i]
 						// return i = (i === this.particleColors.length-1) ? 0 : ++i
 
-						this.currentColor = this.particleColors[Math.floor(Math.random()*(this.particleColors.length-0+1)+0)]
+						this.currentColor = this.particleColors[Math.floor(Math.random() * (this.particleColors.length - 0 + 1) + 0)]
 					}.bind(this), 40
 				)
 
 				this.update()
 			},
 
-			createCanvas(props) {
+			createCanvas (props) {
 				let canvas = document.createElement('canvas')
 					canvas.width = props.width
 					canvas.height = props.height
@@ -173,7 +171,7 @@
 				}
 			},
 
-			writeText(canvas, context, text) {
+			writeText (canvas, context, text) {
 				context.font = '200px DIN-CondBlack'
 				context.fillStyle = '#000'
 				context.textAlign = 'center'
@@ -182,26 +180,26 @@
 				let lines = text.split('\n')
 
 				for (let i = 0; i < lines.length; ++i) {
-					context.fillText(lines[i], canvas.width/2, canvas.height/2 + lineheight*i - (lineheight*(lines.length-1))/3)
+					context.fillText(lines[i], canvas.width / 2, canvas.height / 2 + lineheight * i - (lineheight * (lines.length - 1)) / 3)
 				}
 			},
 
-			maskCanvas() {
+			maskCanvas () {
 				this.c[2].context.drawImage(this.c[1].canvas, 0, 0, this.c[1].canvas.width, this.c[1].canvas.height)
 				this.c[2].context.globalCompositeOperation = 'source-atop'
 				this.c[2].context.drawImage(this.c[0].canvas, 0, 0)
 				this.blur(this.c[0].context, this.c[0].canvas, 2)
 			},
 
-			blur(ctx, canvas, amount) {
+			blur (ctx, canvas, amount) {
 				ctx.filter = `blur(${amount}px)`
 				ctx.drawImage(canvas, 0, 0)
 				ctx.filter = 'none'
 			},
 
-			populate(colors) {
+			populate (colors) {
 				this.particles.push(
-					new Particle( this.canvas, {
+					new Particle(this.canvas, {
 						x: Math.random() * 600,
 						y: 200
 					}, colors)
@@ -210,18 +208,18 @@
 				return this.particles.length
 			},
 
-			clear() {
-				this.canvas.globalAlpha = 0.02;
-				this.canvas.fillStyle = '#000';
-				this.canvas.fillRect(0, 0, this.tela.width, this.tela.height);
-				this.canvas.globalAlpha = 1;
+			clear () {
+				this.canvas.globalAlpha = 0.02
+				this.canvas.fillStyle = '#000'
+				this.canvas.fillRect(0, 0, this.tela.width, this.tela.height)
+				this.canvas.globalAlpha = 1
 			},
 
-			update() {
+			update () {
 				this.clear()
 				this.particles = this.particles.filter(p => p.move(this.currentColor))
 				this.maskCanvas()
-  				requestAnimationFrame(this.update.bind(this.currentColor))
+				requestAnimationFrame(this.update.bind(this.currentColor))
 			}
 		}
 	}

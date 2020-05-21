@@ -267,11 +267,11 @@ export default {
 			let images = this.attachmentsByUsageType(HADDIX_ATTACHMENT_USAGE_TYPE__CAROUSEL, 'project-details')
 			return (images && images.length > 0)
 				? images[0].uri
-				: null
+				: require('@/assets/app/images/project-placeholder-thumb.jpg')
 		},
 
 		client () {
-			return this.getPropertyByKey('clients', this.project.client, 'value', 'name')
+			return this.getPropertyByKey('projectClients', this.project.client, 'value', 'name')
 		},
 
 		title () {
@@ -341,6 +341,7 @@ export default {
 					path: '_global',
 					file: 'Photo_Viewer'
 				},
+				width: '80%',
 				props: {
 					images: this.photos,
 					startImageId: item.attachment_id

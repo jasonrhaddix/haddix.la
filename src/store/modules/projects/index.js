@@ -19,16 +19,20 @@ import {
 
 	VUEX_PROJECT_TEARDOWN
 } from '@/store/constants/projects'
+
 import {
 	VUEX_PROJECT_TREE_FETCH_REQUEST
 } from '@/store/constants/projects/project_tree'
+
 import {
 	VUEX_UI_OVERLAY_CONTAINER_HIDE,
 	VUEX_UI_NAVIGATION_SET_TITLE
 } from '@/store/constants/ui'
+
 import {
 	VUEX_NOTIFICATIONS_ADD_TO_QUEUE
 } from '@/store/constants/notifications'
+
 import {
 	VUEX_ROUTING_PUSH_ROUTE
 } from '@/store/constants/routing'
@@ -116,7 +120,6 @@ const actions = {
      *
      */
 	[VUEX_PROJECT_FETCH_REQUEST]: ({ dispatch, commit }, payload) => {
-		// let apiRoute = payload.is_guest_project ? `/projects/guest/${payload.session_id}` : `/projects/${payload.project_id}`
 		let apiRoute = `/projects/${payload.project_id}`
 
 		api.get(apiRoute).then(async response => {
@@ -134,6 +137,7 @@ const actions = {
 			}
 		}).catch(err => {
 			commit(VUEX_PROJECT_FETCH_FAILURE, err)
+			dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
 
 			dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
 				component: {
