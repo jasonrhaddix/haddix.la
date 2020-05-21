@@ -160,8 +160,6 @@ const actions = {
 	[VUEX_PROJECT_CREATE]: ({ rootState, rootGetters, commit, dispatch }, payload) => {
 		commit(VUEX_PROJECT_CREATE)
 
-		// console.log(payload)
-
 		// let apiRoute = rootGetters.appAuthenticated ? `/projects` : `/projects/guest`
 		let Authorization = `Bearer ${rootState.auth.appToken}`
 		let headers = rootGetters.appAuthenticated ? { headers: { Authorization } } : null

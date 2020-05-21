@@ -526,7 +526,7 @@ function medieQueries_Init () {
 			_screenSize = 'xl'
 			camera_zPos = 70
 		} else {
-			console.log('WINDOW RESIZE | Media Queries | No size found')
+			// console.log('WINDOW RESIZE | Media Queries | No size found')
 		}
 	}
 }
