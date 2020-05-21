@@ -18,20 +18,20 @@
 
 				<div class="project-info__container">
 					<v-row class="project-info__inner">
-						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-12 col-md-4 project-info__item">
 							<div class="item">
 								<h4>Company</h4>
 								<p>{{ client }}</p>
 							</div>
 						</v-col>
 
-						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-12 col-md-4 project-info__item">
 							<div class="item">
 								<h4>Organization</h4>
 								<p>{{ department }}</p>
 							</div>
 						</v-col>
-						<v-col align-self="center" class="col-6 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-12 col-md-4 project-info__item">
 							<div class="item">
 								<h4>Recruiter</h4>
 								<p>{{ recruiter }}</p>
@@ -47,6 +47,30 @@
                     <v-icon>close</v-icon>
                 </v-btn>
             </div>
+
+			<div class="project-info__container__mobile">
+				<v-row class="project-info__inner">
+					<v-col align-self="center" class="col-4 project-info__item">
+						<div class="item">
+							<h4>Company</h4>
+							<p>{{ client }}</p>
+						</div>
+					</v-col>
+
+					<v-col align-self="center" class="col-4 project-info__item">
+						<div class="item">
+							<h4>Organization</h4>
+							<p>{{ department }}</p>
+						</div>
+					</v-col>
+					<v-col align-self="center" class="col-4 project-info__item">
+						<div class="item">
+							<h4>Recruiter</h4>
+							<p>{{ recruiter }}</p>
+						</div>
+					</v-col>
+				</v-row>
+			</div>
 
             <v-container class="content__container">
                 <div class="section description__container">
@@ -83,7 +107,7 @@
 							<v-container>
 								<v-layout row wrap class="photos__inner">
 									<v-flex
-										xs6 align-content-center
+										xs12 md6 align-content-center
 										v-for="(item,i) in projectImages(project.project_id)"
 										:key="`project-photo-${$uuid.v4()}-${i}`"
 										@click="showFullsizeImage(item)">

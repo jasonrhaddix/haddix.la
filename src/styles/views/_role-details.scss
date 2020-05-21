@@ -66,6 +66,10 @@
                 }
 			}
 
+			.project-info__container__mobile {
+				display: none;
+			}
+
 			.project-info__container {
 				position: absolute;
 				height: 100px;
@@ -244,7 +248,7 @@
 
 @include respond-to(medium) {
 
-    .project-details-view {
+    .role-details-view {
         width: 100%;
 
         .details__content {
@@ -253,7 +257,7 @@
             .header__container {
 
                 .v-image {
-                    height: 50vh;
+                    height: 40vh;
 
                     .v-image__image--contain {
                         background: {
@@ -263,11 +267,15 @@
                 }
 
                 .title__container {
-
+					@include center-content(0, 30px);
                     h3 {
                         font-size: 1.5rem;
                         line-height: 2.25rem;
-                        padding: 0 0.7rem;
+						padding: 0 0.7rem;
+
+						span {
+							font-size: 1.2rem !important;
+						}
                     }
 
                     h1 {
@@ -275,6 +283,48 @@
                         line-height: 2.75rem;
                         padding: 0 0.7rem;
                     }
+				}
+
+				.project-info__container {
+					display: none;
+				}
+			}
+
+			.project-info__container__mobile {
+				display: block;
+				color: $color-app-text-light;
+				padding: 1rem;
+
+				background: {
+					color: #121212;
+					// color: rgba(255, 255, 255, 0.9);
+				}
+			}
+
+			.content__container {
+				padding: 1.5rem 1rem;
+
+				.divider {
+					margin: {
+						top: 3rem;
+						bottom: 3rem;
+					}
+				}
+
+				.project__container {
+
+					.project-item {
+
+						.title__container {
+							flex-direction: column;
+
+							.watch__btn {
+								padding: 1rem 0;
+								width: 100%;
+								text-align: center;
+							}
+						}
+					}
 				}
 			}
         }
