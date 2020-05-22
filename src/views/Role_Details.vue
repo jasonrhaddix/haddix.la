@@ -74,7 +74,7 @@
 
             <v-container class="content__container">
                 <div class="section description__container">
-                    <p class="body-1" v-html="description"/>
+                    <p class="" v-html="description"/>
                 </div>
 
                 <div class="divider" />
