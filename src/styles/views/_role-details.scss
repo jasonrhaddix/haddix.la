@@ -66,10 +66,6 @@
                 }
 			}
 
-			.project-info__container__mobile {
-				display: none;
-			}
-
 			.project-info__container {
 				position: absolute;
 				height: 100px;
@@ -114,7 +110,11 @@
                 top: 50px;
                 z-index: 99;
             }
-        }
+		}
+
+		.project-info__container__mobile {
+			display: none;
+		}
 
         .content__container {
             padding: {

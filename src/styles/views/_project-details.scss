@@ -345,6 +345,7 @@
                 }
 
                 .title__container {
+					@include center-content(0, -25px);
 
                     h3 {
                         font-size: 1.5rem;
