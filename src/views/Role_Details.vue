@@ -18,20 +18,20 @@
 
 				<div class="project-info__container">
 					<v-row class="project-info__inner">
-						<v-col align-self="center" class="col-12 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-4 project-info__item">
 							<div class="item">
 								<h4>Company</h4>
 								<p>{{ client }}</p>
 							</div>
 						</v-col>
 
-						<v-col align-self="center" class="col-12 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-4 project-info__item">
 							<div class="item">
 								<h4>Organization</h4>
 								<p>{{ department }}</p>
 							</div>
 						</v-col>
-						<v-col align-self="center" class="col-12 col-md-4 project-info__item">
+						<v-col align-self="center" class="col-4 project-info__item">
 							<div class="item">
 								<h4>Recruiter</h4>
 								<p>{{ recruiter }}</p>
