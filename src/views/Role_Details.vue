@@ -11,9 +11,9 @@
                 <div class="scrim"/>
 
                 <div class="title__container">
-                    <h3>Interviewing for</h3>
+                    <h4>Relevant experience for</h4>
                     <h1>{{ job_title }}</h1>
-                    <h3><span>at</span> {{ client.toUpperCase() }}</h3>
+                    <h3><span>at</span> {{ client }}</h3>
                 </div>
 
 				<div class="project-info__container">
