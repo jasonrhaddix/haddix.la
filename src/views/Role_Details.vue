@@ -75,7 +75,7 @@
             <v-container class="content__container">
                 <div class="section description__container">
 					<div class="section-title">
-						<h2>Overview</h2>
+						<h2>Relevant Experience</h2>
 					</div>
                     <p class="" v-html="description"/>
                 </div>
@@ -84,7 +84,7 @@
 
 				<div class="section project__container">
 					<div class="section-title">
-						<h2>Projects</h2>
+						<h2>Relevant Projects</h2>
 					</div>
 
 					<div
