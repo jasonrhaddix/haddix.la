@@ -1,6 +1,10 @@
 import api from '@/api'
 
 import {
+	VUEX_ROLES_FETCH_REQUEST,
+	VUEX_ROLES_FETCH_SUCCESS,
+	VUEX_ROLES_FETCH_FAILURE,
+
     VUEX_ROLE_FETCH_REQUEST,
 	VUEX_ROLE_FETCH_SUCCESS,
 	VUEX_ROLE_FETCH_FAILURE,
@@ -55,15 +59,37 @@ const getters = {
 }
 
 const actions = {
+	[VUEX_ROLES_FETCH_REQUEST]: ({ rootState, rootGetters, dispatch, commit }) => {
+		let Authorization = `Bearer ${rootState.auth.appToken}`
+		let headers = rootGetters.appAuthenticated ? { headers: { Authorization } } : null
+
+		api.get(`/roles`, headers).then(response => {
+			commit(VUEX_ROLES_FETCH_SUCCESS, response.data.data)
+		}).catch(err => {
+			commit(VUEX_ROLES_FETCH_FAILURE, err)
+
+			/* dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+				component: {
+					path: 'Notifications',
+					file: 'Notification_Message'
+				},
+				data: {
+					type: 'error',
+					message: 'Error: Roles fetch failed'
+				},
+				timeout: 0
+			}) */
+		})
+	},
+
     [VUEX_ROLE_FETCH_REQUEST]: ({ dispatch, commit }, payload) => {
 		let apiRoute = `/roles/${payload.role_id}`
 
 		api.get(apiRoute).then(async response => {
 			await commit(VUEX_ROLE_FETCH_SUCCESS, response.data.data[0])
 			dispatch(VUEX_UI_NAVIGATION_SET_TITLE, `${response.data.data[0].job_title}`)
-			// dispatch(VUEX_UI_NAVIGATION_SET_TITLE, `${response.data.data[0].job_title} - ${response.data.data[0].client}`)
 
-			// if project doesnt exist, route back to 'home'
+			// if role doesnt exist, route back to 'home'
 			if (response.data.data.length === 0) {
 				dispatch(VUEX_ROUTING_PUSH_ROUTE, { name: 'home' })
 			}
@@ -129,6 +155,22 @@ const actions = {
 }
 
 const mutations = {
+	/**
+	 * Fetch Projects Mutations
+	 *
+	 */
+	[VUEX_ROLES_FETCH_REQUEST]: (state) => {
+		state.roles = []
+		state.rolesLoading = true
+	},
+	[VUEX_ROLES_FETCH_SUCCESS]: (state, payload) => {
+		state.roles = payload
+		state.rolesLoading = false
+	},
+	[VUEX_ROLES_FETCH_FAILURE]: (state) => {
+		state.rolesLoading = false
+	},
+
     /**
 	 * Fetch Project Mutations
 	 *

@@ -12,6 +12,7 @@ import beforeEnterGuard from '@/router/navigationGuards/beforeEnter'
 import {
 	VUEX_ROUTING_ENTER_PROJECT,
 	VUEX_ROUTING_ENTER_EXPERIMENT,
+	VUEX_ROUTING_ENTER_ROLES,
 	VUEX_ROUTING_ENTER_ROLE
 } from '@/store/constants/routing'
 
@@ -128,12 +129,13 @@ const router = new Router({
 		{
 			path: '/roles',
 			name: 'roles',
-			redirect: { name: 'projects' },
+			// redirect: { name: 'projects' },
 			component: loadView({ file: 'Roles' }),
 			beforeEnter: beforeEnterGuard,
 			meta: {
 				beforeEnterCallback: (to, from, next) => {
 					store.dispatch(VUEX_UI_NAVIGATION_SET_TITLE, 'Roles')
+					store.dispatch(VUEX_ROUTING_ENTER_ROLES)
 					next()
 				}
 			}

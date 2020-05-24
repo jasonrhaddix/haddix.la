@@ -1,18 +1,37 @@
 import store from '@/store'
+import router from '@/router'
 
 import {
 	VUEX_ROUTING_NAVIGATE_TO_ROUTE
 } from '@/store/constants/routing'
 
-const beforeEnterGuard = (to, from, next) => {
-	// TODO: use if for auth route blocking | authenticated?
-	// eslint-disable-next-line no-constant-condition
-	if (true) {
-		store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, { to: to, from: from })
+import {
+	VUEX_NOTIFICATIONS_ADD_TO_QUEUE
+} from '@/store/constants/notifications'
 
-		if (to.meta.hasOwnProperty('beforeEnterCallback')) {
-			to.meta.beforeEnterCallback(to, from, next)
-		}
+const beforeEnterGuard = (to, from, next) => {
+	if (to.name === 'roles' && !store.getters.appAuthenticated) {
+		store.dispatch(VUEX_NOTIFICATIONS_ADD_TO_QUEUE, {
+			component: {
+				path: 'Notifications',
+				file: 'Notification_Message'
+			},
+			data: {
+				type: 'error',
+				message: "You're not authorized for this route"
+			},
+			timeout: 0
+		})
+
+		router.push({ name: 'projects' })
+	}
+
+	store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, { to: to, from: from })
+
+	if (to.meta.hasOwnProperty('beforeEnterCallback')) {
+		to.meta.beforeEnterCallback(to, from, next)
+	} else {
+		next()
 	}
 }
 

@@ -9,6 +9,7 @@ import {
 	VUEX_ROUTING_SET_PREVIOUS_ROUTE,
 	VUEX_ROUTING_SET_CURRENT_ROUTE,
 	VUEX_ROUTING_ENTER_PROJECT,
+	VUEX_ROUTING_ENTER_ROLES,
 	VUEX_ROUTING_ENTER_ROLE,
 	VUEX_ROUTING_PREVIOUS_PAGE
 } from '@/store/constants/routing'
@@ -27,6 +28,7 @@ import {
 } from '@/store/constants/projects'
 
 import {
+	VUEX_ROLES_FETCH_REQUEST,
 	VUEX_ROLE_FETCH_REQUEST,
 	VUEX_ROLE_TEARDOWN
 } from '@/store/constants/roles'
@@ -108,6 +110,10 @@ const actions = {
 
 	[VUEX_ROUTING_ENTER_PROJECT]: ({ dispatch }, payload) => {
 		dispatch(VUEX_PROJECT_FETCH_REQUEST, payload)
+	},
+
+	[VUEX_ROUTING_ENTER_ROLES]: ({ dispatch }) => {
+		dispatch(VUEX_ROLES_FETCH_REQUEST)
 	},
 
 	[VUEX_ROUTING_ENTER_ROLE]: ({ dispatch }, payload) => {
