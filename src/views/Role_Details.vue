@@ -74,15 +74,18 @@
 
             <v-container class="content__container">
                 <div class="section description__container">
+					<div class="section-title">
+						<h2>Overview</h2>
+					</div>
                     <p class="" v-html="description"/>
                 </div>
 
                 <div class="divider" />
 
 				<div class="section project__container">
-					<!-- <div class="section-title">
+					<div class="section-title">
 						<h2>Projects</h2>
-					</div> -->
+					</div>
 
 					<div
 						class="project-item"
@@ -122,7 +125,7 @@
 								</v-layout>
 							</v-container>
 						</div>
-						<div class="divider"/>
+						<!-- <div class="divider"/> -->
 					</div>
 				</div>
             </v-container>
