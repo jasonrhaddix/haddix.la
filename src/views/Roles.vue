@@ -1,12 +1,14 @@
 <template>
     <div class="roles-view">
-		<v-data-table
-			dark
-			:headers="headers"
-			:items="roles"
-			:items-per-page="50"
-			class="elevation-1"
-			@click:row="roleClick"/>
+		<div class="roles__inner">
+			<v-data-table
+				dark
+				:headers="headers"
+				:items="roles"
+				:items-per-page="50"
+				class="elevation-1"
+				@click:row="roleClick"/>
+		</div>
     </div>
 </template>
 

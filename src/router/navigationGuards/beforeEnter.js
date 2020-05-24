@@ -18,7 +18,7 @@ const beforeEnterGuard = (to, from, next) => {
 			},
 			data: {
 				type: 'error',
-				message: "You're not authorized to access this route"
+				message: "You're not authorized to access this page"
 			},
 			timeout: 0
 		})

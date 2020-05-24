@@ -5,13 +5,16 @@
 			@click="toggleNavigationMenu" />
         <div class="navigation-poly">
             <nav>
-                <navigation-item
-                    v-for="item in navItems"
+				<template
+					v-for="item in navItems">
+					<navigation-item
+					v-if="hasAccess(item)"
                     :key="`${item.label}-${$uuid.v4()}`"
                     v-match-route:class.active="item.routeName"
                     :text="item.label"
                     :styles="{ color:'#646468', fontSize:'3rem' }"
                     @click.native="navigateToRoute({ name: item.routeName })"/>
+				</template>
             </nav>
         </div>
         <header :class="[{ open:headerState }]">
@@ -36,7 +39,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 import {
 	VUEX_UI_NAVIGATION_TOGGLE_OPENSTATE,
@@ -71,8 +74,18 @@ export default {
 			routeTitle: state => state.ui.navigation.title
 		}),
 
+		...mapGetters({
+			appAuthenticated: 'appAuthenticated'
+		}),
+
 		headerLogo () {
 			return VUEX_UI_HEADER_LOGO
+		},
+
+		hasAccess (item) {
+			return item => {
+				return (!item.needsAuth || (item.needsAuth && this.appAuthenticated))
+			}
 		},
 
 		routeName () {
