@@ -18,12 +18,12 @@ const beforeEnterGuard = (to, from, next) => {
 			},
 			data: {
 				type: 'error',
-				message: "You're not authorized for this route"
+				message: "You're not authorized to access this route"
 			},
 			timeout: 0
 		})
 
-		router.push({ name: 'projects' })
+		router.push({ name: 'home' })
 	}
 
 	store.dispatch(VUEX_ROUTING_NAVIGATE_TO_ROUTE, { to: to, from: from })

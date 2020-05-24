@@ -5,12 +5,17 @@
 			:headers="headers"
 			:items="roles"
 			:items-per-page="50"
-			class="elevation-1"/>
+			class="elevation-1"
+			@click:row="roleClick"/>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+
+import {
+	VUEX_ROUTING_PUSH_ROUTE
+} from '@/store/constants/routing'
 
 export default {
 	name: 'roles-view',
@@ -26,10 +31,6 @@ export default {
 		]
 	}),
 
-	components: {
-		//
-	},
-
 	computed: {
 		...mapState({
 			roles: state => state.roles.roles
@@ -37,7 +38,18 @@ export default {
 	},
 
 	methods: {
-		//
+		...mapActions({
+			navigateToRoute: VUEX_ROUTING_PUSH_ROUTE
+		}),
+
+		roleClick (e) {
+			this.navigateToRoute({
+				name: 'role-details',
+				params: {
+					role_id: e.role_id
+				}
+			})
+		}
 	}
 }
 </script>
