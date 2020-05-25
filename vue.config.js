@@ -1,6 +1,8 @@
-// eslint-disable-next-line no-undef
+// const { GenerateSW } = require('workbox-webpack-plugin')
+
 module.exports = {
 	configureWebpack: {
+		// plugins: [ new GenerateSW() ],
 		optimization: {
 			runtimeChunk: 'single',
 			splitChunks: {
@@ -19,6 +21,22 @@ module.exports = {
 					}
 				}
 			}
+		}
+	},
+
+	pwa: {
+		name: 'My App',
+		themeColor: '#4DBA87',
+		msTileColor: '#000000',
+		appleMobileWebAppCapable: 'yes',
+		appleMobileWebAppStatusBarStyle: 'black',
+
+		// configure the workbox plugin
+		workboxPluginMode: 'InjectManifest',
+		workboxOptions: {
+			// swSrc is required in InjectManifest mode.
+			swSrc: 'src/serviceWorker.js'
+			// ...other Workbox options...
 		}
 	},
 

@@ -18,6 +18,17 @@ import {
 	VUEX_APP_INIT
 } from '@/store/constants/app'
 
+Notification.requestPermission(result => {
+	if (result === 'granted') {
+		navigator.serviceWorker.ready.then(registration => {
+			registration.showNotification('Vibration Sample', {
+				body: 'Buzz! Buzz!',
+				tag: 'vibration-sample'
+			})
+		})
+	}
+})
+
 // Vue - Directive statements
 Vue.directive('match-route', MatchRoute)
 
