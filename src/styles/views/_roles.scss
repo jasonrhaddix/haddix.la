@@ -1,10 +1,19 @@
 .roles-view {
+	position: relative;
+
 	padding: {
 		top: 5rem;
 		right: 0rem;
 		bottom: 1rem;
 		left: 0rem;
 	}
+
+	.projects__add-btn {
+        @include center-content('horizontal');
+        bottom: 1rem;
+        position: fixed;
+        z-index: 6;
+    }
 
 	.roles__inner {
 		margin: 0 auto;
@@ -16,6 +25,17 @@
 			}
 
 			tbody {
+
+				td.col__publish {
+					text-align: center;
+				}
+
+				td.col__role-id {
+
+					&:hover {
+						text-decoration: underline;
+					}
+				}
 
 				tr:hover {
 					cursor: pointer;

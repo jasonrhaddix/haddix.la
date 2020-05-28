@@ -28,13 +28,13 @@
 						<v-col align-self="center" class="col-4 project-info__item">
 							<div class="item">
 								<h4>Organization</h4>
-								<p>{{ department }}</p>
+								<p>{{ department || '--' }}</p>
 							</div>
 						</v-col>
 						<v-col align-self="center" class="col-4 project-info__item">
 							<div class="item">
 								<h4>Recruiter</h4>
-								<p>{{ recruiter }}</p>
+								<p>{{ recruiter || '--' }}</p>
 							</div>
 						</v-col>
 					</v-row>

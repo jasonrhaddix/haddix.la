@@ -56,7 +56,9 @@ export default {
 		{ name: 'Hulu', value: 'hulu' },
 		{ name: 'Microsoft', value: 'microsoft' },
 		{ name: 'Netflix', value: 'netflix' },
+		{ name: 'PlayStation', value: 'playstation' },
 		{ name: 'Snap', value: 'snap' },
+		{ name: 'Sony', value: 'sony' },
 		{ name: 'Tinder', value: 'tinder' },
 		{ name: 'Twitch', value: 'twitch' }
 	],
