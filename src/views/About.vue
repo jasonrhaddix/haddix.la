@@ -15,9 +15,9 @@
                                 <font-awesome-icon :icon="['fab', 'github']" size="2x" />
                             </a>
 
-                            <!-- <a class="social-list" href="https://codepen.io/Jasonrhaddix/" target="_blank">
+                            <a class="social-list" href="https://codepen.io/Jasonrhaddix/" target="_blank">
                                  <font-awesome-icon :icon="['fab', 'codepen']" size="2x" />
-                            </a> -->
+                            </a>
 
 							<a class="social-list" href="https://medium.com/@jasonrhaddix" target="_blank">
                                  <font-awesome-icon :icon="['fab', 'medium']" size="2x" />
