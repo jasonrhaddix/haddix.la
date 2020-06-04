@@ -59,6 +59,7 @@ export default {
 		{ name: 'PlayStation', value: 'playstation' },
 		{ name: 'Snap', value: 'snap' },
 		{ name: 'Sony', value: 'sony' },
+		{ name: 'TikTok', value: 'tiktok' },
 		{ name: 'Tinder', value: 'tinder' },
 		{ name: 'Twitch', value: 'twitch' }
 	],
