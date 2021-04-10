@@ -1,4 +1,4 @@
-<p  align="center"><img  width=50%  src="https://raw.githubusercontent.com/jasonrhaddix/haddix.la/master/gitAssets/images/img-1.png"></p>
+<p  align="center"><img  width=80%  src="https://raw.githubusercontent.com/jasonrhaddix/haddix.la/master/gitAssets/img-1.png"></p>
 
 # Haddix.la
 
