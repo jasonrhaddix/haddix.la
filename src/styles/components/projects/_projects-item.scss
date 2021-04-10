@@ -6,8 +6,9 @@ $animationDelay: 100ms;
 
     .project__inner {
         @include center-content();
-        width: 90%;
-        max-width: 70rem;
+        
+        width: 80%;
+        max-width: 100rem;
 
         /* .hidden-img {
             width: 70rem;
