@@ -7,17 +7,16 @@ Front-end repo for my personal website.
 
 ## Stack
 __Front-end:__
-JS Framework: Vue.js
-CSS Pre-Processor: Sass (SCSS)
-Compiler: Babel
-Bundler: Webpack
+* JS Framework: Vue.js
+* CSS Pre-Processor: Sass (SCSS)
+* Compiler: Babel
+* Bundler: Webpack
 
 __Back-end:__
-PHP Framework: Laravel
-REST API: Laravel
-DB: MySQL
-Build/Deploy Process
-Since I have a detached front- and back-end, I have two separate development and build processes.
+* PHP Framework: Laravel
+* REST API: Laravel
+* DB: MySQL
+* Build/Deploy Process
 
 
 ## Summary
